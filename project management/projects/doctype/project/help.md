@@ -1,4 +1,4 @@
-You can use project to:
+You can use proj to:
 
 1. Track budgets (Purchase Orders, Invoices).
 2. Track material consumption.

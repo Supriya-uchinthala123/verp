@@ -1,2 +1,2 @@
 def get_data():
-	return {"fieldname": "project_template", "transactions": [{"items": ["Project"]}]}
+	return {"fieldname": "proj_Temp", "transactions": [{"items": ["proj"]}]}

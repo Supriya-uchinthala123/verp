@@ -2,12 +2,12 @@
  "cards": [],
  "charts": [
   {
-   "chart": "Project Summary",
+   "chart": "proj Summary",
    "width": "Full"
   }
  ],
  "creation": "2020-07-20 20:17:16.397373",
- "dashboard_name": "Project",
+ "dashboard_name": "proj",
  "docstatus": 0,
  "doctype": "Dashboard",
  "idx": 0,
@@ -15,7 +15,7 @@
  "is_standard": 1,
  "modify": "2020-07-22 17:17:03.780625",
  "modify_by": "Admin",
- "module": "project",
- "name": "Project",
+ "module": "proj",
+ "name": "proj",
  "owner": "Admin"
 }

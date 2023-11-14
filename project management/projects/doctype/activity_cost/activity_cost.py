@@ -18,17 +18,17 @@ class ActivityCost(Document):
 
 	def set_title(self):
 		if self.employee:
-			if not self.employee_name:
-				self.employee_name = frappe.db.get_value("Employee", self.employee, "employee_name")
-			self.title = _("{0} for {1}").format(self.employee_name, self.activity_type)
+			if not self.employer:
+				self.employer = frappe.db.get_value("Employee", self.employee, "employer")
+			self.title = _("{0} for {1}").format(self.employer, self.activity_type)
 		else:
 			self.title = self.activity_type
 
 	def check_unique(self):
 		if self.employee:
 			if frappe.db.sql(
-				"""select name from `tabActivity Cost` where employee_name= %s and activity_type= %s and name != %s""",
-				(self.employee_name, self.activity_type, self.name),
+				"""select name from `tabActivity Cost` where employer= %s and activity_type= %s and name != %s""",
+				(self.employer, self.activity_type, self.name),
 			):
 				frappe.throw(
 					_("Activity Cost exists for Employee {0} against Activity Type - {1}").format(

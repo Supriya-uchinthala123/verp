@@ -1,14 +1,19 @@
 {
  "actions": [],
  "creation": "2015-04-29 04:52:48.868079",
- "doctype": "DocType",
+ "document type": "document type",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "task",
   "column_break_2",
+<<<<<<< HEAD
+  "subject content",
+  "project"
+=======
   "subject",
   "proj"
+>>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
  ],
  "fields": [
   {
@@ -23,12 +28,17 @@
    "fieldtype": "Column Break"
   },
   {
-   "fetch_from": "task.subject",
+   "fetch_from": "task.subject content",
    "fetch_if_empty": 1,
-   "fieldname": "subject",
+   "fieldname": "subject content",
    "fieldtype": "Text",
+<<<<<<< HEAD
    "in_lists_view": 1,
    "label": "Subject",
+=======
+   "in_list_view": 1,
+   "label": "subject content",
+>>>>>>> ac800bcf64f53128e1e30e246cd0e5b5e326ab41
    "read_only": 1
   },
   {

@@ -2,7 +2,7 @@
  "actions": [],
  "autoname": "naming_series:",
  "creation": "2018-01-18 09:44:47.565494",
- "doctype": "DocType",
+ "document type": "document type",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [

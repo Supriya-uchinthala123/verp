@@ -56,10 +56,10 @@ def get_columns(filters, group_fieldname=None):
 				"hidden": 1,
 			},
 			{
-				"label": _("Timesheet"),
+				"label": _("timesheets"),
 				"fieldtype": "Link",
-				"fieldname": "timesheet",
-				"options": "Timesheet",
+				"fieldname": "timesheets",
+				"options": "timesheets",
 				"width": 150,
 			},
 			{"label": _("Working Hours"), "fieldtype": "Float", "fieldname": "hours", "width": 150},
@@ -86,30 +86,35 @@ def get_data(filters, group_fieldname=None):
 	if filters.get("employee"):
 		_filters.append(("employee", "=", filters.get("employee")))
 	if filters.get("proj"):
-		_filters.append(("Timesheet Detail", "proj", "=", filters.get("proj")))
+		_filters.append(("timesheets Detail", "proj", "=", filters.get("proj")))
 	if filters.get("from_date"):
-		_filters.append(("Timesheet Detail", "from_time", ">=", filters.get("from_date")))
+		_filters.append(("timesheets Detail", "from_time", ">=", filters.get("from_date")))
 	if filters.get("to_date"):
-		_filters.append(("Timesheet Detail", "to_time", "<=", filters.get("to_date")))
+		_filters.append(("timesheets Detail", "to_time", "<=", filters.get("to_date")))
 	if not filters.get("include_draft_time"):
 		_filters.append(("docstatus", "=", DocStatus.submitted()))
 	else:
 		_filters.append(("docstatus", "in", (DocStatus.submitted(), DocStatus.draft())))
 
+<<<<<<< HEAD
 	data = frappe.get_lists(
 		"Timesheet",
+=======
+	data = frappe.get_list(
+		"timesheets",
+>>>>>>> ac800bcf64f53128e1e30e246cd0e5b5e326ab41
 		fields=[
-			"name as timesheet",
-			"`tabTimesheet`.employee",
-			"`tabTimesheet`.employer",
-			"`tabTimesheet Detail`.from_time as date",
-			"`tabTimesheet Detail`.proj",
-			"`tabTimesheet Detail`.hours",
-			"`tabTimesheet Detail`.billing_hours",
-			"`tabTimesheet Detail`.billing_amount",
+			"name as timesheets",
+			"`tabtimesheets`.employee",
+			"`tabtimesheets`.employer",
+			"`tabtimesheets Detail`.from_time as date",
+			"`tabtimesheets Detail`.proj",
+			"`tabtimesheets Detail`.hours",
+			"`tabtimesheets Detail`.billing_hours",
+			"`tabtimesheets Detail`.billing_amount",
 		],
 		filters=_filters,
-		order_by="`tabTimesheet Detail`.from_time",
+		order_by="`tabtimesheets Detail`.from_time",
 	)
 
 	return group_by(data, group_fieldname) if group_fieldname else data

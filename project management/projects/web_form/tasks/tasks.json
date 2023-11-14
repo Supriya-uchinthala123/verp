@@ -12,7 +12,7 @@
  "creation": "2016-06-24 15:50:33.091287", 
  "doc_type": "Task", 
  "docstatus": 0, 
- "doctype": "Web Form", 
+ "document type": "Web Form", 
  "idx": 0, 
  "introduction_text": "", 
  "is_standard": 1, 
@@ -43,10 +43,10 @@
    "reqd": 1
   }, 
   {
-   "fieldname": "subject", 
+   "fieldname": "subject content", 
    "fieldtype": "Data", 
    "hidden": 0, 
-   "label": "Subject", 
+   "label": "subject content", 
    "max_length": 0, 
    "max_value": 0, 
    "read_only": 0, 
@@ -85,10 +85,10 @@
    "reqd": 0
   }, 
   {
-   "fieldname": "exp_start_date", 
+   "fieldname": "exp_begin_date", 
    "fieldtype": "Date", 
    "hidden": 0, 
-   "label": "Expected Start Date", 
+   "label": "Expected begin Date", 
    "max_length": 0, 
    "max_value": 0, 
    "read_only": 0, 

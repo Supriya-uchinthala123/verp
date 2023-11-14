@@ -22,8 +22,8 @@ def get_data(filters):
 		filters=conditions,
 		fields=[
 			"name",
-			"subject",
-			"exp_start_date",
+			"subject content",
+			"exp_begin_date",
 			"exp_end_date",
 			"status",
 			"priority",
@@ -63,7 +63,7 @@ def get_conditions(filters):
 	if filters.get("from_date"):
 		conditions.exp_end_date = [">=", filters.get("from_date")]
 	if filters.get("to_date"):
-		conditions.exp_start_date = ["<=", filters.get("to_date")]
+		conditions.exp_begin_date = ["<=", filters.get("to_date")]
 	return conditions
 
 
@@ -88,14 +88,14 @@ def get_chart_data(data):
 def get_columns():
 	columns = [
 		{"fieldname": "name", "fieldtype": "Link", "label": _("Task"), "options": "Task", "width": 150},
-		{"fieldname": "subject", "fieldtype": "Data", "label": _("Subject"), "width": 200},
+		{"fieldname": "subject content", "fieldtype": "Data", "label": _("subject content"), "width": 200},
 		{"fieldname": "status", "fieldtype": "Data", "label": _("Status"), "width": 100},
 		{"fieldname": "priority", "fieldtype": "Data", "label": _("Priority"), "width": 80},
 		{"fieldname": "progress", "fieldtype": "Data", "label": _("Progress (%)"), "width": 120},
 		{
-			"fieldname": "exp_start_date",
+			"fieldname": "exp_begin_date",
 			"fieldtype": "Date",
-			"label": _("Expected Start Date"),
+			"label": _("Expected begin Date"),
 			"width": 150,
 		},
 		{

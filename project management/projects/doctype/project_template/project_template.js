@@ -19,8 +19,8 @@ frappe.ui.form.on('proj Temp', {
 frappe.ui.form.on('proj Temp Task', {
 	task: function (frm, cdt, cdn) {
 		var row = locals[cdt][cdn];
-		frappe.db.get_value("Task", row.task, "subject", (value) => {
-			row.subject = value.subject;
+		frappe.db.get_value("Task", row.task, "subject content", (value) => {
+			row.subject content = value.subject content;
 			refresh_field("tasks");
 		});
 	}

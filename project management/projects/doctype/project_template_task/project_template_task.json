@@ -1,12 +1,12 @@
 {
  "actions": [],
  "creation": "2019-02-18 17:24:41.830096",
- "doctype": "DocType",
+ "document type": "document type",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "task",
-  "subject"
+  "subject content"
  ],
  "fields": [
   {
@@ -20,11 +20,16 @@
   },
   {
    "columns": 6,
-   "fetch_from": "task.subject",
-   "fieldname": "subject",
+   "fetch_from": "task.subject content",
+   "fieldname": "subject content",
    "fieldtype": "Read Only",
+<<<<<<< HEAD
    "in_lists_view": 1,
    "label": "Subject"
+=======
+   "in_list_view": 1,
+   "label": "subject content"
+>>>>>>> ac800bcf64f53128e1e30e246cd0e5b5e326ab41
   }
  ],
  "istable": 1,

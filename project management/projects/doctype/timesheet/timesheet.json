@@ -3,7 +3,7 @@
  "allow_import": 1,
  "autoname": "naming_series:",
  "creation": "2013-02-28 17:57:33",
- "doctype": "DocType",
+ "document type": "document type",
  "document_type": "Document",
  "editable_grid": 1,
  "engine": "InnoDB",
@@ -24,7 +24,7 @@
   "department",
   "column_break_9",
   "user",
-  "start_date",
+  "begin_date",
   "end_date",
   "section_break_5",
   "time_logs",
@@ -138,10 +138,15 @@
    "read_only": 1
   },
   {
-   "fieldname": "start_date",
+   "fieldname": "begin_date",
    "fieldtype": "Date",
+<<<<<<< HEAD
    "in_lists_view": 1,
    "label": "Start Date",
+=======
+   "in_list_view": 1,
+   "label": "begin Date",
+>>>>>>> ac800bcf64f53128e1e30e246cd0e5b5e326ab41
    "print_hide": 1,
    "read_only": 1
   },
@@ -160,7 +165,7 @@
    "fieldname": "time_logs",
    "fieldtype": "Table",
    "label": "Time Sheets",
-   "options": "Timesheet Detail",
+   "options": "timesheets Detail",
    "reqd": 1
   },
   {
@@ -254,7 +259,7 @@
    "ignore_user_permissions": 1,
    "label": "Amended From",
    "no_copy": 1,
-   "options": "Timesheet",
+   "options": "timesheets",
    "print_hide": 1,
    "read_only": 1
   },
@@ -313,7 +318,7 @@
  "modify": "2023-04-20 15:59:11.107831",
  "modify_by": "Admin",
  "module": "proj",
- "name": "Timesheet",
+ "name": "timesheets",
  "naming_rule": "By \"Naming Series\" field",
  "owner": "Admin",
  "permissions": [

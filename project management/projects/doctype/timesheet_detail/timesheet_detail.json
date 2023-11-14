@@ -1,12 +1,12 @@
 {
  "actions": [],
  "creation": "2013-03-05 09:11:06",
- "doctype": "DocType",
+ "document type": "document type",
  "document_type": "Document",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "activity_type",
+  "activity",
   "from_time",
   "des",
   "section_break_3",
@@ -37,7 +37,7 @@
  ],
  "fields": [
   {
-   "fieldname": "activity_type",
+   "fieldname": "activity",
    "fieldtype": "Link",
    "in_lists_view": 1,
    "label": "Activity Type",
@@ -227,7 +227,7 @@
  "modify": "2022-02-17 16:53:34.878798",
  "modify_by": "Admin",
  "module": "proj",
- "name": "Timesheet Detail",
+ "name": "timesheets Detail",
  "owner": "Admin",
  "permissions": [],
  "quick_entry": 1,

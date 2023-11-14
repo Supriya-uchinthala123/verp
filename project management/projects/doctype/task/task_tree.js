@@ -1,8 +1,18 @@
 frappe.provide("frappe.treeview_settings");
 
 frappe.treeview_settings['Task'] = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	get_tree_nodes: "erpnext.projects.document type.task.task.get_children",
+	add_tree_node: "erpnext.projects.document type.task.task.add_node",
+=======
+	get_tree_nodes: "erpnext.project.doctype.task.task.get_children",
+	add_tree_node: "erpnext.project.doctype.task.task.add_node",
+>>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
+=======
 	get_tree_nodes: "erpnext.proj.doctype.task.task.get_children",
 	add_tree_node: "erpnext.proj.doctype.task.task.add_node",
+>>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
 	filters: [
 		{
 			fieldname: "proj",
@@ -56,17 +66,30 @@ frappe.treeview_settings['Task'] = {
 							},
 							fields: [{
 								fieldtype:'Data',
+<<<<<<< HEAD
 								fieldname:"subject",
 								in_lists_view: 1,
+=======
+								fieldname:"subject content",
+								in_list_view: 1,
+>>>>>>> ac800bcf64f53128e1e30e246cd0e5b5e326ab41
 								reqd: 1,
-								label: __("Subject")
+								label: __("subject content")
 							}]
 						},
 					],
 					primary_action: function() {
 						dialog.hide();
 						return frappe.call({
+<<<<<<< HEAD
+<<<<<<< HEAD
+							method: "erpnext.projects.document type.task.task.add_multiple_tasks",
+=======
+							method: "erpnext.project.doctype.task.task.add_multiple_tasks",
+>>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
+=======
 							method: "erpnext.proj.doctype.task.task.add_multiple_tasks",
+>>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
 							args: {
 								data: dialog.get_values()["multiple_tasks"],
 								parent: node.data.value

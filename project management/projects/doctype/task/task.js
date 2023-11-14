@@ -6,8 +6,16 @@ frappe.provide("erpnext.proj");
 frappe.ui.form.on("Task", {
 	setup: function (frm) {
 		frm.make_methods = {
-			'Timesheet': () => frappe.model.open_mapped_doc({
-				method: 'erpnext.proj.doctype.task.task.make_timesheet',
+			'timesheets': () => frappe.model.open_mapped_doc({
+<<<<<<< HEAD
+<<<<<<< HEAD
+				method: 'erpnext.projects.document type.task.task.make_timesheets',
+=======
+				method: 'erpnext.project.doctype.task.task.make_timesheets',
+>>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
+=======
+				method: 'erpnext.proj.doctype.task.task.make_timesheets',
+>>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
 				frm: frm
 			})
 		}
@@ -38,7 +46,15 @@ frappe.ui.form.on("Task", {
 
 	is_group: function (frm) {
 		frappe.call({
+<<<<<<< HEAD
+<<<<<<< HEAD
+			method: "erpnext.projects.document type.task.task.check_if_child_exists",
+=======
+			method: "erpnext.project.doctype.task.task.check_if_child_exists",
+>>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
+=======
 			method: "erpnext.proj.doctype.task.task.check_if_child_exists",
+>>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
 			args: {
 				name: frm.doc.name
 			},

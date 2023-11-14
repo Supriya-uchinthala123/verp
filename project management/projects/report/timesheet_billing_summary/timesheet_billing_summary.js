@@ -1,7 +1,7 @@
 // Copyright (c) 2023, Frappe Technologies Pvt. Ltd. and contributors
 // For license information, please see license.txt
 
-frappe.query_reports["Timesheet billSummary"] = {
+frappe.query_reports["timesheets billSummary"] = {
 	tree: true,
 	initial_depth: 0,
 	filters: [
@@ -28,7 +28,7 @@ frappe.query_reports["Timesheet billSummary"] = {
 			label: __("From Date"),
 			fieldtype: "Date",
 			default: frappe.datetime.add_months(
-				frappe.datetime.month_start(),
+				frappe.datetime.month_begin(),
 				-1
 			),
 		},
@@ -37,7 +37,7 @@ frappe.query_reports["Timesheet billSummary"] = {
 			label: __("To Date"),
 			fieldtype: "Date",
 			default: frappe.datetime.add_days(
-				frappe.datetime.month_start(),
+				frappe.datetime.month_begin(),
 				-1
 			),
 		},
@@ -49,7 +49,7 @@ frappe.query_reports["Timesheet billSummary"] = {
 				"",
 				{ value: "employee", label: __("Employee") },
 				{ value: "proj", label: __("proj") },
-				{ value: "date", label: __("Start Date") },
+				{ value: "date", label: __("begin Date") },
 			],
 		},
 		{

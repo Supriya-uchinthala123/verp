@@ -3,19 +3,19 @@
 {% for d in data %}
 <div class="row">
 	<div class="col-xs-4">
-		<a class="small time-sheet-link" data-activity_type="{{ d.activity_type || "" }}">
-			{{ d.activity_type || __("Unknown") }}</a>
+		<a class="small time-sheet-link" data-activity="{{ d.activity || "" }}">
+			{{ d.activity || __("Unknown") }}</a>
 	</div>
 	<div class="col-xs-8">
-		<span class="inline-graph">
-			<span class="inline-graph-half">
+		<span class="inlines">
+			<span class="inlines-half">
 			</span>
-			<span class="inline-graph-half" title="{{ __("hours") }}">
-				<span class="inline-graph-count">
+			<span class="inlines-half" title="{{ __("hours") }}">
+				<span class="inlines-count">
 					{{ __("{0} hours", [flt(d.total_hours, 2)]) }}
 				</span>
-				<span class="inline-graph-bar">
-					<span class="inline-graph-bar-inner dark"
+				<span class="inlines-bar">
+					<span class="inlines-bar-inner dark"
 						style="width: {{ cint(d.total_hours/max_count * 100) }}%">
 					</span>
 				</span>

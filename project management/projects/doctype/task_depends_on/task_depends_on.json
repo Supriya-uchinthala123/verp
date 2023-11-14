@@ -9,10 +9,10 @@
   "column_break_2",
 <<<<<<< HEAD
   "subject content",
-  "project"
+  "projectect"
 =======
   "subject",
-  "proj"
+  "project"
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
  ],
  "fields": [
@@ -42,9 +42,9 @@
    "read_only": 1
   },
   {
-   "fieldname": "proj",
+   "fieldname": "project",
    "fieldtype": "Text",
-   "label": "proj",
+   "label": "project",
    "read_only": 1
   }
  ],
@@ -52,7 +52,7 @@
  "links": [],
  "modify": "2023-10-17 12:45:21.536165",
  "modify_by": "Admin",
- "module": "proj",
+ "module": "project",
  "name": "Task Depends On",
  "owner": "Admin",
  "permissions": [],

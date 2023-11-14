@@ -14,9 +14,9 @@ frappe.views.calendar["Task"] = {
 	filters: [
 		{
 			"fieldtype": "Link",
-			"fieldname": "proj",
-			"options": "proj",
-			"label": __("proj")
+			"fieldname": "project",
+			"options": "project",
+			"label": __("project")
 		}
 	],
 	get_events_method: "frappe.desk.calendar.get_events"

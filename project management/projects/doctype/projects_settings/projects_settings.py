@@ -5,5 +5,5 @@
 from frappe.model.document import Document
 
 
-class projSettings(Document):
+class projectSettings(Document):
 	pass

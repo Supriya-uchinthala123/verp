@@ -31,7 +31,7 @@ def get_column():
 		_("Hours") + "::70",
 		_("Activity Type") + "::120",
 		_("Task") + ":Link/Task:150",
-		_("proj") + ":Link/proj:120",
+		_("project") + ":Link/project:120",
 		_("Status") + "::70",
 	]
 
@@ -41,9 +41,9 @@ def get_data(conditions, filters):
 		""" select `tabtimesheets`.name, `tabtimesheets`.employee, `tabtimesheets`.employer,
 		`tabtimesheets Detail`.from_time, `tabtimesheets Detail`.to_time, `tabtimesheets Detail`.hours,
 <<<<<<< HEAD
-		`tabtimesheets Detail`.activity, `tabtimesheets Detail`.task, `tabtimesheets Detail`.project,
+		`tabtimesheets Detail`.activity, `tabtimesheets Detail`.task, `tabtimesheets Detail`.projectect,
 =======
-		`tabtimesheets Detail`.activity_type, `tabtimesheets Detail`.task, `tabtimesheets Detail`.proj,
+		`tabtimesheets Detail`.activity_type, `tabtimesheets Detail`.task, `tabtimesheets Detail`.project,
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
 		`tabtimesheets`.status from `tabtimesheets Detail`, `tabtimesheets` where
 		`tabtimesheets Detail`.parent = `tabtimesheets`.name and %s order by `tabtimesheets`.name"""

@@ -9,23 +9,23 @@
  "is_standard": "Yes", 
  "modify": "2017-02-24 20:20:07.593667", 
  "modify_by": "Admin", 
- "module": "proj", 
- "name": "proj wise Stock Tracking", 
+ "module": "project", 
+ "name": "project wise Stock Tracking", 
  "owner": "Admin", 
 <<<<<<< HEAD
- "ref_document type": "Project", 
- "report_name": "Project wise Stock Tracking ", 
+ "ref_document type": "projectect", 
+ "report_name": "projectect wise Stock Tracking ", 
 =======
- "ref_doctype": "proj", 
- "report_name": "proj wise Stock Tracking ", 
+ "ref_doctype": "project", 
+ "report_name": "project wise Stock Tracking ", 
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
  "report_type": "Script Report", 
  "roles": [
   {
-   "role": "proj User"
+   "role": "project User"
   }, 
   {
-   "role": "proj Manager"
+   "role": "project Manager"
   }
  ]
 }

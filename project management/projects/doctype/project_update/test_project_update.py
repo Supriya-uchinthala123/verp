@@ -6,9 +6,9 @@ import unittest
 import frappe
 
 
-class TestprojUpdate(unittest.TestCase):
+class TestprojectUpdate(unittest.TestCase):
 	pass
 
 
-test_records = frappe.get_test_records("proj Update")
+test_records = frappe.get_test_records("project Update")
 test_ignore = ["Sales Order"]

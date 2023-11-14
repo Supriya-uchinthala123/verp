@@ -14,9 +14,9 @@
   "to_time",
   "hours",
   "completed",
-  "proj_details",
-  "proj",
-  "proj_name",
+  "project_details",
+  "project",
+  "project_name",
   "column_break_2",
   "task",
   "section_break_6",
@@ -78,17 +78,17 @@
    "label": "Completed"
   },
   {
-   "fieldname": "proj_details",
+   "fieldname": "project_details",
    "fieldtype": "Section Break"
   },
   {
    "columns": 3,
-   "fieldname": "proj",
+   "fieldname": "project",
    "fieldtype": "Link",
    "in_lists_view": 1,
-   "label": "proj",
-   "options": "proj",
-   "read_only_depends_on": "eval: parent.parent_proj"
+   "label": "project",
+   "options": "project",
+   "read_only_depends_on": "eval: parent.parent_project"
   },
   {
    "fieldname": "column_break_2",
@@ -181,10 +181,10 @@
    "print_hide": 1
   },
   {
-   "fetch_from": "proj.proj_name",
-   "fieldname": "proj_name",
+   "fetch_from": "project.project_name",
+   "fieldname": "project_name",
    "fieldtype": "Data",
-   "label": "proj Name",
+   "label": "project Name",
    "read_only": 1
   },
   {
@@ -226,7 +226,7 @@
  "links": [],
  "modify": "2022-02-17 16:53:34.878798",
  "modify_by": "Admin",
- "module": "proj",
+ "module": "project",
  "name": "timesheets Detail",
  "owner": "Admin",
  "permissions": [],

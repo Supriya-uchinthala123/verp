@@ -8,12 +8,12 @@ from frappe.utils import add_days, getdate, nowdate
 
 <<<<<<< HEAD
 <<<<<<< HEAD
-from erpnext.projects.document type.task.task import CircularReferenceError
+from erpnext.projectects.document type.task.task import CircularReferenceError
 =======
-from erpnext.project.doctype.task.task import CircularReferenceError
+from erpnext.projectect.doctype.task.task import CircularReferenceError
 >>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
 =======
-from erpnext.proj.doctype.task.task import CircularReferenceError
+from erpnext.project.doctype.task.task import CircularReferenceError
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
 
 
@@ -36,16 +36,16 @@ class TestTask(unittest.TestCase):
 		task3.append("depends_on", {"task": task4.name})
 
 	def test_reschedule_dependent_task(self):
-		proj = frappe.get_value("proj", {"proj_name": "_Test proj"})
+		project = frappe.get_value("project", {"project_name": "_Test project"})
 
 		task1 = create_task("_Test Task 1", nowdate(), add_days(nowdate(), 10))
 
 		task2 = create_task("_Test Task 2", add_days(nowdate(), 11), add_days(nowdate(), 15), task1.name)
-		task2.get("depends_on")[0].proj = proj
+		task2.get("depends_on")[0].project = project
 		task2.save()
 
 		task3 = create_task("_Test Task 3", add_days(nowdate(), 11), add_days(nowdate(), 15), task2.name)
-		task3.get("depends_on")[0].proj = proj
+		task3.get("depends_on")[0].project = project
 		task3.save()
 
 		task1.update({"exp_end_date": add_days(nowdate(), 20)})
@@ -113,12 +113,12 @@ class TestTask(unittest.TestCase):
 
 <<<<<<< HEAD
 <<<<<<< HEAD
-		from erpnext.projects.document type.task.task import set_tasks_as_overdue
+		from erpnext.projectects.document type.task.task import set_tasks_as_overdue
 =======
-		from erpnext.project.doctype.task.task import set_tasks_as_overdue
+		from erpnext.projectect.doctype.task.task import set_tasks_as_overdue
 >>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
 =======
-		from erpnext.proj.doctype.task.task import set_tasks_as_overdue
+		from erpnext.project.doctype.task.task import set_tasks_as_overdue
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
 
 		set_tasks_as_overdue()
@@ -131,7 +131,7 @@ def create_task(
 	begin=None,
 	end=None,
 	depends_on=None,
-	proj=None,
+	project=None,
 	parent_task=None,
 	is_group=0,
 	is_Temp=0,
@@ -145,10 +145,10 @@ def create_task(
 		task.subject content = subject content
 		task.exp_begin_date = begin or nowdate()
 		task.exp_end_date = end or nowdate()
-		task.proj = (
-			proj or None
+		task.project = (
+			project or None
 			if is_Temp
-			else frappe.get_value("proj", {"proj_name": "_Test proj"})
+			else frappe.get_value("project", {"project_name": "_Test project"})
 		)
 		task.is_Temp = is_Temp
 		task.begin = begin

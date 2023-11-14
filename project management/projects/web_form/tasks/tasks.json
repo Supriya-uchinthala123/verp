@@ -20,7 +20,7 @@
  "max_attachment_size": 0, 
  "modify": "2018-07-24 11:32:07.805956", 
  "modify_by": "Admin", 
- "module": "proj", 
+ "module": "project", 
  "name": "tasks", 
  "owner": "Admin", 
  "payment_button_label": "Buy Now", 
@@ -32,13 +32,13 @@
  "title": "Task", 
  "web_form_fields": [
   {
-   "fieldname": "proj", 
+   "fieldname": "project", 
    "fieldtype": "Link", 
    "hidden": 0, 
-   "label": "proj", 
+   "label": "project", 
    "max_length": 0, 
    "max_value": 0, 
-   "options": "proj", 
+   "options": "project", 
    "read_only": 1, 
    "reqd": 1
   }, 

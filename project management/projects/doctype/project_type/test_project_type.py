@@ -4,5 +4,5 @@
 import unittest
 
 
-class TestprojType(unittest.TestCase):
+class TestprojectType(unittest.TestCase):
 	pass

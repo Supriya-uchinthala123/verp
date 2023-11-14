@@ -13,7 +13,7 @@
   "welcome_email_sent",
   "view_attachments",
   "section_break_5",
-  "proj_status"
+  "project_status"
  ],
  "fields": [
   {
@@ -70,22 +70,22 @@
   },
   {
 <<<<<<< HEAD
-   "depends_on": "eval:parent.document type == 'Project Update'",
-   "fieldname": "project_status",
+   "depends_on": "eval:parent.document type == 'projectect Update'",
+   "fieldname": "projectect_status",
 =======
-   "depends_on": "eval:parent.doctype == 'proj Update'",
-   "fieldname": "proj_status",
+   "depends_on": "eval:parent.doctype == 'project Update'",
+   "fieldname": "project_status",
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
    "fieldtype": "Text",
-   "label": "proj Status"
+   "label": "project Status"
   }
  ],
  "istable": 1,
  "links": [],
  "modify": "2020-02-09 23:26:50.321417",
  "modify_by": "Admin",
- "module": "proj",
- "name": "proj User",
+ "module": "project",
+ "name": "project User",
  "owner": "Admin",
  "permissions": [],
  "sort_field": "modify",

@@ -12,7 +12,7 @@
  "letterhead": null,
  "modify": "2023-10-11 00:58:30.639078",
  "modify_by": "Admin",
- "module": "proj",
+ "module": "project",
  "name": "timesheets billSummary",
  "owner": "Admin",
  "prepared_report": 0,
@@ -26,7 +26,7 @@
  "report_type": "Script Report",
  "roles": [
   {
-   "role": "proj User"
+   "role": "project User"
   },
   {
    "role": "Employee"

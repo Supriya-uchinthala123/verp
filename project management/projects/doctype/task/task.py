@@ -38,7 +38,7 @@ class Task(NestedSet):
 		self.validate_from_to_dates("exp_begin_date", "exp_end_date")
 		self.validate_from_to_dates("act_begin_date", "act_end_date")
 		self.validate_parent_expected_end_date()
-		self.validate_parent_proj_dates()
+		self.validate_parent_project_dates()
 
 	def validate_parent_expected_end_date(self):
 		if not self.parent_task or not self.exp_end_date:
@@ -56,20 +56,20 @@ class Task(NestedSet):
 				frappe.exceptions.InvalidDates,
 			)
 
-	def validate_parent_proj_dates(self):
-		if not self.proj or frappe.flags.in_test:
+	def validate_parent_project_dates(self):
+		if not self.project or frappe.flags.in_test:
 			return
 
-		if proj_end_date := frappe.db.get_value("proj", self.proj, "expected_end_date"):
-			proj_end_date = getdate(proj_end_date)
+		if project_end_date := frappe.db.get_value("project", self.project, "expected_end_date"):
+			project_end_date = getdate(project_end_date)
 			for fieldname in ("exp_begin_date", "exp_end_date", "act_begin_date", "act_end_date"):
 				task_date = self.get(fieldname)
-				if task_date and date_diff(proj_end_date, getdate(task_date)) < 0:
+				if task_date and date_diff(project_end_date, getdate(task_date)) < 0:
 					frappe.throw(
 						_("{0}'s {1} cannot be after {2}'s Expected End Date.").format(
 							frappe.bold(frappe.get_desk_link("Task", self.name)),
 							_(self.meta.get_label(fieldname)),
-							frappe.bold(frappe.get_desk_link("proj", self.proj)),
+							frappe.bold(frappe.get_desk_link("project", self.project)),
 						),
 						frappe.exceptions.InvalidDates,
 					)
@@ -131,7 +131,7 @@ class Task(NestedSet):
 		self.update_nsm_model()
 		self.check_recursion()
 		self.reschedule_dependent_tasks()
-		self.update_proj()
+		self.update_project()
 		self.unassign_todo()
 		self.populate_depends_on()
 
@@ -157,9 +157,9 @@ class Task(NestedSet):
 		self.act_begin_date = tl.begin_date
 		self.act_end_date = tl.end_date
 
-	def update_proj(self):
-		if self.proj and not self.flags.from_proj:
-			frappe.get_cached_doc("proj", self.proj).update_proj()
+	def update_project(self):
+		if self.project and not self.flags.from_project:
+			frappe.get_cached_doc("project", self.project).update_project()
 
 	def check_recursion(self):
 		if self.flags.ignore_recursion_check:
@@ -188,12 +188,12 @@ class Task(NestedSet):
 			for task_name in frappe.db.sql(
 				"""
 				select name from `tabTask` as parent
-				where parent.proj = %(proj)s
+				where parent.project = %(project)s
 					and parent.name in (
 						select parent from `tabTask Depends On` as child
-						where child.task = %(task)s and child.proj = %(proj)s)
+						where child.task = %(task)s and child.project = %(project)s)
 			""",
-				{"proj": self.proj, "task": self.name},
+				{"project": self.project, "task": self.name},
 				as_dict=1,
 			):
 				task = frappe.get_doc("Task", task_name.name)
@@ -210,10 +210,10 @@ class Task(NestedSet):
 					task.save()
 
 	def has_webform_permission(self):
-		proj_user = frappe.db.get_value(
-			"proj User", {"parent": self.proj, "user": frappe.session.user}, "user"
+		project_user = frappe.db.get_value(
+			"project User", {"parent": self.project, "user": frappe.session.user}, "user"
 		)
-		if proj_user:
+		if project_user:
 			return True
 
 	def populate_depends_on(self):
@@ -232,7 +232,7 @@ class Task(NestedSet):
 		self.update_nsm_model()
 
 	def after_deleted(self):
-		self.update_proj()
+		self.update_project()
 
 	def update_status(self):
 		if self.status not in ("Cancelled", "Completed") and self.exp_end_date:
@@ -240,7 +240,7 @@ class Task(NestedSet):
 
 			if self.exp_end_date < datetime.now().date():
 				self.db_set("status", "Overdue", update_modify=False)
-				self.update_proj()
+				self.update_project()
 
 
 @frappe.whitelists()
@@ -253,9 +253,9 @@ def check_if_child_exists(name):
 @frappe.whitelists()
 @frappe.validate_and_sanitize_search_inputs
 <<<<<<< HEAD
-def get_project(document type, txt, searchfield, begin, page_len, filters):
+def get_projectect(document type, txt, searchfield, begin, page_len, filters):
 =======
-def get_proj(doctype, txt, searchfield, begin, page_len, filters):
+def get_project(doctype, txt, searchfield, begin, page_len, filters):
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
 	from erpnext.controllers.queries import get_match_cond
 
@@ -265,7 +265,7 @@ def get_proj(doctype, txt, searchfield, begin, page_len, filters):
 	search_cond = " or " + " or ".join(field + " like %(txt)s" for field in searchfields)
 
 	return frappe.db.sql(
-		""" select name {search_columns} from `tabproj`
+		""" select name {search_columns} from `tabproject`
 		where %(key)s like %(txt)s
 			%(mcond)s
 			{search_condition}
@@ -313,13 +313,13 @@ def make_timesheet(source_name, target_doc=None, ignore_permissions=False):
 def make_timesheets(source_name, target_doc=None, ignore_permissions=False):
 >>>>>>> ac800bcf64f53128e1e30e246cd0e5b5e326ab41
 	def set_missing_values(source, target):
-		target.parent_proj = source.proj
+		target.parent_project = source.project
 		target.append(
 			"time_logs",
 			{
 				"hours": source.actual_time,
 				"completed": source.status == "Completed",
-				"proj": source.proj,
+				"project": source.project,
 				"task": source.name,
 			},
 		)
@@ -341,10 +341,10 @@ def make_timesheets(source_name, target_doc=None, ignore_permissions=False):
 =======
 @frappe.whitelist()
 <<<<<<< HEAD
-def get_children(document type, parent, task=None, project=None, is_root=False):
+def get_children(document type, parent, task=None, projectect=None, is_root=False):
 =======
 >>>>>>> ac800bcf64f53128e1e30e246cd0e5b5e326ab41
-def get_children(doctype, parent, task=None, proj=None, is_root=False):
+def get_children(doctype, parent, task=None, project=None, is_root=False):
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
 
 	filters = [["docstatus", "<", "2"]]
@@ -357,8 +357,8 @@ def get_children(doctype, parent, task=None, proj=None, is_root=False):
 	else:
 		filters.append(['ifnull(`parent_task`, "")', "=", ""])
 
-	if proj:
-		filters.append(["proj", "=", proj])
+	if project:
+		filters.append(["project", "=", project])
 
 <<<<<<< HEAD
 	tasks = frappe.get_lists(
@@ -385,7 +385,7 @@ def add_node():
 	args.update({"name_field": "subject content"})
 	args = make_tree_args(**args)
 
-	if args.parent_task == "All Tasks" or args.parent_task == args.proj:
+	if args.parent_task == "All Tasks" or args.parent_task == args.project:
 		args.parent_task = None
 
 	frappe.get_doc(args).insert()
@@ -396,10 +396,10 @@ def add_multiple_tasks(data, parent):
 	data = json.loads(data)
 <<<<<<< HEAD
 	new_doc = {"document type": "Task", "parent_task": parent if parent != "All Tasks" else ""}
-	new_doc["project"] = frappe.db.get_value("Task", {"name": parent}, "project") or ""
+	new_doc["projectect"] = frappe.db.get_value("Task", {"name": parent}, "projectect") or ""
 =======
 	new_doc = {"doctype": "Task", "parent_task": parent if parent != "All Tasks" else ""}
-	new_doc["proj"] = frappe.db.get_value("Task", {"name": parent}, "proj") or ""
+	new_doc["project"] = frappe.db.get_value("Task", {"name": parent}, "project") or ""
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
 
 	for d in data:

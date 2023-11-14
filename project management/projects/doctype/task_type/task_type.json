@@ -21,8 +21,8 @@
   }
  ],
  "links": [],
- "modified": "2022-08-29 17:46:41.342979",
- "modified_by": "Admin",
+ "modify": "2022-08-29 17:46:41.342979",
+ "modify_by": "Admin",
  "module": "project",
  "name": "Task Type",
  "naming_rule": "Set by user",
@@ -63,7 +63,7 @@
   }
  ],
  "quick_entry": 1,
- "sort_field": "modified",
+ "sort_field": "modify",
  "sort_order": "ASC",
  "states": [],
  "track_changes": 1

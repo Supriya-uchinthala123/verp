@@ -310,8 +310,8 @@
  "idx": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-04-20 15:59:11.107831",
- "modified_by": "Admin",
+ "modify": "2023-04-20 15:59:11.107831",
+ "modify_by": "Admin",
  "module": "project",
  "name": "Timesheet",
  "naming_rule": "By \"Naming Series\" field",
@@ -386,7 +386,7 @@
    "write": 1
   }
  ],
- "sort_field": "modified",
+ "sort_field": "modify",
  "sort_order": "ASC",
  "states": [],
  "title_field": "title"

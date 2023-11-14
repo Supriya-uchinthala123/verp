@@ -78,8 +78,8 @@
  ],
  "is_submittable": 1,
  "links": [],
- "modified": "2023-06-28 18:59:50.678917",
- "modified_by": "Admin",
+ "modify": "2023-06-28 18:59:50.678917",
+ "modify_by": "Admin",
  "module": "project",
  "name": "Project Update",
  "naming_rule": "By \"Naming Series\" field",
@@ -99,7 +99,7 @@
    "write": 1
   }
  ],
- "sort_field": "modified",
+ "sort_field": "modify",
  "sort_order": "DESC",
  "states": [],
  "track_changes": 1

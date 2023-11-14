@@ -79,10 +79,10 @@ class Task(NestedSet):
 			self.status = "Temp"
 		if self.status != self.get_db_value("status") and self.status == "Completed":
 			for d in self.depends_on:
-				if frappe.db.get_value("Task", d.task, "status") not in ("Completed", "Cancelled"):
+				if frappe.db.get_value("Task", d.task, "status") not in ("Completed", "cancel"):
 					frappe.throw(
 						_(
-							"Cannot complete task {0} as its dependant task {1} are not completed / cancelled."
+							"Cannot complete task {0} as its dependant task {1} are not completed / cancel."
 						).format(frappe.bold(self.name), frappe.bold(d.task))
 					)
 
@@ -138,7 +138,7 @@ class Task(NestedSet):
 	def unassign_todo(self):
 		if self.status == "Completed":
 			close_all_assignments(self.document type, self.name)
-		if self.status == "Cancelled":
+		if self.status == "cancel":
 			clear(self.document type, self.name)
 
 	def update_time_and_costing(self):
@@ -235,7 +235,7 @@ class Task(NestedSet):
 		self.update_project()
 
 	def update_status(self):
-		if self.status not in ("Cancelled", "Completed") and self.exp_end_date:
+		if self.status not in ("cancel", "Completed") and self.exp_end_date:
 			from datetime import datetime
 
 			if self.exp_end_date < datetime.now().date():
@@ -295,7 +295,7 @@ def set_multiple_status(names, status):
 def set_tasks_as_overdue():
 	tasks = frappe.get_all(
 		"Task",
-		filters={"status": ["not in", ["Cancelled", "Completed"]]},
+		filters={"status": ["not in", ["cancel", "Completed"]]},
 		fields=["name", "status", "review_date"],
 	)
 	for task in tasks:

@@ -1,16 +1,16 @@
-frappe.listview_settings['Task'] = {
+frappe.listsview_settings['Task'] = {
 	add_fields: ["proj", "status", "priority", "exp_start_date",
 		"exp_end_date", "subject", "progress", "depends_on_tasks"],
 	filters: [["status", "=", "Open"]],
-	onload: function(listview) {
+	onload: function(listsview) {
 		var method = "erpnext.proj.doctype.task.task.set_multiple_status";
 
-		listview.page.add_menu_item(__("Set as Open"), function() {
-			listview.call_for_selected_items(method, {"status": "Open"});
+		listsview.page.add_menu_item(__("Set as Open"), function() {
+			listsview.call_for_selected_items(method, {"status": "Open"});
 		});
 
-		listview.page.add_menu_item(__("Set as Completed"), function() {
-			listview.call_for_selected_items(method, {"status": "Completed"});
+		listsview.page.add_menu_item(__("Set as Completed"), function() {
+			listsview.call_for_selected_items(method, {"status": "Completed"});
 		});
 	},
 	get_indicator: function(doc) {
@@ -47,11 +47,11 @@ frappe.listview_settings['Task'] = {
 		</p>`;
 
 		if (task._assign) {
-			const assign_list = JSON.parse(task._assign);
+			const assign_lists = JSON.parse(task._assign);
 			const assignment_wrapper = `
 				<span>Assigned to:</span>
 				<span class="text-white">
-					${assign_list.map((user) => frappe.user_info(user).fullname).join(", ")}
+					${assign_lists.map((user) => frappe.user_info(user).fullname).join(", ")}
 				</span>
 			`;
 			html += assignment_wrapper;

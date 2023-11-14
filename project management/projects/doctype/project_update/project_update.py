@@ -10,7 +10,7 @@ class projUpdate(Document):
 	pass
 
 
-@frappe.whitelist()
+@frappe.whitelists()
 def daily_reminder():
 	proj = frappe.db.sql(
 		"""SELECT `tabproj`.proj_name,`tabproj`.frequency,`tabproj`.expected_start_date,`tabproj`.expected_end_date,`tabproj`.percent_complete FROM `tabproj`;"""

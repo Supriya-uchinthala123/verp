@@ -52,7 +52,7 @@
   "per_gross_margin",
   "monitor_progress",
   "collect_progress",
-  "holiday_list",
+  "holiday_lists",
   "frequency",
   "from_time",
   "to_time",
@@ -88,7 +88,7 @@
   {
    "fieldname": "proj_type",
    "fieldtype": "Link",
-   "in_list_view": 1,
+   "in_lists_view": 1,
    "in_standard_filter": 1,
    "label": "proj Type",
    "oldfieldname": "proj_type",
@@ -141,7 +141,7 @@
    "bold": 1,
    "fieldname": "expected_end_date",
    "fieldtype": "Date",
-   "in_list_view": 1,
+   "in_lists_view": 1,
    "label": "Expected End Date",
    "oldfieldname": "completion_date",
    "oldfieldtype": "Date"
@@ -216,7 +216,7 @@
    "fieldtype": "Section Break",
    "label": "Notes",
    "oldfieldtype": "Section Break",
-   "options": "fa fa-list"
+   "options": "fa fa-lists"
   },
   {
    "fieldname": "notes",
@@ -266,7 +266,7 @@
   {
    "fieldname": "estimated_costing",
    "fieldtype": "Currency",
-   "in_list_view": 1,
+   "in_lists_view": 1,
    "label": "Estimated Cost",
    "oldfieldname": "proj_value",
    "oldfieldtype": "Currency",
@@ -370,10 +370,10 @@
   },
   {
    "depends_on": "collect_progress",
-   "fieldname": "holiday_list",
+   "fieldname": "holiday_lists",
    "fieldtype": "Link",
-   "label": "Holiday List",
-   "options": "Holiday List"
+   "label": "Holiday lists",
+   "options": "Holiday lists"
   },
   {
    "depends_on": "eval:doc.collect_progress == true",

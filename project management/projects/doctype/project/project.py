@@ -14,8 +14,8 @@ from frappe.utils.user import is_website_user
 
 from erpnext import get_default_company
 from erpnext.controllers.queries import get_filters_cond
-from erpnext.controllers.website_list_for_contact import get_customers_suppliers
-from erpnext.setup.doctype.holiday_list.holiday_list import is_holiday
+from erpnext.controllers.website_lists_for_contact import get_customers_suppliers
+from erpnext.setup.doctype.holiday_lists.holiday_lists import is_holiday
 
 
 class proj(Document):
@@ -102,8 +102,8 @@ class proj(Document):
 		return self.update_if_holiday(self.end_date)
 
 	def update_if_holiday(self, date):
-		holiday_list = self.holiday_list or get_holiday_list(self.company)
-		while is_holiday(holiday_list, date):
+		holiday_lists = self.holiday_lists or get_holiday_lists(self.company)
+		while is_holiday(holiday_lists, date):
 			date = add_days(date, 1)
 		return date
 
@@ -316,7 +316,7 @@ def get_timeline_data(doctype: str, name: str) -> dict[int, int]:
 	)
 
 
-def get_proj_list(
+def get_proj_lists(
 	doctype, txt, filters, limit_start, limit_page_length=20, order_by="modify"
 ):
 	user = frappe.session.user
@@ -355,7 +355,7 @@ def get_proj_list(
 			else:
 				filters.append([doctype, "name", "like", "%" + txt + "%"])
 
-	return frappe.get_list(
+	return frappe.get_lists(
 		doctype,
 		fields=fields,
 		filters=filters,
@@ -367,17 +367,17 @@ def get_proj_list(
 	)
 
 
-def get_list_context(context=None):
-	from erpnext.controllers.website_list_for_contact import get_list_context
+def get_lists_context(context=None):
+	from erpnext.controllers.website_lists_for_contact import get_lists_context
 
-	list_context = get_list_context(context)
-	list_context.update(
+	lists_context = get_lists_context(context)
+	lists_context.update(
 		{
 			"show_sidebar": True,
 			"show_search": True,
 			"no_breadcrumbs": True,
 			"title": _("proj"),
-			"get_list": get_proj_list,
+			"get_lists": get_proj_lists,
 <<<<<<< HEAD
 			"row_Temp": "Temps/includes/projs/proj_row.html",
 =======
@@ -386,10 +386,10 @@ def get_list_context(context=None):
 		}
 	)
 
-	return list_context
+	return lists_context
 
 
-@frappe.whitelist()
+@frappe.whitelists()
 @frappe.validate_and_sanitize_search_inputs
 def get_users_for_proj(doctype, txt, searchfield, start, page_len, filters):
 	conditions = []
@@ -417,7 +417,7 @@ def get_users_for_proj(doctype, txt, searchfield, start, page_len, filters):
 	)
 
 
-@frappe.whitelist()
+@frappe.whitelists()
 def get_cost_center_name(proj):
 	return frappe.db.get_value("proj", proj, "cost_center")
 
@@ -487,7 +487,7 @@ def allow_to_make_proj_update(proj, time, frequency):
 		return True
 
 
-@frappe.whitelist()
+@frappe.whitelists()
 def create_duplicate_proj(prev_doc, proj_name):
 	"""Create duplicate proj based on the old proj"""
 	import json
@@ -505,10 +505,10 @@ def create_duplicate_proj(prev_doc, proj_name):
 	proj.insert()
 
 	# fetch all the task linked with the old proj
-	task_list = frappe.get_all("Task", filters={"proj": prev_doc.get("name")}, fields=["name"])
+	task_lists = frappe.get_all("Task", filters={"proj": prev_doc.get("name")}, fields=["name"])
 
 	# Create duplicate task for all the task
-	for task in task_list:
+	for task in task_lists:
 		task = frappe.get_doc("Task", task)
 		new_task = frappe.copy_doc(task)
 		new_task.proj = proj.name
@@ -530,7 +530,7 @@ def get_proj_for_collect_progress(frequency, fields):
 def send_proj_update_email_to_users(proj):
 	doc = frappe.get_doc("proj", proj)
 
-	if is_holiday(doc.holiday_list) or not doc.users:
+	if is_holiday(doc.holiday_lists) or not doc.users:
 		return
 
 	proj_update = frappe.get_doc(
@@ -654,7 +654,7 @@ def update_proj_sales_billing():
 		proj.save()
 
 
-@frappe.whitelist()
+@frappe.whitelists()
 def create_kanban_board_if_not_exists(proj):
 	from frappe.desk.doctype.kanban_board.kanban_board import quick_kanban_board
 
@@ -665,7 +665,7 @@ def create_kanban_board_if_not_exists(proj):
 	return True
 
 
-@frappe.whitelist()
+@frappe.whitelists()
 def set_proj_status(proj, status):
 	"""
 	set status for proj and all related tasks
@@ -683,18 +683,18 @@ def set_proj_status(proj, status):
 	proj.save()
 
 
-def get_holiday_list(company=None):
+def get_holiday_lists(company=None):
 	if not company:
 		company = get_default_company() or frappe.get_all("Company")[0].name
 
-	holiday_list = frappe.get_cached_value("Company", company, "default_holiday_list")
-	if not holiday_list:
+	holiday_lists = frappe.get_cached_value("Company", company, "default_holiday_lists")
+	if not holiday_lists:
 		frappe.throw(
-			_("Please set a default Holiday List for Company {0}").format(
+			_("Please set a default Holiday lists for Company {0}").format(
 				frappe.bold(get_default_company())
 			)
 		)
-	return holiday_list
+	return holiday_lists
 
 
 def get_users_email(doc):

@@ -76,14 +76,14 @@ frappe.ui.form.on("proj", {
 					frappe.route_options = {
 						"proj": frm.doc.name
 					};
-					frappe.set_route("List", "Task", "Gantt");
+					frappe.set_route("lists", "Task", "Gantt");
 				}, __("View"));
 
 				frm.add_custom_button(__("Kanban Board"), () => {
 					frappe.call('erpnext.proj.doctype.proj.proj.create_kanban_board_if_not_exists', {
 						proj: frm.doc.name
 					}).then(() => {
-						frappe.set_route('List', 'Task', 'Kanban', frm.doc.proj_name);
+						frappe.set_route('lists', 'Task', 'Kanban', frm.doc.proj_name);
 					});
 				}, __("View"));
 			}

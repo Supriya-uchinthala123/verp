@@ -96,7 +96,7 @@ def get_data(filters, group_fieldname=None):
 	else:
 		_filters.append(("docstatus", "in", (DocStatus.submitted(), DocStatus.draft())))
 
-	data = frappe.get_list(
+	data = frappe.get_lists(
 		"Timesheet",
 		fields=[
 			"name as timesheet",

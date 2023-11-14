@@ -140,7 +140,7 @@
   {
    "fieldname": "start_date",
    "fieldtype": "Date",
-   "in_list_view": 1,
+   "in_lists_view": 1,
    "label": "Start Date",
    "print_hide": 1,
    "read_only": 1
@@ -233,7 +233,7 @@
    "allow_on_submit": 1,
    "fieldname": "per_billed",
    "fieldtype": "Percent",
-   "in_list_view": 1,
+   "in_lists_view": 1,
    "label": "% Amount Billed",
    "no_copy": 1,
    "print_hide": 1,

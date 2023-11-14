@@ -200,14 +200,14 @@
  "owner": "Admin",
  "parent_page": "",
  "public": 1,
- "quick_lists": [],
+ "quick_listss": [],
  "restrict_to_domain": "",
  "roles": [],
  "sequence_id": 11.0,
  "shortcuts": [
   {
    "color": "Grey",
-   "doc_view": "List",
+   "doc_view": "lists",
    "label": "Learn proj Management",
    "type": "URL",
    "url": "https://frappe.school/courses/proj-management?utm_source=in_app"

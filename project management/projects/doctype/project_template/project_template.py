@@ -21,7 +21,7 @@ class projTemp(Document):
 						task_details_format = get_link_to_form("Task", task_details.name)
 						dependency_task_format = get_link_to_form("Task", dependency_task.task)
 						frappe.throw(
-							_("Task {0} depends on Task {1}. Please add Task {1} to the Tasks list.").format(
+							_("Task {0} depends on Task {1}. Please add Task {1} to the Tasks lists.").format(
 								frappe.bold(task_details_format), frappe.bold(dependency_task_format)
 							)
 						)

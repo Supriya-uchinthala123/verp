@@ -251,7 +251,7 @@ class Timesheet(Document):
 			ts_detail.billing_rate = 0.0
 
 
-@frappe.whitelist()
+@frappe.whitelists()
 def get_projwise_timesheet_data(proj=None, parent=None, from_time=None, to_time=None):
 	condition = ""
 	if proj:
@@ -290,7 +290,7 @@ def get_projwise_timesheet_data(proj=None, parent=None, from_time=None, to_time=
 	return frappe.db.sql(query, filters, as_dict=1)
 
 
-@frappe.whitelist()
+@frappe.whitelists()
 def get_timesheet_detail_rate(timelog, currency):
 	timelog_detail = frappe.db.sql(
 		"""SELECT tsd.billing_amount as billing_amount,
@@ -309,7 +309,7 @@ def get_timesheet_detail_rate(timelog, currency):
 	return timelog_detail.billing_amount
 
 
-@frappe.whitelist()
+@frappe.whitelists()
 @frappe.validate_and_sanitize_search_inputs
 def get_timesheet(doctype, txt, searchfield, start, page_len, filters):
 	if not filters:
@@ -337,7 +337,7 @@ def get_timesheet(doctype, txt, searchfield, start, page_len, filters):
 	)
 
 
-@frappe.whitelist()
+@frappe.whitelists()
 def get_timesheet_data(name, proj):
 	data = None
 	if proj and proj != "":
@@ -358,7 +358,7 @@ def get_timesheet_data(name, proj):
 	}
 
 
-@frappe.whitelist()
+@frappe.whitelists()
 def make_sales_invoice(source_name, item_code=None, customer=None, currency=None):
 	target = frappe.new_doc("Sales Invoice")
 	timesheet = frappe.get_doc("Timesheet", source_name)
@@ -407,7 +407,7 @@ def make_sales_invoice(source_name, item_code=None, customer=None, currency=None
 	return target
 
 
-@frappe.whitelist()
+@frappe.whitelists()
 def get_activity_cost(employee=None, activity_type=None, currency=None):
 	base_currency = frappe.defaults.get_global_default("currency")
 	rate = frappe.db.get_values(
@@ -431,7 +431,7 @@ def get_activity_cost(employee=None, activity_type=None, currency=None):
 	return rate[0] if rate else {}
 
 
-@frappe.whitelist()
+@frappe.whitelists()
 def get_events(start, end, filters=None):
 	"""Returns events for Gantt / Calendar view rendering.
 	:param start: Start date-time.
@@ -462,7 +462,7 @@ def get_events(start, end, filters=None):
 	)
 
 
-def get_time_list(
+def get_time_lists(
 	doctype, txt, filters, limit_start, limit_page_length=20, order_by="modify"
 ):
 	user = frappe.session.user
@@ -506,12 +506,12 @@ def get_time_list(
 	return time
 
 
-def get_list_context(context=None):
+def get_lists_context(context=None):
 	return {
 		"show_sidebar": True,
 		"show_search": True,
 		"no_breadcrumbs": True,
 		"title": _("time"),
-		"get_list": get_time_list,
+		"get_lists": get_time_lists,
 		"row_Temp": "Temps/includes/timesheet/timesheet_row.html",
 	}

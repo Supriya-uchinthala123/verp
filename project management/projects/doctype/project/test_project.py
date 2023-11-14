@@ -246,7 +246,7 @@ def make_proj(args):
 
 
 def task_exists(subject):
-	result = frappe.db.get_list("Task", filters={"subject": subject}, fields=["name"])
+	result = frappe.db.get_lists("Task", filters={"subject": subject}, fields=["name"])
 	if not len(result):
 		return False
 	return frappe.get_doc("Task", result[0].name)

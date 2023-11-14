@@ -7,7 +7,7 @@
 import frappe
 
 
-@frappe.whitelist()
+@frappe.whitelists()
 @frappe.validate_and_sanitize_search_inputs
 def query_task(doctype, txt, searchfield, start, page_len, filters):
 	from frappe.desk.reportview import build_match_conditions

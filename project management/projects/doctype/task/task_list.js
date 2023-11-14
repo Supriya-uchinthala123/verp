@@ -1,33 +1,42 @@
 <<<<<<< HEAD
 frappe.listsview_settings['Task'] = {
-	add_fields: ["proj", "status", "priority", "exp_start_date",
+	add_fields: ["project", "status", "priority", "exp_start_date",
 =======
 frappe.listview_settings['Task'] = {
 <<<<<<< HEAD
-	add_fields: ["project", "status", "priority", "exp_begin_date",
+	add_fields: ["projectect", "status", "priority", "exp_begin_date",
 		"exp_end_date", "subject content", "progress", "depends_on_tasks"],
 	filters: [["status", "=", "Open"]],
 	onload: function(listview) {
 <<<<<<< HEAD
-		var method = "erpnext.projects.document type.task.task.set_multiple_status";
+		var method = "erpnext.projectects.document type.task.task.set_multiple_status";
 =======
-		var method = "erpnext.project.doctype.task.task.set_multiple_status";
+		var method = "erpnext.projectect.doctype.task.task.set_multiple_status";
 >>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
 =======
-	add_fields: ["proj", "status", "priority", "exp_begin_date",
+	add_fields: ["project", "status", "priority", "exp_begin_date",
 >>>>>>> ac800bcf64f53128e1e30e246cd0e5b5e326ab41
 		"exp_end_date", "subject", "progress", "depends_on_tasks"],
 	filters: [["status", "=", "Open"]],
 	onload: function(listsview) {
-		var method = "erpnext.proj.doctype.task.task.set_multiple_status";
+		var method = "erpnext.project.doctype.task.task.set_multiple_status";
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
 
+<<<<<<< HEAD
 		listsview.page.add_menu_item(__("Set as Open"), function() {
 			listsview.call_for_selected_items(method, {"status": "Open"});
 		});
 
 		listsview.page.add_menu_item(__("Set as Completed"), function() {
 			listsview.call_for_selected_items(method, {"status": "Completed"});
+=======
+		listview.page.add_menu_item(__("Set as Open"), function() {
+			listview.call_for_selected_item(method, {"status": "Open"});
+		});
+
+		listview.page.add_menu_item(__("Set as Completed"), function() {
+			listview.call_for_selected_item(method, {"status": "Completed"});
+>>>>>>> 331b07eabc5d1060a6ecfa22a3cf26a091811461
 		});
 	},
 	get_indicator: function(doc) {
@@ -50,11 +59,11 @@ frappe.listview_settings['Task'] = {
 			</a>
 		`;
 
-		if (task.proj) {
-			html += `<p class="mb-1">${__("proj")}:
+		if (task.project) {
+			html += `<p class="mb-1">${__("project")}:
 				<a class="text-white inline-block"
-					href="/app/proj/${task.proj}"">
-					${task.proj}
+					href="/app/project/${task.project}"">
+					${task.project}
 				</a>
 			</p>`;
 		}

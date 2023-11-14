@@ -7,13 +7,13 @@ frappe.ui.form.on("proj", {
 				open_form(frm, "timesheets", "timesheets Detail", "time_logs");
 			},
 			'Purchase Order': () => {
-				open_form(frm, "Purchase Order", "Purchase Order Item", "items");
+				open_form(frm, "Purchase Order", "Purchase Order Item", "item");
 			},
 			'Purchase Receipt': () => {
-				open_form(frm, "Purchase Receipt", "Purchase Receipt Item", "items");
+				open_form(frm, "Purchase Receipt", "Purchase Receipt Item", "item");
 			},
 			'Purchase Invoice': () => {
-				open_form(frm, "Purchase Invoice", "Purchase Invoice Item", "items");
+				open_form(frm, "Purchase Invoice", "Purchase Invoice Item", "item");
 			},
 		};
 	},

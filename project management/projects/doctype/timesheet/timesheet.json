@@ -17,7 +17,7 @@
   "sales_invoice",
   "column_break_3",
   "status",
-  "parent_proj",
+  "parent_project",
   "employee_detail",
   "employee",
   "employer",
@@ -33,14 +33,14 @@
   "billing_details",
   "total_billable_hours",
   "base_total_billable_amount",
-  "base_total_billed_amount",
+  "base_total_bill_amount",
   "base_total_costing_amount",
   "column_break_10",
-  "total_billed_hours",
+  "total_bill_hours",
   "total_billable_amount",
-  "total_billed_amount",
+  "total_bill_amount",
   "total_costing_amount",
-  "per_billed",
+  "per_bill",
   "section_break_18",
   "note",
   "amended_from"
@@ -91,7 +91,7 @@
    "in_standard_filter": 1,
    "label": "Status",
    "no_copy": 1,
-   "options": "Draft\nSubmitted\nBilled\nPayslip\nCompleted\nCancelled",
+   "options": "Draft\nSubmitted\nbill\nPayslip\nCompleted\nCancelled",
    "print_hide": 1,
    "read_only": 1
   },
@@ -197,9 +197,9 @@
   },
   {
    "allow_on_submit": 1,
-   "fieldname": "total_billed_hours",
+   "fieldname": "total_bill_hours",
    "fieldtype": "Float",
-   "label": "Total Billed Hours",
+   "label": "Total bill Hours",
    "print_hide": 1,
    "read_only": 1
   },
@@ -227,19 +227,24 @@
   },
   {
    "allow_on_submit": 1,
-   "fieldname": "total_billed_amount",
+   "fieldname": "total_bill_amount",
    "fieldtype": "Currency",
-   "label": "Total Billed Amount",
+   "label": "Total bill Amount",
    "options": "currency",
    "print_hide": 1,
    "read_only": 1
   },
   {
    "allow_on_submit": 1,
-   "fieldname": "per_billed",
+   "fieldname": "per_bill",
    "fieldtype": "Percent",
+<<<<<<< HEAD
    "in_lists_view": 1,
    "label": "% Amount Billed",
+=======
+   "in_list_view": 1,
+   "label": "% Amount bill",
+>>>>>>> 331b07eabc5d1060a6ecfa22a3cf26a091811461
    "no_copy": 1,
    "print_hide": 1,
    "read_only": 1
@@ -264,10 +269,10 @@
    "read_only": 1
   },
   {
-   "fieldname": "parent_proj",
+   "fieldname": "parent_project",
    "fieldtype": "Link",
-   "label": "proj",
-   "options": "proj"
+   "label": "project",
+   "options": "project"
   },
   {
    "fieldname": "customer",
@@ -298,9 +303,9 @@
    "read_only": 1
   },
   {
-   "fieldname": "base_total_billed_amount",
+   "fieldname": "base_total_bill_amount",
    "fieldtype": "Currency",
-   "label": "Base Total Billed Amount",
+   "label": "Base Total bill Amount",
    "print_hide": 1,
    "read_only": 1
   },
@@ -317,7 +322,7 @@
  "links": [],
  "modify": "2023-04-20 15:59:11.107831",
  "modify_by": "Admin",
- "module": "proj",
+ "module": "project",
  "name": "timesheets",
  "naming_rule": "By \"Naming Series\" field",
  "owner": "Admin",
@@ -331,7 +336,7 @@
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "proj User",
+   "role": "project User",
    "share": 1,
    "submit": 1,
    "write": 1

@@ -43,7 +43,7 @@
   "column_break_28",
   "total_sales_amount",
   "total_billable_amount",
-  "total_billed_amount",
+  "total_bill_amount",
   "total_consumed_material_cost",
   "cost_center",
   "margin",
@@ -309,9 +309,9 @@
    "read_only": 1
   },
   {
-   "fieldname": "total_billed_amount",
+   "fieldname": "total_bill_amount",
    "fieldtype": "Currency",
-   "label": "Total Billed Amount (via Sales Invoice)",
+   "label": "Total bill Amount (via Sales Invoice)",
    "read_only": 1
   },
   {

@@ -65,19 +65,19 @@ QUnit.test("test project", function(assert) {
 						{title: 'Documentation'},
 						{start_date: '2017-07-24'},
 						{end_date: '2017-07-31'},
-						{description: 'To make a proper documentation defining requirements etc'}
+						{des: 'To make a proper documentation defining requirements etc'}
 					],
 					[
 						{title: 'Implementation'},
 						{start_date: '2017-08-01'},
 						{end_date: '2017-08-01'},
-						{description: 'Writing algorithms and to code the functionalities'}
+						{des: 'Writing algorithms and to code the functionalities'}
 					],
 					[
 						{title: 'Testing'},
 						{start_date: '2017-08-01'},
 						{end_date: '2017-08-15'},
-						{description: 'To make the test cases and test the functionalities'}
+						{des: 'To make the test cases and test the functionalities'}
 					]
 				]}
 			]);

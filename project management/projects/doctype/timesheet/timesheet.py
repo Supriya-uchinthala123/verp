@@ -270,7 +270,7 @@ def get_projectwise_timesheet_data(project=None, parent=None, from_time=None, to
 			tsd.billing_hours as billing_hours,
 			tsd.billing_amount as billing_amount,
 			tsd.activity_type as activity_type,
-			tsd.description as description,
+			tsd.des as des,
 			ts.currency as currency,
 			tsd.project_name as project_name
 		FROM `tabTimesheet Detail` tsd
@@ -387,7 +387,7 @@ def make_sales_invoice(source_name, item_code=None, customer=None, currency=None
 	for time_log in timesheet.time_logs:
 		if time_log.is_billable:
 			target.append(
-				"timesheets",
+				"time",
 				{
 					"time_sheet": timesheet.name,
 					"project_name": time_log.project_name,
@@ -397,7 +397,7 @@ def make_sales_invoice(source_name, item_code=None, customer=None, currency=None
 					"billing_amount": time_log.billing_amount,
 					"timesheet_detail": time_log.name,
 					"activity_type": time_log.activity_type,
-					"description": time_log.description,
+					"des": time_log.des,
 				},
 			)
 
@@ -462,13 +462,13 @@ def get_events(start, end, filters=None):
 	)
 
 
-def get_timesheets_list(
+def get_time_list(
 	doctype, txt, filters, limit_start, limit_page_length=20, order_by="modified"
 ):
 	user = frappe.session.user
 	# find customer name from contact.
 	customer = ""
-	timesheets = []
+	time = []
 
 	contact = frappe.db.exists("Contact", {"user": user})
 	if contact:
@@ -482,7 +482,7 @@ def get_timesheets_list(
 		] or [None]
 		project = [d.name for d in frappe.get_all("Project", filters={"customer": customer})]
 		# Return timesheet related data to web portal.
-		timesheets = frappe.db.sql(
+		time = frappe.db.sql(
 			"""
 			SELECT
 				ts.name, tsd.activity_type, ts.status, ts.total_billable_hours,
@@ -503,7 +503,7 @@ def get_timesheets_list(
 			as_dict=True,
 		)  # nosec
 
-	return timesheets
+	return time
 
 
 def get_list_context(context=None):
@@ -511,7 +511,7 @@ def get_list_context(context=None):
 		"show_sidebar": True,
 		"show_search": True,
 		"no_breadcrumbs": True,
-		"title": _("Timesheets"),
-		"get_list": get_timesheets_list,
+		"title": _("time"),
+		"get_list": get_time_list,
 		"row_template": "templates/includes/timesheet/timesheet_row.html",
 	}

@@ -71,7 +71,7 @@ class TestTask(unittest.TestCase):
 					"assign_to": ["test@example.com"],
 					"doctype": task.doctype,
 					"name": task.name,
-					"description": "Close this task",
+					"des": "Close this task",
 				}
 			)
 
@@ -81,7 +81,7 @@ class TestTask(unittest.TestCase):
 				filters={
 					"reference_type": task.doctype,
 					"reference_name": task.name,
-					"description": "Close this task",
+					"des": "Close this task",
 				},
 				fieldname=("allocated_to", "status"),
 				as_dict=True,

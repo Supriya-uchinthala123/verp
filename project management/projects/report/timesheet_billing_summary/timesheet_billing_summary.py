@@ -91,7 +91,7 @@ def get_data(filters, group_fieldname=None):
 		_filters.append(("Timesheet Detail", "from_time", ">=", filters.get("from_date")))
 	if filters.get("to_date"):
 		_filters.append(("Timesheet Detail", "to_time", "<=", filters.get("to_date")))
-	if not filters.get("include_draft_timesheets"):
+	if not filters.get("include_draft_time"):
 		_filters.append(("docstatus", "=", DocStatus.submitted()))
 	else:
 		_filters.append(("docstatus", "in", (DocStatus.submitted(), DocStatus.draft())))

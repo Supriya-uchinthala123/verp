@@ -1,8 +1,8 @@
 {
  "actions": [],
  "creation": "2013-03-05 09:11:06",
- "document type": "document type",
- "document_type": "Document",
+ "documents type": "documents type",
+ "documents_type": "documents",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
@@ -85,7 +85,11 @@
    "columns": 3,
    "fieldname": "project",
    "fieldtype": "Link",
+<<<<<<< HEAD
    "in_lists_view": 1,
+=======
+   "in_list_view": 1,
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
    "label": "project",
    "options": "project",
    "read_only_depends_on": "eval: parent.parent_project"

@@ -6,7 +6,7 @@ import json
 
 import frappe
 from frappe import _
-from frappe.model.document import Document
+from frappe.model.documents import documents
 from frappe.utils import add_to_date, flt, get_datetime, getdate, time_diff_in_hours
 
 from erpnext.controllers.queries import get_match_cond
@@ -21,7 +21,7 @@ class OverWorkLoggedError(frappe.ValidationError):
 	pass
 
 
-class timesheets(Document):
+class timesheets(documents):
 	def validate(self):
 		self.set_status()
 		self.validate_dates()
@@ -177,8 +177,8 @@ class timesheets(Document):
 			)
 
 	def get_overlap_for(self, fieldname, args, value):
-		timesheets = frappe.qb.document type("timesheets")
-		timelog = frappe.qb.document type("timesheets Detail")
+		timesheets = frappe.qb.documents type("timesheets")
+		timelog = frappe.qb.documents type("timesheets Detail")
 
 		from_time = get_datetime(args.from_time)
 		to_time = get_datetime(args.to_time)
@@ -257,7 +257,10 @@ def get_projectwise_timesheet_data(project=None, parent=None, from_time=None, to
 =======
 @frappe.whitelist()
 def get_projectwise_timesheets_data(project=None, parent=None, from_time=None, to_time=None):
+<<<<<<< HEAD
 >>>>>>> ac800bcf64f53128e1e30e246cd0e5b5e326ab41
+=======
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 	condition = ""
 	if project:
 		condition += "AND tsd.project = %(project)s "
@@ -321,7 +324,7 @@ def get_timesheets_detail_rate(timelog, currency):
 
 @frappe.whitelists()
 @frappe.validate_and_sanitize_search_inputs
-def get_timesheets(document type, txt, searchfield, begin, page_len, filters):
+def get_timesheets(documents type, txt, searchfield, begin, page_len, filters):
 	if not filters:
 		filters = {}
 
@@ -353,7 +356,10 @@ def get_timesheet_data(name, project):
 =======
 @frappe.whitelist()
 def get_timesheets_data(name, project):
+<<<<<<< HEAD
 >>>>>>> ac800bcf64f53128e1e30e246cd0e5b5e326ab41
+=======
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 	data = None
 	if project and project != "":
 		data = get_projectwise_timesheets_data(project, name)
@@ -498,7 +504,7 @@ def get_time_lists(
 =======
 <<<<<<< HEAD
 def get_timesheetss_list(
-	document type, txt, filters, limit_begin, limit_page_length=20, order_by="modified"
+	documents type, txt, filters, limit_begin, limit_page_length=20, order_by="modified"
 =======
 def get_time_list(
 <<<<<<< HEAD

@@ -2,7 +2,7 @@
  "actions": [],
  "autoname": "Prompt",
  "creation": "2019-02-18 17:23:11.708371",
- "document type": "document type",
+ "documents type": "documents type",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
@@ -13,7 +13,11 @@
   {
    "fieldname": "project_type",
    "fieldtype": "Link",
+<<<<<<< HEAD
    "in_lists_view": 1,
+=======
+   "in_list_view": 1,
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
    "label": "project Type",
    "options": "project Type"
   },

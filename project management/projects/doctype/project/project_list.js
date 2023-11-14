@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 frappe.listsview_settings['project'] = {
+=======
+frappe.listview_settings['project'] = {
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 	add_fields: ["status", "priority", "is_active", "percent_complete", "expected_end_date", "project_name"],
 	filters:[["status","=", "Open"]],
 	get_indicator: function(doc) {

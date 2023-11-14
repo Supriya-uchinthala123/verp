@@ -9,16 +9,26 @@ frappe.listview_settings['Task'] = {
 	filters: [["status", "=", "Open"]],
 	onload: function(listview) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		var method = "erpnext.projectects.document type.task.task.set_multiple_status";
+=======
+		var method = "erpnext.projectects.documents type.task.task.set_multiple_status";
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 =======
 		var method = "erpnext.projectect.doctype.task.task.set_multiple_status";
 >>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
 =======
 	add_fields: ["project", "status", "priority", "exp_begin_date",
+<<<<<<< HEAD
 >>>>>>> ac800bcf64f53128e1e30e246cd0e5b5e326ab41
 		"exp_end_date", "subject", "progress", "depends_on_tasks"],
 	filters: [["status", "=", "Open"]],
 	onload: function(listsview) {
+=======
+		"exp_end_date", "subject", "progress", "depends_on_tasks"],
+	filters: [["status", "=", "Open"]],
+	onload: function(listview) {
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 		var method = "erpnext.project.doctype.task.task.set_multiple_status";
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
 

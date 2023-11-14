@@ -2,8 +2,8 @@
 # For license information, please see license.txt
 
 
-from frappe.model.document import Document
+from frappe.model.documents import documents
 
 
-class IssueType(Document):
+class IssueType(documents):
 	pass

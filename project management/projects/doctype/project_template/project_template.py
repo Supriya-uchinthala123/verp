@@ -4,11 +4,15 @@
 
 import frappe
 from frappe import _
-from frappe.model.document import Document
+from frappe.model.documents import documents
 from frappe.utils import get_link_to_form
 
 
+<<<<<<< HEAD
 class projectTemp(Document):
+=======
+class projectTemp(documents):
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 	def validate(self):
 		self.validate_dependencies()
 

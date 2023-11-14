@@ -4,7 +4,7 @@
  "creation": "2016-07-06 19:31:25.534583", 
  "disable": 0, 
  "docstatus": 0, 
- "document type": "Report", 
+ "documents type": "Report", 
  "idx": 2, 
  "is_standard": "Yes", 
  "modify": "2017-02-24 20:05:46.782115", 
@@ -12,7 +12,7 @@
  "module": "project", 
  "name": "Daily timesheets Summary", 
  "owner": "Admin", 
- "ref_document type": "timesheets", 
+ "ref_documents type": "timesheets", 
  "report_name": "Daily timesheets Summary", 
  "report_type": "Script Report", 
  "roles": [

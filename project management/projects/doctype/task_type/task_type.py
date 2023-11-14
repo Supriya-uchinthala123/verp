@@ -3,8 +3,8 @@
 
 
 # import frappe
-from frappe.model.document import Document
+from frappe.model.documents import documents
 
 
-class TaskType(Document):
+class TaskType(documents):
 	pass

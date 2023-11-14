@@ -3,8 +3,13 @@ frappe.provide("frappe.treeview_settings");
 frappe.treeview_settings['Task'] = {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	get_tree_nodes: "erpnext.projectects.document type.task.task.get_children",
 	add_tree_node: "erpnext.projectects.document type.task.task.add_node",
+=======
+	get_tree_nodes: "erpnext.projectects.documents type.task.task.get_children",
+	add_tree_node: "erpnext.projectects.documents type.task.task.add_node",
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 =======
 	get_tree_nodes: "erpnext.projectect.doctype.task.task.get_children",
 	add_tree_node: "erpnext.projectect.doctype.task.task.add_node",
@@ -83,7 +88,11 @@ frappe.treeview_settings['Task'] = {
 						return frappe.call({
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 							method: "erpnext.projectects.document type.task.task.add_multiple_tasks",
+=======
+							method: "erpnext.projectects.documents type.task.task.add_multiple_tasks",
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 =======
 							method: "erpnext.projectect.doctype.task.task.add_multiple_tasks",
 >>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb

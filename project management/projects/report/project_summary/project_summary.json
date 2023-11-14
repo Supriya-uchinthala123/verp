@@ -4,7 +4,7 @@
  "disable_prepared_report": 0,
  "disable": 0,
  "docstatus": 0,
- "document type": "Report",
+ "documents type": "Report",
  "idx": 0,
  "is_standard": "Yes",
  "modify": "2020-05-04 19:32:53.177213",
@@ -14,7 +14,11 @@
  "owner": "Admin",
  "prepared_report": 0,
 <<<<<<< HEAD
+<<<<<<< HEAD
  "ref_document type": "projectect",
+=======
+ "ref_documents type": "projectect",
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
  "report_name": "projectect Summary",
 =======
  "ref_doctype": "project",

@@ -5,7 +5,11 @@ from frappe.utils import add_days, add_months, nowdate
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 from erpnext.projectects.document type.task.test_task import create_task
+=======
+from erpnext.projectects.documents type.task.test_task import create_task
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 from erpnext.projectects.report.delayed_tasks_summary.delayed_tasks_summary import execute
 =======
 from erpnext.projectect.doctype.task.test_task import create_task

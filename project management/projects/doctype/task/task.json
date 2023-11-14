@@ -3,8 +3,8 @@
  "allow_import": 1,
  "autoname": "TASK-.YYYY.-.#####",
  "creation": "2013-01-29 19:25:50",
- "document type": "document type",
- "document_type": "Setup",
+ "documents type": "documents type",
+ "documents_type": "Setup",
  "engine": "InnoDB",
  "field_order": [
 <<<<<<< HEAD

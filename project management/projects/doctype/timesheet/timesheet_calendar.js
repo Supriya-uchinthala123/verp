@@ -30,7 +30,11 @@ frappe.views.calendar["timesheets"] = {
 	],
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	get_events_method: "erpnext.projectects.document type.timesheets.timesheets.get_events"
+=======
+	get_events_method: "erpnext.projectects.documents type.timesheets.timesheets.get_events"
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 =======
 	get_events_method: "erpnext.projectect.doctype.timesheets.timesheets.get_events"
 >>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb

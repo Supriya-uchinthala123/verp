@@ -29,13 +29,13 @@ frappe.ui.form.on('Service Level Agreement', {
 	default_service_level_agreement: function(frm) {
 		const field = frm.get_field('default_service_level_agreement');
 		if (frm.doc.default_service_level_agreement) {
-			field.set_description(__('SLA will be applied on every {0}', [frm.doc.document_type]));
+			field.set_description(__('SLA will be applied on every {0}', [frm.doc.documents_type]));
 		} else {
-			field.set_description(__('Enable to apply SLA on every {0}', [frm.doc.document_type]));
+			field.set_description(__('Enable to apply SLA on every {0}', [frm.doc.documents_type]));
 		}
 	},
 
-	document_type: function(frm) {
+	documents_type: function(frm) {
 		frm.trigger('fetch_status_fields');
 		frm.trigger('default_service_level_agreement');
 	},
@@ -50,7 +50,7 @@ frappe.ui.form.on('Service Level Agreement', {
 			const and_descendants = frm.doc.entity_type != 'Customer' ? ' ' + __('or its descendants') : '';
 			field.set_description(
 				__('SLA will be applied if {1} is set as {2}{3}', [
-					frm.doc.document_type, frm.doc.entity_type,
+					frm.doc.documents_type, frm.doc.entity_type,
 					frm.doc.entity, and_descendants
 				])
 			);
@@ -63,9 +63,9 @@ frappe.ui.form.on('Service Level Agreement', {
 		let allow_statuses = [];
 		let exclude_statuses = [];
 
-		if (frm.doc.document_type) {
-			frappe.model.with_doctype(frm.doc.document_type, () => {
-				let statuses = frappe.meta.get_docfield(frm.doc.document_type, 'status', frm.doc.name).options;
+		if (frm.doc.documents_type) {
+			frappe.model.with_doctype(frm.doc.documents_type, () => {
+				let statuses = frappe.meta.get_docfield(frm.doc.documents_type, 'status', frm.doc.name).options;
 				statuses = statuses.split('\n');
 
 				exclude_statuses = ['Open', 'Closed'];
@@ -103,7 +103,7 @@ frappe.ui.form.on('Service Level Agreement', {
 	},
 
 	onload: function(frm) {
-		frm.set_query("document_type", function() {
+		frm.set_query("documents_type", function() {
 			let invalid_doctypes = frappe.model.core_doctypes_list;
 			invalid_doctypes.push(frm.doc.doctype, 'Cost Center', 'Company');
 

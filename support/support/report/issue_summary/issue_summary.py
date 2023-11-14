@@ -138,7 +138,7 @@ class IssueSummary(object):
 		if self.filters.get("assigned_to"):
 			filters["_assign"] = ("like", "%" + self.filters.get("assigned_to") + "%")
 
-		for entry in ["company", "status", "priority", "customer", "project"]:
+		for entry in ["company", "status", "priority", "customer", "projectect"]:
 			if self.filters.get(entry):
 				filters[entry] = self.filters.get(entry)
 

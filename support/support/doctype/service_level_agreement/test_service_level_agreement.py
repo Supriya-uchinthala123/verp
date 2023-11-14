@@ -372,7 +372,7 @@ def get_service_level_agreement(
 	if default_service_level_agreement:
 		filters = {
 			"default_service_level_agreement": default_service_level_agreement,
-			"document_type": doctype,
+			"documents_type": doctype,
 		}
 	else:
 		filters = {"entity_type": entity_type, "entity": entity}
@@ -410,7 +410,7 @@ def create_service_level_agreement(
 		{
 			"doctype": "Service Level Agreement",
 			"enabled": 1,
-			"document_type": doctype,
+			"documents_type": doctype,
 			"service_level": service_level
 			or "__Test {} SLA".format(entity_type if entity_type else "Default"),
 			"default_service_level_agreement": default_service_level_agreement,

@@ -5,7 +5,7 @@
  "autoname": "naming_series:",
  "creation": "2013-02-01 10:36:25",
  "doctype": "DocType",
- "document_type": "Setup",
+ "documents_type": "Setup",
  "email_append_to": 1,
  "engine": "InnoDB",
  "field_order": [
@@ -50,7 +50,7 @@
   "email_account",
   "column_break_16",
   "customer_name",
-  "project",
+  "projectect",
   "company",
   "via_customer_portal",
   "attachment",
@@ -234,10 +234,10 @@
    "read_only": 1
   },
   {
-   "fieldname": "project",
+   "fieldname": "projectect",
    "fieldtype": "Link",
-   "label": "Project",
-   "options": "Project"
+   "label": "projectect",
+   "options": "projectect"
   },
   {
    "fieldname": "company",

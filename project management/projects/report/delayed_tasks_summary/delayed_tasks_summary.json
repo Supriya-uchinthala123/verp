@@ -5,7 +5,7 @@
  "disable_prepared_report": 0,
  "disable": 0,
  "docstatus": 0,
- "document type": "Report",
+ "documents type": "Report",
  "filters": [],
  "idx": 0,
  "is_standard": "Yes",
@@ -15,7 +15,7 @@
  "name": "Delayed Tasks Summary",
  "owner": "Admin",
  "prepared_report": 0,
- "ref_document type": "Task",
+ "ref_documents type": "Task",
  "report_name": "Delayed Tasks Summary",
  "report_type": "Script Report",
  "roles": [

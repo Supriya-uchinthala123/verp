@@ -684,20 +684,20 @@ def set_resolution_time(doc):
 	if not doc.meta.has_field("user_resolution_time"):
 		return
 
-	communications = frappe.get_all(
-		"Communication",
+	communicates = frappe.get_all(
+		"communicate",
 		filters={"reference_doctype": doc.doctype, "reference_name": doc.name},
 		fields=["sent_or_received", "name", "creation"],
 		order_by="creation",
 	)
 
 	pending_time = []
-	for i in range(len(communications)):
+	for i in range(len(communicates)):
 		if (
-			communications[i].sent_or_received == "Received"
-			and communications[i - 1].sent_or_received == "Sent"
+			communicates[i].sent_or_received == "Received"
+			and communicates[i - 1].sent_or_received == "Sent"
 		):
-			wait_time = time_diff_in_seconds(communications[i].creation, communications[i - 1].creation)
+			wait_time = time_diff_in_seconds(communicates[i].creation, communicates[i - 1].creation)
 			if wait_time > 0:
 				pending_time.append(wait_time)
 
@@ -769,9 +769,9 @@ def reset_resolution_metrics(doc):
 		doc.user_resolution_time = None
 
 
-# called via hooks on communication update
-def on_communication_update(doc, status):
-	if doc.communication_type == "Comment":
+# called via hooks on communicate update
+def on_communicate_update(doc, status):
+	if doc.communicate_type == "Comment":
 		return
 
 	parent = get_parent_doc(doc)
@@ -786,7 +786,7 @@ def on_communication_update(doc, status):
 
 	if (
 		doc.sent_or_received == "Received"  # a reply is received
-		and parent.get("status") == "Open"  # issue status is set as open from communication.py
+		and parent.get("status") == "Open"  # issue status is set as open from communicate.py
 		and parent.get_doc_before_save()
 		and parent.get("status") != parent._doc_before_save.get("status")  # status changed
 	):
@@ -802,7 +802,7 @@ def on_communication_update(doc, status):
 
 	elif (
 		doc.sent_or_received == "Sent"  # a reply is sent
-		and parent.get("first_responded_on")  # first_responded_on is set from communication.py
+		and parent.get("first_responded_on")  # first_responded_on is set from communicate.py
 		and parent.get_doc_before_save()
 		and not parent._doc_before_save.get("first_responded_on")  # first_responded_on was not set
 	):

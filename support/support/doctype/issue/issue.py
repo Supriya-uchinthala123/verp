@@ -8,7 +8,7 @@ from datetime import timedelta
 import frappe
 from frappe import _
 from frappe.core.utils import get_parent_doc
-from frappe.email.inbox import link_communication_to_document
+from frappe.email.inbox import link_communicate_to_document
 from frappe.model.document import Document
 from frappe.model.mapper import get_mapped_doc
 from frappe.query_builder import Interval
@@ -20,7 +20,7 @@ from frappe.utils.user import is_website_user
 class Issue(Document):
 	def validate(self):
 		if self.is_new() and self.via_customer_portal:
-			self.flags.create_communication = True
+			self.flags.create_communicate = True
 
 		if not self.raised_by:
 			self.raised_by = frappe.session.user
@@ -28,10 +28,10 @@ class Issue(Document):
 		self.set_lead_contact(self.raised_by)
 
 	def on_update(self):
-		# Add a communication in the issue timeline
-		if self.flags.create_communication and self.via_customer_portal:
-			self.create_communication()
-			self.flags.communication_created = None
+		# Add a communicate in the issue timeline
+		if self.flags.create_communicate and self.via_customer_portal:
+			self.create_communicate()
+			self.flags.communicate_created = None
 
 	def set_lead_contact(self, email_id):
 		import email.utils
@@ -53,12 +53,12 @@ class Issue(Document):
 					"Company"
 				)
 
-	def create_communication(self):
-		communication = frappe.new_doc("Communication")
-		communication.update(
+	def create_communicate(self):
+		communicate = frappe.new_doc("communicate")
+		communicate.update(
 			{
-				"communication_type": "Communication",
-				"communication_medium": "Email",
+				"communicate_type": "communicate",
+				"communicate_medium": "Email",
 				"sent_or_received": "Received",
 				"email_status": "Open",
 				"subject": self.subject,
@@ -69,12 +69,12 @@ class Issue(Document):
 				"reference_name": self.name,
 			}
 		)
-		communication.ignore_permissions = True
-		communication.ignore_mandatory = True
-		communication.save()
+		communicate.ignore_permissions = True
+		communicate.ignore_mandatory = True
+		communicate.save()
 
 	@frappe.whitelist()
-	def split_issue(self, subject, communication_id):
+	def split_issue(self, subject, communicate_id):
 		# Bug: Pressing enter doesn't send subject
 		from copy import deepcopy
 
@@ -96,11 +96,11 @@ class Issue(Document):
 
 		frappe.get_doc(replicated_issue).insert()
 
-		# Replicate linked Communications
-		# TODO: get all communications in timeline before this, and modify them to append them to new doc
-		comm_to_split_from = frappe.get_doc("Communication", communication_id)
-		communications = frappe.get_all(
-			"Communication",
+		# Replicate linked communicates
+		# TODO: get all communicates in timeline before this, and modify them to append them to new doc
+		comm_to_split_from = frappe.get_doc("communicate", communicate_id)
+		communicates = frappe.get_all(
+			"communicate",
 			filters={
 				"reference_doctype": "Issue",
 				"reference_name": comm_to_split_from.reference_name,
@@ -108,8 +108,8 @@ class Issue(Document):
 			},
 		)
 
-		for communication in communications:
-			doc = frappe.get_doc("Communication", communication.name)
+		for communicate in communicates:
+			doc = frappe.get_doc("communicate", communicate.name)
 			doc.reference_name = replicated_issue.name
 			doc.save(ignore_permissions=True)
 
@@ -225,21 +225,21 @@ def make_task(source_name, target_doc=None):
 
 
 @frappe.whitelist()
-def make_issue_from_communication(communication, ignore_communication_links=False):
+def make_issue_from_communicate(communicate, ignore_communicate_links=False):
 	"""raise a issue from email"""
 
-	doc = frappe.get_doc("Communication", communication)
+	doc = frappe.get_doc("communicate", communicate)
 	issue = frappe.get_doc(
 		{
 			"doctype": "Issue",
 			"subject": doc.subject,
-			"communication_medium": doc.communication_medium,
+			"communicate_medium": doc.communicate_medium,
 			"raised_by": doc.sender or "",
 			"raised_by_phone": doc.phone_no or "",
 		}
 	).insert(ignore_permissions=True)
 
-	link_communication_to_document(doc, "Issue", issue.name, ignore_communication_links)
+	link_communicate_to_document(doc, "Issue", issue.name, ignore_communicate_links)
 
 	return issue.name
 
@@ -251,9 +251,9 @@ def get_time_in_timedelta(time):
 	return timedelta(hours=time.hour, minutes=time.minute, seconds=time.second)
 
 
-def set_first_response_time(communication, method):
-	if communication.get("reference_doctype") == "Issue":
-		issue = get_parent_doc(communication)
+def set_first_response_time(communicate, method):
+	if communicate.get("reference_doctype") == "Issue":
+		issue = get_parent_doc(communicate)
 		if is_first_response(issue) and issue.service_level_agreement:
 			first_response_time = calculate_first_response_time(
 				issue, get_datetime(issue.first_responded_on)
@@ -263,7 +263,7 @@ def set_first_response_time(communication, method):
 
 def is_first_response(issue):
 	responses = frappe.get_all(
-		"Communication", filters={"reference_name": issue.name, "sent_or_received": "Sent"}
+		"communicate", filters={"reference_name": issue.name, "sent_or_received": "Sent"}
 	)
 	if len(responses) == 1:
 		return True

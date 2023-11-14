@@ -89,10 +89,10 @@ class TestIssue(TestSetUp):
 		creation = get_datetime("2020-03-04 4:00")
 
 		issue = make_issue(creation, index=1)
-		create_communication(issue.name, "test@example.com", "Received", creation)
+		create_communicate(issue.name, "test@example.com", "Received", creation)
 
 		creation = get_datetime("2020-03-04 4:15")
-		create_communication(issue.name, "test@admin.com", "Sent", creation)
+		create_communicate(issue.name, "test@admin.com", "Sent", creation)
 
 		frappe.flags.current_time = get_datetime("2020-03-04 4:15")
 		issue.reload()
@@ -104,14 +104,14 @@ class TestIssue(TestSetUp):
 
 		creation = get_datetime("2020-03-04 5:00")
 		frappe.flags.current_time = get_datetime("2020-03-04 5:00")
-		create_communication(issue.name, "test@example.com", "Received", creation)
+		create_communicate(issue.name, "test@example.com", "Received", creation)
 
 		issue.reload()
 		self.assertEqual(flt(issue.total_hold_time, 2), 2700)
 		self.assertEqual(issue.resolution_by, get_datetime("2020-03-04 16:45"))
 
 		creation = get_datetime("2020-03-04 5:05")
-		create_communication(issue.name, "test@admin.com", "Sent", creation)
+		create_communicate(issue.name, "test@admin.com", "Sent", creation)
 
 		frappe.flags.current_time = get_datetime("2020-03-04 5:05")
 		issue.reload()
@@ -125,11 +125,11 @@ class TestIssue(TestSetUp):
 		frappe.flags.current_time = get_datetime("2021-11-01 19:00")
 
 		issue = make_issue(frappe.flags.current_time, index=1)
-		create_communication(issue.name, "test@example.com", "Received", frappe.flags.current_time)
+		create_communicate(issue.name, "test@example.com", "Received", frappe.flags.current_time)
 
 		# send a reply within SLA
 		frappe.flags.current_time = get_datetime("2021-11-02 11:00")
-		create_communication(issue.name, "test@admin.com", "Sent", frappe.flags.current_time)
+		create_communicate(issue.name, "test@admin.com", "Sent", frappe.flags.current_time)
 
 		issue.reload()
 		issue.status = "Replied"
@@ -153,14 +153,14 @@ class TestIssue(TestSetUp):
 		issue = make_issue(
 			frappe.flags.current_time, index=1, issue_type="Critical"
 		)  # Applies 24hr working time SLA
-		create_communication(issue.name, "test@example.com", "Received", frappe.flags.current_time)
+		create_communicate(issue.name, "test@example.com", "Received", frappe.flags.current_time)
 		self.assertEquals(issue.agreement_status, "First Response Due")
 		self.assertEquals(issue.response_by, get_datetime("2021-11-01 17:00"))
 		self.assertEquals(issue.resolution_by, get_datetime("2021-11-01 19:00"))
 
 		# Replied on → 2 pm
 		frappe.flags.current_time = get_datetime("2021-11-01 14:00")
-		create_communication(issue.name, "test@admin.com", "Sent", frappe.flags.current_time)
+		create_communicate(issue.name, "test@admin.com", "Sent", frappe.flags.current_time)
 		issue.reload()
 		issue.status = "Replied"
 		issue.save()
@@ -170,7 +170,7 @@ class TestIssue(TestSetUp):
 
 		# Customer Replied → 3 pm
 		frappe.flags.current_time = get_datetime("2021-11-01 15:00")
-		create_communication(issue.name, "test@example.com", "Received", frappe.flags.current_time)
+		create_communicate(issue.name, "test@example.com", "Received", frappe.flags.current_time)
 		issue.reload()
 		self.assertEquals(issue.status, "Open")
 		# Hold Time + 1 Hrs
@@ -180,7 +180,7 @@ class TestIssue(TestSetUp):
 
 		# Replied on → 4 pm, Open → 1 hr, Resolution Due → 8 pm
 		frappe.flags.current_time = get_datetime("2021-11-01 16:00")
-		create_communication(issue.name, "test@admin.com", "Sent", frappe.flags.current_time)
+		create_communicate(issue.name, "test@admin.com", "Sent", frappe.flags.current_time)
 		issue.reload()
 		issue.status = "Replied"
 		issue.save()
@@ -199,7 +199,7 @@ class TestIssue(TestSetUp):
 
 		# Customer Open → 3 am i.e after resolution by is crossed
 		frappe.flags.current_time = get_datetime("2021-11-02 03:00")
-		create_communication(issue.name, "test@example.com", "Received", frappe.flags.current_time)
+		create_communicate(issue.name, "test@example.com", "Received", frappe.flags.current_time)
 		issue.reload()
 		# Since issue was Resolved, Resolution By should be increased by 5 hrs (3am - 10pm)
 		self.assertEquals(issue.total_hold_time, 3600 + 21600 + 18000)
@@ -222,13 +222,13 @@ class TestIssue(TestSetUp):
 		frappe.flags.current_time = get_datetime("2021-11-01 19:00")
 
 		issue = make_issue(frappe.flags.current_time, index=1)
-		create_communication(issue.name, "test@example.com", "Received", frappe.flags.current_time)
+		create_communicate(issue.name, "test@example.com", "Received", frappe.flags.current_time)
 		add_assignment({"doctype": issue.doctype, "name": issue.name, "assign_to": ["test@admin.com"]})
 		issue.reload()
 
 		# send a reply failing response SLA
 		frappe.flags.current_time = get_datetime("2021-11-02 15:00")
-		create_communication(issue.name, "test@admin.com", "Sent", frappe.flags.current_time)
+		create_communicate(issue.name, "test@admin.com", "Sent", frappe.flags.current_time)
 
 		# assert if a new timeline item has been added
 		# to record the assignment
@@ -247,12 +247,12 @@ class TestIssue(TestSetUp):
 		frappe.flags.current_time = get_datetime("2021-11-01 19:00")
 
 		issue = make_issue(frappe.flags.current_time, index=1)
-		create_communication(issue.name, "test@example.com", "Received", frappe.flags.current_time)
+		create_communicate(issue.name, "test@example.com", "Received", frappe.flags.current_time)
 		self.assertTrue(issue.status == "Open")
 
 		# send a reply within response SLA
 		frappe.flags.current_time = get_datetime("2021-11-02 11:00")
-		create_communication(issue.name, "test@admin.com", "Sent", frappe.flags.current_time)
+		create_communicate(issue.name, "test@admin.com", "Sent", frappe.flags.current_time)
 
 		issue.reload()
 		self.assertEquals(issue.first_responded_on, frappe.flags.current_time)
@@ -268,7 +268,7 @@ class TestFirstResponseTime(TestSetUp):
 		"""
 		Test frt when issue creation and first response are during working hours on the same day.
 		"""
-		issue = create_issue_and_communication(
+		issue = create_issue_and_communicate(
 			get_datetime("06-28-2021 11:00"), get_datetime("06-28-2021 12:00")
 		)
 		self.assertEqual(issue.first_response_time, 3600.0)
@@ -277,7 +277,7 @@ class TestFirstResponseTime(TestSetUp):
 		"""
 		Test frt when issue creation was during working hours, but first response is sent after working hours on the same day.
 		"""
-		issue = create_issue_and_communication(
+		issue = create_issue_and_communicate(
 			get_datetime("06-28-2021 12:00"), get_datetime("06-28-2021 20:00")
 		)
 		self.assertEqual(issue.first_response_time, 21600.0)
@@ -286,7 +286,7 @@ class TestFirstResponseTime(TestSetUp):
 		"""
 		Test frt when issue creation was before working hours but first response is sent during working hours on the same day.
 		"""
-		issue = create_issue_and_communication(
+		issue = create_issue_and_communicate(
 			get_datetime("06-28-2021 6:00"), get_datetime("06-28-2021 12:00")
 		)
 		self.assertEqual(issue.first_response_time, 7200.0)
@@ -295,7 +295,7 @@ class TestFirstResponseTime(TestSetUp):
 		"""
 		Test frt when both issue creation and first response were after working hours on the same day.
 		"""
-		issue = create_issue_and_communication(
+		issue = create_issue_and_communicate(
 			get_datetime("06-28-2021 19:00"), get_datetime("06-28-2021 20:00")
 		)
 		self.assertEqual(issue.first_response_time, 1.0)
@@ -304,7 +304,7 @@ class TestFirstResponseTime(TestSetUp):
 		"""
 		Test frt when both issue creation and first response are on the same day, but it's not a work day.
 		"""
-		issue = create_issue_and_communication(
+		issue = create_issue_and_communicate(
 			get_datetime("06-27-2021 10:00"), get_datetime("06-27-2021 11:00")
 		)
 		self.assertEqual(issue.first_response_time, 1.0)
@@ -314,7 +314,7 @@ class TestFirstResponseTime(TestSetUp):
 		"""
 		Test frt when the issue was created before working hours and the first response is also sent before working hours, but on the next day.
 		"""
-		issue = create_issue_and_communication(
+		issue = create_issue_and_communicate(
 			get_datetime("06-28-2021 6:00"), get_datetime("06-29-2021 6:00")
 		)
 		self.assertEqual(issue.first_response_time, 28800.0)
@@ -323,7 +323,7 @@ class TestFirstResponseTime(TestSetUp):
 		"""
 		Test frt when the issue was created before working hours and the first response is sent during working hours, but on the next day.
 		"""
-		issue = create_issue_and_communication(
+		issue = create_issue_and_communicate(
 			get_datetime("06-28-2021 6:00"), get_datetime("06-29-2021 11:00")
 		)
 		self.assertEqual(issue.first_response_time, 32400.0)
@@ -332,7 +332,7 @@ class TestFirstResponseTime(TestSetUp):
 		"""
 		Test frt when the issue was created before working hours and the first response is sent after working hours, but on the next day.
 		"""
-		issue = create_issue_and_communication(
+		issue = create_issue_and_communicate(
 			get_datetime("06-28-2021 6:00"), get_datetime("06-29-2021 20:00")
 		)
 		self.assertEqual(issue.first_response_time, 57600.0)
@@ -341,7 +341,7 @@ class TestFirstResponseTime(TestSetUp):
 		"""
 		Test frt when the issue was created before working hours and the first response is sent on the next day, which is not a work day.
 		"""
-		issue = create_issue_and_communication(
+		issue = create_issue_and_communicate(
 			get_datetime("06-25-2021 6:00"), get_datetime("06-26-2021 11:00")
 		)
 		self.assertEqual(issue.first_response_time, 28800.0)
@@ -350,7 +350,7 @@ class TestFirstResponseTime(TestSetUp):
 		"""
 		Test frt when the issue was created during working hours and the first response is sent before working hours, but on the next day.
 		"""
-		issue = create_issue_and_communication(
+		issue = create_issue_and_communicate(
 			get_datetime("06-28-2021 12:00"), get_datetime("06-29-2021 6:00")
 		)
 		self.assertEqual(issue.first_response_time, 21600.0)
@@ -359,7 +359,7 @@ class TestFirstResponseTime(TestSetUp):
 		"""
 		Test frt when the issue was created during working hours and the first response is also sent during working hours, but on the next day.
 		"""
-		issue = create_issue_and_communication(
+		issue = create_issue_and_communicate(
 			get_datetime("06-28-2021 12:00"), get_datetime("06-29-2021 11:00")
 		)
 		self.assertEqual(issue.first_response_time, 25200.0)
@@ -368,7 +368,7 @@ class TestFirstResponseTime(TestSetUp):
 		"""
 		Test frt when the issue was created during working hours and the first response is sent after working hours, but on the next day.
 		"""
-		issue = create_issue_and_communication(
+		issue = create_issue_and_communicate(
 			get_datetime("06-28-2021 12:00"), get_datetime("06-29-2021 20:00")
 		)
 		self.assertEqual(issue.first_response_time, 50400.0)
@@ -377,7 +377,7 @@ class TestFirstResponseTime(TestSetUp):
 		"""
 		Test frt when the issue was created during working hours and the first response is sent on the next day, which is not a work day.
 		"""
-		issue = create_issue_and_communication(
+		issue = create_issue_and_communicate(
 			get_datetime("06-25-2021 12:00"), get_datetime("06-26-2021 11:00")
 		)
 		self.assertEqual(issue.first_response_time, 21600.0)
@@ -386,7 +386,7 @@ class TestFirstResponseTime(TestSetUp):
 		"""
 		Test frt when the issue was created after working hours and the first response is sent before working hours, but on the next day.
 		"""
-		issue = create_issue_and_communication(
+		issue = create_issue_and_communicate(
 			get_datetime("06-28-2021 20:00"), get_datetime("06-29-2021 6:00")
 		)
 		self.assertEqual(issue.first_response_time, 1.0)
@@ -395,7 +395,7 @@ class TestFirstResponseTime(TestSetUp):
 		"""
 		Test frt when the issue was created after working hours and the first response is sent during working hours, but on the next day.
 		"""
-		issue = create_issue_and_communication(
+		issue = create_issue_and_communicate(
 			get_datetime("06-28-2021 20:00"), get_datetime("06-29-2021 11:00")
 		)
 		self.assertEqual(issue.first_response_time, 3600.0)
@@ -404,7 +404,7 @@ class TestFirstResponseTime(TestSetUp):
 		"""
 		Test frt when the issue was created after working hours and the first response is also sent after working hours, but on the next day.
 		"""
-		issue = create_issue_and_communication(
+		issue = create_issue_and_communicate(
 			get_datetime("06-28-2021 20:00"), get_datetime("06-29-2021 20:00")
 		)
 		self.assertEqual(issue.first_response_time, 28800.0)
@@ -413,7 +413,7 @@ class TestFirstResponseTime(TestSetUp):
 		"""
 		Test frt when the issue was created after working hours and the first response is sent on the next day, which is not a work day.
 		"""
-		issue = create_issue_and_communication(
+		issue = create_issue_and_communicate(
 			get_datetime("06-25-2021 20:00"), get_datetime("06-26-2021 11:00")
 		)
 		self.assertEqual(issue.first_response_time, 1.0)
@@ -423,7 +423,7 @@ class TestFirstResponseTime(TestSetUp):
 		"""
 		Test frt when the issue was created before working hours and the first response is also sent before working hours, but after a few days.
 		"""
-		issue = create_issue_and_communication(
+		issue = create_issue_and_communicate(
 			get_datetime("06-28-2021 6:00"), get_datetime("07-01-2021 6:00")
 		)
 		self.assertEqual(issue.first_response_time, 86400.0)
@@ -432,7 +432,7 @@ class TestFirstResponseTime(TestSetUp):
 		"""
 		Test frt when the issue was created before working hours and the first response is sent during working hours, but after a few days.
 		"""
-		issue = create_issue_and_communication(
+		issue = create_issue_and_communicate(
 			get_datetime("06-28-2021 6:00"), get_datetime("07-01-2021 11:00")
 		)
 		self.assertEqual(issue.first_response_time, 90000.0)
@@ -441,7 +441,7 @@ class TestFirstResponseTime(TestSetUp):
 		"""
 		Test frt when the issue was created before working hours and the first response is sent after working hours, but after a few days.
 		"""
-		issue = create_issue_and_communication(
+		issue = create_issue_and_communicate(
 			get_datetime("06-28-2021 6:00"), get_datetime("07-01-2021 20:00")
 		)
 		self.assertEqual(issue.first_response_time, 115200.0)
@@ -450,7 +450,7 @@ class TestFirstResponseTime(TestSetUp):
 		"""
 		Test frt when the issue was created before working hours and the first response is sent after a few days, on a holiday.
 		"""
-		issue = create_issue_and_communication(
+		issue = create_issue_and_communicate(
 			get_datetime("06-25-2021 6:00"), get_datetime("06-27-2021 11:00")
 		)
 		self.assertEqual(issue.first_response_time, 28800.0)
@@ -459,7 +459,7 @@ class TestFirstResponseTime(TestSetUp):
 		"""
 		Test frt when the issue was created during working hours and the first response is sent before working hours, but after a few days.
 		"""
-		issue = create_issue_and_communication(
+		issue = create_issue_and_communicate(
 			get_datetime("06-28-2021 12:00"), get_datetime("07-01-2021 6:00")
 		)
 		self.assertEqual(issue.first_response_time, 79200.0)
@@ -468,7 +468,7 @@ class TestFirstResponseTime(TestSetUp):
 		"""
 		Test frt when the issue was created during working hours and the first response is also sent during working hours, but after a few days.
 		"""
-		issue = create_issue_and_communication(
+		issue = create_issue_and_communicate(
 			get_datetime("06-28-2021 12:00"), get_datetime("07-01-2021 11:00")
 		)
 		self.assertEqual(issue.first_response_time, 82800.0)
@@ -477,7 +477,7 @@ class TestFirstResponseTime(TestSetUp):
 		"""
 		Test frt when the issue was created during working hours and the first response is sent after working hours, but after a few days.
 		"""
-		issue = create_issue_and_communication(
+		issue = create_issue_and_communicate(
 			get_datetime("06-28-2021 12:00"), get_datetime("07-01-2021 20:00")
 		)
 		self.assertEqual(issue.first_response_time, 108000.0)
@@ -486,7 +486,7 @@ class TestFirstResponseTime(TestSetUp):
 		"""
 		Test frt when the issue was created during working hours and the first response is sent after a few days, on a holiday.
 		"""
-		issue = create_issue_and_communication(
+		issue = create_issue_and_communicate(
 			get_datetime("06-25-2021 12:00"), get_datetime("06-27-2021 11:00")
 		)
 		self.assertEqual(issue.first_response_time, 21600.0)
@@ -495,7 +495,7 @@ class TestFirstResponseTime(TestSetUp):
 		"""
 		Test frt when the issue was created after working hours and the first response is sent before working hours, but after a few days.
 		"""
-		issue = create_issue_and_communication(
+		issue = create_issue_and_communicate(
 			get_datetime("06-28-2021 20:00"), get_datetime("07-01-2021 6:00")
 		)
 		self.assertEqual(issue.first_response_time, 57600.0)
@@ -504,7 +504,7 @@ class TestFirstResponseTime(TestSetUp):
 		"""
 		Test frt when the issue was created after working hours and the first response is sent during working hours, but after a few days.
 		"""
-		issue = create_issue_and_communication(
+		issue = create_issue_and_communicate(
 			get_datetime("06-28-2021 20:00"), get_datetime("07-01-2021 11:00")
 		)
 		self.assertEqual(issue.first_response_time, 61200.0)
@@ -513,7 +513,7 @@ class TestFirstResponseTime(TestSetUp):
 		"""
 		Test frt when the issue was created after working hours and the first response is also sent after working hours, but after a few days.
 		"""
-		issue = create_issue_and_communication(
+		issue = create_issue_and_communicate(
 			get_datetime("06-28-2021 20:00"), get_datetime("07-01-2021 20:00")
 		)
 		self.assertEqual(issue.first_response_time, 86400.0)
@@ -522,17 +522,17 @@ class TestFirstResponseTime(TestSetUp):
 		"""
 		Test frt when the issue was created after working hours and the first response is sent after a few days, on a holiday.
 		"""
-		issue = create_issue_and_communication(
+		issue = create_issue_and_communicate(
 			get_datetime("06-25-2021 20:00"), get_datetime("06-27-2021 11:00")
 		)
 		self.assertEqual(issue.first_response_time, 1.0)
 
 
-def create_issue_and_communication(issue_creation, first_responded_on):
+def create_issue_and_communicate(issue_creation, first_responded_on):
 	issue = make_issue(issue_creation, index=1)
 	sender = create_user("test@admin.com")
 	frappe.flags.current_time = first_responded_on
-	create_communication(issue.name, sender.email, "Sent", first_responded_on)
+	create_communicate(issue.name, sender.email, "Sent", first_responded_on)
 	issue.reload()
 
 	return issue
@@ -598,12 +598,12 @@ def create_territory(territory):
 		).insert(ignore_permissions=True)
 
 
-def create_communication(reference_name, sender, sent_or_received, creation):
-	communication = frappe.get_doc(
+def create_communicate(reference_name, sender, sent_or_received, creation):
+	communicate = frappe.get_doc(
 		{
-			"doctype": "Communication",
-			"communication_type": "Communication",
-			"communication_medium": "Email",
+			"doctype": "communicate",
+			"communicate_type": "communicate",
+			"communicate_medium": "Email",
 			"sent_or_received": sent_or_received,
 			"email_status": "Open",
 			"subject": "Test Issue",
@@ -615,4 +615,4 @@ def create_communication(reference_name, sender, sent_or_received, creation):
 			"reference_name": reference_name,
 		}
 	)
-	communication.save()
+	communicate.save()

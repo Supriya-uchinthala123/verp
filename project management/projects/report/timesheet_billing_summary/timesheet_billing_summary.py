@@ -64,13 +64,13 @@ def get_columns(filters, group_fieldname=None):
 			},
 			{"label": _("Working Hours"), "fieldtype": "Float", "fieldname": "hours", "width": 150},
 			{
-				"label": _("Billing Hours"),
+				"label": _("billHours"),
 				"fieldtype": "Float",
 				"fieldname": "billing_hours",
 				"width": 150,
 			},
 			{
-				"label": _("Billing Amount"),
+				"label": _("billAmount"),
 				"fieldtype": "Currency",
 				"fieldname": "billing_amount",
 				"width": 150,

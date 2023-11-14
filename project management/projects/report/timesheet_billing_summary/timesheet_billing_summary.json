@@ -13,11 +13,11 @@
  "modify": "2023-10-11 00:58:30.639078",
  "modify_by": "Admin",
  "module": "proj",
- "name": "Timesheet Billing Summary",
+ "name": "Timesheet billSummary",
  "owner": "Admin",
  "prepared_report": 0,
  "ref_doctype": "Timesheet",
- "report_name": "Timesheet Billing Summary",
+ "report_name": "Timesheet billSummary",
  "report_type": "Script Report",
  "roles": [
   {

@@ -1,7 +1,7 @@
 // Copyright (c) 2023, Frappe Technologies Pvt. Ltd. and contributors
 // For license information, please see license.txt
 
-frappe.query_reports["Timesheet Billing Summary"] = {
+frappe.query_reports["Timesheet billSummary"] = {
 	tree: true,
 	initial_depth: 0,
 	filters: [

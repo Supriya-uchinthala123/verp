@@ -114,7 +114,7 @@
    "depends_on": "is_billable",
    "fieldname": "billing_hours",
    "fieldtype": "Float",
-   "label": "Billing Hours",
+   "label": "billHours",
    "permlevel": 1
   },
   {
@@ -125,7 +125,7 @@
   {
    "fieldname": "billing_rate",
    "fieldtype": "Currency",
-   "label": "Billing Rate",
+   "label": "billRate",
    "options": "currency",
    "permlevel": 1
   },
@@ -134,7 +134,7 @@
    "default": "0",
    "fieldname": "billing_amount",
    "fieldtype": "Currency",
-   "label": "Billing Amount",
+   "label": "billAmount",
    "options": "currency",
    "permlevel": 1,
    "read_only": 1
@@ -195,14 +195,14 @@
   {
    "fieldname": "base_billing_rate",
    "fieldtype": "Currency",
-   "label": "Billing Rate",
+   "label": "billRate",
    "print_hide": 1,
    "read_only": 1
   },
   {
    "fieldname": "base_billing_amount",
    "fieldtype": "Currency",
-   "label": "Billing Amount",
+   "label": "billAmount",
    "print_hide": 1,
    "read_only": 1
   },

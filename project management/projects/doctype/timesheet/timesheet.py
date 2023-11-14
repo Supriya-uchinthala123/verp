@@ -364,10 +364,10 @@ def make_sales_invoice(source_name, item_code=None, customer=None, currency=None
 	timesheet = frappe.get_doc("Timesheet", source_name)
 
 	if not timesheet.total_billable_hours:
-		frappe.throw(_("Invoice can't be made for zero billing hour"))
+		frappe.throw(_("Invoice can't be made for zero billhour"))
 
 	if timesheet.total_billable_hours == timesheet.total_billed_hours:
-		frappe.throw(_("Invoice already created for all billing hours"))
+		frappe.throw(_("Invoice already created for all billhours"))
 
 	hours = flt(timesheet.total_billable_hours) - flt(timesheet.total_billed_hours)
 	billing_amount = flt(timesheet.total_billable_amount) - flt(timesheet.total_billed_amount)

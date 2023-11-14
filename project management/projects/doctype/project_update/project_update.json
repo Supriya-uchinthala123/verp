@@ -80,7 +80,7 @@
  "links": [],
  "modified": "2023-06-28 18:59:50.678917",
  "modified_by": "Admin",
- "module": "Projects",
+ "module": "project",
  "name": "Project Update",
  "naming_rule": "By \"Naming Series\" field",
  "owner": "Admin",
@@ -93,7 +93,7 @@
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "Projects User",
+   "role": "project User",
    "share": 1,
    "submit": 1,
    "write": 1

@@ -455,7 +455,7 @@
  "max_attachments": 4,
  "modified": "2023-08-28 22:27:28.370849",
  "modified_by": "Admin",
- "module": "Projects",
+ "module": "project",
  "name": "Project",
  "naming_rule": "By \"Naming Series\" field",
  "owner": "Admin",
@@ -467,7 +467,7 @@
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "Projects User",
+   "role": "project User",
    "share": 1,
    "write": 1
   },
@@ -485,7 +485,7 @@
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "Projects Manager",
+   "role": "project Manager",
    "share": 1,
    "write": 1
   }

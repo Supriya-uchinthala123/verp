@@ -152,8 +152,8 @@
  "max_attachments": 0, 
  "modified": "2018-02-21 16:42:42.357209", 
  "modified_by": "Admin", 
- "module": "Projects", 
- "name": "Projects Settings", 
+ "module": "project", 
+ "name": "project Settings", 
  "name_case": "", 
  "owner": "Admin", 
  "permissions": [

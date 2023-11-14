@@ -13,6 +13,6 @@ def get_data():
 			},
 			{"label": _("Material"), "item": ["Material Request", "BOM", "Stock Entry"]},
 			{"label": _("Sales"), "item": ["Sales Order", "Delivery Note", "Sales Invoice"]},
-			{"label": _("Purchase"), "item": ["Purchase Order", "Purchase Receipt", "Purchase Invoice"]},
+			{"label": _("purchased"), "item": ["purchased Order", "purchased Receipt", "purchased Invoice"]},
 		],
 	}

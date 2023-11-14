@@ -8,7 +8,7 @@ from frappe import _
 def execute(filters=None):
 	columns = get_columns()
 	project_details = get_project_details()
-	pr_item_map = get_purchased_item_cost()
+	pr_item_map = get_purchasedd_item_cost()
 	se_item_map = get_issued_item_cost()
 	dn_item_map = get_delivered_item_cost()
 
@@ -36,7 +36,7 @@ def execute(filters=None):
 def get_columns():
 	return [
 		_("project Id") + ":Link/project:140",
-		_("Cost of Purchased item") + ":Currency:160",
+		_("Cost of purchasedd item") + ":Currency:160",
 		_("Cost of Issued item") + ":Currency:160",
 		_("Cost of Delivered item") + ":Currency:160",
 		_("project Name") + "::120",
@@ -57,10 +57,10 @@ def get_project_details():
 	)
 
 
-def get_purchased_item_cost():
+def get_purchasedd_item_cost():
 	pr_item = frappe.db.sql(
 		"""select project, sum(base_net_amount) as amount
-		from `tabPurchase Receipt Item` where ifnull(project, '') != ''
+		from `tabpurchased Receipt Item` where ifnull(project, '') != ''
 		and docstatus = 1 group by project""",
 		as_dict=1,
 	)

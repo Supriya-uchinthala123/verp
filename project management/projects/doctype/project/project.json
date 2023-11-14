@@ -38,7 +38,7 @@
   "project_details",
   "estimated_costing",
   "total_costing_amount",
-  "total_purchase_cost",
+  "total_purchased_cost",
   "company",
   "column_break_28",
   "total_sales_amount",
@@ -279,9 +279,9 @@
    "read_only": 1
   },
   {
-   "fieldname": "total_purchase_cost",
+   "fieldname": "total_purchased_cost",
    "fieldtype": "Currency",
-   "label": "Total Purchase Cost (via Purchase Invoice)",
+   "label": "Total purchased Cost (via purchased Invoice)",
    "read_only": 1
   },
   {

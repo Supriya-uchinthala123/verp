@@ -1,7 +1,7 @@
 {
  "accept_payment": 0, 
  "allow_comments": 1, 
- "allow_delete": 1, 
+ "allow_deleted": 1, 
  "allow_edit": 1, 
  "allow_incomplete": 0, 
  "allow_multiple": 1, 

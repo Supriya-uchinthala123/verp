@@ -45,4 +45,4 @@ class TestDelayedTasksSummary(unittest.TestCase):
 
 	def tearDown(self):
 		for task in ["_Test Task 98", "_Test Task 99"]:
-			frappe.get_doc("Task", {"subject": task}).delete()
+			frappe.get_doc("Task", {"subject": task}).deleted()

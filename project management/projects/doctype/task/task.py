@@ -227,11 +227,11 @@ class Task(NestedSet):
 
 	def on_trash(self):
 		if check_if_child_exists(self.name):
-			throw(_("Child Task exists for this Task. You can not delete this Task."))
+			throw(_("Child Task exists for this Task. You can not deleted this Task."))
 
 		self.update_nsm_model()
 
-	def after_delete(self):
+	def after_deleted(self):
 		self.update_proj()
 
 	def update_status(self):

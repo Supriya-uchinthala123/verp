@@ -33,14 +33,14 @@
   "billing_details",
   "total_billable_hours",
   "base_total_billable_amount",
-  "base_total_billed_amount",
+  "base_total_bill_amount",
   "base_total_cost_amount",
   "column_break_10",
-  "total_billed_hours",
+  "total_bill_hours",
   "total_billable_amount",
-  "total_billed_amount",
+  "total_bill_amount",
   "total_cost_amount",
-  "per_billed",
+  "per_bill",
   "sect_break_18",
   "note",
   "amended_from"
@@ -91,7 +91,7 @@
    "in_standard_filter": 1,
    "label": "Status",
    "no_copy": 1,
-   "options": "Draft\nSubmitted\nBilled\nPayslip\ncomp\nCancelled",
+   "options": "Draft\nSubmitted\nbill\nPayslip\ncomp\nCancelled",
    "print_hide": 1,
    "read_only": 1
   },
@@ -192,9 +192,9 @@
   },
   {
    "allow_on_submit": 1,
-   "fieldname": "total_billed_hours",
+   "fieldname": "total_bill_hours",
    "fieldtype": "Float",
-   "label": "Total Billed Hours",
+   "label": "Total bill Hours",
    "print_hide": 1,
    "read_only": 1
   },
@@ -222,19 +222,19 @@
   },
   {
    "allow_on_submit": 1,
-   "fieldname": "total_billed_amount",
+   "fieldname": "total_bill_amount",
    "fieldtype": "Currency",
-   "label": "Total Billed Amount",
+   "label": "Total bill Amount",
    "options": "currency",
    "print_hide": 1,
    "read_only": 1
   },
   {
    "allow_on_submit": 1,
-   "fieldname": "per_billed",
+   "fieldname": "per_bill",
    "fieldtype": "Percent",
    "in_list_view": 1,
-   "label": "% Amount Billed",
+   "label": "% Amount bill",
    "no_copy": 1,
    "print_hide": 1,
    "read_only": 1
@@ -293,9 +293,9 @@
    "read_only": 1
   },
   {
-   "fieldname": "base_total_billed_amount",
+   "fieldname": "base_total_bill_amount",
    "fieldtype": "Currency",
-   "label": "Base Total Billed Amount",
+   "label": "Base Total bill Amount",
    "print_hide": 1,
    "read_only": 1
   },

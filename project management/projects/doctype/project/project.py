@@ -234,7 +234,7 @@ class Project(doc):
 
 		self.update_purchase_cost()
 		self.update_sales_amount()
-		self.update_billed_amount()
+		self.update_bill_amount()
 		self.calculate_gross_margin()
 
 	def calculate_gross_margin(self):
@@ -244,9 +244,9 @@ class Project(doc):
 			+ flt(self.get("total_consumed_material_cost", 0))
 		)
 
-		self.gross_margin = flt(self.total_billed_amount) - expense_amount
-		if self.total_billed_amount:
-			self.per_gross_margin = (self.gross_margin / flt(self.total_billed_amount)) * 100
+		self.gross_margin = flt(self.total_bill_amount) - expense_amount
+		if self.total_bill_amount:
+			self.per_gross_margin = (self.gross_margin / flt(self.total_bill_amount)) * 100
 
 	def update_purchase_cost(self):
 		total_purchase_cost = frappe.db.sql(
@@ -266,14 +266,14 @@ class Project(doc):
 
 		self.total_sales_amount = total_sales_amount and total_sales_amount[0][0] or 0
 
-	def update_billed_amount(self):
-		total_billed_amount = frappe.db.sql(
+	def update_bill_amount(self):
+		total_bill_amount = frappe.db.sql(
 			"""select sum(base_net_total)
 			from `tabSales Invoice` where proj= %s and docstatus=1""",
 			self.name,
 		)
 
-		self.total_billed_amount = total_billed_amount and total_billed_amount[0][0] or 0
+		self.total_bill_amount = total_bill_amount and total_bill_amount[0][0] or 0
 
 	def after_rename(self, old_name, new_name, merge=False):
 		if old_name == self.copied_from:
@@ -644,7 +644,7 @@ def update_project_sales_billing():
 		if project_details.order_exists:
 			project.update_sales_amount()
 		if project_details.invoice_exists:
-			project.update_billed_amount()
+			project.update_bill_amount()
 
 	for projin project_map.values():
 		project.save()

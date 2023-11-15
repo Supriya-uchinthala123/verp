@@ -29,7 +29,7 @@ class Timesheet(doc):
 		self.validate_time_logs()
 		self.update_cost()
 		self.calculate_total_amounts()
-		self.calculate_percentage_billed()
+		self.calculate_percentage_bill()
 		self.set_dates()
 
 	def calculate_hours(self):
@@ -40,10 +40,10 @@ class Timesheet(doc):
 	def calculate_total_amounts(self):
 		self.total_hours = 0.0
 		self.total_billable_hours = 0.0
-		self.total_billed_hours = 0.0
+		self.total_bill_hours = 0.0
 		self.total_billable_amount = self.base_total_billable_amount = 0.0
 		self.total_cost_amount = self.base_total_cost_amount = 0.0
-		self.total_billed_amount = self.base_total_billed_amount = 0.0
+		self.total_bill_amount = self.base_total_bill_amount = 0.0
 
 		for d in self.get("time_logs"):
 			self.update_billing_hours(d)
@@ -56,16 +56,16 @@ class Timesheet(doc):
 				self.total_billable_hours += flt(d.billing_hours)
 				self.total_billable_amount += flt(d.billing_amount)
 				self.base_total_billable_amount += flt(d.base_billing_amount)
-				self.total_billed_amount += flt(d.billing_amount) if d.sales_invoice else 0.0
-				self.base_total_billed_amount += flt(d.base_billing_amount) if d.sales_invoice else 0.0
-				self.total_billed_hours += flt(d.billing_hours) if d.sales_invoice else 0.0
+				self.total_bill_amount += flt(d.billing_amount) if d.sales_invoice else 0.0
+				self.base_total_bill_amount += flt(d.base_billing_amount) if d.sales_invoice else 0.0
+				self.total_bill_hours += flt(d.billing_hours) if d.sales_invoice else 0.0
 
-	def calculate_percentage_billed(self):
-		self.per_billed = 0
-		if self.total_billed_amount > 0 and self.total_billable_amount > 0:
-			self.per_billed = (self.total_billed_amount * 100) / self.total_billable_amount
-		elif self.total_billed_hours > 0 and self.total_billable_hours > 0:
-			self.per_billed = (self.total_billed_hours * 100) / self.total_billable_hours
+	def calculate_percentage_bill(self):
+		self.per_bill = 0
+		if self.total_bill_amount > 0 and self.total_billable_amount > 0:
+			self.per_bill = (self.total_bill_amount * 100) / self.total_billable_amount
+		elif self.total_bill_hours > 0 and self.total_billable_hours > 0:
+			self.per_bill = (self.total_bill_hours * 100) / self.total_billable_hours
 
 	def update_billing_hours(self, args):
 		if args.is_billable:
@@ -77,8 +77,8 @@ class Timesheet(doc):
 	def set_status(self):
 		self.status = {"0": "Draft", "1": "Submitted", "2": "Cancelled"}[str(self.docstatus or 0)]
 
-		if self.per_billed == 100:
-			self.status = "Billed"
+		if self.per_bill == 100:
+			self.status = "bill"
 
 		if self.sales_invoice:
 			self.status = "comp"
@@ -346,7 +346,7 @@ def get_timesheet_data(name, project):
 		data = frappe.get_all(
 			"Timesheet",
 			fields=[
-				"(total_billable_amount - total_billed_amount) as billing_amt",
+				"(total_billable_amount - total_bill_amount) as billing_amt",
 				"total_billable_hours as billing_hours",
 			],
 			filt={"name": name},
@@ -366,11 +366,11 @@ def make_sales_invoice(source_name, item_code=None, customer=None, currency=None
 	if not timesheet.total_billable_hours:
 		frappe.throw(_("Invoice can't be made for zero billing hour"))
 
-	if timesheet.total_billable_hours == timesheet.total_billed_hours:
+	if timesheet.total_billable_hours == timesheet.total_bill_hours:
 		frappe.throw(_("Invoice already created for all billing hours"))
 
-	hours = flt(timesheet.total_billable_hours) - flt(timesheet.total_billed_hours)
-	billing_amount = flt(timesheet.total_billable_amount) - flt(timesheet.total_billed_amount)
+	hours = flt(timesheet.total_billable_hours) - flt(timesheet.total_bill_hours)
+	billing_amount = flt(timesheet.total_billable_amount) - flt(timesheet.total_bill_amount)
 	billing_rate = billing_amount / hours
 
 	target.company = timesheet.company

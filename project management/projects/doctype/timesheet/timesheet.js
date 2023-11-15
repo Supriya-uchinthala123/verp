@@ -47,9 +47,9 @@ frappe.ui.form.on("Timesheet", {
 	refresh: function(frm) {
 		if (frm.doc.docstatus == 1) {
 			if (
-				(frm.doc.per_billed < 100)
+				(frm.doc.per_bill < 100)
 				&& (frm.doc.total_billable_hours)
-				&& (frm.doc.total_billable_hours > frm.doc.total_billed_hours)
+				&& (frm.doc.total_billable_hours > frm.doc.total_bill_hours)
 			) {
 				frm.add_custom_button(__("Create Sales Invoice"), function() {
 					frm.trigger("make_invoice");
@@ -90,7 +90,7 @@ frappe.ui.form.on("Timesheet", {
 				}
 			}).addClass("btn-primary");
 		}
-		if(frm.doc.per_billed > 0) {
+		if(frm.doc.per_bill > 0) {
 			frm.fields_dict["time_logs"].grid.toggle_enable("billing_hours", false);
 			frm.fields_dict["time_logs"].grid.toggle_enable("is_billable", false);
 		}
@@ -153,10 +153,10 @@ frappe.ui.form.on("Timesheet", {
 
 	set_dynamic_field_label: function(frm) {
 		let base_currency = frappe.defaults.get_global_default('currency');
-		frm.set_currency_labels(["base_total_cost_amount", "base_total_billable_amount", "base_total_billed_amount"], base_currency);
-		frm.set_currency_labels(["total_cost_amount", "total_billable_amount", "total_billed_amount"], frm.doc.currency);
+		frm.set_currency_labels(["base_total_cost_amount", "base_total_billable_amount", "base_total_bill_amount"], base_currency);
+		frm.set_currency_labels(["total_cost_amount", "total_billable_amount", "total_bill_amount"], frm.doc.currency);
 
-		frm.toggle_display(["base_total_cost_amount", "base_total_billable_amount", "base_total_billed_amount"],
+		frm.toggle_display(["base_total_cost_amount", "base_total_billable_amount", "base_total_bill_amount"],
 			frm.doc.currency != base_currency);
 
 		if (frm.doc.time_logs.length > 0) {

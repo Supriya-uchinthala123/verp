@@ -28,5 +28,9 @@ frappe.views.calendar["Timesheet"] = {
 			"label": __("Employee")
 		}
 	],
+<<<<<<< HEAD
 	get_events_method: "erpnext.projects.document type.timesheet.timesheet.get_events"
+=======
+	get_events_method: "erpnext.project.doctype.timesheet.timesheet.get_events"
+>>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
 }

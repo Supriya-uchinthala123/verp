@@ -7,9 +7,15 @@ import unittest
 import frappe
 from frappe.utils import add_months, add_to_date, now_datetime, nowdate
 
+<<<<<<< HEAD
 from erpnext.accounts.document type.sales_invoice.test_sales_invoice import create_sales_invoice
 from erpnext.projects.document type.timesheet.timesheet import OverlapError, make_sales_invoice
 from erpnext.setup.document type.employee.test_employee import make_employee
+=======
+from erpnext.accounts.doctype.sales_invoice.test_sales_invoice import create_sales_invoice
+from erpnext.project.doctype.timesheet.timesheet import OverlapError, make_sales_invoice
+from erpnext.setup.doctype.employee.test_employee import make_employee
+>>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
 
 
 class TestTimesheet(unittest.TestCase):
@@ -73,19 +79,19 @@ class TestTimesheet(unittest.TestCase):
 	def test_timesheet_time_overlap(self):
 		emp = make_employee("test_employee_6@salary.com")
 
-		settings = frappe.get_single("Projects Settings")
+		settings = frappe.get_single("project Settings")
 		initial_setting = settings.ignore_employee_time_overlap
 		settings.ignore_employee_time_overlap = 0
 		settings.save()
 
-		update_activity_type("_Test Activity Type")
+		update_activity("_Test Activity Type")
 		timesheet = frappe.new_doc("Timesheet")
 		timesheet.employee = emp
 		timesheet.append(
 			"time_logs",
 			{
 				"billable": 1,
-				"activity_type": "_Test Activity Type",
+				"activity": "_Test Activity Type",
 				"from_time": now_datetime(),
 				"to_time": now_datetime() + datetime.timedelta(hours=3),
 				"company": "_Test Company",
@@ -95,7 +101,7 @@ class TestTimesheet(unittest.TestCase):
 			"time_logs",
 			{
 				"billable": 1,
-				"activity_type": "_Test Activity Type",
+				"activity": "_Test Activity Type",
 				"from_time": now_datetime(),
 				"to_time": now_datetime() + datetime.timedelta(hours=3),
 				"company": "_Test Company",
@@ -114,14 +120,14 @@ class TestTimesheet(unittest.TestCase):
 	def test_timesheet_not_overlapping_with_continuous_timelogs(self):
 		emp = make_employee("test_employee_6@salary.com")
 
-		update_activity_type("_Test Activity Type")
+		update_activity("_Test Activity Type")
 		timesheet = frappe.new_doc("Timesheet")
 		timesheet.employee = emp
 		timesheet.append(
 			"time_logs",
 			{
 				"billable": 1,
-				"activity_type": "_Test Activity Type",
+				"activity": "_Test Activity Type",
 				"from_time": now_datetime(),
 				"to_time": now_datetime() + datetime.timedelta(hours=3),
 				"company": "_Test Company",
@@ -131,7 +137,7 @@ class TestTimesheet(unittest.TestCase):
 			"time_logs",
 			{
 				"billable": 1,
-				"activity_type": "_Test Activity Type",
+				"activity": "_Test Activity Type",
 				"from_time": now_datetime() + datetime.timedelta(hours=3),
 				"to_time": now_datetime() + datetime.timedelta(hours=4),
 				"company": "_Test Company",
@@ -150,7 +156,7 @@ class TestTimesheet(unittest.TestCase):
 			"time_logs",
 			{
 				"billable": 1,
-				"activity_type": "_Test Activity Type",
+				"activity": "_Test Activity Type",
 				"from_time": from_time,
 				"hours": 2,
 				"company": "_Test Company",
@@ -197,18 +203,18 @@ def make_timesheet(
 	employee,
 	simulate=False,
 	is_billable=0,
-	activity_type="_Test Activity Type",
+	activity="_Test Activity Type",
 	project=None,
 	task=None,
 	company=None,
 ):
-	update_activity_type(activity_type)
+	update_activity(activity)
 	timesheet = frappe.new_doc("Timesheet")
 	timesheet.employee = employee
 	timesheet.company = company or "_Test Company"
 	timesheet_detail = timesheet.append("time_logs", {})
 	timesheet_detail.is_billable = is_billable
-	timesheet_detail.activity_type = activity_type
+	timesheet_detail.activity = activity
 	timesheet_detail.from_time = now_datetime()
 	timesheet_detail.hours = 2
 	timesheet_detail.to_time = timesheet_detail.from_time + datetime.timedelta(
@@ -234,7 +240,7 @@ def make_timesheet(
 	return timesheet
 
 
-def update_activity_type(activity_type):
-	activity_type = frappe.get_doc("Activity Type", activity_type)
-	activity_type.billing_rate = 50.0
-	activity_type.save(ignore_permissions=True)
+def update_activity(activity):
+	activity = frappe.get_doc("Activity Type", activity)
+	activity.billing_rate = 50.0
+	activity.save(ignore_permissions=True)

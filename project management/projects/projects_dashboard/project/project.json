@@ -13,9 +13,9 @@
  "idx": 0,
  "is_default": 0,
  "is_standard": 1,
- "modified": "2020-07-22 17:17:03.780625",
- "modified_by": "Admin",
- "module": "Projects",
+ "modify": "2020-07-22 17:17:03.780625",
+ "modify_by": "Admin",
+ "module": "project",
  "name": "Project",
  "owner": "Admin"
 }

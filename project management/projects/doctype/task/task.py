@@ -239,7 +239,7 @@ class Task(NestedSet):
 			from datetime import datetime
 
 			if self.exp_end_date < datetime.now().date():
-				self.db_set("status", "Overdue", update_modified=False)
+				self.db_set("status", "Overdue", update_modify=False)
 				self.update_project()
 
 

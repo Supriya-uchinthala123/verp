@@ -7,9 +7,9 @@
  "document type": "Report", 
  "idx": 3, 
  "is_standard": "Yes", 
- "modified": "2017-02-24 20:20:07.593667", 
- "modified_by": "Admin", 
- "module": "Projects", 
+ "modify": "2017-02-24 20:20:07.593667", 
+ "modify_by": "Admin", 
+ "module": "project", 
  "name": "Project wise Stock Tracking", 
  "owner": "Admin", 
  "ref_document type": "Project", 
@@ -17,10 +17,10 @@
  "report_type": "Script Report", 
  "roles": [
   {
-   "role": "Projects User"
+   "role": "project User"
   }, 
   {
-   "role": "Projects Manager"
+   "role": "project Manager"
   }
  ]
 }

@@ -5,7 +5,11 @@ import unittest
 
 import frappe
 
+<<<<<<< HEAD
 from erpnext.projects.document type.activity_cost.activity_cost import DuplicationError
+=======
+from erpnext.project.doctype.activity_cost.activity_cost import DuplicationError
+>>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
 
 
 class TestActivityCost(unittest.TestCase):
@@ -16,7 +20,7 @@ class TestActivityCost(unittest.TestCase):
 			{
 				"employee": "_T-Employee-00001",
 				"employee_name": "_Test Employee",
-				"activity_type": "_Test Activity Type 1",
+				"activity": "_Test Activity Type 1",
 				"billing_rate": 100,
 				"costing_rate": 50,
 			}

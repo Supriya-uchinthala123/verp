@@ -5,7 +5,11 @@ import unittest
 
 import frappe
 
+<<<<<<< HEAD
 from erpnext.projects.document type.task.test_task import create_task
+=======
+from erpnext.project.doctype.task.test_task import create_task
+>>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
 
 
 class TestProjectTemplate(unittest.TestCase):

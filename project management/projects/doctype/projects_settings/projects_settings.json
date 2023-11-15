@@ -150,10 +150,10 @@
  "issingle": 1, 
  "istable": 0, 
  "max_attachments": 0, 
- "modified": "2018-02-21 16:42:42.357209", 
- "modified_by": "Admin", 
- "module": "Projects", 
- "name": "Projects Settings", 
+ "modify": "2018-02-21 16:42:42.357209", 
+ "modify_by": "Admin", 
+ "module": "project", 
+ "name": "project Settings", 
  "name_case": "", 
  "owner": "Admin", 
  "permissions": [
@@ -182,7 +182,7 @@
  "read_only": 0, 
  "read_only_onload": 0, 
  "show_name_in_global_search": 0, 
- "sort_field": "modified", 
+ "sort_field": "modify", 
  "sort_order": "DESC", 
  "track_changes": 1, 
  "track_seen": 0

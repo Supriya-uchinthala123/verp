@@ -3,7 +3,11 @@ frappe.listview_settings['Task'] = {
 		"exp_end_date", "subject content", "progress", "depends_on_tasks"],
 	filters: [["status", "=", "Open"]],
 	onload: function(listview) {
+<<<<<<< HEAD
 		var method = "erpnext.projects.document type.task.task.set_multiple_status";
+=======
+		var method = "erpnext.project.doctype.task.task.set_multiple_status";
+>>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
 
 		listview.page.add_menu_item(__("Set as Open"), function() {
 			listview.call_for_selected_items(method, {"status": "Open"});

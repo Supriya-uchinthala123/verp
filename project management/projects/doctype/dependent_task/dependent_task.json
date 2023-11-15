@@ -48,9 +48,9 @@
  "issingle": 0, 
  "istable": 1, 
  "max_attachments": 0, 
- "modified": "2020-09-18 17:26:09.703215", 
- "modified_by": "Admin", 
- "module": "Projects", 
+ "modify": "2020-09-18 17:26:09.703215", 
+ "modify_by": "Admin", 
+ "module": "project", 
  "name": "Dependent Task", 
  "name_case": "", 
  "owner": "Admin", 
@@ -58,7 +58,7 @@
  "quick_entry": 0, 
  "read_only": 0, 
  "read_only_onload": 0, 
- "sort_field": "modified", 
+ "sort_field": "modify", 
  "sort_order": "DESC", 
  "track_seen": 0
 }

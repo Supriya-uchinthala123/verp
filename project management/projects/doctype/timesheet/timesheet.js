@@ -3,7 +3,7 @@
 
 frappe.ui.form.on("Timesheet", {
 	setup: function(frm) {
-		frappe.require("/assets/erpnext/js/projects/timer.js");
+		frappe.require("/assets/erpnext/js/project/timer.js");
 
 		frm.ignore_document types_on_cancel_all = ['Sales Invoice'];
 
@@ -70,7 +70,7 @@ frappe.ui.form.on("Timesheet", {
 				var flag = true;
 				$.each(frm.doc.time_logs || [], function(i, row) {
 					// Fetch the row for which from_time is not present
-					if (flag && row.activity_type && !row.from_time){
+					if (flag && row.activity && !row.from_time){
 						erpnext.timesheet.timer(frm, row);
 						row.from_time = frappe.datetime.now_datetime();
 						frm.refresh_fields("time_logs");
@@ -201,7 +201,11 @@ frappe.ui.form.on("Timesheet", {
 			dialog.hide();
 			return frappe.call({
 				type: "GET",
+<<<<<<< HEAD
 				method: "erpnext.projects.document type.timesheet.timesheet.make_sales_invoice",
+=======
+				method: "erpnext.project.doctype.timesheet.timesheet.make_sales_invoice",
+>>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
 				args: {
 					"source_name": frm.doc.name,
 					"item_code": args.item_code,
@@ -286,14 +290,18 @@ frappe.ui.form.on("Timesheet Detail", {
 		calculate_time_and_amount(frm);
 	},
 
-	activity_type: function (frm, cdt, cdn) {
-		if (!frappe.get_doc(cdt, cdn).activity_type) return;
+	activity: function (frm, cdt, cdn) {
+		if (!frappe.get_doc(cdt, cdn).activity) return;
 
 		frappe.call({
+<<<<<<< HEAD
 			method: "erpnext.projects.document type.timesheet.timesheet.get_activity_cost",
+=======
+			method: "erpnext.project.doctype.timesheet.timesheet.get_activity_cost",
+>>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
 			args: {
 				employee: frm.doc.employee,
-				activity_type: frm.selected_doc.activity_type,
+				activity: frm.selected_doc.activity,
 				currency: frm.doc.currency
 			},
 			callback: function (r) {

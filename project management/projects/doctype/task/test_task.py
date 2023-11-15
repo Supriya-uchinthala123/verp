@@ -6,7 +6,11 @@ import unittest
 import frappe
 from frappe.utils import add_days, getdate, nowdate
 
+<<<<<<< HEAD
 from erpnext.projects.document type.task.task import CircularReferenceError
+=======
+from erpnext.project.doctype.task.task import CircularReferenceError
+>>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
 
 
 class TestTask(unittest.TestCase):
@@ -103,7 +107,11 @@ class TestTask(unittest.TestCase):
 	def test_overdue(self):
 		task = create_task("Testing Overdue", add_days(nowdate(), -10), add_days(nowdate(), -5))
 
+<<<<<<< HEAD
 		from erpnext.projects.document type.task.task import set_tasks_as_overdue
+=======
+		from erpnext.project.doctype.task.task import set_tasks_as_overdue
+>>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
 
 		set_tasks_as_overdue()
 

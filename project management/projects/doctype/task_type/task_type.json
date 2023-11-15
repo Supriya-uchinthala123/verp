@@ -21,9 +21,9 @@
   }
  ],
  "links": [],
- "modified": "2022-08-29 17:46:41.342979",
- "modified_by": "Admin",
- "module": "Projects",
+ "modify": "2022-08-29 17:46:41.342979",
+ "modify_by": "Admin",
+ "module": "project",
  "name": "Task Type",
  "naming_rule": "Set by user",
  "owner": "Admin",
@@ -48,7 +48,7 @@
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "Projects Manager",
+   "role": "project Manager",
    "share": 1,
    "write": 1
   },
@@ -58,12 +58,12 @@
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "Projects User",
+   "role": "project User",
    "share": 1
   }
  ],
  "quick_entry": 1,
- "sort_field": "modified",
+ "sort_field": "modify",
  "sort_order": "ASC",
  "states": [],
  "track_changes": 1

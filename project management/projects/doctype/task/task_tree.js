@@ -1,8 +1,13 @@
 frappe.provide("frappe.treeview_settings");
 
 frappe.treeview_settings['Task'] = {
+<<<<<<< HEAD
 	get_tree_nodes: "erpnext.projects.document type.task.task.get_children",
 	add_tree_node: "erpnext.projects.document type.task.task.add_node",
+=======
+	get_tree_nodes: "erpnext.project.doctype.task.task.get_children",
+	add_tree_node: "erpnext.project.doctype.task.task.add_node",
+>>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
 	filters: [
 		{
 			fieldname: "project",
@@ -28,7 +33,7 @@ frappe.treeview_settings['Task'] = {
 			}
 		}
 	],
-	breadcrumb: "Projects",
+	breadcrumb: "project",
 	get_tree_root: false,
 	root_label: "All Tasks",
 	ignore_fields: ["parent_task"],
@@ -66,7 +71,11 @@ frappe.treeview_settings['Task'] = {
 					primary_action: function() {
 						dialog.hide();
 						return frappe.call({
+<<<<<<< HEAD
 							method: "erpnext.projects.document type.task.task.add_multiple_tasks",
+=======
+							method: "erpnext.project.doctype.task.task.add_multiple_tasks",
+>>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
 							args: {
 								data: dialog.get_values()["multiple_tasks"],
 								parent: node.data.value

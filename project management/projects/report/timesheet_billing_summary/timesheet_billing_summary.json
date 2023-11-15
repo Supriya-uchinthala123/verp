@@ -10,9 +10,9 @@
  "is_standard": "Yes",
  "letter_head": "ALYF GmbH",
  "letterhead": null,
- "modified": "2023-10-11 00:58:30.639078",
- "modified_by": "Admin",
- "module": "Projects",
+ "modify": "2023-10-11 00:58:30.639078",
+ "modify_by": "Admin",
+ "module": "project",
  "name": "Timesheet Billing Summary",
  "owner": "Admin",
  "prepared_report": 0,
@@ -21,7 +21,7 @@
  "report_type": "Script Report",
  "roles": [
   {
-   "role": "Projects User"
+   "role": "project User"
   },
   {
    "role": "Employee"

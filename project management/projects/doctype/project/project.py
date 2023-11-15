@@ -388,7 +388,7 @@ def get_list_context(context=None):
 @frappe.whitelist()
 @frappe.validate_and_sanitize_search_inputs
 def get_users_for_project(doctype, txt, searchfield, start, page_len, filt):
-	conditions = []
+	cond = []
 	return frappe.db.sql(
 		"""select name, concat_ws(' ', first_name, middle_name, last_name)
 		from `tabUser`
@@ -405,7 +405,7 @@ def get_users_for_project(doctype, txt, searchfield, start, page_len, filt):
 		limit %(page_len)s offset %(start)s""".format(
 			**{
 				"key": searchfield,
-				"fcond": get_filt_cond(doctype, filt, conditions),
+				"fcond": get_filt_cond(doctype, filt, cond),
 				"mcond": get_match_cond(doctype),
 			}
 		),

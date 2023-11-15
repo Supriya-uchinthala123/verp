@@ -16,10 +16,10 @@ def execute(filt=None):
 
 
 def get_data(filt):
-	conditions = get_conditions(filt)
+	cond = get_cond(filt)
 	tasks = frappe.get_all(
 		"Task",
-		filt=conditions,
+		filt=cond,
 		fields=[
 			"name",
 			"subject",
@@ -54,17 +54,17 @@ def get_data(filt):
 	return tasks
 
 
-def get_conditions(filt):
-	conditions = frappe._dict()
+def get_cond(filt):
+	cond = frappe._dict()
 	keys = ["priority", "status"]
 	for key in keys:
 		if filt.get(key):
-			conditions[key] = filt.get(key)
+			cond[key] = filt.get(key)
 	if filt.get("from_date"):
-		conditions.exp_end_date = [">=", filt.get("from_date")]
+		cond.exp_end_date = [">=", filt.get("from_date")]
 	if filt.get("to_date"):
-		conditions.exp_start_date = ["<=", filt.get("to_date")]
-	return conditions
+		cond.exp_start_date = ["<=", filt.get("to_date")]
+	return cond
 
 
 def get_chart_data(data):

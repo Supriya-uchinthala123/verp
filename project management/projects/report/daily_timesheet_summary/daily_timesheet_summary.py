@@ -4,7 +4,7 @@
 
 import frappe
 from frappe import _
-from frappe.desk.reportview import build_match_conditions
+from frappe.desk.reportview import build_match_cond
 
 
 def execute(filt=None):
@@ -15,8 +15,8 @@ def execute(filt=None):
 		filt["to_time"] = "24:00:00"
 
 	columns = get_column()
-	conditions = get_conditions(filt)
-	data = get_data(conditions, filt)
+	cond = get_cond(filt)
+	data = get_data(cond, filt)
 
 	return columns, data
 
@@ -36,14 +36,14 @@ def get_column():
 	]
 
 
-def get_data(conditions, filt):
+def get_data(cond, filt):
 	time_sheet = frappe.db.sql(
 		""" select `tabTimesheet`.name, `tabTimesheet`.employee, `tabTimesheet`.employee_name,
 		`tabTimesheet Detail`.from_time, `tabTimesheet Detail`.to_time, `tabTimesheet Detail`.hours,
 		`tabTimesheet Detail`.activity_type, `tabTimesheet Detail`.task, `tabTimesheet Detail`.project,
 		`tabTimesheet`.status from `tabTimesheet Detail`, `tabTimesheet` where
 		`tabTimesheet Detail`.parent = `tabTimesheet`.name and %s order by `tabTimesheet`.name"""
-		% (conditions),
+		% (cond),
 		filt,
 		as_list=1,
 	)
@@ -51,15 +51,15 @@ def get_data(conditions, filt):
 	return time_sheet
 
 
-def get_conditions(filt):
-	conditions = "`tabTimesheet`.docstatus = 1"
+def get_cond(filt):
+	cond = "`tabTimesheet`.docstatus = 1"
 	if filt.get("from_date"):
-		conditions += " and `tabTimesheet Detail`.from_time >= timestamp(%(from_date)s, %(from_time)s)"
+		cond += " and `tabTimesheet Detail`.from_time >= timestamp(%(from_date)s, %(from_time)s)"
 	if filt.get("to_date"):
-		conditions += " and `tabTimesheet Detail`.to_time <= timestamp(%(to_date)s, %(to_time)s)"
+		cond += " and `tabTimesheet Detail`.to_time <= timestamp(%(to_date)s, %(to_time)s)"
 
-	match_conditions = build_match_conditions("Timesheet")
-	if match_conditions:
-		conditions += " and %s" % match_conditions
+	match_cond = build_match_cond("Timesheet")
+	if match_cond:
+		cond += " and %s" % match_cond
 
-	return conditions
+	return cond

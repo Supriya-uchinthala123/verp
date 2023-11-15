@@ -10,12 +10,12 @@ import frappe
 @frappe.whitelist()
 @frappe.validate_and_sanitize_search_inputs
 def query_task(doctype, txt, searchfield, start, page_len, filt):
-	from frappe.desk.reportview import build_match_conditions
+	from frappe.desk.reportview import build_match_cond
 
 	search_string = "%%%s%%" % txt
 	order_by_string = "%s%%" % txt
-	match_conditions = build_match_conditions("Task")
-	match_conditions = ("and" + match_conditions) if match_conditions else ""
+	match_cond = build_match_cond("Task")
+	match_cond = ("and" + match_cond) if match_cond else ""
 
 	return frappe.db.sql(
 		"""select name, subject from `tabTask`
@@ -26,6 +26,6 @@ def query_task(doctype, txt, searchfield, start, page_len, filt):
 			`%s`,
 			subject
 		limit %s offset %s"""
-		% (searchfield, "%s", "%s", match_conditions, "%s", searchfield, "%s", searchfield, "%s", "%s"),
+		% (searchfield, "%s", "%s", match_cond, "%s", searchfield, "%s", searchfield, "%s", "%s"),
 		(search_string, search_string, order_by_string, order_by_string, page_len, start),
 	)

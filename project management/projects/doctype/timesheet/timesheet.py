@@ -439,9 +439,9 @@ def get_events(start, end, filt=None):
 	:param filt: filt (JSON).
 	"""
 	filt = json.loads(filt)
-	from frappe.desk.calendar import get_event_conditions
+	from frappe.desk.calendar import get_event_cond
 
-	conditions = get_event_conditions("Timesheet", filt)
+	cond = get_event_cond("Timesheet", filt)
 
 	return frappe.db.sql(
 		"""select `tabTimesheet Detail`.name as name,
@@ -452,9 +452,9 @@ def get_events(start, end, filt=None):
 		from `tabTimesheet Detail`, `tabTimesheet`
 		where `tabTimesheet Detail`.parent = `tabTimesheet`.name
 			and `tabTimesheet`.docstatus < 2
-			and (from_time <= %(end)s and to_time >= %(start)s) {conditions} {match_cond}
+			and (from_time <= %(end)s and to_time >= %(start)s) {cond} {match_cond}
 		""".format(
-			conditions=conditions, match_cond=get_match_cond("Timesheet")
+			cond=cond, match_cond=get_match_cond("Timesheet")
 		),
 		{"start": start, "end": end},
 		as_dict=True,

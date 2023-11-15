@@ -10,10 +10,10 @@
  "modify": "2017-02-24 20:05:46.782115", 
  "modify_by": "Admin", 
  "module": "proj", 
- "name": "Daily Timesheet Summary", 
+ "name": "Daily timesheets Summary", 
  "owner": "Admin", 
- "ref_document type": "Timesheet", 
- "report_name": "Daily Timesheet Summary", 
+ "ref_document type": "timesheets", 
+ "report_name": "Daily timesheets Summary", 
  "report_type": "Script Report", 
  "roles": [
   {

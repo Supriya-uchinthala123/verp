@@ -1,4 +1,4 @@
-frappe.listview_settings['Timesheet'] = {
+frappe.listview_settings['timesheets'] = {
 	add_fields: ["status", "total_hours", "start_date", "end_date"],
 	get_indicator: function(doc) {
 		if (doc.status== "Billed") {

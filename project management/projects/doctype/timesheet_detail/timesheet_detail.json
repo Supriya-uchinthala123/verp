@@ -227,7 +227,7 @@
  "modify": "2022-02-17 16:53:34.878798",
  "modify_by": "Admin",
  "module": "proj",
- "name": "Timesheet Detail",
+ "name": "timesheets Detail",
  "owner": "Admin",
  "permissions": [],
  "quick_entry": 1,

@@ -234,13 +234,13 @@
   {
    "fieldname": "actual_start_date",
    "fieldtype": "Date",
-   "label": "Actual Start Date (via Timesheet)",
+   "label": "Actual Start Date (via timesheets)",
    "read_only": 1
   },
   {
    "fieldname": "actual_time",
    "fieldtype": "Float",
-   "label": "Actual Time in Hours (via Timesheet)",
+   "label": "Actual Time in Hours (via timesheets)",
    "read_only": 1
   },
   {
@@ -250,7 +250,7 @@
   {
    "fieldname": "actual_end_date",
    "fieldtype": "Date",
-   "label": "Actual End Date (via Timesheet)",
+   "label": "Actual End Date (via timesheets)",
    "oldfieldname": "act_completion_date",
    "oldfieldtype": "Date",
    "read_only": 1
@@ -275,7 +275,7 @@
   {
    "fieldname": "total_costing_amount",
    "fieldtype": "Currency",
-   "label": "Total Costing Amount (via Timesheet)",
+   "label": "Total Costing Amount (via timesheets)",
    "read_only": 1
   },
   {
@@ -305,7 +305,7 @@
   {
    "fieldname": "total_billable_amount",
    "fieldtype": "Currency",
-   "label": "Total Billable Amount (via Timesheet)",
+   "label": "Total Billable Amount (via timesheets)",
    "read_only": 1
   },
   {

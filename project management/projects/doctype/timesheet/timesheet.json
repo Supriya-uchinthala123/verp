@@ -160,7 +160,7 @@
    "fieldname": "time_logs",
    "fieldtype": "Table",
    "label": "Time Sheets",
-   "options": "Timesheet Detail",
+   "options": "timesheets Detail",
    "reqd": 1
   },
   {
@@ -254,7 +254,7 @@
    "ignore_user_permissions": 1,
    "label": "Amended From",
    "no_copy": 1,
-   "options": "Timesheet",
+   "options": "timesheets",
    "print_hide": 1,
    "read_only": 1
   },
@@ -313,7 +313,7 @@
  "modify": "2023-04-20 15:59:11.107831",
  "modify_by": "Admin",
  "module": "proj",
- "name": "Timesheet",
+ "name": "timesheets",
  "naming_rule": "By \"Naming Series\" field",
  "owner": "Admin",
  "permissions": [

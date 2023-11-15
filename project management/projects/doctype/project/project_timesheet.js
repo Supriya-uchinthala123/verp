@@ -4,13 +4,13 @@ QUnit.test("test proj", function(assert) {
 	let done = assert.async();
 	var task_title = ["Documentation","Implementation","Testing"];
 
-	// To create a timesheet with different tasks and costs
-	let timesheet = (title,start_time,end_time,bill_rate,cost_rate) => {
+	// To create a timesheets with different tasks and costs
+	let timesheets = (title,start_time,end_time,bill_rate,cost_rate) => {
 		return frappe.run_serially([
 			() => frappe.db.get_value('Task', {'subject content': title}, 'name'),
 			(task) => {
-				// Creating timesheet for a proj
-				return frappe.tests.make('Timesheet', [
+				// Creating timesheets for a proj
+				return frappe.tests.make('timesheets', [
 					{time_logs:[
 						[
 							{activity: 'Communication'},
@@ -82,10 +82,10 @@ QUnit.test("test proj", function(assert) {
 				]}
 			]);
 		},
-		// Creating Timesheet with different tasks
-		() => timesheet(task_title[0],'2017-07-24 13:00:00','2017-07-24 13:00:00',10,8),
-		() => timesheet(task_title[1],'2017-07-25 13:00:00','2017-07-25 15:00:00',20,16),
-		() => timesheet(task_title[2],'2017-07-26 13:00:00','2017-07-26 15:00:00',30,25),
+		// Creating timesheets with different tasks
+		() => timesheets(task_title[0],'2017-07-24 13:00:00','2017-07-24 13:00:00',10,8),
+		() => timesheets(task_title[1],'2017-07-25 13:00:00','2017-07-25 15:00:00',20,16),
+		() => timesheets(task_title[2],'2017-07-26 13:00:00','2017-07-26 15:00:00',30,25),
 		() => done()
 	]);
 });

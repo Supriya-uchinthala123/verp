@@ -96,11 +96,11 @@ class timesheets(Document):
 		self.set_status()
 
 	def on_cancel(self):
-		self.update_task_and_proj()
+		self.update_task_and_project()
 
 	def on_submit(self):
 		self.validate_mandatory_fields()
-		self.update_task_and_proj()
+		self.update_task_and_project()
 
 	def validate_mandatory_fields(self):
 		for data in self.time_logs:
@@ -113,8 +113,8 @@ class timesheets(Document):
 			if flt(data.hours) == 0.0:
 				frappe.throw(_("Row {0}: Hours value must be greater than zero.").format(data.idx))
 
-	def update_task_and_proj(self):
-		tasks, proj = [], []
+	def update_task_and_project(self):
+		tasks, project = [], []
 
 		for data in self.time_logs:
 			if data.task and data.task not in tasks:
@@ -123,9 +123,9 @@ class timesheets(Document):
 				task.save()
 				tasks.append(data.task)
 
-			elif data.proj and data.proj not in proj:
-				frappe.get_doc("proj", data.proj).update_proj()
-				proj.append(data.proj)
+			elif data.project and data.project not in project:
+				frappe.get_doc("project", data.project).update_project()
+				project.append(data.project)
 
 	def validate_dates(self):
 		for data in self.time_logs:
@@ -136,8 +136,8 @@ class timesheets(Document):
 		for data in self.get("time_logs"):
 			self.set_to_time(data)
 			self.validate_overlap(data)
-			self.set_proj(data)
-			self.validate_proj(data)
+			self.set_project(data)
+			self.validate_project(data)
 
 	def set_to_time(self, data):
 		if not (data.from_time and data.hours):
@@ -148,18 +148,18 @@ class timesheets(Document):
 			data.to_time = _to_time
 
 	def validate_overlap(self, data):
-		settings = frappe.get_single("proj Settings")
+		settings = frappe.get_single("project Settings")
 		self.validate_overlap_for("user", data, self.user, settings.ignore_user_time_overlap)
 		self.validate_overlap_for("employee", data, self.employee, settings.ignore_employee_time_overlap)
 
-	def set_proj(self, data):
-		data.proj = data.proj or frappe.db.get_value("Task", data.task, "proj")
+	def set_project(self, data):
+		data.project = data.project or frappe.db.get_value("Task", data.task, "project")
 
-	def validate_proj(self, data):
-		if self.parent_proj and self.parent_proj != data.proj:
+	def validate_project(self, data):
+		if self.parent_project and self.parent_project != data.project:
 			frappe.throw(
-				_("Row {0}: proj must be same as the one set in the timesheets: {1}.").format(
-					data.idx, self.parent_proj
+				_("Row {0}: project must be same as the one set in the timesheets: {1}.").format(
+					data.idx, self.parent_project
 				)
 			)
 
@@ -252,10 +252,10 @@ class timesheets(Document):
 
 
 @frappe.whitelist()
-def get_projwise_timesheets_data(proj=None, parent=None, from_time=None, to_time=None):
+def get_projectwise_timesheets_data(project=None, parent=None, from_time=None, to_time=None):
 	condition = ""
-	if proj:
-		condition += "AND tsd.proj = %(proj)s "
+	if project:
+		condition += "AND tsd.project = %(project)s "
 	if parent:
 		condition += "AND tsd.parent = %(parent)s "
 	if from_time and to_time:
@@ -272,7 +272,7 @@ def get_projwise_timesheets_data(proj=None, parent=None, from_time=None, to_time
 			tsd.activity as activity,
 			tsd.des as des,
 			ts.currency as currency,
-			tsd.proj_name as proj_name
+			tsd.project_name as project_name
 		FROM `tabtimesheets Detail` tsd
 			INNER JOIN `tabtimesheets` ts
 			ON ts.name = tsd.parent
@@ -285,7 +285,7 @@ def get_projwise_timesheets_data(proj=None, parent=None, from_time=None, to_time
 		ORDER BY tsd.from_time ASC
 	"""
 
-	filters = {"proj": proj, "parent": parent, "from_time": from_time, "to_time": to_time}
+	filters = {"project": project, "parent": parent, "from_time": from_time, "to_time": to_time}
 
 	return frappe.db.sql(query, filters, as_dict=1)
 
@@ -316,8 +316,8 @@ def get_timesheets(document type, txt, searchfield, begin, page_len, filters):
 		filters = {}
 
 	condition = ""
-	if filters.get("proj"):
-		condition = "and tsd.proj = %(proj)s"
+	if filters.get("project"):
+		condition = "and tsd.project = %(project)s"
 
 	return frappe.db.sql(
 		"""select distinct tsd.parent from `tabtimesheets Detail` tsd,
@@ -332,16 +332,16 @@ def get_timesheets(document type, txt, searchfield, begin, page_len, filters):
 			"txt": "%" + txt + "%",
 			"begin": begin,
 			"page_len": page_len,
-			"proj": filters.get("proj"),
+			"project": filters.get("project"),
 		},
 	)
 
 
 @frappe.whitelist()
-def get_timesheets_data(name, proj):
+def get_timesheets_data(name, project):
 	data = None
-	if proj and proj != "":
-		data = get_projwise_timesheets_data(proj, name)
+	if project and project != "":
+		data = get_projectwise_timesheets_data(project, name)
 	else:
 		data = frappe.get_all(
 			"timesheets",
@@ -354,7 +354,7 @@ def get_timesheets_data(name, proj):
 	return {
 		"billing_hours": data[0].billing_hours if data else None,
 		"billing_amount": data[0].billing_amt if data else None,
-		"timesheets_detail": data[0].name if data and proj and proj != "" else None,
+		"timesheets_detail": data[0].name if data and project and project != "" else None,
 	}
 
 
@@ -374,7 +374,7 @@ def make_sales_invoice(source_name, item_code=None, customer=None, currency=None
 	billing_rate = billing_amount / hours
 
 	target.company = timesheets.company
-	target.proj = timesheets.parent_proj
+	target.project = timesheets.parent_project
 	if customer:
 		target.customer = customer
 
@@ -390,7 +390,7 @@ def make_sales_invoice(source_name, item_code=None, customer=None, currency=None
 				"time",
 				{
 					"time_sheet": timesheets.name,
-					"proj_name": time_log.proj_name,
+					"project_name": time_log.project_name,
 					"from_time": time_log.from_time,
 					"to_time": time_log.to_time,
 					"billing_hours": time_log.billing_hours,
@@ -448,10 +448,10 @@ def get_events(begin, end, filters=None):
 			`tabtimesheets Detail`.docstatus as status, `tabtimesheets Detail`.parent as parent,
 <<<<<<< HEAD
 			from_time as begin_date, hours, activity,
-			`tabtimesheets Detail`.project, to_time as end_date,
+			`tabtimesheets Detail`.projectect, to_time as end_date,
 =======
 			from_time as begin_date, hours, activity_type,
-			`tabtimesheets Detail`.proj, to_time as end_date,
+			`tabtimesheets Detail`.project, to_time as end_date,
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
 			CONCAT(`tabtimesheets Detail`.parent, ' (', ROUND(hours,2),' hrs)') as title
 		from `tabtimesheets Detail`, `tabtimesheets`
@@ -494,31 +494,31 @@ def get_time_list(
 		sales_invoices = [
 			d.name for d in frappe.get_all("Sales Invoice", filters={"customer": customer})
 		] or [None]
-		proj = [d.name for d in frappe.get_all("proj", filters={"customer": customer})]
+		project = [d.name for d in frappe.get_all("project", filters={"customer": customer})]
 		# Return timesheets related data to web portal.
 		time = frappe.db.sql(
 			"""
 			SELECT
 <<<<<<< HEAD
 				ts.name, tsd.activity, ts.status, ts.total_billable_hours,
-				COALESCE(ts.sales_invoice, tsd.sales_invoice) AS sales_invoice, tsd.project
+				COALESCE(ts.sales_invoice, tsd.sales_invoice) AS sales_invoice, tsd.projectect
 =======
 				ts.name, tsd.activity_type, ts.status, ts.total_billable_hours,
-				COALESCE(ts.sales_invoice, tsd.sales_invoice) AS sales_invoice, tsd.proj
+				COALESCE(ts.sales_invoice, tsd.sales_invoice) AS sales_invoice, tsd.project
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
 			FROM `tabtimesheets` ts, `tabtimesheets Detail` tsd
 			WHERE tsd.parent = ts.name AND
 				(
 					ts.sales_invoice IN %(sales_invoices)s OR
 					tsd.sales_invoice IN %(sales_invoices)s OR
-					tsd.proj IN %(proj)s
+					tsd.project IN %(project)s
 				)
 			ORDER BY `end_date` ASC
 			LIMIT {1} offset {0}
 		""".format(
 				limit_begin, limit_page_length
 			),
-			dict(sales_invoices=sales_invoices, proj=proj),
+			dict(sales_invoices=sales_invoices, project=project),
 			as_dict=True,
 		)  # nosec
 

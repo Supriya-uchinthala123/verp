@@ -7,12 +7,12 @@ import frappe
 
 <<<<<<< HEAD
 <<<<<<< HEAD
-from erpnext.projects.document type.activity_cost.activity_cost import DuplicationError
+from erpnext.projectects.document type.activity_cost.activity_cost import DuplicationError
 =======
-from erpnext.project.doctype.activity_cost.activity_cost import DuplicationError
+from erpnext.projectect.doctype.activity_cost.activity_cost import DuplicationError
 >>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
 =======
-from erpnext.proj.doctype.activity_cost.activity_cost import DuplicationError
+from erpnext.project.doctype.activity_cost.activity_cost import DuplicationError
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
 
 

@@ -72,10 +72,10 @@ frappe.query_reports["Issue Analytics"] = {
 			options: "Customer"
 		},
 		{
-			fieldname: "project",
-			label: __("Project"),
+			fieldname: "projectect",
+			label: __("projectect"),
 			fieldtype: "Link",
-			options: "Project"
+			options: "projectect"
 		},
 		{
 			fieldname: "assigned_to",

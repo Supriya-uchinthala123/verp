@@ -7,7 +7,7 @@
  "engine": "InnoDB",
  "field_order": [
   "naming_series",
-  "proj",
+  "project",
   "sent",
   "column_break_2",
   "date",
@@ -22,14 +22,14 @@
    "fieldtype": "Data",
    "hidden": 1,
    "label": "Series",
-   "options": "PROJ-UPD-.YYYY.-"
+   "options": "project-UPD-.YYYY.-"
   },
   {
-   "fieldname": "proj",
+   "fieldname": "project",
    "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "proj",
-   "options": "proj",
+   "label": "project",
+   "options": "project",
    "reqd": 1
   },
   {
@@ -64,14 +64,14 @@
    "fieldname": "users",
    "fieldtype": "Table",
    "label": "Users",
-   "options": "proj User"
+   "options": "project User"
   },
   {
    "fieldname": "amended_from",
    "fieldtype": "Link",
    "label": "Amended From",
    "no_copy": 1,
-   "options": "proj Update",
+   "options": "project Update",
    "print_hide": 1,
    "read_only": 1
   }
@@ -80,8 +80,8 @@
  "links": [],
  "modify": "2023-06-28 18:59:50.678917",
  "modify_by": "Admin",
- "module": "proj",
- "name": "proj Update",
+ "module": "project",
+ "name": "project Update",
  "naming_rule": "By \"Naming Series\" field",
  "owner": "Admin",
  "permissions": [
@@ -93,7 +93,7 @@
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "proj User",
+   "role": "project User",
    "share": 1,
    "submit": 1,
    "write": 1

@@ -4,5 +4,5 @@
 import unittest
 
 
-class TestprojSettings(unittest.TestCase):
+class TestprojectSettings(unittest.TestCase):
 	pass

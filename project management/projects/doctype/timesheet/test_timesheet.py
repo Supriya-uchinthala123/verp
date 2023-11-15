@@ -9,11 +9,11 @@ from frappe.utils import add_months, add_to_date, now_datetime, nowdate
 
 <<<<<<< HEAD
 from erpnext.accounts.document type.sales_invoice.test_sales_invoice import create_sales_invoice
-from erpnext.projects.document type.timesheets.timesheets import OverlapError, make_sales_invoice
+from erpnext.projectects.document type.timesheets.timesheets import OverlapError, make_sales_invoice
 from erpnext.setup.document type.employee.test_employee import make_employee
 =======
 from erpnext.accounts.doctype.sales_invoice.test_sales_invoice import create_sales_invoice
-from erpnext.proj.doctype.timesheets.timesheets import OverlapError, make_sales_invoice
+from erpnext.project.doctype.timesheets.timesheets import OverlapError, make_sales_invoice
 from erpnext.setup.doctype.employee.test_employee import make_employee
 >>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
 
@@ -65,15 +65,15 @@ class Testtimesheets(unittest.TestCase):
 		self.assertEqual(item.qty, 2.00)
 		self.assertEqual(item.rate, 50.00)
 
-	def test_timesheets_billing_based_on_proj(self):
+	def test_timesheets_billing_based_on_project(self):
 		emp = make_employee("test_employee_6@salary.com")
-		proj = frappe.get_value("proj", {"proj_name": "_Test proj"})
+		project = frappe.get_value("project", {"project_name": "_Test project"})
 
 		timesheets = make_timesheets(
-			emp, simulate=True, is_billable=1, proj=proj, company="_Test Company"
+			emp, simulate=True, is_billable=1, project=project, company="_Test Company"
 		)
 		sales_invoice = create_sales_invoice(do_not_save=True)
-		sales_invoice.proj = proj
+		sales_invoice.project = project
 		sales_invoice.submit()
 
 		ts = frappe.get_doc("timesheets", timesheets.name)
@@ -83,7 +83,7 @@ class Testtimesheets(unittest.TestCase):
 	def test_timesheets_time_overlap(self):
 		emp = make_employee("test_employee_6@salary.com")
 
-		settings = frappe.get_single("proj Settings")
+		settings = frappe.get_single("project Settings")
 		initial_setting = settings.ignore_employee_time_overlap
 		settings.ignore_employee_time_overlap = 0
 		settings.save()
@@ -209,10 +209,10 @@ def make_timesheets(
 	is_billable=0,
 <<<<<<< HEAD
 	activity="_Test Activity Type",
-	project=None,
+	projectect=None,
 =======
 	activity_type="_Test Activity Type",
-	proj=None,
+	project=None,
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
 	task=None,
 	company=None,
@@ -229,7 +229,7 @@ def make_timesheets(
 	timesheets_detail.to_time = timesheets_detail.from_time + datetime.timedelta(
 		hours=timesheets_detail.hours
 	)
-	timesheets_detail.proj = proj
+	timesheets_detail.project = project
 	timesheets_detail.task = task
 
 	for data in timesheets.get("time_logs"):

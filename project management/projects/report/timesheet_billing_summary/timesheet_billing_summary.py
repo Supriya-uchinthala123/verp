@@ -21,13 +21,13 @@ def get_columns(filters, group_fieldname=None):
 			"fieldname": "date",
 			"width": 150,
 		},
-		"proj": {
-			"label": _("proj"),
+		"project": {
+			"label": _("project"),
 			"fieldtype": "Link",
-			"fieldname": "proj",
-			"options": "proj",
+			"fieldname": "project",
+			"options": "project",
 			"width": 200,
-			"hidden": int(bool(filters.get("proj"))),
+			"hidden": int(bool(filters.get("project"))),
 		},
 		"employee": {
 			"label": _("Employee ID"),
@@ -85,8 +85,8 @@ def get_data(filters, group_fieldname=None):
 	_filters = []
 	if filters.get("employee"):
 		_filters.append(("employee", "=", filters.get("employee")))
-	if filters.get("proj"):
-		_filters.append(("timesheets Detail", "proj", "=", filters.get("proj")))
+	if filters.get("project"):
+		_filters.append(("timesheets Detail", "project", "=", filters.get("project")))
 	if filters.get("from_date"):
 		_filters.append(("timesheets Detail", "from_time", ">=", filters.get("from_date")))
 	if filters.get("to_date"):
@@ -103,7 +103,7 @@ def get_data(filters, group_fieldname=None):
 			"`tabtimesheets`.employee",
 			"`tabtimesheets`.employer",
 			"`tabtimesheets Detail`.from_time as date",
-			"`tabtimesheets Detail`.proj",
+			"`tabtimesheets Detail`.project",
 			"`tabtimesheets Detail`.hours",
 			"`tabtimesheets Detail`.billing_hours",
 			"`tabtimesheets Detail`.billing_amount",

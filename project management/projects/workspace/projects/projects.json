@@ -1,26 +1,26 @@
 {
  "charts": [
   {
-   "chart_name": "proj Summary",
-   "label": "Open proj"
+   "chart_name": "project Summary",
+   "label": "Open project"
   }
  ],
- "content": "[{\"id\":\"VDMms0hapk\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Open proj\",\"col\":12}},{\"id\":\"7Mbx6I5JUf\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"nyuMo9byw7\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Your Shortcuts</b></span>\",\"col\":12}},{\"id\":\"dILbX_r0ve\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Task\",\"col\":3}},{\"id\":\"JT8ntrqRiJ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"proj\",\"col\":3}},{\"id\":\"RsafDhm1MS\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"timesheets\",\"col\":3}},{\"id\":\"cVJH-gD0CR\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"proj billSummary\",\"col\":3}},{\"id\":\"DbctrdmAy1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Dashboard\",\"col\":3}},{\"id\":\"jx5aPK9aXN\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Learn proj Management\",\"col\":3}},{\"id\":\"ncIHWGQQvX\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"oGhjvYjfv-\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Reports &amp; Masters</b></span>\",\"col\":12}},{\"id\":\"TdsgJyG3EI\",\"type\":\"card\",\"data\":{\"card_name\":\"proj\",\"col\":4}},{\"id\":\"nIc0iyvf1T\",\"type\":\"card\",\"data\":{\"card_name\":\"Time Tracking\",\"col\":4}},{\"id\":\"8G1if4jsQ7\",\"type\":\"card\",\"data\":{\"card_name\":\"Reports\",\"col\":4}},{\"id\":\"o7qTNRXZI8\",\"type\":\"card\",\"data\":{\"card_name\":\"Settings\",\"col\":4}}]",
+ "content": "[{\"id\":\"VDMms0hapk\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Open project\",\"col\":12}},{\"id\":\"7Mbx6I5JUf\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"nyuMo9byw7\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Your Shortcuts</b></span>\",\"col\":12}},{\"id\":\"dILbX_r0ve\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Task\",\"col\":3}},{\"id\":\"JT8ntrqRiJ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"project\",\"col\":3}},{\"id\":\"RsafDhm1MS\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"timesheets\",\"col\":3}},{\"id\":\"cVJH-gD0CR\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"project billSummary\",\"col\":3}},{\"id\":\"DbctrdmAy1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Dashboard\",\"col\":3}},{\"id\":\"jx5aPK9aXN\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Learn project Management\",\"col\":3}},{\"id\":\"ncIHWGQQvX\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"oGhjvYjfv-\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Reports &amp; Masters</b></span>\",\"col\":12}},{\"id\":\"TdsgJyG3EI\",\"type\":\"card\",\"data\":{\"card_name\":\"project\",\"col\":4}},{\"id\":\"nIc0iyvf1T\",\"type\":\"card\",\"data\":{\"card_name\":\"Time Tracking\",\"col\":4}},{\"id\":\"8G1if4jsQ7\",\"type\":\"card\",\"data\":{\"card_name\":\"Reports\",\"col\":4}},{\"id\":\"o7qTNRXZI8\",\"type\":\"card\",\"data\":{\"card_name\":\"Settings\",\"col\":4}}]",
  "creation": "2020-03-02 15:46:04.874669",
  "custom_blocks": [],
  "docstatus": 0,
  "document type": "Workspace",
  "for_user": "",
  "hide_custom": 0,
- "icon": "proj",
+ "icon": "project",
  "idx": 0,
  "is_hidden": 0,
- "label": "proj",
+ "label": "project",
  "links": [
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "proj",
+   "label": "project",
    "link_count": 0,
    "onboard": 0,
    "type": "Card Break"
@@ -29,13 +29,13 @@
    "dependencies": "",
    "hidden": 0,
    "is_query_report": 0,
-   "label": "proj",
+   "label": "project",
    "link_count": 0,
 <<<<<<< HEAD
-   "link_to": "Project",
+   "link_to": "projectect",
    "link_type": "document type",
 =======
-   "link_to": "proj",
+   "link_to": "project",
    "link_type": "DocType",
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
    "onboard": 1,
@@ -56,13 +56,13 @@
    "dependencies": "",
    "hidden": 0,
    "is_query_report": 0,
-   "label": "proj Temp",
+   "label": "project Temp",
    "link_count": 0,
 <<<<<<< HEAD
-   "link_to": "Project Template",
+   "link_to": "projectect Template",
    "link_type": "document type",
 =======
-   "link_to": "proj Temp",
+   "link_to": "project Temp",
    "link_type": "DocType",
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
    "onboard": 0,
@@ -72,29 +72,29 @@
    "dependencies": "",
    "hidden": 0,
    "is_query_report": 0,
-   "label": "proj Type",
+   "label": "project Type",
    "link_count": 0,
 <<<<<<< HEAD
-   "link_to": "Project Type",
+   "link_to": "projectect Type",
    "link_type": "document type",
 =======
-   "link_to": "proj Type",
+   "link_to": "project Type",
    "link_type": "DocType",
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
    "onboard": 0,
    "type": "Link"
   },
   {
-   "dependencies": "proj",
+   "dependencies": "project",
    "hidden": 0,
    "is_query_report": 0,
-   "label": "proj Update",
+   "label": "project Update",
    "link_count": 0,
 <<<<<<< HEAD
-   "link_to": "Project Update",
+   "link_to": "projectect Update",
    "link_type": "document type",
 =======
-   "link_to": "proj Update",
+   "link_to": "project Update",
    "link_type": "DocType",
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
    "onboard": 0,
@@ -161,18 +161,18 @@
    "type": "Link"
   },
   {
-   "dependencies": "proj",
+   "dependencies": "project",
    "hidden": 0,
    "is_query_report": 1,
-   "label": "proj wise Stock Tracking",
+   "label": "project wise Stock Tracking",
    "link_count": 0,
-   "link_to": "proj wise Stock Tracking",
+   "link_to": "project wise Stock Tracking",
    "link_type": "Report",
    "onboard": 0,
    "type": "Link"
   },
   {
-   "dependencies": "proj",
+   "dependencies": "project",
    "hidden": 0,
    "is_query_report": 1,
    "label": "timesheets billSummary",
@@ -204,16 +204,16 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "proj Settings",
+   "label": "project Settings",
    "link_count": 0,
 <<<<<<< HEAD
 <<<<<<< HEAD
-   "link_to": "Projects Settings",
+   "link_to": "projectects Settings",
    "link_type": "document type",
 =======
-   "link_to": "project Settings",
+   "link_to": "projectect Settings",
 =======
-   "link_to": "proj Settings",
+   "link_to": "project Settings",
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
    "link_type": "DocType",
 >>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
@@ -223,8 +223,8 @@
  ],
  "modify": "2023-10-10 23:54:33.082108",
  "modify_by": "Admin",
- "module": "proj",
- "name": "proj",
+ "module": "project",
+ "name": "project",
  "number_cards": [],
  "owner": "Admin",
  "parent_page": "",
@@ -237,9 +237,9 @@
   {
    "color": "Grey",
    "doc_view": "List",
-   "label": "Learn proj Management",
+   "label": "Learn project Management",
    "type": "URL",
-   "url": "https://frappe.school/courses/proj-management?utm_source=in_app"
+   "url": "https://frappe.school/courses/project-management?utm_source=in_app"
   },
   {
    "color": "Blue",
@@ -252,8 +252,8 @@
   {
    "color": "Blue",
    "format": "{} Open",
-   "label": "proj",
-   "link_to": "proj",
+   "label": "project",
+   "link_to": "project",
    "stats_filter": "{\n    \"status\": \"Open\"\n}",
    "type": "document type"
   },
@@ -269,9 +269,9 @@
   },
   {
    "label": "Dashboard",
-   "link_to": "proj",
+   "link_to": "project",
    "type": "Dashboard"
   }
  ],
- "title": "proj"
+ "title": "project"
 }

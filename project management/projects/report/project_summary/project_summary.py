@@ -11,7 +11,7 @@ def execute(filters=None):
 	data = []
 
 	data = frappe.db.get_all(
-		"proj",
+		"project",
 		filters=filters,
 		fields=[
 			"name",
@@ -19,18 +19,18 @@ def execute(filters=None):
 			"percent_complete",
 			"expected_begin_date",
 			"expected_end_date",
-			"proj_type",
+			"project_type",
 		],
 		order_by="expected_end_date",
 	)
 
-	for proj in data:
-		proj["total_tasks"] = frappe.db.count("Task", filters={"proj": proj.name})
-		proj["completed_tasks"] = frappe.db.count(
-			"Task", filters={"proj": proj.name, "status": "Completed"}
+	for project in data:
+		project["total_tasks"] = frappe.db.count("Task", filters={"project": project.name})
+		project["completed_tasks"] = frappe.db.count(
+			"Task", filters={"project": project.name, "status": "Completed"}
 		)
-		proj["overdue_tasks"] = frappe.db.count(
-			"Task", filters={"proj": proj.name, "status": "Overdue"}
+		project["overdue_tasks"] = frappe.db.count(
+			"Task", filters={"project": project.name, "status": "Overdue"}
 		)
 
 	chart = get_chart_data(data)
@@ -43,16 +43,16 @@ def get_columns():
 	return [
 		{
 			"fieldname": "name",
-			"label": _("proj"),
+			"label": _("project"),
 			"fieldtype": "Link",
-			"options": "proj",
+			"options": "project",
 			"width": 200,
 		},
 		{
-			"fieldname": "proj_type",
+			"fieldname": "project_type",
 			"label": _("Type"),
 			"fieldtype": "Link",
-			"options": "proj Type",
+			"options": "project Type",
 			"width": 120,
 		},
 		{"fieldname": "status", "label": _("Status"), "fieldtype": "Data", "width": 120},
@@ -81,11 +81,11 @@ def get_chart_data(data):
 	completed = []
 	overdue = []
 
-	for proj in data:
-		labels.append(proj.name)
-		total.append(proj.total_tasks)
-		completed.append(proj.completed_tasks)
-		overdue.append(proj.overdue_tasks)
+	for project in data:
+		labels.append(project.name)
+		total.append(project.total_tasks)
+		completed.append(project.completed_tasks)
+		overdue.append(project.overdue_tasks)
 
 	return {
 		"data": {
@@ -106,10 +106,10 @@ def get_report_summary(data):
 	if not data:
 		return None
 
-	avg_completion = sum(proj.percent_complete for proj in data) / len(data)
-	total = sum([proj.total_tasks for proj in data])
-	total_overdue = sum([proj.overdue_tasks for proj in data])
-	completed = sum([proj.completed_tasks for proj in data])
+	avg_completion = sum(project.percent_complete for project in data) / len(data)
+	total = sum([project.total_tasks for project in data])
+	total_overdue = sum([project.overdue_tasks for project in data])
+	completed = sum([project.completed_tasks for project in data])
 
 	return [
 		{

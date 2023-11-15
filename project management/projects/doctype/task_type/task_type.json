@@ -23,7 +23,7 @@
  "links": [],
  "modify": "2022-08-29 17:46:41.342979",
  "modify_by": "Admin",
- "module": "proj",
+ "module": "project",
  "name": "Task Type",
  "naming_rule": "Set by user",
  "owner": "Admin",
@@ -48,7 +48,7 @@
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "proj Manager",
+   "role": "project Manager",
    "share": 1,
    "write": 1
   },
@@ -58,7 +58,7 @@
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "proj User",
+   "role": "project User",
    "share": 1
   }
  ],

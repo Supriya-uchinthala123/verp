@@ -3,7 +3,7 @@
 
 frappe.ui.form.on("timesheets", {
 	setup: function(frm) {
-		frappe.require("/assets/erpnext/js/proj/timer.js");
+		frappe.require("/assets/erpnext/js/project/timer.js");
 
 		frm.ignore_document types_on_cancel_all = ['Sales Invoice'];
 
@@ -19,13 +19,13 @@ frappe.ui.form.on("timesheets", {
 			var child = locals[cdt][cdn];
 			return{
 				filters: {
-					'proj': child.proj,
+					'project': child.project,
 					'status': ["!=", "Cancelled"]
 				}
 			};
 		};
 
-		frm.fields_dict['time_logs'].grid.get_field('proj').get_query = function() {
+		frm.fields_dict['time_logs'].grid.get_field('project').get_query = function() {
 			return{
 				filters: {
 					'company': frm.doc.company
@@ -103,7 +103,7 @@ frappe.ui.form.on("timesheets", {
 			filters["customer"] = frm.doc.customer;
 		}
 
-		frm.set_query('parent_proj', function(doc) {
+		frm.set_query('parent_project', function(doc) {
 			return {
 				filters: filters
 			};
@@ -114,7 +114,7 @@ frappe.ui.form.on("timesheets", {
 	},
 
 	customer: function(frm) {
-		frm.set_query('proj', 'time_logs', function(doc) {
+		frm.set_query('project', 'time_logs', function(doc) {
 			return {
 				filters: {
 					"customer": doc.customer
@@ -203,12 +203,12 @@ frappe.ui.form.on("timesheets", {
 				type: "GET",
 <<<<<<< HEAD
 <<<<<<< HEAD
-				method: "erpnext.projects.document type.timesheets.timesheets.make_sales_invoice",
+				method: "erpnext.projectects.document type.timesheets.timesheets.make_sales_invoice",
 =======
-				method: "erpnext.project.doctype.timesheets.timesheets.make_sales_invoice",
+				method: "erpnext.projectect.doctype.timesheets.timesheets.make_sales_invoice",
 >>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
 =======
-				method: "erpnext.proj.doctype.timesheets.timesheets.make_sales_invoice",
+				method: "erpnext.project.doctype.timesheets.timesheets.make_sales_invoice",
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
 				args: {
 					"source_name": frm.doc.name,
@@ -228,8 +228,8 @@ frappe.ui.form.on("timesheets", {
 		dialog.show();
 	},
 
-	parent_proj: function(frm) {
-		set_proj_in_timelog(frm);
+	parent_project: function(frm) {
+		set_project_in_timelog(frm);
 	}
 });
 
@@ -241,8 +241,8 @@ frappe.ui.form.on("timesheets Detail", {
 	task: (frm, cdt, cdn) => {
 		let row = frm.selected_doc;
 		if (row.task) {
-			frappe.db.get_value("Task", row.task, "proj", (r) => {
-				frappe.model.set_value(cdt, cdn, "proj", r.proj);
+			frappe.db.get_value("Task", row.task, "project", (r) => {
+				frappe.model.set_value(cdt, cdn, "project", r.project);
 			});
 		}
 	},
@@ -261,8 +261,8 @@ frappe.ui.form.on("timesheets Detail", {
 	},
 
 	time_logs_add: function(frm, cdt, cdn) {
-		if(frm.doc.parent_proj) {
-			frappe.model.set_value(cdt, cdn, 'proj', frm.doc.parent_proj);
+		if(frm.doc.parent_project) {
+			frappe.model.set_value(cdt, cdn, 'project', frm.doc.parent_project);
 		}
 	},
 
@@ -300,12 +300,12 @@ frappe.ui.form.on("timesheets Detail", {
 		frappe.call({
 <<<<<<< HEAD
 <<<<<<< HEAD
-			method: "erpnext.projects.document type.timesheets.timesheets.get_activity_cost",
+			method: "erpnext.projectects.document type.timesheets.timesheets.get_activity_cost",
 =======
-			method: "erpnext.project.doctype.timesheets.timesheets.get_activity_cost",
+			method: "erpnext.projectect.doctype.timesheets.timesheets.get_activity_cost",
 >>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
 =======
-			method: "erpnext.proj.doctype.timesheets.timesheets.get_activity_cost",
+			method: "erpnext.project.doctype.timesheets.timesheets.get_activity_cost",
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
 			args: {
 				employee: frm.doc.employee,
@@ -414,13 +414,13 @@ const set_employee_and_company = function(frm) {
 	});
 };
 
-function set_proj_in_timelog(frm) {
-	if(frm.doc.parent_proj) {
+function set_project_in_timelog(frm) {
+	if(frm.doc.parent_project) {
 		$.each(frm.doc.time_logs || [], function(i, item) {
 <<<<<<< HEAD
-			frappe.model.set_value(item.document type, item.name, "project", frm.doc.parent_project);
+			frappe.model.set_value(item.document type, item.name, "projectect", frm.doc.parent_projectect);
 =======
-			frappe.model.set_value(item.doctype, item.name, "proj", frm.doc.parent_proj);
+			frappe.model.set_value(item.doctype, item.name, "project", frm.doc.parent_project);
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
 		});
 	}

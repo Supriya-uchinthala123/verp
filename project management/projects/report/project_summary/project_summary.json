@@ -9,24 +9,24 @@
  "is_standard": "Yes",
  "modify": "2020-05-04 19:32:53.177213",
  "modify_by": "Admin",
- "module": "proj",
- "name": "proj Summary",
+ "module": "project",
+ "name": "project Summary",
  "owner": "Admin",
  "prepared_report": 0,
 <<<<<<< HEAD
- "ref_document type": "Project",
- "report_name": "Project Summary",
+ "ref_document type": "projectect",
+ "report_name": "projectect Summary",
 =======
- "ref_doctype": "proj",
- "report_name": "proj Summary",
+ "ref_doctype": "project",
+ "report_name": "project Summary",
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
  "report_type": "Script Report",
  "roles": [
   {
-   "role": "proj User"
+   "role": "project User"
   },
   {
-   "role": "proj Manager"
+   "role": "project Manager"
   }
  ]
 }

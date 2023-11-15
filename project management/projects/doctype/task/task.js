@@ -1,7 +1,7 @@
 // Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 // License: GNU General Public License v3. See license.txt
 
-frappe.provide("erpnext.proj");
+frappe.provide("erpnext.project");
 
 frappe.ui.form.on("Task", {
 	setup: function (frm) {
@@ -9,12 +9,12 @@ frappe.ui.form.on("Task", {
 			'timesheets': () => frappe.model.open_mapped_doc({
 <<<<<<< HEAD
 <<<<<<< HEAD
-				method: 'erpnext.projects.document type.task.task.make_timesheets',
+				method: 'erpnext.projectects.document type.task.task.make_timesheets',
 =======
-				method: 'erpnext.project.doctype.task.task.make_timesheets',
+				method: 'erpnext.projectect.doctype.task.task.make_timesheets',
 >>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
 =======
-				method: 'erpnext.proj.doctype.task.task.make_timesheets',
+				method: 'erpnext.project.doctype.task.task.make_timesheets',
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
 				frm: frm
 			})
@@ -26,7 +26,7 @@ frappe.ui.form.on("Task", {
 			let filters = {
 				name: ["!=", frm.doc.name]
 			};
-			if (frm.doc.proj) filters["proj"] = frm.doc.proj;
+			if (frm.doc.project) filters["project"] = frm.doc.project;
 			return {
 				filters: filters
 			};
@@ -37,7 +37,7 @@ frappe.ui.form.on("Task", {
 				"is_group": 1,
 				"name": ["!=", frm.doc.name]
 			};
-			if (frm.doc.proj) filters["proj"] = frm.doc.proj;
+			if (frm.doc.project) filters["project"] = frm.doc.project;
 			return {
 				filters: filters
 			}
@@ -48,12 +48,12 @@ frappe.ui.form.on("Task", {
 		frappe.call({
 <<<<<<< HEAD
 <<<<<<< HEAD
-			method: "erpnext.projects.document type.task.task.check_if_child_exists",
+			method: "erpnext.projectects.document type.task.task.check_if_child_exists",
 =======
-			method: "erpnext.project.doctype.task.task.check_if_child_exists",
+			method: "erpnext.projectect.doctype.task.task.check_if_child_exists",
 >>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
 =======
-			method: "erpnext.proj.doctype.task.task.check_if_child_exists",
+			method: "erpnext.project.doctype.task.task.check_if_child_exists",
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
 			args: {
 				name: frm.doc.name
@@ -71,7 +71,7 @@ frappe.ui.form.on("Task", {
 	},
 
 	validate: function (frm) {
-		frm.doc.proj && frappe.model.remove_from_locals("proj",
-			frm.doc.proj);
+		frm.doc.project && frappe.model.remove_from_locals("project",
+			frm.doc.project);
 	}
 });

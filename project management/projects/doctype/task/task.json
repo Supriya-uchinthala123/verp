@@ -9,10 +9,10 @@
  "field_order": [
 <<<<<<< HEAD
   "subject content",
-  "project",
+  "projectect",
 =======
   "subject",
-  "proj",
+  "project",
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
   "issue",
   "type",
@@ -72,15 +72,15 @@
   },
   {
    "bold": 1,
-   "fieldname": "proj",
+   "fieldname": "project",
    "fieldtype": "Link",
    "in_global_search": 1,
    "in_list_view": 1,
    "in_standard_filter": 1,
-   "label": "proj",
-   "oldfieldname": "proj",
+   "label": "project",
+   "oldfieldname": "project",
    "oldfieldtype": "Link",
-   "options": "proj",
+   "options": "project",
    "remember_last_selected_value": 1,
    "search_index": 1
   },
@@ -327,7 +327,7 @@
    "options": "Department"
   },
   {
-   "fetch_from": "proj.company",
+   "fetch_from": "project.company",
    "fieldname": "company",
    "fieldtype": "Link",
    "label": "Company",
@@ -403,7 +403,7 @@
  "max_attachments": 5,
  "modify": "2023-09-28 13:52:05.861175",
  "modify_by": "Admin",
- "module": "proj",
+ "module": "project",
  "name": "Task",
  "naming_rule": "Expression (old style)",
  "nsm_parent_field": "parent_task",
@@ -416,7 +416,7 @@
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "proj User",
+   "role": "project User",
    "share": 1,
    "write": 1
   }
@@ -428,10 +428,10 @@
  "sort_order": "DESC",
  "states": [],
 <<<<<<< HEAD
- "timeline_field": "project",
+ "timeline_field": "projectect",
  "title_field": "subject content",
 =======
- "timeline_field": "proj",
+ "timeline_field": "project",
  "title_field": "subject",
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
  "track_seen": 1

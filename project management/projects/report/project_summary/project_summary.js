@@ -2,7 +2,7 @@
 // For license information, please see license.txt
 
 
-frappe.query_reports["proj Summary"] = {
+frappe.query_reports["project Summary"] = {
 	"filters": [
 		{
 			"fieldname": "company",
@@ -27,10 +27,10 @@ frappe.query_reports["proj Summary"] = {
 			"default": "Open"
 		},
 		{
-			"fieldname": "proj_type",
-			"label": __("proj Type"),
+			"fieldname": "project_type",
+			"label": __("project Type"),
 			"fieldtype": "Link",
-			"options": "proj Type"
+			"options": "project Type"
 		},
 		{
 			"fieldname": "priority",

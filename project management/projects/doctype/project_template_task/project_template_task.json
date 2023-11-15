@@ -33,15 +33,15 @@
  "modified": "2021-02-24 15:18:49.095071",
  "modified_by": "Admin",
 <<<<<<< HEAD
- "module": "projs",
- "name": "proj Temp Task",
+ "module": "projects",
+ "name": "project Temp Task",
 =======
 =======
  "modify": "2021-02-24 15:18:49.095071",
  "modify_by": "Admin",
 >>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
- "module": "proj",
- "name": "proj Template Task",
+ "module": "project",
+ "name": "project Template Task",
 >>>>>>> 9a4b643c8d5f6a3649134610a05210686833bd74
  "owner": "Admin",
  "permissions": [],

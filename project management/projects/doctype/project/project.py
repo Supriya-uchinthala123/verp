@@ -82,7 +82,7 @@ class Project(Document):
 				status="Open",
 				exp_start_date=self.calculate_start_date(task_details),
 				exp_end_date=self.calculate_end_date(task_details),
-				description=task_details.description,
+				des=task_details.des,
 				task_weight=task_details.task_weight,
 				type=task_details.type,
 				issue=task_details.issue,

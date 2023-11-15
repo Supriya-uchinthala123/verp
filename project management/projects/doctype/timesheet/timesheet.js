@@ -136,7 +136,7 @@ frappe.ui.form.on("Timesheet", {
 				callback: function(r) {
 					if (r.message) {
 						frm.set_value('exchange_rate', flt(r.message));
-						frm.set_df_property("exchange_rate", "description", "1 " + frm.doc.currency + " = [?] " + base_currency);
+						frm.set_df_property("exchange_rate", "des", "1 " + frm.doc.currency + " = [?] " + base_currency);
 					}
 				}
 			});

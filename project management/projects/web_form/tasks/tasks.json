@@ -64,7 +64,7 @@
    "reqd": 0
   }, 
   {
-   "fieldname": "description", 
+   "fieldname": "des", 
    "fieldtype": "Text Editor", 
    "hidden": 0, 
    "label": "Details", 

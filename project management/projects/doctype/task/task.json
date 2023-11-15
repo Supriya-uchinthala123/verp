@@ -31,7 +31,7 @@
   "duration",
   "is_milestone",
   "sb_details",
-  "description",
+  "des",
   "sb_depends_on",
   "depends_on",
   "depends_on_tasks",
@@ -204,10 +204,10 @@
    "oldfieldtype": "Section Break"
   },
   {
-   "fieldname": "description",
+   "fieldname": "des",
    "fieldtype": "Text Editor",
-   "label": "Task Description",
-   "oldfieldname": "description",
+   "label": "Task des",
+   "oldfieldname": "des",
    "oldfieldtype": "Text Editor",
    "print_width": "300px",
    "width": "300px"

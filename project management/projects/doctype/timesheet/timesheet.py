@@ -285,9 +285,9 @@ def get_projectwise_timesheet_data(project=None, parent=None, from_time=None, to
 		ORDER BY tsd.from_time ASC
 	"""
 
-	filters = {"project": project, "parent": parent, "from_time": from_time, "to_time": to_time}
+	filt = {"project": project, "parent": parent, "from_time": from_time, "to_time": to_time}
 
-	return frappe.db.sql(query, filters, as_dict=1)
+	return frappe.db.sql(query, filt, as_dict=1)
 
 
 @frappe.whitelist()
@@ -311,12 +311,12 @@ def get_timesheet_detail_rate(timelog, currency):
 
 @frappe.whitelist()
 @frappe.validate_and_sanitize_search_inputs
-def get_timesheet(doctype, txt, searchfield, start, page_len, filters):
-	if not filters:
-		filters = {}
+def get_timesheet(doctype, txt, searchfield, start, page_len, filt):
+	if not filt:
+		filt = {}
 
 	condition = ""
-	if filters.get("project"):
+	if filt.get("project"):
 		condition = "and tsd.project = %(project)s"
 
 	return frappe.db.sql(
@@ -332,7 +332,7 @@ def get_timesheet(doctype, txt, searchfield, start, page_len, filters):
 			"txt": "%" + txt + "%",
 			"start": start,
 			"page_len": page_len,
-			"project": filters.get("project"),
+			"project": filt.get("project"),
 		},
 	)
 
@@ -349,7 +349,7 @@ def get_timesheet_data(name, project):
 				"(total_billable_amount - total_billed_amount) as billing_amt",
 				"total_billable_hours as billing_hours",
 			],
-			filters={"name": name},
+			filt={"name": name},
 		)
 	return {
 		"billing_hours": data[0].billing_hours if data else None,
@@ -432,16 +432,16 @@ def get_activity_cost(employee=None, activity_type=None, currency=None):
 
 
 @frappe.whitelist()
-def get_events(start, end, filters=None):
+def get_events(start, end, filt=None):
 	"""Returns events for Gantt / Calendar view rendering.
 	:param start: Start date-time.
 	:param end: End date-time.
-	:param filters: Filters (JSON).
+	:param filt: filt (JSON).
 	"""
-	filters = json.loads(filters)
+	filt = json.loads(filt)
 	from frappe.desk.calendar import get_event_conditions
 
-	conditions = get_event_conditions("Timesheet", filters)
+	conditions = get_event_conditions("Timesheet", filt)
 
 	return frappe.db.sql(
 		"""select `tabTimesheet Detail`.name as name,
@@ -463,7 +463,7 @@ def get_events(start, end, filters=None):
 
 
 def get_timesheets_list(
-	doctype, txt, filters, limit_start, limit_page_length=20, order_by="modified"
+	doctype, txt, filt, limit_start, limit_page_length=20, order_by="modified"
 ):
 	user = frappe.session.user
 	# find customer name from contact.
@@ -478,9 +478,9 @@ def get_timesheets_list(
 
 	if customer:
 		sales_invoices = [
-			d.name for d in frappe.get_all("Sales Invoice", filters={"customer": customer})
+			d.name for d in frappe.get_all("Sales Invoice", filt={"customer": customer})
 		] or [None]
-		proj = [d.name for d in frappe.get_all("Project", filters={"customer": customer})]
+		proj = [d.name for d in frappe.get_all("Project", filt={"customer": customer})]
 		# Return timesheet related data to web portal.
 		timesheets = frappe.db.sql(
 			"""

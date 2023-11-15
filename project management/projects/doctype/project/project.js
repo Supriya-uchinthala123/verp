@@ -37,16 +37,16 @@ frappe.ui.form.on("Project", {
 
 		// sales order
 		frm.set_query('sales_order', function () {
-			var filters = {
+			var filt = {
 				'project': ["in", frm.doc.__islocal ? [""] : [frm.doc.name, ""]]
 			};
 
 			if (frm.doc.customer) {
-				filters["customer"] = frm.doc.customer;
+				filt["customer"] = frm.doc.customer;
 			}
 
 			return {
-				filters: filters
+				filt: filt
 			};
 		});
 	},

@@ -13,7 +13,7 @@ from frappe.utils import add_days, flt, get_datetime, get_time, get_url, nowtime
 from frappe.utils.user import is_website_user
 
 from erpnext import get_default_company
-from erpnext.controllers.queries import get_filters_cond
+from erpnext.controllers.queries import get_filt_cond
 from erpnext.controllers.website_list_for_contact import get_customers_suppliers
 from erpnext.setup.doctype.holiday_list.holiday_list import is_holiday
 
@@ -317,18 +317,18 @@ def get_timeline_data(doctype: str, name: str) -> dict[int, int]:
 
 
 def get_project_list(
-	doctype, txt, filters, limit_start, limit_page_length=20, order_by="modified"
+	doctype, txt, filt, limit_start, limit_page_length=20, order_by="modified"
 ):
 	user = frappe.session.user
 	customers, suppliers = get_customers_suppliers("Project", frappe.session.user)
 
 	ignore_permissions = False
 	if is_website_user():
-		if not filters:
-			filters = []
+		if not filt:
+			filt = []
 
 		if customers:
-			filters.append([doctype, "customer", "in", customers])
+			filt.append([doctype, "customer", "in", customers])
 
 		ignore_permissions = True
 
@@ -336,7 +336,7 @@ def get_project_list(
 
 	fields = "distinct *"
 
-	or_filters = []
+	or_filt = []
 
 	if txt:
 		if meta.search_fields:
@@ -348,18 +348,18 @@ def get_project_list(
 					"Text Editor",
 					"select",
 				):
-					or_filters.append([doctype, f, "like", "%" + txt + "%"])
+					or_filt.append([doctype, f, "like", "%" + txt + "%"])
 		else:
-			if isinstance(filters, dict):
-				filters["name"] = ("like", "%" + txt + "%")
+			if isinstance(filt, dict):
+				filt["name"] = ("like", "%" + txt + "%")
 			else:
-				filters.append([doctype, "name", "like", "%" + txt + "%"])
+				filt.append([doctype, "name", "like", "%" + txt + "%"])
 
 	return frappe.get_list(
 		doctype,
 		fields=fields,
-		filters=filters,
-		or_filters=or_filters,
+		filt=filt,
+		or_filt=or_filt,
 		limit_start=limit_start,
 		limit_page_length=limit_page_length,
 		order_by=order_by,
@@ -387,7 +387,7 @@ def get_list_context(context=None):
 
 @frappe.whitelist()
 @frappe.validate_and_sanitize_search_inputs
-def get_users_for_project(doctype, txt, searchfield, start, page_len, filters):
+def get_users_for_project(doctype, txt, searchfield, start, page_len, filt):
 	conditions = []
 	return frappe.db.sql(
 		"""select name, concat_ws(' ', first_name, middle_name, last_name)
@@ -405,7 +405,7 @@ def get_users_for_project(doctype, txt, searchfield, start, page_len, filters):
 		limit %(page_len)s offset %(start)s""".format(
 			**{
 				"key": searchfield,
-				"fcond": get_filters_cond(doctype, filters, conditions),
+				"fcond": get_filt_cond(doctype, filt, conditions),
 				"mcond": get_match_cond(doctype),
 			}
 		),
@@ -501,7 +501,7 @@ def create_duplicate_project(prev_doc, project_name):
 	project.insert()
 
 	# fetch all the task linked with the old project
-	task_list = frappe.get_all("Task", filters={"project": prev_doc.get("name")}, fields=["name"])
+	task_list = frappe.get_all("Task", filt={"project": prev_doc.get("name")}, fields=["name"])
 
 	# Create duplicate task for all the task
 	for task in task_list:
@@ -519,7 +519,7 @@ def get_proj_for_collect_progress(frequency, fields):
 	return frappe.get_all(
 		"Project",
 		fields=fields,
-		filters={"collect_progress": 1, "frequency": frequency, "status": "Open"},
+		filt={"collect_progress": 1, "frequency": frequency, "status": "Open"},
 	)
 
 
@@ -561,7 +561,7 @@ def collect_project_status():
 		replies = frappe.get_all(
 			"Communication",
 			fields=["content", "text_content", "sender"],
-			filters=dict(
+			filt=dict(
 				reference_doctype="Project Update",
 				reference_name=data.name,
 				communication_type="Communication",

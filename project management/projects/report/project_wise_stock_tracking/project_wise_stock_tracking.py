@@ -5,7 +5,7 @@ import frappe
 from frappe import _
 
 
-def execute(filters=None):
+def execute(filt=None):
 	columns = get_columns()
 	proj_details = get_project_details()
 	pr_item_map = get_purchased_items_cost()

@@ -3,7 +3,7 @@
 
 
 frappe.query_reports["Project Summary"] = {
-	"filters": [
+	"filt": [
 		{
 			"fieldname": "company",
 			"label": __("Company"),

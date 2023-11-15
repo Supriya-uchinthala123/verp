@@ -15,23 +15,23 @@ frappe.ui.form.on("Task", {
 
 	onload: function (frm) {
 		frm.set_query("task", "depends_on", function () {
-			let filters = {
+			let filt = {
 				name: ["!=", frm.doc.name]
 			};
-			if (frm.doc.project) filters["project"] = frm.doc.project;
+			if (frm.doc.project) filt["project"] = frm.doc.project;
 			return {
-				filters: filters
+				filt: filt
 			};
 		})
 
 		frm.set_query("parent_task", function () {
-			let filters = {
+			let filt = {
 				"is_group": 1,
 				"name": ["!=", frm.doc.name]
 			};
-			if (frm.doc.project) filters["project"] = frm.doc.project;
+			if (frm.doc.project) filt["project"] = frm.doc.project;
 			return {
-				filters: filters
+				filt: filt
 			}
 		});
 	},

@@ -7,19 +7,19 @@ from frappe import _
 from frappe.utils import date_diff, nowdate
 
 
-def execute(filters=None):
+def execute(filt=None):
 	columns, data = [], []
-	data = get_data(filters)
+	data = get_data(filt)
 	columns = get_columns()
 	charts = get_chart_data(data)
 	return columns, data, None, charts
 
 
-def get_data(filters):
-	conditions = get_conditions(filters)
+def get_data(filt):
+	conditions = get_conditions(filt)
 	tasks = frappe.get_all(
 		"Task",
-		filters=conditions,
+		filt=conditions,
 		fields=[
 			"name",
 			"subject",
@@ -54,16 +54,16 @@ def get_data(filters):
 	return tasks
 
 
-def get_conditions(filters):
+def get_conditions(filt):
 	conditions = frappe._dict()
 	keys = ["priority", "status"]
 	for key in keys:
-		if filters.get(key):
-			conditions[key] = filters.get(key)
-	if filters.get("from_date"):
-		conditions.exp_end_date = [">=", filters.get("from_date")]
-	if filters.get("to_date"):
-		conditions.exp_start_date = ["<=", filters.get("to_date")]
+		if filt.get(key):
+			conditions[key] = filt.get(key)
+	if filt.get("from_date"):
+		conditions.exp_end_date = [">=", filt.get("from_date")]
+	if filt.get("to_date"):
+		conditions.exp_start_date = ["<=", filt.get("to_date")]
 	return conditions
 
 

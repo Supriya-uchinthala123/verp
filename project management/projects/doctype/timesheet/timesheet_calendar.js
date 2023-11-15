@@ -14,7 +14,7 @@ frappe.views.calendar["Timesheet"] = {
 		"2": "danger"
 	},
 	gantt: true,
-	filters: [
+	filt: [
 		{
 			"fieldtype": "Link",
 			"fieldname": "project",

@@ -245,14 +245,14 @@ class Task(NestedSet):
 
 @frappe.whitelist()
 def check_if_child_exists(name):
-	child_tasks = frappe.get_all("Task", filters={"parent_task": name})
+	child_tasks = frappe.get_all("Task", filt={"parent_task": name})
 	child_tasks = [get_link_to_form("Task", task.name) for task in child_tasks]
 	return child_tasks
 
 
 @frappe.whitelist()
 @frappe.validate_and_sanitize_search_inputs
-def get_project(doctype, txt, searchfield, start, page_len, filters):
+def get_project(doctype, txt, searchfield, start, page_len, filt):
 	from erpnext.controllers.queries import get_match_cond
 
 	meta = frappe.get_meta(doctype)
@@ -291,7 +291,7 @@ def set_multiple_status(names, status):
 def set_tasks_as_overdue():
 	tasks = frappe.get_all(
 		"Task",
-		filters={"status": ["not in", ["Cancelled", "Completed"]]},
+		filt={"status": ["not in", ["Cancelled", "Completed"]]},
 		fields=["name", "status", "review_date"],
 	)
 	for task in tasks:
@@ -330,23 +330,23 @@ def make_timesheet(source_name, target_doc=None, ignore_permissions=False):
 @frappe.whitelist()
 def get_children(doctype, parent, task=None, project=None, is_root=False):
 
-	filters = [["docstatus", "<", "2"]]
+	filt = [["docstatus", "<", "2"]]
 
 	if task:
-		filters.append(["parent_task", "=", task])
+		filt.append(["parent_task", "=", task])
 	elif parent and not is_root:
 		# via expand child
-		filters.append(["parent_task", "=", parent])
+		filt.append(["parent_task", "=", parent])
 	else:
-		filters.append(['ifnull(`parent_task`, "")', "=", ""])
+		filt.append(['ifnull(`parent_task`, "")', "=", ""])
 
 	if project:
-		filters.append(["project", "=", project])
+		filt.append(["project", "=", project])
 
 	tasks = frappe.get_list(
 		doctype,
 		fields=["name as value", "subject as title", "is_group as expandable"],
-		filters=filters,
+		filt=filt,
 		order_by="name",
 	)
 

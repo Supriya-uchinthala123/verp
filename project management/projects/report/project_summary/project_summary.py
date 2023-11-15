@@ -6,13 +6,13 @@ import frappe
 from frappe import _
 
 
-def execute(filters=None):
+def execute(filt=None):
 	columns = get_columns()
 	data = []
 
 	data = frappe.db.get_all(
 		"Project",
-		filters=filters,
+		filt=filt,
 		fields=[
 			"name",
 			"status",
@@ -25,12 +25,12 @@ def execute(filters=None):
 	)
 
 	for project in data:
-		project["total_tasks"] = frappe.db.count("Task", filters={"project": project.name})
+		project["total_tasks"] = frappe.db.count("Task", filt={"project": project.name})
 		project["completed_tasks"] = frappe.db.count(
-			"Task", filters={"project": project.name, "status": "Completed"}
+			"Task", filt={"project": project.name, "status": "Completed"}
 		)
 		project["overdue_tasks"] = frappe.db.count(
-			"Task", filters={"project": project.name, "status": "Overdue"}
+			"Task", filt={"project": project.name, "status": "Overdue"}
 		)
 
 	chart = get_chart_data(data)

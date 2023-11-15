@@ -4,7 +4,7 @@
 frappe.query_reports["Timesheet Billing Summary"] = {
 	tree: true,
 	initial_depth: 0,
-	filters: [
+	filt: [
 		{
 			fieldname: "employee",
 			label: __("Employee"),

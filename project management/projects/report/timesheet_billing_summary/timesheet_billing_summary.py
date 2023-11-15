@@ -3,17 +3,17 @@ from frappe import _
 from frappe.model.docstatus import DocStatus
 
 
-def execute(filters=None):
-	group_fieldname = filters.pop("group_by", None)
+def execute(filt=None):
+	group_fieldname = filt.pop("group_by", None)
 
-	filters = frappe._dict(filters or {})
-	columns = get_columns(filters, group_fieldname)
+	filt = frappe._dict(filt or {})
+	columns = get_columns(filt, group_fieldname)
 
-	data = get_data(filters, group_fieldname)
+	data = get_data(filt, group_fieldname)
 	return columns, data
 
 
-def get_columns(filters, group_fieldname=None):
+def get_columns(filt, group_fieldname=None):
 	group_columns = {
 		"date": {
 			"label": _("Date"),
@@ -27,7 +27,7 @@ def get_columns(filters, group_fieldname=None):
 			"fieldname": "project",
 			"options": "Project",
 			"width": 200,
-			"hidden": int(bool(filters.get("project"))),
+			"hidden": int(bool(filt.get("project"))),
 		},
 		"employee": {
 			"label": _("Employee ID"),
@@ -35,7 +35,7 @@ def get_columns(filters, group_fieldname=None):
 			"fieldname": "employee",
 			"options": "Employee",
 			"width": 200,
-			"hidden": int(bool(filters.get("employee"))),
+			"hidden": int(bool(filt.get("employee"))),
 		},
 	}
 	columns = []
@@ -81,20 +81,20 @@ def get_columns(filters, group_fieldname=None):
 	return columns
 
 
-def get_data(filters, group_fieldname=None):
-	_filters = []
-	if filters.get("employee"):
-		_filters.append(("employee", "=", filters.get("employee")))
-	if filters.get("project"):
-		_filters.append(("Timesheet Detail", "project", "=", filters.get("project")))
-	if filters.get("from_date"):
-		_filters.append(("Timesheet Detail", "from_time", ">=", filters.get("from_date")))
-	if filters.get("to_date"):
-		_filters.append(("Timesheet Detail", "to_time", "<=", filters.get("to_date")))
-	if not filters.get("include_draft_timesheets"):
-		_filters.append(("docstatus", "=", DocStatus.submitted()))
+def get_data(filt, group_fieldname=None):
+	_filt = []
+	if filt.get("employee"):
+		_filt.append(("employee", "=", filt.get("employee")))
+	if filt.get("project"):
+		_filt.append(("Timesheet Detail", "project", "=", filt.get("project")))
+	if filt.get("from_date"):
+		_filt.append(("Timesheet Detail", "from_time", ">=", filt.get("from_date")))
+	if filt.get("to_date"):
+		_filt.append(("Timesheet Detail", "to_time", "<=", filt.get("to_date")))
+	if not filt.get("include_draft_timesheets"):
+		_filt.append(("docstatus", "=", DocStatus.submitted()))
 	else:
-		_filters.append(("docstatus", "in", (DocStatus.submitted(), DocStatus.draft())))
+		_filt.append(("docstatus", "in", (DocStatus.submitted(), DocStatus.draft())))
 
 	data = frappe.get_list(
 		"Timesheet",
@@ -108,7 +108,7 @@ def get_data(filters, group_fieldname=None):
 			"`tabTimesheet Detail`.billing_hours",
 			"`tabTimesheet Detail`.billing_amount",
 		],
-		filters=_filters,
+		filt=_filt,
 		order_by="`tabTimesheet Detail`.from_time",
 	)
 

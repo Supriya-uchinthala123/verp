@@ -8,7 +8,7 @@ frappe.ui.form.on('Project Template', {
 	setup: function (frm) {
 		frm.set_query("task", "tasks", function () {
 			return {
-				filters: {
+				filt: {
 					"is_template": 1
 				}
 			};

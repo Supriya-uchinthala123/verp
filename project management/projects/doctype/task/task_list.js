@@ -1,7 +1,7 @@
 frappe.listview_settings['Task'] = {
 	add_fields: ["project", "status", "priority", "exp_start_date",
 		"exp_end_date", "subject", "progress", "depends_on_tasks"],
-	filters: [["status", "=", "Open"]],
+	filt: [["status", "=", "Open"]],
 	onload: function(listview) {
 		var method = "erpnext.proj.doctype.task.task.set_multiple_status";
 

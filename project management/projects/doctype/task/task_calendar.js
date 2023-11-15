@@ -11,7 +11,7 @@ frappe.views.calendar["Task"] = {
 		"progress": "progress"
 	},
 	gantt: true,
-	filters: [
+	filt: [
 		{
 			"fieldtype": "Link",
 			"fieldname": "project",

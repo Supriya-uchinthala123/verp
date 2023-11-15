@@ -3,7 +3,7 @@ frappe.provide("frappe.treeview_settings");
 frappe.treeview_settings['Task'] = {
 	get_tree_nodes: "erpnext.proj.doctype.task.task.get_children",
 	add_tree_node: "erpnext.proj.doctype.task.task.add_node",
-	filters: [
+	filt: [
 		{
 			fieldname: "project",
 			fieldtype:"Link",
@@ -23,7 +23,7 @@ frappe.treeview_settings['Task'] = {
 					args.push(["Task", 'project', "=", project]);
 				}
 				return {
-					filters: args
+					filt: args
 				};
 			}
 		}

@@ -9,7 +9,7 @@ frappe.ui.form.on("Timesheet", {
 
 		frm.fields_dict.employee.get_query = function() {
 			return {
-				filters:{
+				filt:{
 					'status': 'Active'
 				}
 			};
@@ -18,7 +18,7 @@ frappe.ui.form.on("Timesheet", {
 		frm.fields_dict['time_logs'].grid.get_field('task').get_query = function(frm, cdt, cdn) {
 			var child = locals[cdt][cdn];
 			return{
-				filters: {
+				filt: {
 					'project': child.project,
 					'status': ["!=", "Cancelled"]
 				}
@@ -27,7 +27,7 @@ frappe.ui.form.on("Timesheet", {
 
 		frm.fields_dict['time_logs'].grid.get_field('project').get_query = function() {
 			return{
-				filters: {
+				filt: {
 					'company': frm.doc.company
 				}
 			};
@@ -95,28 +95,28 @@ frappe.ui.form.on("Timesheet", {
 			frm.fields_dict["time_logs"].grid.toggle_enable("is_billable", false);
 		}
 
-		let filters = {
+		let filt = {
 			"status": "Open"
 		};
 
 		if (frm.doc.customer) {
-			filters["customer"] = frm.doc.customer;
+			filt["customer"] = frm.doc.customer;
 		}
 
 		frm.set_query('parent_project', function(doc) {
 			return {
-				filters: filters
+				filt: filt
 			};
 		});
 
-		frm.trigger('setup_filters');
+		frm.trigger('setup_filt');
 		frm.trigger('set_dynamic_field_label');
 	},
 
 	customer: function(frm) {
 		frm.set_query('project', 'time_logs', function(doc) {
 			return {
-				filters: {
+				filt: {
 					"customer": doc.customer
 				}
 			};

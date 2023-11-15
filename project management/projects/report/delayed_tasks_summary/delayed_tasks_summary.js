@@ -3,7 +3,7 @@
 
 
 frappe.query_reports["Delayed Tasks Summary"] = {
-	"filters": [
+	"filt": [
 		{
 			"fieldname": "from_date",
 			"label": __("From Date"),

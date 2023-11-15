@@ -8,7 +8,7 @@ import frappe
 from frappe.utils import add_months, add_to_date, now_datetime, nowdate
 
 from erpnext.accounts.doctype.sales_invoice.test_sales_invoice import create_sales_invoice
-from erpnext.projects.doctype.timesheet.timesheet import OverlapError, make_sales_invoice
+from erpnext.project.doctype.timesheet.timesheet import OverlapError, make_sales_invoice
 from erpnext.setup.doctype.employee.test_employee import make_employee
 
 
@@ -73,7 +73,7 @@ class TestTimesheet(unittest.TestCase):
 	def test_timesheet_time_overlap(self):
 		emp = make_employee("test_employee_6@salary.com")
 
-		settings = frappe.get_single("Projects Settings")
+		settings = frappe.get_single("project Settings")
 		initial_setting = settings.ignore_employee_time_overlap
 		settings.ignore_employee_time_overlap = 0
 		settings.save()

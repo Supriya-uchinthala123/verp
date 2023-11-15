@@ -398,7 +398,7 @@
  "max_attachments": 5,
  "modified": "2023-09-28 13:52:05.861175",
  "modified_by": "Admin",
- "module": "Projects",
+ "module": "project",
  "name": "Task",
  "naming_rule": "Expression (old style)",
  "nsm_parent_field": "parent_task",
@@ -411,7 +411,7 @@
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "Projects User",
+   "role": "project User",
    "share": 1,
    "write": 1
   }

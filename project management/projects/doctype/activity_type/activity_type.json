@@ -175,7 +175,7 @@
  "max_attachments": 0, 
  "modified": "2017-07-25 20:11:05.229092", 
  "modified_by": "Admin", 
- "module": "Projects", 
+ "module": "project", 
  "name": "Activity Type", 
  "owner": "Admin", 
  "permissions": [
@@ -216,7 +216,7 @@
    "read": 1, 
    "report": 1, 
    "restrict": 0, 
-   "role": "Projects User", 
+   "role": "project User", 
    "set_user_permissions": 0, 
    "share": 1, 
    "submit": 0, 

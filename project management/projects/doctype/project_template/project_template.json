@@ -28,8 +28,13 @@
  "links": [],
  "modified": "2020-04-26 02:23:53.990322",
  "modified_by": "Admin",
+<<<<<<< HEAD
  "module": "Projects",
  "name": "Project Temp",
+=======
+ "module": "project",
+ "name": "Project Template",
+>>>>>>> 9a4b643c8d5f6a3649134610a05210686833bd74
  "owner": "Admin",
  "permissions": [
   {

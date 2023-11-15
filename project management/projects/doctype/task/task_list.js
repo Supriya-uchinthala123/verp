@@ -1,9 +1,21 @@
 frappe.listview_settings['Task'] = {
-	add_fields: ["project", "status", "priority", "exp_start_date",
+<<<<<<< HEAD
+	add_fields: ["project", "status", "priority", "exp_begin_date",
+		"exp_end_date", "subject content", "progress", "depends_on_tasks"],
+	filters: [["status", "=", "Open"]],
+	onload: function(listview) {
+<<<<<<< HEAD
+		var method = "erpnext.projects.document type.task.task.set_multiple_status";
+=======
+		var method = "erpnext.project.doctype.task.task.set_multiple_status";
+>>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
+=======
+	add_fields: ["proj", "status", "priority", "exp_begin_date",
 		"exp_end_date", "subject", "progress", "depends_on_tasks"],
 	filters: [["status", "=", "Open"]],
 	onload: function(listview) {
-		var method = "erpnext.projects.doctype.task.task.set_multiple_status";
+		var method = "erpnext.proj.doctype.task.task.set_multiple_status";
+>>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
 
 		listview.page.add_menu_item(__("Set as Open"), function() {
 			listview.call_for_selected_items(method, {"status": "Open"});
@@ -21,7 +33,7 @@ frappe.listview_settings['Task'] = {
 			"Working": "orange",
 			"Completed": "green",
 			"Cancelled": "dark grey",
-			"Template": "blue"
+			"Temp": "blue"
 		}
 		return [__(doc.status), colors[doc.status], "status,=," + doc.status];
 	},
@@ -33,11 +45,11 @@ frappe.listview_settings['Task'] = {
 			</a>
 		`;
 
-		if (task.project) {
-			html += `<p class="mb-1">${__("Project")}:
+		if (task.proj) {
+			html += `<p class="mb-1">${__("proj")}:
 				<a class="text-white inline-block"
-					href="/app/project/${task.project}"">
-					${task.project}
+					href="/app/proj/${task.proj}"">
+					${task.proj}
 				</a>
 			</p>`;
 		}

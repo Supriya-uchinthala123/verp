@@ -5,25 +5,25 @@
  "disable_prepared_report": 0,
  "disabled": 0,
  "docstatus": 0,
- "doctype": "Report",
+ "document type": "Report",
  "filters": [],
  "idx": 0,
  "is_standard": "Yes",
- "modified": "2021-04-15 15:49:35.432486",
- "modified_by": "Admin",
- "module": "Projects",
+ "modify": "2021-04-15 15:49:35.432486",
+ "modify_by": "Admin",
+ "module": "proj",
  "name": "Delayed Tasks Summary",
  "owner": "Admin",
  "prepared_report": 0,
- "ref_doctype": "Task",
+ "ref_document type": "Task",
  "report_name": "Delayed Tasks Summary",
  "report_type": "Script Report",
  "roles": [
   {
-   "role": "Projects User"
+   "role": "proj User"
   },
   {
-   "role": "Projects Manager"
+   "role": "proj Manager"
   }
  ]
 }

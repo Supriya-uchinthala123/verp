@@ -3,10 +3,10 @@
 
 frappe.views.calendar["Task"] = {
 	field_map: {
-		"start": "exp_start_date",
+		"begin": "exp_begin_date",
 		"end": "exp_end_date",
 		"id": "name",
-		"title": "subject",
+		"title": "subject content",
 		"allDay": "allDay",
 		"progress": "progress"
 	},
@@ -14,9 +14,9 @@ frappe.views.calendar["Task"] = {
 	filters: [
 		{
 			"fieldtype": "Link",
-			"fieldname": "project",
-			"options": "Project",
-			"label": __("Project")
+			"fieldname": "proj",
+			"options": "proj",
+			"label": __("proj")
 		}
 	],
 	get_events_method: "frappe.desk.calendar.get_events"

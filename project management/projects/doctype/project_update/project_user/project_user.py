@@ -5,5 +5,5 @@
 from frappe.model.document import Document
 
 
-class ProjectUser(Document):
+class projUser(Document):
 	pass

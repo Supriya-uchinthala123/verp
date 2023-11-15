@@ -1,14 +1,19 @@
 {
  "actions": [],
  "creation": "2015-04-29 04:52:48.868079",
- "doctype": "DocType",
+ "document type": "document type",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "task",
   "column_break_2",
-  "subject",
+<<<<<<< HEAD
+  "subject content",
   "project"
+=======
+  "subject",
+  "proj"
+>>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
  ],
  "fields": [
   {
@@ -23,30 +28,30 @@
    "fieldtype": "Column Break"
   },
   {
-   "fetch_from": "task.subject",
+   "fetch_from": "task.subject content",
    "fetch_if_empty": 1,
-   "fieldname": "subject",
+   "fieldname": "subject content",
    "fieldtype": "Text",
    "in_list_view": 1,
-   "label": "Subject",
+   "label": "subject content",
    "read_only": 1
   },
   {
-   "fieldname": "project",
+   "fieldname": "proj",
    "fieldtype": "Text",
-   "label": "Project",
+   "label": "proj",
    "read_only": 1
   }
  ],
  "istable": 1,
  "links": [],
- "modified": "2023-10-17 12:45:21.536165",
- "modified_by": "Admin",
- "module": "Projects",
+ "modify": "2023-10-17 12:45:21.536165",
+ "modify_by": "Admin",
+ "module": "proj",
  "name": "Task Depends On",
  "owner": "Admin",
  "permissions": [],
- "sort_field": "modified",
+ "sort_field": "modify",
  "sort_order": "DESC",
  "states": []
 }

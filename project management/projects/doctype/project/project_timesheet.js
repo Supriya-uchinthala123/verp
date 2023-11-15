@@ -1,23 +1,23 @@
 
-QUnit.test("test project", function(assert) {
+QUnit.test("test proj", function(assert) {
 	assert.expect(6);
 	let done = assert.async();
 	var task_title = ["Documentation","Implementation","Testing"];
 
-	// To create a timesheet with different tasks and costs
-	let timesheet = (title,start_time,end_time,bill_rate,cost_rate) => {
+	// To create a timesheets with different tasks and costs
+	let timesheets = (title,begin_time,end_time,bill_rate,cost_rate) => {
 		return frappe.run_serially([
-			() => frappe.db.get_value('Task', {'subject': title}, 'name'),
+			() => frappe.db.get_value('Task', {'subject content': title}, 'name'),
 			(task) => {
-				// Creating timesheet for a project
-				return frappe.tests.make('Timesheet', [
+				// Creating timesheets for a proj
+				return frappe.tests.make('timesheets', [
 					{time_logs:[
 						[
-							{activity_type: 'Communication'},
-							{from_time: start_time},
+							{activity: 'Communication'},
+							{from_time: begin_time},
 							{to_time: end_time},
 							{hours: 2},
-							{project: 'Test App'},
+							{proj: 'Test App'},
 							{task: task.name},
 							{billable: '1'},
 							{billing_rate: bill_rate},
@@ -54,38 +54,38 @@ QUnit.test("test project", function(assert) {
 	};
 	frappe.run_serially([
 		() => {
-			// Creating project with task
-			return frappe.tests.make('Project', [
-				{ project_name: 'Test App'},
-				{ expected_start_date: '2017-07-22'},
+			// Creating proj with task
+			return frappe.tests.make('proj', [
+				{ proj_name: 'Test App'},
+				{ expected_begin_date: '2017-07-22'},
 				{ expected_end_date: '2017-09-22'},
 				{ estimated_costing: '10,000.00'},
 				{ tasks:[
 					[
 						{title: 'Documentation'},
-						{start_date: '2017-07-24'},
+						{begin_date: '2017-07-24'},
 						{end_date: '2017-07-31'},
-						{description: 'To make a proper documentation defining requirements etc'}
+						{des: 'To make a proper documentation defining requirements etc'}
 					],
 					[
 						{title: 'Implementation'},
-						{start_date: '2017-08-01'},
+						{begin_date: '2017-08-01'},
 						{end_date: '2017-08-01'},
-						{description: 'Writing algorithms and to code the functionalities'}
+						{des: 'Writing algorithms and to code the functionalities'}
 					],
 					[
 						{title: 'Testing'},
-						{start_date: '2017-08-01'},
+						{begin_date: '2017-08-01'},
 						{end_date: '2017-08-15'},
-						{description: 'To make the test cases and test the functionalities'}
+						{des: 'To make the test cases and test the functionalities'}
 					]
 				]}
 			]);
 		},
-		// Creating Timesheet with different tasks
-		() => timesheet(task_title[0],'2017-07-24 13:00:00','2017-07-24 13:00:00',10,8),
-		() => timesheet(task_title[1],'2017-07-25 13:00:00','2017-07-25 15:00:00',20,16),
-		() => timesheet(task_title[2],'2017-07-26 13:00:00','2017-07-26 15:00:00',30,25),
+		// Creating timesheets with different tasks
+		() => timesheets(task_title[0],'2017-07-24 13:00:00','2017-07-24 13:00:00',10,8),
+		() => timesheets(task_title[1],'2017-07-25 13:00:00','2017-07-25 15:00:00',20,16),
+		() => timesheets(task_title[2],'2017-07-26 13:00:00','2017-07-26 15:00:00',30,25),
 		() => done()
 	]);
 });

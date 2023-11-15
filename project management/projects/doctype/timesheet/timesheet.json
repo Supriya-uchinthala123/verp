@@ -3,7 +3,7 @@
  "allow_import": 1,
  "autoname": "naming_series:",
  "creation": "2013-02-28 17:57:33",
- "doctype": "DocType",
+ "document type": "document type",
  "document_type": "Document",
  "editable_grid": 1,
  "engine": "InnoDB",
@@ -17,14 +17,14 @@
   "sales_invoice",
   "column_break_3",
   "status",
-  "parent_project",
+  "parent_proj",
   "employee_detail",
   "employee",
-  "employee_name",
+  "employer",
   "department",
   "column_break_9",
   "user",
-  "start_date",
+  "begin_date",
   "end_date",
   "section_break_5",
   "time_logs",
@@ -48,7 +48,7 @@
  "fields": [
   {
    "allow_on_submit": 1,
-   "default": "{employee_name}",
+   "default": "{employer}",
    "fieldname": "title",
    "fieldtype": "Data",
    "hidden": 1,
@@ -109,8 +109,8 @@
   },
   {
    "depends_on": "employee",
-   "fetch_from": "employee.employee_name",
-   "fieldname": "employee_name",
+   "fetch_from": "employee.employer",
+   "fieldname": "employer",
    "fieldtype": "Data",
    "in_global_search": 1,
    "label": "Employee Name",
@@ -138,10 +138,10 @@
    "read_only": 1
   },
   {
-   "fieldname": "start_date",
+   "fieldname": "begin_date",
    "fieldtype": "Date",
    "in_list_view": 1,
-   "label": "Start Date",
+   "label": "begin Date",
    "print_hide": 1,
    "read_only": 1
   },
@@ -160,7 +160,7 @@
    "fieldname": "time_logs",
    "fieldtype": "Table",
    "label": "Time Sheets",
-   "options": "Timesheet Detail",
+   "options": "timesheets Detail",
    "reqd": 1
   },
   {
@@ -179,7 +179,7 @@
    "collapsible": 1,
    "fieldname": "billing_details",
    "fieldtype": "Section Break",
-   "label": "Billing Details",
+   "label": "billDetails",
    "permlevel": 1
   },
   {
@@ -254,15 +254,15 @@
    "ignore_user_permissions": 1,
    "label": "Amended From",
    "no_copy": 1,
-   "options": "Timesheet",
+   "options": "timesheets",
    "print_hide": 1,
    "read_only": 1
   },
   {
-   "fieldname": "parent_project",
+   "fieldname": "parent_proj",
    "fieldtype": "Link",
-   "label": "Project",
-   "options": "Project"
+   "label": "proj",
+   "options": "proj"
   },
   {
    "fieldname": "customer",
@@ -310,10 +310,10 @@
  "idx": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-04-20 15:59:11.107831",
- "modified_by": "Admin",
- "module": "Projects",
- "name": "Timesheet",
+ "modify": "2023-04-20 15:59:11.107831",
+ "modify_by": "Admin",
+ "module": "proj",
+ "name": "timesheets",
  "naming_rule": "By \"Naming Series\" field",
  "owner": "Admin",
  "permissions": [
@@ -321,12 +321,12 @@
    "amend": 1,
    "cancel": 1,
    "create": 1,
-   "delete": 1,
+   "deleted": 1,
    "email": 1,
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "Projects User",
+   "role": "proj User",
    "share": 1,
    "submit": 1,
    "write": 1
@@ -335,7 +335,7 @@
    "amend": 1,
    "cancel": 1,
    "create": 1,
-   "delete": 1,
+   "deleted": 1,
    "email": 1,
    "export": 1,
    "print": 1,
@@ -350,7 +350,7 @@
    "amend": 1,
    "cancel": 1,
    "create": 1,
-   "delete": 1,
+   "deleted": 1,
    "email": 1,
    "export": 1,
    "print": 1,
@@ -371,7 +371,7 @@
    "amend": 1,
    "cancel": 1,
    "create": 1,
-   "delete": 1,
+   "deleted": 1,
    "email": 1,
    "read": 1,
    "report": 1,
@@ -386,7 +386,7 @@
    "write": 1
   }
  ],
- "sort_field": "modified",
+ "sort_field": "modify",
  "sort_order": "ASC",
  "states": [],
  "title_field": "title"

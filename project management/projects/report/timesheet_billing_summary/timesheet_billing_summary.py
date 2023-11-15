@@ -21,13 +21,13 @@ def get_columns(filters, group_fieldname=None):
 			"fieldname": "date",
 			"width": 150,
 		},
-		"project": {
-			"label": _("Project"),
+		"proj": {
+			"label": _("proj"),
 			"fieldtype": "Link",
-			"fieldname": "project",
-			"options": "Project",
+			"fieldname": "proj",
+			"options": "proj",
 			"width": 200,
-			"hidden": int(bool(filters.get("project"))),
+			"hidden": int(bool(filters.get("proj"))),
 		},
 		"employee": {
 			"label": _("Employee ID"),
@@ -52,25 +52,25 @@ def get_columns(filters, group_fieldname=None):
 			{
 				"label": _("Employee Name"),
 				"fieldtype": "data",
-				"fieldname": "employee_name",
+				"fieldname": "employer",
 				"hidden": 1,
 			},
 			{
-				"label": _("Timesheet"),
+				"label": _("timesheets"),
 				"fieldtype": "Link",
-				"fieldname": "timesheet",
-				"options": "Timesheet",
+				"fieldname": "timesheets",
+				"options": "timesheets",
 				"width": 150,
 			},
 			{"label": _("Working Hours"), "fieldtype": "Float", "fieldname": "hours", "width": 150},
 			{
-				"label": _("Billing Hours"),
+				"label": _("billHours"),
 				"fieldtype": "Float",
 				"fieldname": "billing_hours",
 				"width": 150,
 			},
 			{
-				"label": _("Billing Amount"),
+				"label": _("billAmount"),
 				"fieldtype": "Currency",
 				"fieldname": "billing_amount",
 				"width": 150,
@@ -85,31 +85,31 @@ def get_data(filters, group_fieldname=None):
 	_filters = []
 	if filters.get("employee"):
 		_filters.append(("employee", "=", filters.get("employee")))
-	if filters.get("project"):
-		_filters.append(("Timesheet Detail", "project", "=", filters.get("project")))
+	if filters.get("proj"):
+		_filters.append(("timesheets Detail", "proj", "=", filters.get("proj")))
 	if filters.get("from_date"):
-		_filters.append(("Timesheet Detail", "from_time", ">=", filters.get("from_date")))
+		_filters.append(("timesheets Detail", "from_time", ">=", filters.get("from_date")))
 	if filters.get("to_date"):
-		_filters.append(("Timesheet Detail", "to_time", "<=", filters.get("to_date")))
+		_filters.append(("timesheets Detail", "to_time", "<=", filters.get("to_date")))
 	if not filters.get("include_draft_time"):
 		_filters.append(("docstatus", "=", DocStatus.submitted()))
 	else:
 		_filters.append(("docstatus", "in", (DocStatus.submitted(), DocStatus.draft())))
 
 	data = frappe.get_list(
-		"Timesheet",
+		"timesheets",
 		fields=[
-			"name as timesheet",
-			"`tabTimesheet`.employee",
-			"`tabTimesheet`.employee_name",
-			"`tabTimesheet Detail`.from_time as date",
-			"`tabTimesheet Detail`.project",
-			"`tabTimesheet Detail`.hours",
-			"`tabTimesheet Detail`.billing_hours",
-			"`tabTimesheet Detail`.billing_amount",
+			"name as timesheets",
+			"`tabtimesheets`.employee",
+			"`tabtimesheets`.employer",
+			"`tabtimesheets Detail`.from_time as date",
+			"`tabtimesheets Detail`.proj",
+			"`tabtimesheets Detail`.hours",
+			"`tabtimesheets Detail`.billing_hours",
+			"`tabtimesheets Detail`.billing_amount",
 		],
 		filters=_filters,
-		order_by="`tabTimesheet Detail`.from_time",
+		order_by="`tabtimesheets Detail`.from_time",
 	)
 
 	return group_by(data, group_fieldname) if group_fieldname else data
@@ -128,8 +128,8 @@ def group_by(data, fieldname):
 			"is_group": 1,
 		}
 		if fieldname == "employee":
-			group_row["employee_name"] = next(
-				row.get("employee_name") for row in data if row.get(fieldname) == group
+			group_row["employer"] = next(
+				row.get("employer") for row in data if row.get(fieldname) == group
 			)
 
 		grouped_data.append(group_row)

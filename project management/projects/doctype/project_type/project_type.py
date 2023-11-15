@@ -7,7 +7,7 @@ from frappe import _
 from frappe.model.document import Document
 
 
-class ProjectType(Document):
+class projType(Document):
 	def on_trash(self):
 		if self.name == "External":
-			frappe.throw(_("You cannot delete Project Type 'External'"))
+			frappe.throw(_("You cannot deleted proj Type 'External'"))

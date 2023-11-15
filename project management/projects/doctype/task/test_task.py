@@ -6,7 +6,15 @@ import unittest
 import frappe
 from frappe.utils import add_days, getdate, nowdate
 
-from erpnext.projects.doctype.task.task import CircularReferenceError
+<<<<<<< HEAD
+<<<<<<< HEAD
+from erpnext.projects.document type.task.task import CircularReferenceError
+=======
+from erpnext.project.doctype.task.task import CircularReferenceError
+>>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
+=======
+from erpnext.proj.doctype.task.task import CircularReferenceError
+>>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
 
 
 class TestTask(unittest.TestCase):
@@ -28,30 +36,30 @@ class TestTask(unittest.TestCase):
 		task3.append("depends_on", {"task": task4.name})
 
 	def test_reschedule_dependent_task(self):
-		project = frappe.get_value("Project", {"project_name": "_Test Project"})
+		proj = frappe.get_value("proj", {"proj_name": "_Test proj"})
 
 		task1 = create_task("_Test Task 1", nowdate(), add_days(nowdate(), 10))
 
 		task2 = create_task("_Test Task 2", add_days(nowdate(), 11), add_days(nowdate(), 15), task1.name)
-		task2.get("depends_on")[0].project = project
+		task2.get("depends_on")[0].proj = proj
 		task2.save()
 
 		task3 = create_task("_Test Task 3", add_days(nowdate(), 11), add_days(nowdate(), 15), task2.name)
-		task3.get("depends_on")[0].project = project
+		task3.get("depends_on")[0].proj = proj
 		task3.save()
 
 		task1.update({"exp_end_date": add_days(nowdate(), 20)})
 		task1.save()
 
 		self.assertEqual(
-			frappe.db.get_value("Task", task2.name, "exp_start_date"), getdate(add_days(nowdate(), 21))
+			frappe.db.get_value("Task", task2.name, "exp_begin_date"), getdate(add_days(nowdate(), 21))
 		)
 		self.assertEqual(
 			frappe.db.get_value("Task", task2.name, "exp_end_date"), getdate(add_days(nowdate(), 25))
 		)
 
 		self.assertEqual(
-			frappe.db.get_value("Task", task3.name, "exp_start_date"), getdate(add_days(nowdate(), 26))
+			frappe.db.get_value("Task", task3.name, "exp_begin_date"), getdate(add_days(nowdate(), 26))
 		)
 		self.assertEqual(
 			frappe.db.get_value("Task", task3.name, "exp_end_date"), getdate(add_days(nowdate(), 30))
@@ -60,7 +68,7 @@ class TestTask(unittest.TestCase):
 	def test_close_assignment(self):
 		if not frappe.db.exists("Task", "Test Close Assignment"):
 			task = frappe.new_doc("Task")
-			task.subject = "Test Close Assignment"
+			task.subject content = "Test Close Assignment"
 			task.insert()
 
 		def assign():
@@ -69,9 +77,9 @@ class TestTask(unittest.TestCase):
 			assign_to.add(
 				{
 					"assign_to": ["test@example.com"],
-					"doctype": task.doctype,
+					"document type": task.document type,
 					"name": task.name,
-					"description": "Close this task",
+					"des": "Close this task",
 				}
 			)
 
@@ -79,9 +87,9 @@ class TestTask(unittest.TestCase):
 			return frappe.db.get_value(
 				"ToDo",
 				filters={
-					"reference_type": task.doctype,
+					"reference_type": task.document type,
 					"reference_name": task.name,
-					"description": "Close this task",
+					"des": "Close this task",
 				},
 				fieldname=("allocated_to", "status"),
 				as_dict=True,
@@ -103,7 +111,15 @@ class TestTask(unittest.TestCase):
 	def test_overdue(self):
 		task = create_task("Testing Overdue", add_days(nowdate(), -10), add_days(nowdate(), -5))
 
-		from erpnext.projects.doctype.task.task import set_tasks_as_overdue
+<<<<<<< HEAD
+<<<<<<< HEAD
+		from erpnext.projects.document type.task.task import set_tasks_as_overdue
+=======
+		from erpnext.project.doctype.task.task import set_tasks_as_overdue
+>>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
+=======
+		from erpnext.proj.doctype.task.task import set_tasks_as_overdue
+>>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
 
 		set_tasks_as_overdue()
 
@@ -111,38 +127,38 @@ class TestTask(unittest.TestCase):
 
 
 def create_task(
-	subject,
-	start=None,
+	subject content,
+	begin=None,
 	end=None,
 	depends_on=None,
-	project=None,
+	proj=None,
 	parent_task=None,
 	is_group=0,
-	is_template=0,
+	is_Temp=0,
 	begin=0,
 	duration=0,
 	save=True,
 ):
-	if not frappe.db.exists("Task", subject):
+	if not frappe.db.exists("Task", subject content):
 		task = frappe.new_doc("Task")
 		task.status = "Open"
-		task.subject = subject
-		task.exp_start_date = start or nowdate()
+		task.subject content = subject content
+		task.exp_begin_date = begin or nowdate()
 		task.exp_end_date = end or nowdate()
-		task.project = (
-			project or None
-			if is_template
-			else frappe.get_value("Project", {"project_name": "_Test Project"})
+		task.proj = (
+			proj or None
+			if is_Temp
+			else frappe.get_value("proj", {"proj_name": "_Test proj"})
 		)
-		task.is_template = is_template
-		task.start = begin
+		task.is_Temp = is_Temp
+		task.begin = begin
 		task.duration = duration
 		task.is_group = is_group
 		task.parent_task = parent_task
 		if save:
 			task.save()
 	else:
-		task = frappe.get_doc("Task", subject)
+		task = frappe.get_doc("Task", subject content)
 
 	if depends_on:
 		task.append("depends_on", {"task": depends_on})

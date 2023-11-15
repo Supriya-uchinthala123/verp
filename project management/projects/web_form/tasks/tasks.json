@@ -27,7 +27,7 @@
  "published": 1, 
  "route": "tasks", 
  "show_sidebar": 1, 
- "sidebar_items": [], 
+ "sidebar_item": [], 
  "success_url": "", 
  "title": "Task", 
  "web_form_fields": [

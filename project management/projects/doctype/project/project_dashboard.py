@@ -9,10 +9,10 @@ def get_data():
 		"transactions": [
 			{
 				"label": _("proj"),
-				"items": ["Task", "timesheets", "Issue", "proj Update"],
+				"item": ["Task", "timesheets", "Issue", "proj Update"],
 			},
-			{"label": _("Material"), "items": ["Material Request", "BOM", "Stock Entry"]},
-			{"label": _("Sales"), "items": ["Sales Order", "Delivery Note", "Sales Invoice"]},
-			{"label": _("Purchase"), "items": ["Purchase Order", "Purchase Receipt", "Purchase Invoice"]},
+			{"label": _("Material"), "item": ["Material Request", "BOM", "Stock Entry"]},
+			{"label": _("Sales"), "item": ["Sales Order", "Delivery Note", "Sales Invoice"]},
+			{"label": _("Purchase"), "item": ["Purchase Order", "Purchase Receipt", "Purchase Invoice"]},
 		],
 	}

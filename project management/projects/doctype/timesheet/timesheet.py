@@ -382,7 +382,7 @@ def make_sales_invoice(source_name, item_code=None, customer=None, currency=None
 		target.currency = currency
 
 	if item_code:
-		target.append("items", {"item_code": item_code, "qty": hours, "rate": billing_rate})
+		target.append("item", {"item_code": item_code, "qty": hours, "rate": billing_rate})
 
 	for time_log in timesheets.time_logs:
 		if time_log.is_billable:

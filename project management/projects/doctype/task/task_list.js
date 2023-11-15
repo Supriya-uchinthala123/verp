@@ -18,11 +18,11 @@ frappe.listview_settings['Task'] = {
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
 
 		listview.page.add_menu_item(__("Set as Open"), function() {
-			listview.call_for_selected_items(method, {"status": "Open"});
+			listview.call_for_selected_item(method, {"status": "Open"});
 		});
 
 		listview.page.add_menu_item(__("Set as Completed"), function() {
-			listview.call_for_selected_items(method, {"status": "Completed"});
+			listview.call_for_selected_item(method, {"status": "Completed"});
 		});
 	},
 	get_indicator: function(doc) {

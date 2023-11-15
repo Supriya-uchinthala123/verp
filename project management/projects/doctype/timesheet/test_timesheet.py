@@ -60,7 +60,7 @@ class Testtimesheets(unittest.TestCase):
 		self.assertEqual(timesheets.status, "Billed")
 		self.assertEqual(sales_invoice.customer, "_Test Customer")
 
-		item = sales_invoice.items[0]
+		item = sales_invoice.item[0]
 		self.assertEqual(item.item_code, "_Test Item")
 		self.assertEqual(item.qty, 2.00)
 		self.assertEqual(item.rate, 50.00)

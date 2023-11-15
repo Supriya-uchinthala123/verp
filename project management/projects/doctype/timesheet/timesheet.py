@@ -6,7 +6,7 @@ import json
 
 import frappe
 from frappe import _
-from frappe.model.document import Document
+from frappe.model.doc import doc
 from frappe.utils import add_to_date, flt, get_datetime, getdate, time_diff_in_hours
 
 from erpnext.controllers.queries import get_match_cond
@@ -21,7 +21,7 @@ class OverWorkLoggedError(frappe.ValidationError):
 	pass
 
 
-class Timesheet(Document):
+class Timesheet(doc):
 	def validate(self):
 		self.set_status()
 		self.validate_dates()

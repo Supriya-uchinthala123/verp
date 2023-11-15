@@ -4,11 +4,11 @@
 
 import frappe
 from frappe import _
-from frappe.model.document import Document
+from frappe.model.doc import doc
 from frappe.utils import get_link_to_form
 
 
-class ProjectTemplate(Document):
+class ProjectTemplate(doc):
 	def validate(self):
 		self.validate_dependencies()
 

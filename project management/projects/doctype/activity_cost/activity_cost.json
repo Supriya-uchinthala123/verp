@@ -10,7 +10,7 @@
  "custom": 0, 
  "docstatus": 0, 
  "doctype": "DocType", 
- "document_type": "Setup", 
+ "doc_type": "Setup", 
  "editable_grid": 0, 
  "engine": "InnoDB", 
  "fields": [

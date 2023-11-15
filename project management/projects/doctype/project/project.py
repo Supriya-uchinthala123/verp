@@ -6,7 +6,7 @@ import frappe
 from email_reply_parser import EmailReplyParser
 from frappe import _
 from frappe.desk.reportview import get_match_cond
-from frappe.model.document import Document
+from frappe.model.doc import doc
 from frappe.query_builder import Interval
 from frappe.query_builder.functions import Count, CurDate, Date, UnixTimestamp
 from frappe.utils import add_days, flt, get_datetime, get_time, get_url, nowtime, today
@@ -18,7 +18,7 @@ from erpnext.controllers.website_list_for_contact import get_customers_suppliers
 from erpnext.setup.doctype.holiday_list.holiday_list import is_holiday
 
 
-class Project(Document):
+class Project(doc):
 	def onload(self):
 		self.set_onload(
 			"activity_summary",

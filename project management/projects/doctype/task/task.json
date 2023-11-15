@@ -4,7 +4,7 @@
  "autoname": "TASK-.YYYY.-.#####",
  "creation": "2013-01-29 19:25:50",
  "doctype": "DocType",
- "document_type": "Setup",
+ "doc_type": "Setup",
  "engine": "InnoDB",
  "field_order": [
   "subject",

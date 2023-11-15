@@ -2,8 +2,8 @@
 # For license information, please see license.txt
 
 
-from frappe.model.document import Document
+from frappe.model.doc import doc
 
 
-class ProjectUser(Document):
+class ProjectUser(doc):
 	pass

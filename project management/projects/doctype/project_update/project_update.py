@@ -3,10 +3,10 @@
 
 
 import frappe
-from frappe.model.document import Document
+from frappe.model.doc import doc
 
 
-class ProjectUpdate(Document):
+class ProjectUpdate(doc):
 	pass
 
 

@@ -2,8 +2,8 @@
 # License: GNU General Public License v3. See license.txt
 
 
-from frappe.model.document import Document
+from frappe.model.doc import doc
 
 
-class ActivityType(Document):
+class ActivityType(doc):
 	pass

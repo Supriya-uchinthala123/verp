@@ -2,8 +2,8 @@
 # For license information, please see license.txt
 
 
-from frappe.model.document import Document
+from frappe.model.doc import doc
 
 
-class TaskDependsOn(Document):
+class TaskDependsOn(doc):
 	pass

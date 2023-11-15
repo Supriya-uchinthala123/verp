@@ -4,7 +4,7 @@
  "autoname": "naming_series:",
  "creation": "2013-02-28 17:57:33",
  "doctype": "DocType",
- "document_type": "Document",
+ "doc_type": "doc",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [

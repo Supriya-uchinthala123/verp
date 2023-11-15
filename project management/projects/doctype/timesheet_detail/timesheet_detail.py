@@ -2,8 +2,8 @@
 # For license information, please see license.txt
 
 
-from frappe.model.document import Document
+from frappe.model.doc import doc
 
 
-class TimesheetDetail(Document):
+class TimesheetDetail(doc):
 	pass

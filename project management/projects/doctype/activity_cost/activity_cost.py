@@ -4,14 +4,14 @@
 
 import frappe
 from frappe import _
-from frappe.model.document import Document
+from frappe.model.doc import doc
 
 
 class DuplicationError(frappe.ValidationError):
 	pass
 
 
-class ActivityCost(Document):
+class ActivityCost(doc):
 	def validate(self):
 		self.set_title()
 		self.check_unique()

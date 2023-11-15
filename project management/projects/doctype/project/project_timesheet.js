@@ -2,7 +2,7 @@
 QUnit.test("test project", function(assert) {
 	assert.expect(6);
 	let done = assert.async();
-	var task_title = ["Documentation","Implementation","Testing"];
+	var task_title = ["docation","Implementation","Testing"];
 
 	// To create a timesheet with different tasks and costs
 	let timesheet = (title,start_time,end_time,bill_rate,cost_rate) => {
@@ -28,12 +28,12 @@ QUnit.test("test project", function(assert) {
 			},
 			// To check if a correct billable and cost amount is calculated for every task
 			() => {
-				if(title=== 'Documentation')
+				if(title=== 'docation')
 				{
 					assert.ok(cur_frm.get_field('total_billable_amount').get_value()==20,
-						'Billable amount for Documentation task is correctly calculated');
+						'Billable amount for docation task is correctly calculated');
 					assert.ok(cur_frm.get_field('total_cost_amount').get_value()==16,
-						'cost amount for Documentation task is correctly calculated');
+						'cost amount for docation task is correctly calculated');
 				}
 				if(title=== 'Implementation')
 				{
@@ -62,10 +62,10 @@ QUnit.test("test project", function(assert) {
 				{ estimated_cost: '10,000.00'},
 				{ tasks:[
 					[
-						{title: 'Documentation'},
+						{title: 'docation'},
 						{start_date: '2017-07-24'},
 						{end_date: '2017-07-31'},
-						{description: 'To make a proper documentation defining requirements etc'}
+						{description: 'To make a proper docation defining requirements etc'}
 					],
 					[
 						{title: 'Implementation'},

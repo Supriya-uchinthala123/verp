@@ -4,5 +4,5 @@
 import unittest
 
 
-class TestSupportSettings(unittest.TestCase):
+class TestsupportingSettings(unittest.TestCase):
 	pass

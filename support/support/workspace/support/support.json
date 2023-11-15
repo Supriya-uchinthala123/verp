@@ -7,10 +7,10 @@
  "doctype": "Workspace",
  "for_user": "",
  "hide_custom": 0,
- "icon": "support",
+ "icon": "supporting",
  "idx": 0,
  "is_hidden": 0,
- "label": "Support",
+ "label": "supporting",
  "links": [
   {
    "hidden": 0,
@@ -144,9 +144,9 @@
    "dependencies": "",
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Support Settings",
+   "label": "supporting Settings",
    "link_count": 0,
-   "link_to": "Support Settings",
+   "link_to": "supporting Settings",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -173,8 +173,8 @@
  ],
  "modified": "2023-05-24 14:47:23.408966",
  "modified_by": "Administrator",
- "module": "Support",
- "name": "Support",
+ "module": "supporting",
+ "name": "supporting",
  "number_cards": [],
  "owner": "Administrator",
  "parent_page": "",
@@ -203,5 +203,5 @@
    "type": "DocType"
   }
  ],
- "title": "Support"
+ "title": "supporting"
 }

@@ -7,8 +7,8 @@ import unittest
 import frappe
 from frappe.utils import flt
 
-from erpnext.support.doctype.issue_priority.test_issue_priority import make_priorities
-from erpnext.support.doctype.service_level_agreement.service_level_agreement import (
+from erpnext.supporting.doctype.issue_priority.test_issue_priority import make_priorities
+from erpnext.supporting.doctype.service_level_agreement.service_level_agreement import (
 	get_service_level_agreement_fields,
 )
 
@@ -16,12 +16,12 @@ from erpnext.support.doctype.service_level_agreement.service_level_agreement imp
 class TestServiceLevelAgreement(unittest.TestCase):
 	def setUp(self):
 		self.create_company()
-		frappe.db.set_single_value("Support Settings", "track_service_level_agreement", 1)
+		frappe.db.set_single_value("supporting Settings", "track_service_level_agreement", 1)
 		lead = frappe.qb.DocType("Lead")
 		frappe.qb.from_(lead).delete().where(lead.company == self.company).run()
 
 	def create_company(self):
-		name = "_Test Support SLA"
+		name = "_Test supporting SLA"
 		company = None
 		if frappe.db.exists("Company", name):
 			company = frappe.get_doc("Company", name)
@@ -442,7 +442,7 @@ def create_service_level_agreement(
 			],
 			"sla_fulfilled_on": sla_fulfilled_on,
 			"pause_sla_on": pause_sla_on,
-			"support_and_resolution": [
+			"supporting_and_resolution": [
 				{
 					"workday": "Monday",
 					"start_time": start_time,
@@ -610,7 +610,7 @@ def create_custom_doctype():
 		doc = frappe.get_doc(
 			{
 				"doctype": "DocType",
-				"module": "Support",
+				"module": "supporting",
 				"custom": 1,
 				"fields": [
 					{"label": "Date", "fieldname": "date", "field_type": "Date"},

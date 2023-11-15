@@ -28,9 +28,9 @@
   "sla_fulfilled_on",
   "column_break_22",
   "pause_sla_on",
-  "support_and_resolution_section_break",
+  "supporting_and_resolution_section_break",
   "holiday_list",
-  "support_and_resolution"
+  "supporting_and_resolution"
  ],
  "fields": [
   {
@@ -80,12 +80,12 @@
    "label": "Response and Resolution"
   },
   {
-   "fieldname": "support_and_resolution_section_break",
+   "fieldname": "supporting_and_resolution_section_break",
    "field_type": "Section Break",
    "label": "Working Hours"
   },
   {
-   "fieldname": "support_and_resolution",
+   "fieldname": "supporting_and_resolution",
    "field_type": "Table",
    "label": "Working Hours",
    "option": "Service Day",
@@ -194,7 +194,7 @@
  "links": [],
  "modified": "2023-08-28 22:17:54.740924",
  "modified_by": "Administrator",
- "module": "Support",
+ "module": "supporting",
  "name": "Service Level Agreement",
  "naming_rule": "Expression",
  "owner": "Administrator",

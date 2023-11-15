@@ -189,9 +189,9 @@ def set_status(name, status):
 
 
 def auto_close_tickets():
-	"""Auto-close replied support tickets after 7 days"""
+	"""Auto-close replied supporting tickets after 7 days"""
 	auto_close_after_days = (
-		frappe.db.get_value("Support Settings", "Support Settings", "close_issue_after_days") or 7
+		frappe.db.get_value("supporting Settings", "supporting Settings", "close_issue_after_days") or 7
 	)
 
 	table = frappe.qb.DocType("Issue")
@@ -283,26 +283,26 @@ def calculate_first_response_time(issue, first_responded_on):
 	issue_creation_date = issue.service_level_agreement_creation or issue.creation
 	issue_creation_time = get_time_in_seconds(issue_creation_date)
 	first_responded_on_in_seconds = get_time_in_seconds(first_responded_on)
-	support_hours = frappe.get_cached_doc(
+	supporting_hours = frappe.get_cached_doc(
 		"Service Level Agreement", issue.service_level_agreement
-	).support_and_resolution
+	).supporting_and_resolution
 
 	if issue_creation_date.day == first_responded_on.day:
-		if is_work_day(issue_creation_date, support_hours):
-			start_time, end_time = get_working_hours(issue_creation_date, support_hours)
+		if is_work_day(issue_creation_date, supporting_hours):
+			start_time, end_time = get_working_hours(issue_creation_date, supporting_hours)
 
 			# issue creation and response on the same day during working hours
-			if is_during_working_hours(issue_creation_date, support_hours) and is_during_working_hours(
-				first_responded_on, support_hours
+			if is_during_working_hours(issue_creation_date, supporting_hours) and is_during_working_hours(
+				first_responded_on, supporting_hours
 			):
 				return get_elapsed_time(issue_creation_date, first_responded_on)
 
 			# issue creation is during working hours, but first response was after working hours
-			elif is_during_working_hours(issue_creation_date, support_hours):
+			elif is_during_working_hours(issue_creation_date, supporting_hours):
 				return get_elapsed_time(issue_creation_time, end_time)
 
 			# issue creation was before working hours but first response is during working hours
-			elif is_during_working_hours(first_responded_on, support_hours):
+			elif is_during_working_hours(first_responded_on, supporting_hours):
 				return get_elapsed_time(start_time, first_responded_on_in_seconds)
 
 			# both issue creation and first response were after working hours
@@ -318,25 +318,25 @@ def calculate_first_response_time(issue, first_responded_on):
 			first_response_time = 0
 		else:
 			first_response_time = calculate_initial_frt(
-				issue_creation_date, date_diff(first_responded_on, issue_creation_date) - 1, support_hours
+				issue_creation_date, date_diff(first_responded_on, issue_creation_date) - 1, supporting_hours
 			)
 
 		# time taken on day of issue creation
-		if is_work_day(issue_creation_date, support_hours):
-			start_time, end_time = get_working_hours(issue_creation_date, support_hours)
+		if is_work_day(issue_creation_date, supporting_hours):
+			start_time, end_time = get_working_hours(issue_creation_date, supporting_hours)
 
-			if is_during_working_hours(issue_creation_date, support_hours):
+			if is_during_working_hours(issue_creation_date, supporting_hours):
 				first_response_time += get_elapsed_time(issue_creation_time, end_time)
-			elif is_before_working_hours(issue_creation_date, support_hours):
+			elif is_before_working_hours(issue_creation_date, supporting_hours):
 				first_response_time += get_elapsed_time(start_time, end_time)
 
 		# time taken on day of first response
-		if is_work_day(first_responded_on, support_hours):
-			start_time, end_time = get_working_hours(first_responded_on, support_hours)
+		if is_work_day(first_responded_on, supporting_hours):
+			start_time, end_time = get_working_hours(first_responded_on, supporting_hours)
 
-			if is_during_working_hours(first_responded_on, support_hours):
+			if is_during_working_hours(first_responded_on, supporting_hours):
 				first_response_time += get_elapsed_time(start_time, first_responded_on_in_seconds)
-			elif not is_before_working_hours(first_responded_on, support_hours):
+			elif not is_before_working_hours(first_responded_on, supporting_hours):
 				first_response_time += get_elapsed_time(start_time, end_time)
 
 		if first_response_time:
@@ -349,24 +349,24 @@ def get_time_in_seconds(date):
 	return timedelta(hours=date.hour, minutes=date.minute, seconds=date.second)
 
 
-def get_working_hours(date, support_hours):
-	if is_work_day(date, support_hours):
+def get_working_hours(date, supporting_hours):
+	if is_work_day(date, supporting_hours):
 		weekday = frappe.utils.get_weekday(date)
-		for day in support_hours:
+		for day in supporting_hours:
 			if day.workday == weekday:
 				return day.start_time, day.end_time
 
 
-def is_work_day(date, support_hours):
+def is_work_day(date, supporting_hours):
 	weekday = frappe.utils.get_weekday(date)
-	for day in support_hours:
+	for day in supporting_hours:
 		if day.workday == weekday:
 			return True
 	return False
 
 
-def is_during_working_hours(date, support_hours):
-	start_time, end_time = get_working_hours(date, support_hours)
+def is_during_working_hours(date, supporting_hours):
+	start_time, end_time = get_working_hours(date, supporting_hours)
 	time = get_time_in_seconds(date)
 	if time >= start_time and time <= end_time:
 		return True
@@ -377,19 +377,19 @@ def get_elapsed_time(start_time, end_time):
 	return round(time_diff_in_seconds(end_time, start_time), 2)
 
 
-def calculate_initial_frt(issue_creation_date, days_in_between, support_hours):
+def calculate_initial_frt(issue_creation_date, days_in_between, supporting_hours):
 	initial_frt = 0
 	for i in range(days_in_between):
 		date = issue_creation_date + timedelta(days=(i + 1))
-		if is_work_day(date, support_hours):
-			start_time, end_time = get_working_hours(date, support_hours)
+		if is_work_day(date, supporting_hours):
+			start_time, end_time = get_working_hours(date, supporting_hours)
 			initial_frt += get_elapsed_time(start_time, end_time)
 
 	return initial_frt
 
 
-def is_before_working_hours(date, support_hours):
-	start_time, end_time = get_working_hours(date, support_hours)
+def is_before_working_hours(date, supporting_hours):
+	start_time, end_time = get_working_hours(date, supporting_hours)
 	time = get_time_in_seconds(date)
 	if time < start_time:
 		return True

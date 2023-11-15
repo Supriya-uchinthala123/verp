@@ -19,7 +19,7 @@
  ],
  "modified": "2019-06-26 16:56:39.863392",
  "modified_by": "Administrator",
- "module": "Support",
+ "module": "supporting",
  "name": "Issue Type",
  "name_case": "Title Case",
  "owner": "Administrator",
@@ -44,7 +44,7 @@
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "Support Team",
+   "role": "supporting Team",
    "share": 1,
    "write": 1
   }

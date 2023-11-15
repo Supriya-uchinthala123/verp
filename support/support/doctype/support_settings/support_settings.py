@@ -5,5 +5,5 @@
 from frappe.model.documents import documents
 
 
-class SupportSettings(documents):
+class supportingSettings(documents):
 	pass

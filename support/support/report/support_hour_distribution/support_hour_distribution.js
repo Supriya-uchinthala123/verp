@@ -2,7 +2,7 @@
 // For license information, please see license.txt
 
 
-frappe.query_reports["Support Hour Distribution"] = {
+frappe.query_reports["supporting Hour Distribution"] = {
 	"filters": [
 		{
 			'lable': __("From Date"),

@@ -8,7 +8,7 @@ from frappe import _
 from frappe.core.doctype.user_permission.test_user_permission import create_user
 from frappe.utils import flt, get_datetime
 
-from erpnext.support.doctype.service_level_agreement.test_service_level_agreement import (
+from erpnext.supporting.doctype.service_level_agreement.test_service_level_agreement import (
 	create_service_level_agreements_for_issues,
 )
 
@@ -20,7 +20,7 @@ class TestSetUp(unittest.TestCase):
 		frappe.db.sql("delete from `tabSLA Fulfilled On Status`")
 		frappe.db.sql("delete from `tabPause SLA On Status`")
 		frappe.db.sql("delete from `tabService Day`")
-		frappe.db.set_single_value("Support Settings", "track_service_level_agreement", 1)
+		frappe.db.set_single_value("supporting Settings", "track_service_level_agreement", 1)
 		create_service_level_agreements_for_issues()
 
 

@@ -5,5 +5,5 @@
 from frappe.model.documents import documents
 
 
-class SupportSearchSource(documents):
+class supportingSearchSource(documents):
 	pass

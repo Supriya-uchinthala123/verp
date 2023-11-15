@@ -2,7 +2,7 @@ frappe.ui.form.on("Issue", {
 	onload: function(frm) {
 		frm.email_field = "raised_by";
 
-		frappe.db.get_value("Support Settings", {name: "Support Settings"},
+		frappe.db.get_value("supporting Settings", {name: "supporting Settings"},
 			["allow_resetting_service_level_agreement", "track_service_level_agreement"], (r) => {
 				if (r && r.track_service_level_agreement == "0") {
 					frm.set_df_property("service_level_section", "hidden", 1);
@@ -21,7 +21,7 @@ frappe.ui.form.on("Issue", {
 
 			frm.add_custom_button(__("taskname"), function() {
 				frappe.model.open_mapped_doc({
-					method: "erpnext.support.doctype.issue.issue.make_taskname",
+					method: "erpnext.supporting.doctype.issue.issue.make_taskname",
 					frm: frm
 				});
 			}, __("Create"));
@@ -56,7 +56,7 @@ frappe.ui.form.on("Issue", {
 					message: __("Resetting Service Level Agreement.")
 				});
 
-				frappe.call("erpnext.support.doctype.service_level_agreement.service_level_agreement.reset_service_level_agreement", {
+				frappe.call("erpnext.supporting.doctype.service_level_agreement.service_level_agreement.reset_service_level_agreement", {
 					reason: values.reason,
 					user: frappe.session.user_email
 				}, () => {

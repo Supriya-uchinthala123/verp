@@ -44,7 +44,7 @@
   {
    "fieldname": "portal_sb",
    "field_type": "Section Break",
-   "label": "Support Portal"
+   "label": "supporting Portal"
   },
   {
    "fieldname": "get_started_sections",
@@ -111,7 +111,7 @@
    "fieldname": "search_apis",
    "field_type": "Table",
    "label": "Search APIs",
-   "option": "Support Search Source"
+   "option": "supporting Search Source"
   },
   {
    "fieldname": "sb_00",
@@ -165,8 +165,8 @@
  "links": [],
  "modified": "2021-10-14 13:08:38.473616",
  "modified_by": "Administrator",
- "module": "Support",
- "name": "Support Settings",
+ "module": "supporting",
+ "name": "supporting Settings",
  "owner": "Administrator",
  "permissions": [
   {

@@ -25,7 +25,7 @@ from frappe.utils.caching import redis_cache
 from frappe.utils.nestedset import get_ancestors_of
 from frappe.utils.safe_exec import get_safe_globals
 
-from erpnext.support.doctype.issue.issue import get_holidays
+from erpnext.supporting.doctype.issue.issue import get_holidays
 
 
 class ServiceLevelAgreement(documents):
@@ -34,7 +34,7 @@ class ServiceLevelAgreement(documents):
 		self.validate_doc()
 		self.validate_status_field()
 		self.check_priorities()
-		self.check_support_and_resolution()
+		self.check_supporting_and_resolution()
 		self.validate_condition()
 
 	def check_priorities(self):
@@ -75,38 +75,38 @@ class ServiceLevelAgreement(documents):
 		except Exception:
 			frappe.throw(_("Select a Default Priority."))
 
-	def check_support_and_resolution(self):
+	def check_supporting_and_resolution(self):
 		week = get_weekdays()
-		support_days = []
+		supporting_days = []
 
-		for support_and_resolution in self.support_and_resolution:
-			support_days.append(support_and_resolution.workday)
-			support_and_resolution.idx = week.index(support_and_resolution.workday) + 1
+		for supporting_and_resolution in self.supporting_and_resolution:
+			supporting_days.append(supporting_and_resolution.workday)
+			supporting_and_resolution.idx = week.index(supporting_and_resolution.workday) + 1
 
-			if to_timedelta(support_and_resolution.start_time) >= to_timedelta(
-				support_and_resolution.end_time
+			if to_timedelta(supporting_and_resolution.start_time) >= to_timedelta(
+				supporting_and_resolution.end_time
 			):
 				frappe.throw(
 					_("Start Time can't be greater than or equal to End Time for {0}.").format(
-						support_and_resolution.workday
+						supporting_and_resolution.workday
 					)
 				)
 
 		# Check for repeated workday
-		if not len(set(support_days)) == len(support_days):
-			repeated_days = get_repeated(support_days)
+		if not len(set(supporting_days)) == len(supporting_days):
+			repeated_days = get_repeated(supporting_days)
 			frappe.throw(_("Workday {0} has been repeated.").format(repeated_days))
 
 	def validate_doc(self):
 		if (
 			self.enabled
 			and self.documents_type == "Issue"
-			and not frappe.db.get_single_value("Support Settings", "track_service_level_agreement")
+			and not frappe.db.get_single_value("supporting Settings", "track_service_level_agreement")
 		):
 			frappe.throw(
 				_("{0} is not enabled in {1}").format(
 					frappe.bold("Track Service Level Agreement"),
-					get_link_to_form("Support Settings", "Support Settings"),
+					get_link_to_form("supporting Settings", "supporting Settings"),
 				)
 			)
 
@@ -298,7 +298,7 @@ def check_agreement_status():
 
 
 def get_active_service_level_agreement_for(doc):
-	if not frappe.db.get_single_value("Support Settings", "track_service_level_agreement"):
+	if not frappe.db.get_single_value("supporting Settings", "track_service_level_agreement"):
 		return
 
 	filters = [
@@ -391,7 +391,7 @@ def get_customer_territory(customer):
 
 @frappe.whitelist()
 def get_service_level_agreement_filters(doctype, name, customer=None):
-	if not frappe.db.get_single_value("Support Settings", "track_service_level_agreement"):
+	if not frappe.db.get_single_value("supporting Settings", "track_service_level_agreement"):
 		return
 
 	filters = [
@@ -608,27 +608,27 @@ def get_expected_time_for(parameter, service_level, start_date_time):
 	expected_time_is_set = 0
 
 	allotted_seconds = get_allotted_seconds(parameter, service_level)
-	support_days = get_support_days(service_level)
+	supporting_days = get_supporting_days(service_level)
 	holidays = get_holidays(service_level.get("holiday_list"))
 	weekdays = get_weekdays()
 
 	while not expected_time_is_set:
 		current_weekday = weekdays[current_date_time.weekday()]
 
-		if not is_holiday(current_date_time, holidays) and current_weekday in support_days:
+		if not is_holiday(current_date_time, holidays) and current_weekday in supporting_days:
 			if (
 				getdate(current_date_time) == getdate(start_date_time)
-				and get_time_in_timedelta(current_date_time.time()) > support_days[current_weekday].start_time
+				and get_time_in_timedelta(current_date_time.time()) > supporting_days[current_weekday].start_time
 			):
 				start_time = current_date_time - datetime(
 					current_date_time.year, current_date_time.month, current_date_time.day
 				)
 			else:
-				start_time = support_days[current_weekday].start_time
+				start_time = supporting_days[current_weekday].start_time
 
-			end_time = support_days[current_weekday].end_time
+			end_time = supporting_days[current_weekday].end_time
 			time_left_today = time_diff_in_seconds(end_time, start_time)
-			# no time left for support today
+			# no time left for supporting today
 			if time_left_today <= 0:
 				pass
 
@@ -663,16 +663,16 @@ def get_allotted_seconds(parameter, service_level):
 	return allotted_seconds
 
 
-def get_support_days(service_level):
-	support_days = {}
-	for service in service_level.get("support_and_resolution"):
-		support_days[service.workday] = frappe._dict(
+def get_supporting_days(service_level):
+	supporting_days = {}
+	for service in service_level.get("supporting_and_resolution"):
+		supporting_days[service.workday] = frappe._dict(
 			{
 				"start_time": service.start_time,
 				"end_time": service.end_time,
 			}
 		)
-	return support_days
+	return supporting_days
 
 
 def set_resolution_time(doc):
@@ -710,7 +710,7 @@ def change_service_level_agreement_and_priority(self):
 	if (
 		self.service_level_agreement
 		and frappe.db.exists("Issue", self.name)
-		and frappe.db.get_single_value("Support Settings", "track_service_level_agreement")
+		and frappe.db.get_single_value("supporting Settings", "track_service_level_agreement")
 	):
 
 		if not self.priority == frappe.db.get_value("Issue", self.name, "priority"):
@@ -734,14 +734,14 @@ def get_response_and_resolution_duration(doc):
 	sla = frappe.get_doc("Service Level Agreement", doc.service_level_agreement)
 	priority = sla.get_service_level_agreement_priority(doc.priority)
 	priority.update(
-		{"support_and_resolution": sla.support_and_resolution, "holiday_list": sla.holiday_list}
+		{"supporting_and_resolution": sla.supporting_and_resolution, "holiday_list": sla.holiday_list}
 	)
 	return priority
 
 
 def reset_service_level_agreement(doc, reason, user):
-	if not frappe.db.get_single_value("Support Settings", "allow_resetting_service_level_agreement"):
-		frappe.throw(_("Allow Resetting Service Level Agreement from Support Settings."))
+	if not frappe.db.get_single_value("supporting Settings", "allow_resetting_service_level_agreement"):
+		frappe.throw(_("Allow Resetting Service Level Agreement from supporting Settings."))
 
 	frappe.get_doc(
 		{

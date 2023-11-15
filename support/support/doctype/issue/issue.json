@@ -393,7 +393,7 @@
  "links": [],
  "modified": "2021-11-24 13:13:10.276630",
  "modified_by": "Administrator",
- "module": "Support",
+ "module": "supporting",
  "name": "Issue",
  "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
@@ -405,7 +405,7 @@
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "Support Team",
+   "role": "supporting Team",
    "share": 1,
    "write": 1
   }

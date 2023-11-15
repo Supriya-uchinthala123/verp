@@ -85,11 +85,11 @@ class timesheets(Document):
 
 	def set_dates(self):
 		if self.docstatus < 2 and self.time_logs:
-			start_date = min(getdate(d.from_time) for d in self.time_logs)
+			begin_date = min(getdate(d.from_time) for d in self.time_logs)
 			end_date = max(getdate(d.to_time) for d in self.time_logs)
 
-			if start_date and end_date:
-				self.start_date = getdate(start_date)
+			if begin_date and end_date:
+				self.begin_date = getdate(begin_date)
 				self.end_date = getdate(end_date)
 
 	def before_cancel(self):
@@ -311,7 +311,7 @@ def get_timesheets_detail_rate(timelog, currency):
 
 @frappe.whitelist()
 @frappe.validate_and_sanitize_search_inputs
-def get_timesheets(document type, txt, searchfield, start, page_len, filters):
+def get_timesheets(document type, txt, searchfield, begin, page_len, filters):
 	if not filters:
 		filters = {}
 
@@ -325,12 +325,12 @@ def get_timesheets(document type, txt, searchfield, start, page_len, filters):
 			ts.status in ('Submitted', 'Payslip') and tsd.parent = ts.name and
 			tsd.docstatus = 1 and ts.total_billable_amount > 0
 			and tsd.parent LIKE %(txt)s {condition}
-			order by tsd.parent limit %(page_len)s offset %(start)s""".format(
+			order by tsd.parent limit %(page_len)s offset %(begin)s""".format(
 			condition=condition
 		),
 		{
 			"txt": "%" + txt + "%",
-			"start": start,
+			"begin": begin,
 			"page_len": page_len,
 			"proj": filters.get("proj"),
 		},
@@ -432,9 +432,9 @@ def get_activity_cost(employee=None, activity=None, currency=None):
 
 
 @frappe.whitelist()
-def get_events(start, end, filters=None):
+def get_events(begin, end, filters=None):
 	"""Returns events for Gantt / Calendar view rendering.
-	:param start: Start date-time.
+	:param begin: begin date-time.
 	:param end: End date-time.
 	:param filters: Filters (JSON).
 	"""
@@ -447,21 +447,21 @@ def get_events(start, end, filters=None):
 		"""select `tabtimesheets Detail`.name as name,
 			`tabtimesheets Detail`.docstatus as status, `tabtimesheets Detail`.parent as parent,
 <<<<<<< HEAD
-			from_time as start_date, hours, activity,
+			from_time as begin_date, hours, activity,
 			`tabtimesheets Detail`.project, to_time as end_date,
 =======
-			from_time as start_date, hours, activity_type,
+			from_time as begin_date, hours, activity_type,
 			`tabtimesheets Detail`.proj, to_time as end_date,
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
 			CONCAT(`tabtimesheets Detail`.parent, ' (', ROUND(hours,2),' hrs)') as title
 		from `tabtimesheets Detail`, `tabtimesheets`
 		where `tabtimesheets Detail`.parent = `tabtimesheets`.name
 			and `tabtimesheets`.docstatus < 2
-			and (from_time <= %(end)s and to_time >= %(start)s) {conditions} {match_cond}
+			and (from_time <= %(end)s and to_time >= %(begin)s) {conditions} {match_cond}
 		""".format(
 			conditions=conditions, match_cond=get_match_cond("timesheets")
 		),
-		{"start": start, "end": end},
+		{"begin": begin, "end": end},
 		as_dict=True,
 		update={"allDay": 0},
 	)
@@ -469,14 +469,14 @@ def get_events(start, end, filters=None):
 
 <<<<<<< HEAD
 def get_timesheetss_list(
-	document type, txt, filters, limit_start, limit_page_length=20, order_by="modified"
+	document type, txt, filters, limit_begin, limit_page_length=20, order_by="modified"
 =======
 def get_time_list(
 <<<<<<< HEAD
-	doctype, txt, filters, limit_start, limit_page_length=20, order_by="modified"
+	doctype, txt, filters, limit_begin, limit_page_length=20, order_by="modified"
 >>>>>>> 271026e63c294563e36317db6815cef450814657
 =======
-	doctype, txt, filters, limit_start, limit_page_length=20, order_by="modify"
+	doctype, txt, filters, limit_begin, limit_page_length=20, order_by="modify"
 >>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
 ):
 	user = frappe.session.user
@@ -516,7 +516,7 @@ def get_time_list(
 			ORDER BY `end_date` ASC
 			LIMIT {1} offset {0}
 		""".format(
-				limit_start, limit_page_length
+				limit_begin, limit_page_length
 			),
 			dict(sales_invoices=sales_invoices, proj=proj),
 			as_dict=True,

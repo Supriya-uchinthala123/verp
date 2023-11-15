@@ -25,7 +25,7 @@ def execute(filters=None):
 				proj.company,
 				proj.customer,
 				proj.estimated_costing,
-				proj.expected_start_date,
+				proj.expected_begin_date,
 				proj.expected_end_date,
 			]
 		)
@@ -44,7 +44,7 @@ def get_columns():
 		_("Company") + ":Link/Company:100",
 		_("Customer") + ":Link/Customer:140",
 		_("proj Value") + ":Currency:120",
-		_("proj Start Date") + ":Date:120",
+		_("proj begin Date") + ":Date:120",
 		_("Completion Date") + ":Date:120",
 	]
 
@@ -52,7 +52,7 @@ def get_columns():
 def get_proj_details():
 	return frappe.db.sql(
 		""" select name, proj_name, status, company, customer, estimated_costing,
-		expected_start_date, expected_end_date from tabproj where docstatus < 2""",
+		expected_begin_date, expected_end_date from tabproj where docstatus < 2""",
 		as_dict=1,
 	)
 

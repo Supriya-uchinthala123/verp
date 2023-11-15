@@ -24,7 +24,7 @@
   "department",
   "column_break_9",
   "user",
-  "start_date",
+  "begin_date",
   "end_date",
   "section_break_5",
   "time_logs",
@@ -138,10 +138,10 @@
    "read_only": 1
   },
   {
-   "fieldname": "start_date",
+   "fieldname": "begin_date",
    "fieldtype": "Date",
    "in_list_view": 1,
-   "label": "Start Date",
+   "label": "begin Date",
    "print_hide": 1,
    "read_only": 1
   },

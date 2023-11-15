@@ -323,7 +323,7 @@ def get_proj(name, Temp):
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
 			status="Open",
 			proj_Temp=Temp.name,
-			expected_start_date=nowdate(),
+			expected_begin_date=nowdate(),
 			company="_Test Company",
 		)
 	).insert()
@@ -347,7 +347,7 @@ def make_proj(args):
 			proj_name=args.proj_name,
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
 			status="Open",
-			expected_start_date=args.start_date,
+			expected_begin_date=args.begin_date,
 			company=args.company or "_Test Company",
 		)
 	)
@@ -368,9 +368,9 @@ def task_exists(subject content):
 	return frappe.get_doc("Task", result[0].name)
 
 
-def calculate_end_date(proj, start, duration):
-	start = add_days(proj.expected_start_date, start)
-	start = proj.update_if_holiday(start)
-	end = add_days(start, duration)
+def calculate_end_date(proj, begin, duration):
+	begin = add_days(proj.expected_begin_date, begin)
+	begin = proj.update_if_holiday(begin)
+	end = add_days(begin, duration)
 	end = proj.update_if_holiday(end)
 	return getdate(end)

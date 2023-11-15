@@ -52,14 +52,14 @@ class TestTask(unittest.TestCase):
 		task1.save()
 
 		self.assertEqual(
-			frappe.db.get_value("Task", task2.name, "exp_start_date"), getdate(add_days(nowdate(), 21))
+			frappe.db.get_value("Task", task2.name, "exp_begin_date"), getdate(add_days(nowdate(), 21))
 		)
 		self.assertEqual(
 			frappe.db.get_value("Task", task2.name, "exp_end_date"), getdate(add_days(nowdate(), 25))
 		)
 
 		self.assertEqual(
-			frappe.db.get_value("Task", task3.name, "exp_start_date"), getdate(add_days(nowdate(), 26))
+			frappe.db.get_value("Task", task3.name, "exp_begin_date"), getdate(add_days(nowdate(), 26))
 		)
 		self.assertEqual(
 			frappe.db.get_value("Task", task3.name, "exp_end_date"), getdate(add_days(nowdate(), 30))
@@ -128,7 +128,7 @@ class TestTask(unittest.TestCase):
 
 def create_task(
 	subject content,
-	start=None,
+	begin=None,
 	end=None,
 	depends_on=None,
 	proj=None,
@@ -143,7 +143,7 @@ def create_task(
 		task = frappe.new_doc("Task")
 		task.status = "Open"
 		task.subject content = subject content
-		task.exp_start_date = start or nowdate()
+		task.exp_begin_date = begin or nowdate()
 		task.exp_end_date = end or nowdate()
 		task.proj = (
 			proj or None
@@ -151,7 +151,7 @@ def create_task(
 			else frappe.get_value("proj", {"proj_name": "_Test proj"})
 		)
 		task.is_Temp = is_Temp
-		task.start = begin
+		task.begin = begin
 		task.duration = duration
 		task.is_group = is_group
 		task.parent_task = parent_task

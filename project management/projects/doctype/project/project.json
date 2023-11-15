@@ -17,7 +17,7 @@
   "percent_complete",
   "column_break_5",
   "proj_Temp",
-  "expected_start_date",
+  "expected_begin_date",
   "expected_end_date",
   "priority",
   "department",
@@ -31,7 +31,7 @@
   "section_break0",
   "notes",
   "section_break_18",
-  "actual_start_date",
+  "actual_begin_date",
   "actual_time",
   "column_break_20",
   "actual_end_date",
@@ -131,10 +131,10 @@
    "set_only_once": 1
   },
   {
-   "fieldname": "expected_start_date",
+   "fieldname": "expected_begin_date",
    "fieldtype": "Date",
-   "label": "Expected Start Date",
-   "oldfieldname": "proj_start_date",
+   "label": "Expected begin Date",
+   "oldfieldname": "proj_begin_date",
    "oldfieldtype": "Date"
   },
   {
@@ -229,12 +229,12 @@
    "collapsible": 1,
    "fieldname": "section_break_18",
    "fieldtype": "Section Break",
-   "label": "Start and End Dates"
+   "label": "begin and End Dates"
   },
   {
-   "fieldname": "actual_start_date",
+   "fieldname": "actual_begin_date",
    "fieldtype": "Date",
-   "label": "Actual Start Date (via timesheets)",
+   "label": "Actual begin Date (via timesheets)",
    "read_only": 1
   },
   {

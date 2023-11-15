@@ -27,9 +27,9 @@
   "completed_by",
   "completed_on",
   "sb_timeline",
-  "exp_start_date",
+  "exp_begin_date",
   "expected_time",
-  "start",
+  "begin",
   "column_break_11",
   "exp_end_date",
   "progress",
@@ -41,7 +41,7 @@
   "depends_on",
   "depends_on_tasks",
   "sb_actual",
-  "act_start_date",
+  "act_begin_date",
   "actual_time",
   "column_break_15",
   "act_end_date",
@@ -156,10 +156,10 @@
    "label": "Timeline"
   },
   {
-   "fieldname": "exp_start_date",
+   "fieldname": "exp_begin_date",
    "fieldtype": "Date",
-   "label": "Expected Start Date",
-   "oldfieldname": "exp_start_date",
+   "label": "Expected begin Date",
+   "oldfieldname": "exp_begin_date",
    "oldfieldtype": "Date"
   },
   {
@@ -244,10 +244,10 @@
    "width": "50%"
   },
   {
-   "fieldname": "act_start_date",
+   "fieldname": "act_begin_date",
    "fieldtype": "Date",
-   "label": "Actual Start Date (via timesheets)",
-   "oldfieldname": "act_start_date",
+   "label": "Actual begin Date (via timesheets)",
+   "oldfieldname": "act_begin_date",
    "oldfieldtype": "Date",
    "read_only": 1
   },
@@ -372,7 +372,7 @@
   },
   {
    "depends_on": "is_Temp",
-   "fieldname": "start",
+   "fieldname": "begin",
    "fieldtype": "Int",
    "label": "Begin On (Days)"
   },

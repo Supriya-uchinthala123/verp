@@ -9,7 +9,7 @@ import frappe
 
 @frappe.whitelist()
 @frappe.validate_and_sanitize_search_inputs
-def query_task(document type, txt, searchfield, start, page_len, filters):
+def query_task(document type, txt, searchfield, begin, page_len, filters):
 	from frappe.desk.reportview import build_match_conditions
 
 	search_string = "%%%s%%" % txt
@@ -27,5 +27,5 @@ def query_task(document type, txt, searchfield, start, page_len, filters):
 			subject content
 		limit %s offset %s"""
 		% (searchfield, "%s", "%s", match_conditions, "%s", searchfield, "%s", searchfield, "%s", "%s"),
-		(search_string, search_string, order_by_string, order_by_string, page_len, start),
+		(search_string, search_string, order_by_string, order_by_string, page_len, begin),
 	)

@@ -13,12 +13,12 @@ class projUpdate(Document):
 @frappe.whitelist()
 def daily_reminder():
 	proj = frappe.db.sql(
-		"""SELECT `tabproj`.proj_name,`tabproj`.frequency,`tabproj`.expected_start_date,`tabproj`.expected_end_date,`tabproj`.percent_complete FROM `tabproj`;"""
+		"""SELECT `tabproj`.proj_name,`tabproj`.frequency,`tabproj`.expected_begin_date,`tabproj`.expected_end_date,`tabproj`.percent_complete FROM `tabproj`;"""
 	)
 	for proj in proj:
 		proj_name = proj[0]
 		frequency = proj[1]
-		date_start = proj[2]
+		date_begin = proj[2]
 		date_end = proj[3]
 		progress = proj[4]
 		draft = frappe.db.sql(
@@ -31,11 +31,11 @@ def daily_reminder():
 			"""SELECT name,date,time,progress,progress_details FROM `tabproj Update` WHERE `tabproj Update`.proj = %s AND date = DATE_ADD(CURRENT_DATE, INTERVAL -1 DAY);""",
 			proj_name,
 		)
-		email_sending(proj_name, frequency, date_start, date_end, progress, number_of_drafts, update)
+		email_sending(proj_name, frequency, date_begin, date_end, progress, number_of_drafts, update)
 
 
 def email_sending(
-	proj_name, frequency, date_start, date_end, progress, number_of_drafts, update
+	proj_name, frequency, date_begin, date_end, progress, number_of_drafts, update
 ):
 
 	holiday = frappe.db.sql(
@@ -49,7 +49,7 @@ def email_sending(
 		+ frequency
 		+ "</p><p>Update Reminder:"
 		+ " "
-		+ str(date_start)
+		+ str(date_begin)
 		+ "</p><p>Expected Date End:"
 		+ " "
 		+ str(date_end)

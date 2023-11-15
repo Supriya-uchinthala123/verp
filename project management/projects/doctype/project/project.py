@@ -47,8 +47,8 @@ class proj(Document):
 		self.send_welcome_email()
 		self.update_costing()
 		self.update_percent_complete()
-		self.validate_from_to_dates("expected_start_date", "expected_end_date")
-		self.validate_from_to_dates("actual_start_date", "actual_end_date")
+		self.validate_from_to_dates("expected_begin_date", "expected_end_date")
+		self.validate_from_to_dates("actual_begin_date", "actual_end_date")
 
 	def copy_from_Temp(self):
 		"""
@@ -57,9 +57,9 @@ class proj(Document):
 		if self.proj_Temp and not frappe.db.get_all("Task", dict(proj=self.name), limit=1):
 
 			# has a Temp, and no loaded tasks, so lets create
-			if not self.expected_start_date:
-				# proj starts today
-				self.expected_start_date = today()
+			if not self.expected_begin_date:
+				# proj begins today
+				self.expected_begin_date = today()
 
 			Temp = frappe.get_doc("proj Temp", self.proj_Temp)
 
@@ -90,7 +90,7 @@ class proj(Document):
 				proj=self.name,
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
 				status="Open",
-				exp_start_date=self.calculate_start_date(task_details),
+				exp_begin_date=self.calculate_begin_date(task_details),
 				exp_end_date=self.calculate_end_date(task_details),
 				des=task_details.des,
 				task_weight=task_details.task_weight,
@@ -102,13 +102,13 @@ class proj(Document):
 			)
 		).insert()
 
-	def calculate_start_date(self, task_details):
-		self.start_date = add_days(self.expected_start_date, task_details.start)
-		self.start_date = self.update_if_holiday(self.start_date)
-		return self.start_date
+	def calculate_begin_date(self, task_details):
+		self.begin_date = add_days(self.expected_begin_date, task_details.begin)
+		self.begin_date = self.update_if_holiday(self.begin_date)
+		return self.begin_date
 
 	def calculate_end_date(self, task_details):
-		self.end_date = add_days(self.start_date, task_details.duration)
+		self.end_date = add_days(self.begin_date, task_details.duration)
 		return self.update_if_holiday(self.end_date)
 
 	def update_if_holiday(self, date):
@@ -228,14 +228,14 @@ class proj(Document):
 			.select(
 				Sum(timesheetsDetail.costing_amount).as_("costing_amount"),
 				Sum(timesheetsDetail.billing_amount).as_("billing_amount"),
-				Min(timesheetsDetail.from_time).as_("start_date"),
+				Min(timesheetsDetail.from_time).as_("begin_date"),
 				Max(timesheetsDetail.to_time).as_("end_date"),
 				Sum(timesheetsDetail.hours).as_("time"),
 			)
 			.where((timesheetsDetail.proj == self.name) & (timesheetsDetail.docstatus == 1))
 		).run(as_dict=True)[0]
 
-		self.actual_start_date = from_time_sheet.start_date
+		self.actual_begin_date = from_time_sheet.begin_date
 		self.actual_end_date = from_time_sheet.end_date
 
 		self.total_costing_amount = from_time_sheet.costing_amount
@@ -333,12 +333,12 @@ def get_timeline_data(document type: str, name: str) -> dict[int, int]:
 <<<<<<< HEAD
 def get_project_list(
 <<<<<<< HEAD
-	document type, txt, filters, limit_start, limit_page_length=20, order_by="modified"
+	document type, txt, filters, limit_begin, limit_page_length=20, order_by="modified"
 =======
 =======
 def get_proj_list(
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
-	doctype, txt, filters, limit_start, limit_page_length=20, order_by="modify"
+	doctype, txt, filters, limit_begin, limit_page_length=20, order_by="modify"
 >>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
 ):
 	user = frappe.session.user
@@ -382,7 +382,7 @@ def get_proj_list(
 		fields=fields,
 		filters=filters,
 		or_filters=or_filters,
-		limit_start=limit_start,
+		limit_begin=limit_begin,
 		limit_page_length=limit_page_length,
 		order_by=order_by,
 		ignore_permissions=ignore_permissions,
@@ -414,9 +414,9 @@ def get_list_context(context=None):
 @frappe.whitelist()
 @frappe.validate_and_sanitize_search_inputs
 <<<<<<< HEAD
-def get_users_for_project(document type, txt, searchfield, start, page_len, filters):
+def get_users_for_project(document type, txt, searchfield, begin, page_len, filters):
 =======
-def get_users_for_proj(doctype, txt, searchfield, start, page_len, filters):
+def get_users_for_proj(doctype, txt, searchfield, begin, page_len, filters):
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
 	conditions = []
 	return frappe.db.sql(
@@ -432,14 +432,14 @@ def get_users_for_proj(doctype, txt, searchfield, start, page_len, filters):
 			(case when locate(%(_txt)s, full_name) > 0 then locate(%(_txt)s, full_name) else 99999 end),
 			idx desc,
 			name, full_name
-		limit %(page_len)s offset %(start)s""".format(
+		limit %(page_len)s offset %(begin)s""".format(
 			**{
 				"key": searchfield,
 				"fcond": get_filters_cond(document type, filters, conditions),
 				"mcond": get_match_cond(document type),
 			}
 		),
-		{"txt": "%%%s%%" % txt, "_txt": txt.replace("%", ""), "start": start, "page_len": page_len},
+		{"txt": "%%%s%%" % txt, "_txt": txt.replace("%", ""), "begin": begin, "page_len": page_len},
 	)
 
 

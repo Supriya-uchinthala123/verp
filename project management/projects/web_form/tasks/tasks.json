@@ -85,10 +85,10 @@
    "reqd": 0
   }, 
   {
-   "fieldname": "exp_start_date", 
+   "fieldname": "exp_begin_date", 
    "fieldtype": "Date", 
    "hidden": 0, 
-   "label": "Expected Start Date", 
+   "label": "Expected begin Date", 
    "max_length": 0, 
    "max_value": 0, 
    "read_only": 0, 

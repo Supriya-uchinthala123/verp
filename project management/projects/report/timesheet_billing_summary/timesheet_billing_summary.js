@@ -28,7 +28,7 @@ frappe.query_reports["timesheets billSummary"] = {
 			label: __("From Date"),
 			fieldtype: "Date",
 			default: frappe.datetime.add_months(
-				frappe.datetime.month_start(),
+				frappe.datetime.month_begin(),
 				-1
 			),
 		},
@@ -37,7 +37,7 @@ frappe.query_reports["timesheets billSummary"] = {
 			label: __("To Date"),
 			fieldtype: "Date",
 			default: frappe.datetime.add_days(
-				frappe.datetime.month_start(),
+				frappe.datetime.month_begin(),
 				-1
 			),
 		},
@@ -49,7 +49,7 @@ frappe.query_reports["timesheets billSummary"] = {
 				"",
 				{ value: "employee", label: __("Employee") },
 				{ value: "proj", label: __("proj") },
-				{ value: "date", label: __("Start Date") },
+				{ value: "date", label: __("begin Date") },
 			],
 		},
 		{

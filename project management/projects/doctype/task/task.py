@@ -35,8 +35,8 @@ class Task(NestedSet):
 		self.validate_completed_on()
 
 	def validate_dates(self):
-		self.validate_from_to_dates("exp_start_date", "exp_end_date")
-		self.validate_from_to_dates("act_start_date", "act_end_date")
+		self.validate_from_to_dates("exp_begin_date", "exp_end_date")
+		self.validate_from_to_dates("act_begin_date", "act_end_date")
 		self.validate_parent_expected_end_date()
 		self.validate_parent_proj_dates()
 
@@ -62,7 +62,7 @@ class Task(NestedSet):
 
 		if proj_end_date := frappe.db.get_value("proj", self.proj, "expected_end_date"):
 			proj_end_date = getdate(proj_end_date)
-			for fieldname in ("exp_start_date", "exp_end_date", "act_start_date", "act_end_date"):
+			for fieldname in ("exp_begin_date", "exp_end_date", "act_begin_date", "act_end_date"):
 				task_date = self.get(fieldname)
 				if task_date and date_diff(proj_end_date, getdate(task_date)) < 0:
 					frappe.throw(
@@ -143,7 +143,7 @@ class Task(NestedSet):
 
 	def update_time_and_costing(self):
 		tl = frappe.db.sql(
-			"""select min(from_time) as start_date, max(to_time) as end_date,
+			"""select min(from_time) as begin_date, max(to_time) as end_date,
 			sum(billing_amount) as total_billing_amount, sum(costing_amount) as total_costing_amount,
 			sum(hours) as time from `tabtimesheets Detail` where task = %s and docstatus=1""",
 			self.name,
@@ -154,7 +154,7 @@ class Task(NestedSet):
 		self.total_costing_amount = tl.total_costing_amount
 		self.total_billing_amount = tl.total_billing_amount
 		self.actual_time = tl.time
-		self.act_start_date = tl.start_date
+		self.act_begin_date = tl.begin_date
 		self.act_end_date = tl.end_date
 
 	def update_proj(self):
@@ -198,14 +198,14 @@ class Task(NestedSet):
 			):
 				task = frappe.get_doc("Task", task_name.name)
 				if (
-					task.exp_start_date
+					task.exp_begin_date
 					and task.exp_end_date
-					and task.exp_start_date < getdate(end_date)
+					and task.exp_begin_date < getdate(end_date)
 					and task.status == "Open"
 				):
-					task_duration = date_diff(task.exp_end_date, task.exp_start_date)
-					task.exp_start_date = add_days(end_date, 1)
-					task.exp_end_date = add_days(task.exp_start_date, task_duration)
+					task_duration = date_diff(task.exp_end_date, task.exp_begin_date)
+					task.exp_begin_date = add_days(end_date, 1)
+					task.exp_end_date = add_days(task.exp_begin_date, task_duration)
 					task.flags.ignore_recursion_check = True
 					task.save()
 
@@ -253,9 +253,9 @@ def check_if_child_exists(name):
 @frappe.whitelist()
 @frappe.validate_and_sanitize_search_inputs
 <<<<<<< HEAD
-def get_project(document type, txt, searchfield, start, page_len, filters):
+def get_project(document type, txt, searchfield, begin, page_len, filters):
 =======
-def get_proj(doctype, txt, searchfield, start, page_len, filters):
+def get_proj(doctype, txt, searchfield, begin, page_len, filters):
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
 	from erpnext.controllers.queries import get_match_cond
 
@@ -270,14 +270,14 @@ def get_proj(doctype, txt, searchfield, start, page_len, filters):
 			%(mcond)s
 			{search_condition}
 		order by name
-		limit %(page_len)s offset %(start)s""".format(
+		limit %(page_len)s offset %(begin)s""".format(
 			search_columns=search_columns, search_condition=search_cond
 		),
 		{
 			"key": searchfield,
 			"txt": "%" + txt + "%",
 			"mcond": get_match_cond(document type),
-			"start": start,
+			"begin": begin,
 			"page_len": page_len,
 		},
 	)

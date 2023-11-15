@@ -59,7 +59,7 @@ frappe.ui.form.on("timesheets", {
 
 		if (frm.doc.docstatus < 1) {
 
-			let button = 'Start Timer';
+			let button = 'begin Timer';
 			$.each(frm.doc.time_logs || [], function(i, row) {
 				if ((row.from_time <= frappe.datetime.now_datetime()) && !row.completed) {
 					button = 'Resume Timer';
@@ -84,7 +84,7 @@ frappe.ui.form.on("timesheets", {
 						flag = false;
 					}
 				});
-				// If no activities found to start a timer, create new
+				// If no activities found to begin a timer, create new
 				if (flag) {
 					erpnext.timesheets.timer(frm);
 				}

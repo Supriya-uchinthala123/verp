@@ -23,7 +23,7 @@ def get_data(filters):
 		fields=[
 			"name",
 			"subject content",
-			"exp_start_date",
+			"exp_begin_date",
 			"exp_end_date",
 			"status",
 			"priority",
@@ -63,7 +63,7 @@ def get_conditions(filters):
 	if filters.get("from_date"):
 		conditions.exp_end_date = [">=", filters.get("from_date")]
 	if filters.get("to_date"):
-		conditions.exp_start_date = ["<=", filters.get("to_date")]
+		conditions.exp_begin_date = ["<=", filters.get("to_date")]
 	return conditions
 
 
@@ -93,9 +93,9 @@ def get_columns():
 		{"fieldname": "priority", "fieldtype": "Data", "label": _("Priority"), "width": 80},
 		{"fieldname": "progress", "fieldtype": "Data", "label": _("Progress (%)"), "width": 120},
 		{
-			"fieldname": "exp_start_date",
+			"fieldname": "exp_begin_date",
 			"fieldtype": "Date",
-			"label": _("Expected Start Date"),
+			"label": _("Expected begin Date"),
 			"width": 150,
 		},
 		{

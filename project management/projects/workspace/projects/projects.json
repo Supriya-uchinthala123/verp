@@ -9,7 +9,7 @@
  "creation": "2020-03-02 15:46:04.874669",
  "custom_blocks": [],
  "docstatus": 0,
- "doctype": "Workspace",
+ "document type": "Workspace",
  "for_user": "",
  "hide_custom": 0,
  "icon": "project",
@@ -32,7 +32,7 @@
    "label": "Project",
    "link_count": 0,
    "link_to": "Project",
-   "link_type": "DocType",
+   "link_type": "document type",
    "onboard": 1,
    "type": "Link"
   },
@@ -43,7 +43,7 @@
    "label": "Task",
    "link_count": 0,
    "link_to": "Task",
-   "link_type": "DocType",
+   "link_type": "document type",
    "onboard": 1,
    "type": "Link"
   },
@@ -54,7 +54,7 @@
    "label": "Project Template",
    "link_count": 0,
    "link_to": "Project Template",
-   "link_type": "DocType",
+   "link_type": "document type",
    "onboard": 0,
    "type": "Link"
   },
@@ -65,7 +65,7 @@
    "label": "Project Type",
    "link_count": 0,
    "link_to": "Project Type",
-   "link_type": "DocType",
+   "link_type": "document type",
    "onboard": 0,
    "type": "Link"
   },
@@ -76,7 +76,7 @@
    "label": "Project Update",
    "link_count": 0,
    "link_to": "Project Update",
-   "link_type": "DocType",
+   "link_type": "document type",
    "onboard": 0,
    "type": "Link"
   },
@@ -95,7 +95,7 @@
    "label": "Timesheet",
    "link_count": 0,
    "link_to": "Timesheet",
-   "link_type": "DocType",
+   "link_type": "document type",
    "onboard": 1,
    "type": "Link"
   },
@@ -106,7 +106,7 @@
    "label": "Activity Type",
    "link_count": 0,
    "link_to": "Activity Type",
-   "link_type": "DocType",
+   "link_type": "document type",
    "onboard": 1,
    "type": "Link"
   },
@@ -117,7 +117,7 @@
    "label": "Activity Cost",
    "link_count": 0,
    "link_to": "Activity Cost",
-   "link_type": "DocType",
+   "link_type": "document type",
    "onboard": 0,
    "type": "Link"
   },
@@ -187,7 +187,7 @@
    "label": "Projects Settings",
    "link_count": 0,
    "link_to": "Projects Settings",
-   "link_type": "DocType",
+   "link_type": "document type",
    "onboard": 0,
    "type": "Link"
   }
@@ -218,7 +218,7 @@
    "label": "Task",
    "link_to": "Task",
    "stats_filter": "{\n    \"_assign\": [\"like\", '%' + frappe.session.user + '%'],\n    \"status\": \"Open\"\n}",
-   "type": "DocType"
+   "type": "document type"
   },
   {
    "color": "Blue",
@@ -226,12 +226,12 @@
    "label": "Project",
    "link_to": "Project",
    "stats_filter": "{\n    \"status\": \"Open\"\n}",
-   "type": "DocType"
+   "type": "document type"
   },
   {
    "label": "Timesheet",
    "link_to": "Timesheet",
-   "type": "DocType"
+   "type": "document type"
   },
   {
    "label": "Timesheet Billing Summary",

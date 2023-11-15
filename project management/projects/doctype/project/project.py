@@ -15,7 +15,7 @@ from frappe.utils.user import is_website_user
 from erpnext import get_default_company
 from erpnext.controllers.queries import get_filters_cond
 from erpnext.controllers.website_list_for_contact import get_customers_suppliers
-from erpnext.setup.doctype.holiday_list.holiday_list import is_holiday
+from erpnext.setup.document type.holiday_list.holiday_list import is_holiday
 
 
 class Project(Document):
@@ -76,7 +76,7 @@ class Project(Document):
 	def create_task_from_template(self, task_details):
 		return frappe.get_doc(
 			dict(
-				doctype="Task",
+				document type="Task",
 				subject=task_details.subject,
 				project=self.name,
 				status="Open",
@@ -212,7 +212,7 @@ class Project(Document):
 	def update_costing(self):
 		from frappe.query_builder.functions import Max, Min, Sum
 
-		TimesheetDetail = frappe.qb.DocType("Timesheet Detail")
+		TimesheetDetail = frappe.qb.document type("Timesheet Detail")
 		from_time_sheet = (
 			frappe.qb.from_(TimesheetDetail)
 			.select(
@@ -300,10 +300,10 @@ class Project(Document):
 				user.welcome_email_sent = 1
 
 
-def get_timeline_data(doctype: str, name: str) -> dict[int, int]:
+def get_timeline_data(document type: str, name: str) -> dict[int, int]:
 	"""Return timeline for attendance"""
 
-	timesheet_detail = frappe.qb.DocType("Timesheet Detail")
+	timesheet_detail = frappe.qb.document type("Timesheet Detail")
 
 	return dict(
 		frappe.qb.from_(timesheet_detail)
@@ -317,7 +317,7 @@ def get_timeline_data(doctype: str, name: str) -> dict[int, int]:
 
 
 def get_project_list(
-	doctype, txt, filters, limit_start, limit_page_length=20, order_by="modified"
+	document type, txt, filters, limit_start, limit_page_length=20, order_by="modified"
 ):
 	user = frappe.session.user
 	customers, suppliers = get_customers_suppliers("Project", frappe.session.user)
@@ -328,11 +328,11 @@ def get_project_list(
 			filters = []
 
 		if customers:
-			filters.append([doctype, "customer", "in", customers])
+			filters.append([document type, "customer", "in", customers])
 
 		ignore_permissions = True
 
-	meta = frappe.get_meta(doctype)
+	meta = frappe.get_meta(document type)
 
 	fields = "distinct *"
 
@@ -348,15 +348,15 @@ def get_project_list(
 					"Text Editor",
 					"select",
 				):
-					or_filters.append([doctype, f, "like", "%" + txt + "%"])
+					or_filters.append([document type, f, "like", "%" + txt + "%"])
 		else:
 			if isinstance(filters, dict):
 				filters["name"] = ("like", "%" + txt + "%")
 			else:
-				filters.append([doctype, "name", "like", "%" + txt + "%"])
+				filters.append([document type, "name", "like", "%" + txt + "%"])
 
 	return frappe.get_list(
-		doctype,
+		document type,
 		fields=fields,
 		filters=filters,
 		or_filters=or_filters,
@@ -387,7 +387,7 @@ def get_list_context(context=None):
 
 @frappe.whitelist()
 @frappe.validate_and_sanitize_search_inputs
-def get_users_for_project(doctype, txt, searchfield, start, page_len, filters):
+def get_users_for_project(document type, txt, searchfield, start, page_len, filters):
 	conditions = []
 	return frappe.db.sql(
 		"""select name, concat_ws(' ', first_name, middle_name, last_name)
@@ -405,8 +405,8 @@ def get_users_for_project(doctype, txt, searchfield, start, page_len, filters):
 		limit %(page_len)s offset %(start)s""".format(
 			**{
 				"key": searchfield,
-				"fcond": get_filters_cond(doctype, filters, conditions),
-				"mcond": get_match_cond(doctype),
+				"fcond": get_filters_cond(document type, filters, conditions),
+				"mcond": get_match_cond(document type),
 			}
 		),
 		{"txt": "%%%s%%" % txt, "_txt": txt.replace("%", ""), "start": start, "page_len": page_len},
@@ -531,7 +531,7 @@ def send_project_update_email_to_users(project):
 
 	project_update = frappe.get_doc(
 		{
-			"doctype": "Project Update",
+			"document type": "Project Update",
 			"project": project,
 			"sent": 0,
 			"date": today(),
@@ -550,7 +550,7 @@ def send_project_update_email_to_users(project):
 		recipients=get_users_email(doc),
 		message=doc.message,
 		subject=_(subject),
-		reference_doctype=project_update.doctype,
+		reference_document type=project_update.document type,
 		reference_name=project_update.name,
 		reply_to=incoming_email_account,
 	)
@@ -562,7 +562,7 @@ def collect_project_status():
 			"Communication",
 			fields=["content", "text_content", "sender"],
 			filters=dict(
-				reference_doctype="Project Update",
+				reference_document type="Project Update",
 				reference_name=data.name,
 				communication_type="Communication",
 				sent_or_received="Received",
@@ -606,7 +606,7 @@ def send_project_status_email_to_users():
 			template="daily_project_summary",
 			args=args,
 			subject=_("Daily Project Summary for {0}").format(d.name),
-			reference_doctype="Project Update",
+			reference_document type="Project Update",
 			reference_name=d.name,
 		)
 
@@ -622,7 +622,7 @@ def update_project_sales_billing():
 
 	# Else simply fallback to Daily
 	exists_query = (
-		"(SELECT 1 from `tab{doctype}` where docstatus = 1 and project = `tabProject`.name)"
+		"(SELECT 1 from `tab{document type}` where docstatus = 1 and project = `tabProject`.name)"
 	)
 	project_map = {}
 	for project_details in frappe.db.sql(
@@ -633,8 +633,8 @@ def update_project_sales_billing():
 			SELECT name, null as order_exists, 1 as invoice_exists from `tabProject` where
 			exists {invoice_exists}
 		""".format(
-			order_exists=exists_query.format(doctype="Sales Order"),
-			invoice_exists=exists_query.format(doctype="Sales Invoice"),
+			order_exists=exists_query.format(document type="Sales Order"),
+			invoice_exists=exists_query.format(document type="Sales Invoice"),
 		),
 		as_dict=True,
 	):
@@ -652,7 +652,7 @@ def update_project_sales_billing():
 
 @frappe.whitelist()
 def create_kanban_board_if_not_exists(project):
-	from frappe.desk.doctype.kanban_board.kanban_board import quick_kanban_board
+	from frappe.desk.document type.kanban_board.kanban_board import quick_kanban_board
 
 	project = frappe.get_doc("Project", project)
 	if not frappe.db.exists("Kanban Board", project.project_name):

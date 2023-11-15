@@ -86,7 +86,7 @@ class Task(NestedSet):
 						).format(frappe.bold(self.name), frappe.bold(d.task))
 					)
 
-			close_all_assignments(self.doctype, self.name)
+			close_all_assignments(self.document type, self.name)
 
 	def validate_progress(self):
 		if flt(self.progress or 0) > 100:
@@ -137,9 +137,9 @@ class Task(NestedSet):
 
 	def unassign_todo(self):
 		if self.status == "Completed":
-			close_all_assignments(self.doctype, self.name)
+			close_all_assignments(self.document type, self.name)
 		if self.status == "Cancelled":
-			clear(self.doctype, self.name)
+			clear(self.document type, self.name)
 
 	def update_time_and_costing(self):
 		tl = frappe.db.sql(
@@ -221,7 +221,7 @@ class Task(NestedSet):
 			parent = frappe.get_doc("Task", self.parent_task)
 			if self.name not in [row.task for row in parent.depends_on]:
 				parent.append(
-					"depends_on", {"doctype": "Task Depends On", "task": self.name, "subject": self.subject}
+					"depends_on", {"document type": "Task Depends On", "task": self.name, "subject": self.subject}
 				)
 				parent.save()
 
@@ -252,10 +252,10 @@ def check_if_child_exists(name):
 
 @frappe.whitelist()
 @frappe.validate_and_sanitize_search_inputs
-def get_project(doctype, txt, searchfield, start, page_len, filters):
+def get_project(document type, txt, searchfield, start, page_len, filters):
 	from erpnext.controllers.queries import get_match_cond
 
-	meta = frappe.get_meta(doctype)
+	meta = frappe.get_meta(document type)
 	searchfields = meta.get_search_fields()
 	search_columns = ", " + ", ".join(searchfields) if searchfields else ""
 	search_cond = " or " + " or ".join(field + " like %(txt)s" for field in searchfields)
@@ -272,7 +272,7 @@ def get_project(doctype, txt, searchfield, start, page_len, filters):
 		{
 			"key": searchfield,
 			"txt": "%" + txt + "%",
-			"mcond": get_match_cond(doctype),
+			"mcond": get_match_cond(document type),
 			"start": start,
 			"page_len": page_len,
 		},
@@ -318,7 +318,7 @@ def make_timesheet(source_name, target_doc=None, ignore_permissions=False):
 	doclist = get_mapped_doc(
 		"Task",
 		source_name,
-		{"Task": {"doctype": "Timesheet"}},
+		{"Task": {"document type": "Timesheet"}},
 		target_doc,
 		postprocess=set_missing_values,
 		ignore_permissions=ignore_permissions,
@@ -328,7 +328,7 @@ def make_timesheet(source_name, target_doc=None, ignore_permissions=False):
 
 
 @frappe.whitelist()
-def get_children(doctype, parent, task=None, project=None, is_root=False):
+def get_children(document type, parent, task=None, project=None, is_root=False):
 
 	filters = [["docstatus", "<", "2"]]
 
@@ -344,7 +344,7 @@ def get_children(doctype, parent, task=None, project=None, is_root=False):
 		filters.append(["project", "=", project])
 
 	tasks = frappe.get_list(
-		doctype,
+		document type,
 		fields=["name as value", "subject as title", "is_group as expandable"],
 		filters=filters,
 		order_by="name",
@@ -371,7 +371,7 @@ def add_node():
 @frappe.whitelist()
 def add_multiple_tasks(data, parent):
 	data = json.loads(data)
-	new_doc = {"doctype": "Task", "parent_task": parent if parent != "All Tasks" else ""}
+	new_doc = {"document type": "Task", "parent_task": parent if parent != "All Tasks" else ""}
 	new_doc["project"] = frappe.db.get_value("Task", {"name": parent}, "project") or ""
 
 	for d in data:
@@ -382,5 +382,5 @@ def add_multiple_tasks(data, parent):
 		new_task.insert()
 
 
-def on_doctype_update():
+def on_document type_update():
 	frappe.db.add_index("Task", ["lft", "rgt"])

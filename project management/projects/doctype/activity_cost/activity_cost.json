@@ -9,7 +9,7 @@
  "creation": "2015-03-23 02:00:21.861546", 
  "custom": 0, 
  "docstatus": 0, 
- "doctype": "DocType", 
+ "document type": "document type", 
  "document_type": "Setup", 
  "editable_grid": 0, 
  "engine": "InnoDB", 

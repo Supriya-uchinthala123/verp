@@ -1,7 +1,7 @@
 {
  "actions": [],
  "creation": "2013-03-05 09:11:06",
- "doctype": "DocType",
+ "document type": "document type",
  "document_type": "Document",
  "editable_grid": 1,
  "engine": "InnoDB",

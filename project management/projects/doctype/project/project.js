@@ -31,7 +31,7 @@ frappe.ui.form.on("Project", {
 
 		frm.set_query("user", "users", function () {
 			return {
-				query: "erpnext.projects.doctype.project.project.get_users_for_project"
+				query: "erpnext.projects.document type.project.project.get_users_for_project"
 			};
 		});
 
@@ -80,7 +80,7 @@ frappe.ui.form.on("Project", {
 				}, __("View"));
 
 				frm.add_custom_button(__("Kanban Board"), () => {
-					frappe.call('erpnext.projects.doctype.project.project.create_kanban_board_if_not_exists', {
+					frappe.call('erpnext.projects.document type.project.project.create_kanban_board_if_not_exists', {
 						project: frm.doc.name
 					}).then(() => {
 						frappe.set_route('List', 'Task', 'Kanban', frm.doc.project_name);
@@ -117,7 +117,7 @@ frappe.ui.form.on("Project", {
 	create_duplicate: function(frm) {
 		return new Promise(resolve => {
 			frappe.prompt('Project Name', (data) => {
-				frappe.xcall('erpnext.projects.doctype.project.project.create_duplicate_project',
+				frappe.xcall('erpnext.projects.document type.project.project.create_duplicate_project',
 					{
 						prev_doc: frm.doc,
 						project_name: data.value
@@ -132,7 +132,7 @@ frappe.ui.form.on("Project", {
 
 	set_status: function(frm, status) {
 		frappe.confirm(__('Set Project and all Tasks to status {0}?', [status.bold()]), () => {
-			frappe.xcall('erpnext.projects.doctype.project.project.set_project_status',
+			frappe.xcall('erpnext.projects.document type.project.project.set_project_status',
 				{project: frm.doc.name, status: status}).then(() => {
 				frm.reload_doc();
 			});
@@ -141,20 +141,20 @@ frappe.ui.form.on("Project", {
 
 });
 
-function open_form(frm, doctype, child_doctype, parentfield) {
-	frappe.model.with_doctype(doctype, () => {
-		let new_doc = frappe.model.get_new_doc(doctype);
+function open_form(frm, document type, child_document type, parentfield) {
+	frappe.model.with_document type(document type, () => {
+		let new_doc = frappe.model.get_new_doc(document type);
 
 		// add a new row and set the project
-		let new_child_doc = frappe.model.get_new_doc(child_doctype);
+		let new_child_doc = frappe.model.get_new_doc(child_document type);
 		new_child_doc.project = frm.doc.name;
 		new_child_doc.parent = new_doc.name;
 		new_child_doc.parentfield = parentfield;
-		new_child_doc.parenttype = doctype;
+		new_child_doc.parenttype = document type;
 		new_doc[parentfield] = [new_child_doc];
 		new_doc.project = frm.doc.name;
 
-		frappe.ui.form.make_quick_entry(doctype, null, null, new_doc);
+		frappe.ui.form.make_quick_entry(document type, null, null, new_doc);
 	});
 
 }

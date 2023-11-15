@@ -5,7 +5,7 @@ frappe.ui.form.on("Timesheet", {
 	setup: function(frm) {
 		frappe.require("/assets/erpnext/js/projects/timer.js");
 
-		frm.ignore_doctypes_on_cancel_all = ['Sales Invoice'];
+		frm.ignore_document types_on_cancel_all = ['Sales Invoice'];
 
 		frm.fields_dict.employee.get_query = function() {
 			return {
@@ -146,7 +146,7 @@ frappe.ui.form.on("Timesheet", {
 
 	exchange_rate: function(frm) {
 		$.each(frm.doc.time_logs, function(i, d) {
-			calculate_billing_costing_amount(frm, d.doctype, d.name);
+			calculate_billing_costing_amount(frm, d.document type, d.name);
 		});
 		calculate_time_and_amount(frm);
 	},
@@ -165,7 +165,7 @@ frappe.ui.form.on("Timesheet", {
 
 			let time_logs_grid = frm.fields_dict.time_logs.grid;
 			$.each(["base_billing_rate", "base_billing_amount", "base_costing_rate", "base_costing_amount"], function(i, d) {
-				if (frappe.meta.get_docfield(time_logs_grid.doctype, d))
+				if (frappe.meta.get_docfield(time_logs_grid.document type, d))
 					time_logs_grid.set_column_disp(d, frm.doc.currency != base_currency);
 			});
 		}
@@ -201,7 +201,7 @@ frappe.ui.form.on("Timesheet", {
 			dialog.hide();
 			return frappe.call({
 				type: "GET",
-				method: "erpnext.projects.doctype.timesheet.timesheet.make_sales_invoice",
+				method: "erpnext.projects.document type.timesheet.timesheet.make_sales_invoice",
 				args: {
 					"source_name": frm.doc.name,
 					"item_code": args.item_code,
@@ -212,7 +212,7 @@ frappe.ui.form.on("Timesheet", {
 				callback: function(r) {
 					if(!r.exc) {
 						frappe.model.sync(r.message);
-						frappe.set_route("Form", r.message.doctype, r.message.name);
+						frappe.set_route("Form", r.message.document type, r.message.name);
 					}
 				}
 			});
@@ -290,7 +290,7 @@ frappe.ui.form.on("Timesheet Detail", {
 		if (!frappe.get_doc(cdt, cdn).activity_type) return;
 
 		frappe.call({
-			method: "erpnext.projects.doctype.timesheet.timesheet.get_activity_cost",
+			method: "erpnext.projects.document type.timesheet.timesheet.get_activity_cost",
 			args: {
 				employee: frm.doc.employee,
 				activity_type: frm.selected_doc.activity_type,
@@ -401,7 +401,7 @@ const set_employee_and_company = function(frm) {
 function set_project_in_timelog(frm) {
 	if(frm.doc.parent_project) {
 		$.each(frm.doc.time_logs || [], function(i, item) {
-			frappe.model.set_value(item.doctype, item.name, "project", frm.doc.parent_project);
+			frappe.model.set_value(item.document type, item.name, "project", frm.doc.parent_project);
 		});
 	}
 }

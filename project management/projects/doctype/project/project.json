@@ -4,7 +4,7 @@
  "allow_rename": 1,
  "autoname": "naming_series:",
  "creation": "2013-03-07 11:55:07",
- "doctype": "DocType",
+ "document type": "document type",
  "document_type": "Setup",
  "engine": "InnoDB",
  "field_order": [

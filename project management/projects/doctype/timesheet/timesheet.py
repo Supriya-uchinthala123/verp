@@ -177,8 +177,8 @@ class Timesheet(Document):
 			)
 
 	def get_overlap_for(self, fieldname, args, value):
-		timesheet = frappe.qb.DocType("Timesheet")
-		timelog = frappe.qb.DocType("Timesheet Detail")
+		timesheet = frappe.qb.document type("Timesheet")
+		timelog = frappe.qb.document type("Timesheet Detail")
 
 		from_time = get_datetime(args.from_time)
 		to_time = get_datetime(args.to_time)
@@ -311,7 +311,7 @@ def get_timesheet_detail_rate(timelog, currency):
 
 @frappe.whitelist()
 @frappe.validate_and_sanitize_search_inputs
-def get_timesheet(doctype, txt, searchfield, start, page_len, filters):
+def get_timesheet(document type, txt, searchfield, start, page_len, filters):
 	if not filters:
 		filters = {}
 
@@ -463,7 +463,7 @@ def get_events(start, end, filters=None):
 
 
 def get_timesheets_list(
-	doctype, txt, filters, limit_start, limit_page_length=20, order_by="modified"
+	document type, txt, filters, limit_start, limit_page_length=20, order_by="modified"
 ):
 	user = frappe.session.user
 	# find customer name from contact.

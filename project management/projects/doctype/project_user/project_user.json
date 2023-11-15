@@ -1,7 +1,7 @@
 {
  "actions": [],
  "creation": "2016-03-25 02:52:19.283003",
- "doctype": "DocType",
+ "document type": "document type",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
@@ -69,7 +69,7 @@
    "fieldtype": "Section Break"
   },
   {
-   "depends_on": "eval:parent.doctype == 'Project Update'",
+   "depends_on": "eval:parent.document type == 'Project Update'",
    "fieldname": "project_status",
    "fieldtype": "Text",
    "label": "Project Status"

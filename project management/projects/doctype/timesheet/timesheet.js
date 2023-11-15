@@ -5,7 +5,7 @@ frappe.ui.form.on("timesheets", {
 	setup: function(frm) {
 		frappe.require("/assets/erpnext/js/project/timer.js");
 
-		frm.ignore_document types_on_cancel_all = ['Sales Invoice'];
+		frm.ignore_documents types_on_cancel_all = ['Sales Invoice'];
 
 		frm.fields_dict.employee.get_query = function() {
 			return {
@@ -151,7 +151,7 @@ frappe.ui.form.on("timesheets", {
 
 	exchange_rate: function(frm) {
 		$.each(frm.doc.time_logs, function(i, d) {
-			calculate_billing_costing_amount(frm, d.document type, d.name);
+			calculate_billing_costing_amount(frm, d.documents type, d.name);
 		});
 		calculate_time_and_amount(frm);
 	},
@@ -170,7 +170,7 @@ frappe.ui.form.on("timesheets", {
 
 			let time_logs_grid = frm.fields_dict.time_logs.grid;
 			$.each(["base_billing_rate", "base_billing_amount", "base_costing_rate", "base_costing_amount"], function(i, d) {
-				if (frappe.meta.get_docfield(time_logs_grid.document type, d))
+				if (frappe.meta.get_docfield(time_logs_grid.documents type, d))
 					time_logs_grid.set_column_disp(d, frm.doc.currency != base_currency);
 			});
 		}
@@ -208,7 +208,7 @@ frappe.ui.form.on("timesheets", {
 				type: "GET",
 <<<<<<< HEAD
 <<<<<<< HEAD
-				method: "erpnext.projectects.document type.timesheets.timesheets.make_sales_invoice",
+				method: "erpnext.projectects.documents type.timesheets.timesheets.make_sales_invoice",
 =======
 				method: "erpnext.projectect.doctype.timesheets.timesheets.make_sales_invoice",
 >>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
@@ -225,7 +225,7 @@ frappe.ui.form.on("timesheets", {
 				callback: function(r) {
 					if(!r.exc) {
 						frappe.model.sync(r.message);
-						frappe.set_route("Form", r.message.document type, r.message.name);
+						frappe.set_route("Form", r.message.documents type, r.message.name);
 					}
 				}
 			});
@@ -305,7 +305,7 @@ frappe.ui.form.on("timesheets Detail", {
 		frappe.call({
 <<<<<<< HEAD
 <<<<<<< HEAD
-			method: "erpnext.projectects.document type.timesheets.timesheets.get_activity_cost",
+			method: "erpnext.projectects.documents type.timesheets.timesheets.get_activity_cost",
 =======
 			method: "erpnext.projectect.doctype.timesheets.timesheets.get_activity_cost",
 >>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
@@ -423,7 +423,7 @@ function set_project_in_timelog(frm) {
 	if(frm.doc.parent_project) {
 		$.each(frm.doc.time_logs || [], function(i, item) {
 <<<<<<< HEAD
-			frappe.model.set_value(item.document type, item.name, "projectect", frm.doc.parent_projectect);
+			frappe.model.set_value(item.documents type, item.name, "projectect", frm.doc.parent_projectect);
 =======
 			frappe.model.set_value(item.doctype, item.name, "project", frm.doc.parent_project);
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f

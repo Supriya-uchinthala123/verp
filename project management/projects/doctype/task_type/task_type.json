@@ -2,7 +2,7 @@
  "actions": [],
  "autoname": "Prompt",
  "creation": "2019-04-19 15:04:05.317138",
- "document type": "document type",
+ "documents type": "documents type",
  "engine": "InnoDB",
  "field_order": [
   "weight",

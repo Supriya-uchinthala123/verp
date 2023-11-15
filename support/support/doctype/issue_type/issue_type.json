@@ -4,7 +4,7 @@
  "autoname": "Prompt",
  "creation": "2017-10-06 12:53:34.714153",
  "doctype": "DocType",
- "document_type": "Setup",
+ "documents_type": "Setup",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [

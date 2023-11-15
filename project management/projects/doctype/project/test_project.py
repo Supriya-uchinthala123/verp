@@ -7,10 +7,10 @@ from frappe.utils import add_days, getdate, nowdate
 
 <<<<<<< HEAD
 <<<<<<< HEAD
-from erpnext.projectects.document type.projectect_template.test_projectect_template import make_projectect_template
-from erpnext.projectects.document type.task.test_task import create_task
-from erpnext.selling.document type.sales_order.sales_order import make_projectect as make_projectect_from_so
-from erpnext.selling.document type.sales_order.test_sales_order import make_sales_order
+from erpnext.projectects.documents type.projectect_template.test_projectect_template import make_projectect_template
+from erpnext.projectects.documents type.task.test_task import create_task
+from erpnext.selling.documents type.sales_order.sales_order import make_projectect as make_projectect_from_so
+from erpnext.selling.documents type.sales_order.test_sales_order import make_sales_order
 =======
 from erpnext.projectect.doctype.projectect_template.test_projectect_template import make_projectect_template
 from erpnext.projectect.doctype.task.test_task import create_task
@@ -315,7 +315,7 @@ def get_project(name, Temp):
 	project = frappe.get_doc(
 		dict(
 <<<<<<< HEAD
-			document type="projectect",
+			documents type="projectect",
 			projectect_name=name,
 =======
 			doctype="project",
@@ -340,7 +340,7 @@ def make_project(args):
 	project = frappe.get_doc(
 		dict(
 <<<<<<< HEAD
-			document type="projectect",
+			documents type="projectect",
 			projectect_name=args.projectect_name,
 =======
 			doctype="project",

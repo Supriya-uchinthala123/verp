@@ -9,7 +9,7 @@ frappe.ui.form.on("Task", {
 			'timesheets': () => frappe.model.open_mapped_doc({
 <<<<<<< HEAD
 <<<<<<< HEAD
-				method: 'erpnext.projectects.document type.task.task.make_timesheets',
+				method: 'erpnext.projectects.documents type.task.task.make_timesheets',
 =======
 				method: 'erpnext.projectect.doctype.task.task.make_timesheets',
 >>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
@@ -48,7 +48,7 @@ frappe.ui.form.on("Task", {
 		frappe.call({
 <<<<<<< HEAD
 <<<<<<< HEAD
-			method: "erpnext.projectects.document type.task.task.check_if_child_exists",
+			method: "erpnext.projectects.documents type.task.task.check_if_child_exists",
 =======
 			method: "erpnext.projectect.doctype.task.task.check_if_child_exists",
 >>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb

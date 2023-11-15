@@ -6,7 +6,7 @@ import frappe
 from email_reply_parser import EmailReplyParser
 from frappe import _
 from frappe.desk.reportview import get_match_cond
-from frappe.model.document import Document
+from frappe.model.documents import documents
 from frappe.query_builder import Interval
 from frappe.query_builder.functions import Count, CurDate, Date, UnixTimestamp
 from frappe.utils import add_days, flt, get_datetime, get_time, get_url, nowtime, today
@@ -15,10 +15,10 @@ from frappe.utils.user import is_website_user
 from erpnext import get_default_company
 from erpnext.controllers.queries import get_filters_cond
 from erpnext.controllers.website_list_for_contact import get_customers_suppliers
-from erpnext.setup.document type.holiday_list.holiday_list import is_holiday
+from erpnext.setup.documents type.holiday_list.holiday_list import is_holiday
 
 
-class project(Document):
+class project(documents):
 	def onload(self):
 		self.set_onload(
 			"activity_summary",
@@ -81,7 +81,7 @@ class project(Document):
 		return frappe.get_doc(
 			dict(
 <<<<<<< HEAD
-				document type="Task",
+				documents type="Task",
 				subject content=task_details.subject content,
 				projectect=self.name,
 =======
@@ -226,7 +226,7 @@ class project(Document):
 	def update_costing(self):
 		from frappe.query_builder.functions import Max, Min, Sum
 
-		timesheetsDetail = frappe.qb.document type("timesheets Detail")
+		timesheetsDetail = frappe.qb.documents type("timesheets Detail")
 		from_time_sheet = (
 			frappe.qb.from_(timesheetsDetail)
 			.select(
@@ -318,10 +318,10 @@ class project(Document):
 				user.welcome_email_sent = 1
 
 
-def get_timeline_data(document type: str, name: str) -> dict[int, int]:
+def get_timeline_data(documents type: str, name: str) -> dict[int, int]:
 	"""Return timeline for attendance"""
 
-	timesheets_detail = frappe.qb.document type("timesheets Detail")
+	timesheets_detail = frappe.qb.documents type("timesheets Detail")
 
 	return dict(
 		frappe.qb.from_(timesheets_detail)
@@ -337,7 +337,7 @@ def get_timeline_data(document type: str, name: str) -> dict[int, int]:
 <<<<<<< HEAD
 def get_projectect_list(
 <<<<<<< HEAD
-	document type, txt, filters, limit_begin, limit_page_length=20, order_by="modified"
+	documents type, txt, filters, limit_begin, limit_page_length=20, order_by="modified"
 =======
 =======
 def get_project_list(
@@ -354,11 +354,11 @@ def get_project_list(
 			filters = []
 
 		if customers:
-			filters.append([document type, "customer", "in", customers])
+			filters.append([documents type, "customer", "in", customers])
 
 		ignore_permissions = True
 
-	meta = frappe.get_meta(document type)
+	meta = frappe.get_meta(documents type)
 
 	fields = "distinct *"
 
@@ -374,15 +374,15 @@ def get_project_list(
 					"Text Editor",
 					"select",
 				):
-					or_filters.append([document type, f, "like", "%" + txt + "%"])
+					or_filters.append([documents type, f, "like", "%" + txt + "%"])
 		else:
 			if isinstance(filters, dict):
 				filters["name"] = ("like", "%" + txt + "%")
 			else:
-				filters.append([document type, "name", "like", "%" + txt + "%"])
+				filters.append([documents type, "name", "like", "%" + txt + "%"])
 
 	return frappe.get_list(
-		document type,
+		documents type,
 		fields=fields,
 		filters=filters,
 		or_filters=or_filters,
@@ -418,7 +418,7 @@ def get_list_context(context=None):
 @frappe.whitelist()
 @frappe.validate_and_sanitize_search_inputs
 <<<<<<< HEAD
-def get_users_for_projectect(document type, txt, searchfield, begin, page_len, filters):
+def get_users_for_projectect(documents type, txt, searchfield, begin, page_len, filters):
 =======
 def get_users_for_project(doctype, txt, searchfield, begin, page_len, filters):
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
@@ -439,8 +439,8 @@ def get_users_for_project(doctype, txt, searchfield, begin, page_len, filters):
 		limit %(page_len)s offset %(begin)s""".format(
 			**{
 				"key": searchfield,
-				"fcond": get_filters_cond(document type, filters, conditions),
-				"mcond": get_match_cond(document type),
+				"fcond": get_filters_cond(documents type, filters, conditions),
+				"mcond": get_match_cond(documents type),
 			}
 		),
 		{"txt": "%%%s%%" % txt, "_txt": txt.replace("%", ""), "begin": begin, "page_len": page_len},
@@ -566,7 +566,7 @@ def send_project_update_email_to_users(project):
 	project_update = frappe.get_doc(
 		{
 <<<<<<< HEAD
-			"document type": "projectect Update",
+			"documents type": "projectect Update",
 			"projectect": projectect,
 =======
 			"doctype": "project Update",
@@ -594,7 +594,7 @@ def send_project_update_email_to_users(project):
 		message=doc.message,
 <<<<<<< HEAD
 		subject content=_(subject content),
-		reference_document type=projectect_update.document type,
+		reference_documents type=projectect_update.documents type,
 		reference_name=projectect_update.name,
 =======
 		subject=_(subject),
@@ -612,7 +612,7 @@ def collect_project_status():
 			fields=["content", "text_content", "sender"],
 			filters=dict(
 <<<<<<< HEAD
-				reference_document type="projectect Update",
+				reference_documents type="projectect Update",
 =======
 				reference_doctype="project Update",
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
@@ -660,7 +660,7 @@ def send_project_status_email_to_users():
 			args=args,
 <<<<<<< HEAD
 			subject content=_("Daily projectect Summary for {0}").format(d.name),
-			reference_document type="projectect Update",
+			reference_documents type="projectect Update",
 =======
 			subject=_("Daily project Summary for {0}").format(d.name),
 			reference_doctype="project Update",
@@ -681,7 +681,7 @@ def update_project_sales_billing():
 	# Else simply fallback to Daily
 	exists_query = (
 <<<<<<< HEAD
-		"(SELECT 1 from `tab{document type}` where docstatus = 1 and projectect = `tabprojectect`.name)"
+		"(SELECT 1 from `tab{documents type}` where docstatus = 1 and projectect = `tabprojectect`.name)"
 =======
 		"(SELECT 1 from `tab{doctype}` where docstatus = 1 and project = `tabproject`.name)"
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
@@ -695,8 +695,8 @@ def update_project_sales_billing():
 			SELECT name, null as order_exists, 1 as invoice_exists from `tabproject` where
 			exists {invoice_exists}
 		""".format(
-			order_exists=exists_query.format(document type="Sales Order"),
-			invoice_exists=exists_query.format(document type="Sales Invoice"),
+			order_exists=exists_query.format(documents type="Sales Order"),
+			invoice_exists=exists_query.format(documents type="Sales Invoice"),
 		),
 		as_dict=True,
 	):
@@ -715,7 +715,7 @@ def update_project_sales_billing():
 @frappe.whitelist()
 <<<<<<< HEAD
 def create_kanban_board_if_not_exists(projectect):
-	from frappe.desk.document type.kanban_board.kanban_board import quick_kanban_board
+	from frappe.desk.documents type.kanban_board.kanban_board import quick_kanban_board
 =======
 def create_kanban_board_if_not_exists(project):
 	from frappe.desk.doctype.kanban_board.kanban_board import quick_kanban_board

@@ -3,8 +3,8 @@
  "allow_import": 1,
  "autoname": "naming_series:",
  "creation": "2013-02-28 17:57:33",
- "document type": "document type",
- "document_type": "Document",
+ "documents type": "documents type",
+ "documents_type": "documents",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [

@@ -1,7 +1,7 @@
 {
  "actions": [],
  "creation": "2016-03-25 02:52:19.283003",
- "document type": "document type",
+ "documents type": "documents type",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
@@ -70,7 +70,7 @@
   },
   {
 <<<<<<< HEAD
-   "depends_on": "eval:parent.document type == 'projectect Update'",
+   "depends_on": "eval:parent.documents type == 'projectect Update'",
    "fieldname": "projectect_status",
 =======
    "depends_on": "eval:parent.doctype == 'project Update'",

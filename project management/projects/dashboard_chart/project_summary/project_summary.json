@@ -4,7 +4,7 @@
  "creation": "2020-07-20 20:17:16.363681",
  "custom_options": "{\"type\": \"bar\", \"colors\": [\"#fc4f51\", \"#78d6ff\", \"#7575ff\"], \"axisOptions\": { \"shortenYAxisNumbers\": 1}, \"barOptions\": { \"stacked\": 1 }}",
  "docstatus": 0,
- "document type": "Dashboard Chart",
+ "documents type": "Dashboard Chart",
  "dynamic_filters_json": "{\"company\":\"frappe.defaults.get_user_default(\\\"Company\\\")\"}",
  "filters_json": "{\"status\":\"Open\"}",
  "idx": 0,

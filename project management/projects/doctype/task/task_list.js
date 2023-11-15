@@ -5,7 +5,7 @@ frappe.listview_settings['Task'] = {
 	filters: [["status", "=", "Open"]],
 	onload: function(listview) {
 <<<<<<< HEAD
-		var method = "erpnext.projectects.document type.task.task.set_multiple_status";
+		var method = "erpnext.projectects.documents type.task.task.set_multiple_status";
 =======
 		var method = "erpnext.projectect.doctype.task.task.set_multiple_status";
 >>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb

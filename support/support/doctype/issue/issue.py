@@ -8,8 +8,8 @@ from datetime import timedelta
 import frappe
 from frappe import _
 from frappe.core.utils import get_parent_doc
-from frappe.email.inbox import link_communication_to_document
-from frappe.model.document import Document
+from frappe.email.inbox import link_communication_to_documents
+from frappe.model.documents import documents
 from frappe.model.mapper import get_mapped_doc
 from frappe.query_builder import Interval
 from frappe.query_builder.functions import Now
@@ -17,7 +17,7 @@ from frappe.utils import date_diff, get_datetime, now_datetime, time_diff_in_sec
 from frappe.utils.user import is_website_user
 
 
-class Issue(Document):
+class Issue(documents):
 	def validate(self):
 		if self.is_new() and self.via_customer_portal:
 			self.flags.create_communication = True
@@ -239,7 +239,7 @@ def make_issue_from_communication(communication, ignore_communication_links=Fals
 		}
 	).insert(ignore_permissions=True)
 
-	link_communication_to_document(doc, "Issue", issue.name, ignore_communication_links)
+	link_communication_to_documents(doc, "Issue", issue.name, ignore_communication_links)
 
 	return issue.name
 

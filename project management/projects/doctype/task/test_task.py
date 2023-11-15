@@ -8,7 +8,7 @@ from frappe.utils import add_days, getdate, nowdate
 
 <<<<<<< HEAD
 <<<<<<< HEAD
-from erpnext.projectects.document type.task.task import CircularReferenceError
+from erpnext.projectects.documents type.task.task import CircularReferenceError
 =======
 from erpnext.projectect.doctype.task.task import CircularReferenceError
 >>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
@@ -77,7 +77,7 @@ class TestTask(unittest.TestCase):
 			assign_to.add(
 				{
 					"assign_to": ["test@example.com"],
-					"document type": task.document type,
+					"documents type": task.documents type,
 					"name": task.name,
 					"des": "Close this task",
 				}
@@ -87,7 +87,7 @@ class TestTask(unittest.TestCase):
 			return frappe.db.get_value(
 				"ToDo",
 				filters={
-					"reference_type": task.document type,
+					"reference_type": task.documents type,
 					"reference_name": task.name,
 					"des": "Close this task",
 				},
@@ -113,7 +113,7 @@ class TestTask(unittest.TestCase):
 
 <<<<<<< HEAD
 <<<<<<< HEAD
-		from erpnext.projectects.document type.task.task import set_tasks_as_overdue
+		from erpnext.projectects.documents type.task.task import set_tasks_as_overdue
 =======
 		from erpnext.projectect.doctype.task.task import set_tasks_as_overdue
 >>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb

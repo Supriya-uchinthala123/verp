@@ -9,7 +9,7 @@
  "creation": "2020-03-02 15:46:04.874669",
  "custom_blocks": [],
  "docstatus": 0,
- "document type": "Workspace",
+ "documents type": "Workspace",
  "for_user": "",
  "hide_custom": 0,
  "icon": "project",
@@ -33,7 +33,7 @@
    "link_count": 0,
 <<<<<<< HEAD
    "link_to": "projectect",
-   "link_type": "document type",
+   "link_type": "documents type",
 =======
    "link_to": "project",
    "link_type": "DocType",
@@ -48,7 +48,7 @@
    "label": "Task",
    "link_count": 0,
    "link_to": "Task",
-   "link_type": "document type",
+   "link_type": "documents type",
    "onboard": 1,
    "type": "Link"
   },
@@ -60,7 +60,7 @@
    "link_count": 0,
 <<<<<<< HEAD
    "link_to": "projectect Template",
-   "link_type": "document type",
+   "link_type": "documents type",
 =======
    "link_to": "project Temp",
    "link_type": "DocType",
@@ -76,7 +76,7 @@
    "link_count": 0,
 <<<<<<< HEAD
    "link_to": "projectect Type",
-   "link_type": "document type",
+   "link_type": "documents type",
 =======
    "link_to": "project Type",
    "link_type": "DocType",
@@ -92,7 +92,7 @@
    "link_count": 0,
 <<<<<<< HEAD
    "link_to": "projectect Update",
-   "link_type": "document type",
+   "link_type": "documents type",
 =======
    "link_to": "project Update",
    "link_type": "DocType",
@@ -115,7 +115,7 @@
    "label": "timesheets",
    "link_count": 0,
    "link_to": "timesheets",
-   "link_type": "document type",
+   "link_type": "documents type",
    "onboard": 1,
    "type": "Link"
   },
@@ -126,7 +126,7 @@
    "label": "Activity Type",
    "link_count": 0,
    "link_to": "Activity Type",
-   "link_type": "document type",
+   "link_type": "documents type",
    "onboard": 1,
    "type": "Link"
   },
@@ -137,7 +137,7 @@
    "label": "Activity Cost",
    "link_count": 0,
    "link_to": "Activity Cost",
-   "link_type": "document type",
+   "link_type": "documents type",
    "onboard": 0,
    "type": "Link"
   },
@@ -209,7 +209,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
    "link_to": "projectects Settings",
-   "link_type": "document type",
+   "link_type": "documents type",
 =======
    "link_to": "projectect Settings",
 =======
@@ -247,7 +247,7 @@
    "label": "Task",
    "link_to": "Task",
    "stats_filter": "{\n    \"_assign\": [\"like\", '%' + frappe.session.user + '%'],\n    \"status\": \"Open\"\n}",
-   "type": "document type"
+   "type": "documents type"
   },
   {
    "color": "Blue",
@@ -255,12 +255,12 @@
    "label": "project",
    "link_to": "project",
    "stats_filter": "{\n    \"status\": \"Open\"\n}",
-   "type": "document type"
+   "type": "documents type"
   },
   {
    "label": "timesheets",
    "link_to": "timesheets",
-   "type": "document type"
+   "type": "documents type"
   },
   {
    "label": "timesheets billSummary",

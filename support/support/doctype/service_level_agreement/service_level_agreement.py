@@ -7,7 +7,7 @@ from datetime import datetime
 import frappe
 from frappe import _
 from frappe.core.utils import get_parent_doc
-from frappe.model.document import Document
+from frappe.model.documents import documents
 from frappe.utils import (
 	add_to_date,
 	get_datetime,
@@ -28,7 +28,7 @@ from frappe.utils.safe_exec import get_safe_globals
 from erpnext.support.doctype.issue.issue import get_holidays
 
 
-class ServiceLevelAgreement(Document):
+class ServiceLevelAgreement(documents):
 	def validate(self):
 		self.validate_selected_doctype()
 		self.validate_doc()
@@ -100,7 +100,7 @@ class ServiceLevelAgreement(Document):
 	def validate_doc(self):
 		if (
 			self.enabled
-			and self.document_type == "Issue"
+			and self.documents_type == "Issue"
 			and not frappe.db.get_single_value("Support Settings", "track_service_level_agreement")
 		):
 			frappe.throw(
@@ -113,13 +113,13 @@ class ServiceLevelAgreement(Document):
 		if self.default_service_level_agreement and frappe.db.exists(
 			"Service Level Agreement",
 			{
-				"document_type": self.document_type,
+				"documents_type": self.documents_type,
 				"default_service_level_agreement": "1",
 				"name": ["!=", self.name],
 			},
 		):
 			frappe.throw(
-				_("Default Service Level Agreement for {0} already exists.").format(self.document_type)
+				_("Default Service Level Agreement for {0} already exists.").format(self.documents_type)
 			)
 
 		if self.start_date and self.end_date:
@@ -142,7 +142,7 @@ class ServiceLevelAgreement(Document):
 	def validate_selected_doctype(self):
 		invalid_doctypes = list(frappe.model.core_doctypes_list)
 		invalid_doctypes.extend(["Cost Center", "Company"])
-		valid_document_types = frappe.get_all(
+		valid_documents_types = frappe.get_all(
 			"DocType",
 			{
 				"issingle": 0,
@@ -157,20 +157,20 @@ class ServiceLevelAgreement(Document):
 			pluck="name",
 		)
 
-		if self.document_type not in valid_document_types:
-			frappe.throw(msg=_("Please select valid document type."), title=_("Invalid Document Type"))
+		if self.documents_type not in valid_documents_types:
+			frappe.throw(msg=_("Please select valid documents type."), title=_("Invalid documents Type"))
 
 	def validate_status_field(self):
-		meta = frappe.get_meta(self.document_type)
+		meta = frappe.get_meta(self.documents_type)
 		if not meta.get_field("status"):
 			frappe.throw(
 				_(
-					"The Document Type {0} must have a Status field to configure Service Level Agreement"
-				).format(frappe.bold(self.document_type))
+					"The documents Type {0} must have a Status field to configure Service Level Agreement"
+				).format(frappe.bold(self.documents_type))
 			)
 
 	def validate_condition(self):
-		temp_doc = frappe.new_doc(self.document_type)
+		temp_doc = frappe.new_doc(self.documents_type)
 		if self.condition:
 			try:
 				frappe.safe_eval(self.condition, None, get_context(temp_doc))
@@ -190,11 +190,11 @@ class ServiceLevelAgreement(Document):
 
 	def before_insert(self):
 		# no need to set up SLA fields for Issue dt as they are standard fields in Issue
-		if self.document_type == "Issue":
+		if self.documents_type == "Issue":
 			return
 
 		service_level_agreement_fields = get_service_level_agreement_fields()
-		meta = frappe.get_meta(self.document_type, cached=False)
+		meta = frappe.get_meta(self.documents_type, cached=False)
 
 		if meta.custom:
 			self.create_docfields(meta, service_level_agreement_fields)
@@ -202,13 +202,13 @@ class ServiceLevelAgreement(Document):
 			self.create_custom_fields(meta, service_level_agreement_fields)
 
 	def on_trash(self):
-		set_documents_with_active_service_level_agreement()
+		set_documentss_with_active_service_level_agreement()
 
 	def after_insert(self):
-		set_documents_with_active_service_level_agreement()
+		set_documentss_with_active_service_level_agreement()
 
 	def on_update(self):
-		set_documents_with_active_service_level_agreement()
+		set_documentss_with_active_service_level_agreement()
 
 	def clear_cache(self):
 		get_sla_doctypes.clear_cache()
@@ -227,7 +227,7 @@ class ServiceLevelAgreement(Document):
 						"idx": last_index,
 						"parenttype": "DocType",
 						"parentfield": "fields",
-						"parent": self.document_type,
+						"parent": self.documents_type,
 						"label": field.get("label"),
 						"fieldname": field.get("fieldname"),
 						"fieldtype": field.get("fieldtype"),
@@ -244,7 +244,7 @@ class ServiceLevelAgreement(Document):
 				self.reset_field_properties(existing_field, "DocField", field)
 
 		# to update meta and modified timestamp
-		frappe.get_doc("DocType", self.document_type).save(ignore_permissions=True)
+		frappe.get_doc("DocType", self.documents_type).save(ignore_permissions=True)
 
 	def create_custom_fields(self, meta, service_level_agreement_fields):
 		for field in service_level_agreement_fields:
@@ -252,7 +252,7 @@ class ServiceLevelAgreement(Document):
 				frappe.get_doc(
 					{
 						"doctype": "Custom Field",
-						"dt": self.document_type,
+						"dt": self.documents_type,
 						"label": field.get("label"),
 						"fieldname": field.get("fieldname"),
 						"fieldtype": field.get("fieldtype"),
@@ -302,7 +302,7 @@ def get_active_service_level_agreement_for(doc):
 		return
 
 	filters = [
-		["Service Level Agreement", "document_type", "=", doc.get("doctype")],
+		["Service Level Agreement", "documents_type", "=", doc.get("doctype")],
 		["Service Level Agreement", "enabled", "=", 1],
 	]
 
@@ -348,7 +348,7 @@ def get_active_service_level_agreement_for(doc):
 		fields=["name", "default_priority", "apply_sla_for_resolution", "condition"],
 	)
 
-	# check if the current document on which SLA is to be applied fulfills all the conditions
+	# check if the current documents on which SLA is to be applied fulfills all the conditions
 	filtered_agreements = []
 	for agreement in agreements:
 		condition = agreement.get("condition")
@@ -395,7 +395,7 @@ def get_service_level_agreement_filters(doctype, name, customer=None):
 		return
 
 	filters = [
-		["Service Level Agreement", "document_type", "=", doctype],
+		["Service Level Agreement", "documents_type", "=", doctype],
 		["Service Level Agreement", "enabled", "=", 1],
 	]
 
@@ -438,31 +438,31 @@ def get_repeated(values):
 	return " ".join(diff)
 
 
-def get_documents_with_active_service_level_agreement():
+def get_documentss_with_active_service_level_agreement():
 	sla_doctypes = frappe.cache().hget("service_level_agreement", "active")
 
 	if sla_doctypes is None:
-		return set_documents_with_active_service_level_agreement()
+		return set_documentss_with_active_service_level_agreement()
 
 	return sla_doctypes
 
 
-def set_documents_with_active_service_level_agreement():
+def set_documentss_with_active_service_level_agreement():
 	active = [
-		sla.document_type for sla in frappe.get_all("Service Level Agreement", fields=["document_type"])
+		sla.documents_type for sla in frappe.get_all("Service Level Agreement", fields=["documents_type"])
 	]
 	frappe.cache().hset("service_level_agreement", "active", active)
 	return active
 
 
 def apply(doc, method=None):
-	# Applies SLA to document on validate
+	# Applies SLA to documents on validate
 	if (
 		frappe.flags.in_patch
 		or frappe.flags.in_migrate
 		or frappe.flags.in_install
 		or frappe.flags.in_setup_wizard
-		or doc.doctype not in get_documents_with_active_service_level_agreement()
+		or doc.doctype not in get_documentss_with_active_service_level_agreement()
 	):
 		return
 
@@ -998,10 +998,10 @@ def get_user_time(user, to_string=False):
 @redis_cache()
 def get_sla_doctypes():
 	doctypes = []
-	data = frappe.get_all("Service Level Agreement", {"enabled": 1}, ["document_type"], distinct=1)
+	data = frappe.get_all("Service Level Agreement", {"enabled": 1}, ["documents_type"], distinct=1)
 
 	for entry in data:
-		doctypes.append(entry.document_type)
+		doctypes.append(entry.documents_type)
 
 	return doctypes
 

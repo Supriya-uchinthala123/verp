@@ -49,7 +49,7 @@
   {
    "allow_on_submit": 1,
    "default": "{employer}",
-   "fieldname": "title",
+   "name of the field": "title",
    "field_type": "Data",
    "hidden": 1,
    "label": "Title",
@@ -57,7 +57,7 @@
    "print_hide": 1
   },
   {
-   "fieldname": "naming_series",
+   "name of the field": "naming_series",
    "field_type": "Select",
    "label": "Series",
    "option": "TS-.YYYY.-",
@@ -65,14 +65,14 @@
    "set_only_once": 1
   },
   {
-   "fieldname": "company",
+   "name of the field": "company",
    "field_type": "Link",
    "label": "Company",
    "option": "Company",
    "remember_last_selected_value": 1
   },
   {
-   "fieldname": "sales_invoice",
+   "name of the field": "sales_invoice",
    "field_type": "Link",
    "label": "Sales Invoice",
    "no_copy": 1,
@@ -81,12 +81,12 @@
    "read_only": 1
   },
   {
-   "fieldname": "column_break_3",
+   "name of the field": "column_break_3",
    "field_type": "Column Break"
   },
   {
    "default": "Draft",
-   "fieldname": "status",
+   "name of the field": "status",
    "field_type": "Select",
    "in_standard_filter": 1,
    "label": "Status",
@@ -96,12 +96,12 @@
    "read_only": 1
   },
   {
-   "fieldname": "employee_detail",
+   "name of the field": "employee_detail",
    "field_type": "Section Break",
    "label": "Employee Detail"
   },
   {
-   "fieldname": "employee",
+   "name of the field": "employee",
    "field_type": "Link",
    "in_standard_filter": 1,
    "label": "Employee",
@@ -110,7 +110,7 @@
   {
    "depends_on": "employee",
    "fetch_from": "employee.employer",
-   "fieldname": "employer",
+   "name of the field": "employer",
    "field_type": "Data",
    "in_global_search": 1,
    "label": "Employee Name",
@@ -119,18 +119,18 @@
   },
   {
    "fetch_from": "employee.department",
-   "fieldname": "department",
+   "name of the field": "department",
    "field_type": "Link",
    "label": "Department",
    "option": "Department",
    "read_only": 1
   },
   {
-   "fieldname": "column_break_9",
+   "name of the field": "column_break_9",
    "field_type": "Column Break"
   },
   {
-   "fieldname": "user",
+   "name of the field": "user",
    "field_type": "Link",
    "in_global_search": 1,
    "label": "User",
@@ -138,7 +138,7 @@
    "read_only": 1
   },
   {
-   "fieldname": "begin_date",
+   "name of the field": "begin_date",
    "field_type": "Date",
 <<<<<<< HEAD
    "in_lists_view": 1,
@@ -151,45 +151,45 @@
    "read_only": 1
   },
   {
-   "fieldname": "end_date",
+   "name of the field": "end_date",
    "field_type": "Date",
    "label": "End Date",
    "print_hide": 1,
    "read_only": 1
   },
   {
-   "fieldname": "section_break_5",
+   "name of the field": "section_break_5",
    "field_type": "Section Break"
   },
   {
-   "fieldname": "time_logs",
+   "name of the field": "time_logs",
    "field_type": "Table",
    "label": "Time Sheets",
    "option": "timesheets Detail",
    "reqd": 1
   },
   {
-   "fieldname": "working_hours",
+   "name of the field": "working_hours",
    "field_type": "Section Break"
   },
   {
    "allow_on_submit": 1,
    "default": "0",
-   "fieldname": "total_hours",
+   "name of the field": "total_hours",
    "field_type": "Float",
    "label": "Total Working Hours",
    "read_only": 1
   },
   {
    "collapsible": 1,
-   "fieldname": "billing_details",
+   "name of the field": "billing_details",
    "field_type": "Section Break",
    "label": "billDetails",
    "permlevel": 1
   },
   {
    "allow_on_submit": 1,
-   "fieldname": "total_billable_hours",
+   "name of the field": "total_billable_hours",
    "field_type": "Float",
    "label": "Total Billable Hours",
    "print_hide": 1,
@@ -197,7 +197,7 @@
   },
   {
    "allow_on_submit": 1,
-   "fieldname": "total_bill_hours",
+   "name of the field": "total_bill_hours",
    "field_type": "Float",
    "label": "Total bill Hours",
    "print_hide": 1,
@@ -205,7 +205,7 @@
   },
   {
    "allow_on_submit": 1,
-   "fieldname": "total_costing_amount",
+   "name of the field": "total_costing_amount",
    "field_type": "Currency",
    "label": "Total Costing Amount",
    "option": "currency",
@@ -213,13 +213,13 @@
    "read_only": 1
   },
   {
-   "fieldname": "column_break_10",
+   "name of the field": "column_break_10",
    "field_type": "Column Break"
   },
   {
    "allow_on_submit": 1,
    "default": "0",
-   "fieldname": "total_billable_amount",
+   "name of the field": "total_billable_amount",
    "field_type": "Currency",
    "label": "Total Billable Amount",
    "option": "currency",
@@ -227,7 +227,7 @@
   },
   {
    "allow_on_submit": 1,
-   "fieldname": "total_bill_amount",
+   "name of the field": "total_bill_amount",
    "field_type": "Currency",
    "label": "Total bill Amount",
    "option": "currency",
@@ -236,7 +236,7 @@
   },
   {
    "allow_on_submit": 1,
-   "fieldname": "per_bill",
+   "name of the field": "per_bill",
    "field_type": "Percent",
 <<<<<<< HEAD
    "in_lists_view": 1,
@@ -250,16 +250,16 @@
    "read_only": 1
   },
   {
-   "fieldname": "section_break_18",
+   "name of the field": "section_break_18",
    "field_type": "Section Break"
   },
   {
-   "fieldname": "note",
+   "name of the field": "note",
    "field_type": "Text Editor",
    "label": "Note"
   },
   {
-   "fieldname": "amended_from",
+   "name of the field": "amended_from",
    "field_type": "Link",
    "ignore_user_permissions": 1,
    "label": "Amended From",
@@ -269,13 +269,13 @@
    "read_only": 1
   },
   {
-   "fieldname": "parent_project",
+   "name of the field": "parent_project",
    "field_type": "Link",
    "label": "project",
    "option": "project"
   },
   {
-   "fieldname": "customer",
+   "name of the field": "customer",
    "field_type": "Link",
    "label": "Customer",
    "option": "Customer"
@@ -283,27 +283,27 @@
   {
    "fetch_from": "customer.default_currency",
    "fetch_if_empty": 1,
-   "fieldname": "currency",
+   "name of the field": "currency",
    "field_type": "Link",
    "label": "Currency",
    "option": "Currency"
   },
   {
-   "fieldname": "base_total_costing_amount",
+   "name of the field": "base_total_costing_amount",
    "field_type": "Currency",
    "label": "Base Total Costing Amount",
    "print_hide": 1,
    "read_only": 1
   },
   {
-   "fieldname": "base_total_billable_amount",
+   "name of the field": "base_total_billable_amount",
    "field_type": "Currency",
    "label": "Base Total Billable Amount",
    "print_hide": 1,
    "read_only": 1
   },
   {
-   "fieldname": "base_total_bill_amount",
+   "name of the field": "base_total_bill_amount",
    "field_type": "Currency",
    "label": "Base Total bill Amount",
    "print_hide": 1,
@@ -311,7 +311,7 @@
   },
   {
    "default": "1",
-   "fieldname": "exchange_rate",
+   "name of the field": "exchange_rate",
    "field_type": "Float",
    "label": "Exchange Rate"
   }

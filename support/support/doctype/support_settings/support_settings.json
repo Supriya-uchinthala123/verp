@@ -31,130 +31,130 @@
  ],
  "fields": [
   {
-   "fieldname": "issues_sb",
+   "name of the field": "issues_sb",
    "field_type": "Section Break",
    "label": "Issues"
   },
   {
    "default": "7",
-   "fieldname": "close_issue_after_days",
+   "name of the field": "close_issue_after_days",
    "field_type": "Int",
    "label": "Close Issue After Days"
   },
   {
-   "fieldname": "portal_sb",
+   "name of the field": "portal_sb",
    "field_type": "Section Break",
    "label": "supporting Portal"
   },
   {
-   "fieldname": "get_started_sections",
+   "name of the field": "get_started_sections",
    "field_type": "Code",
    "label": "Get Started Sections"
   },
   {
    "default": "0",
-   "fieldname": "show_latest_forum_posts",
+   "name of the field": "show_latest_forum_posts",
    "field_type": "Check",
    "label": "Show Latest Forum Posts"
   },
   {
    "depends_on": "show_latest_forum_posts",
-   "fieldname": "forum_sb",
+   "name of the field": "forum_sb",
    "field_type": "Section Break",
    "label": "Forum Posts"
   },
   {
-   "fieldname": "forum_url",
+   "name of the field": "forum_url",
    "field_type": "Data",
    "label": "Forum URL"
   },
   {
-   "fieldname": "get_latest_query",
+   "name of the field": "get_latest_query",
    "field_type": "Data",
    "label": "Get Latest Query"
   },
   {
-   "fieldname": "response_key_list",
+   "name of the field": "response_key_list",
    "field_type": "Data",
    "label": "Response Key List"
   },
   {
-   "fieldname": "column_break_10",
+   "name of the field": "column_break_10",
    "field_type": "Column Break"
   },
   {
-   "fieldname": "post_title_key",
+   "name of the field": "post_title_key",
    "field_type": "Data",
    "label": "Post Title Key"
   },
   {
-   "fieldname": "post_description_key",
+   "name of the field": "post_description_key",
    "field_type": "Data",
    "label": "Post Description Key"
   },
   {
-   "fieldname": "post_route_key",
+   "name of the field": "post_route_key",
    "field_type": "Data",
    "label": "Post Route Key"
   },
   {
-   "fieldname": "post_route_string",
+   "name of the field": "post_route_string",
    "field_type": "Data",
    "label": "Post Route String"
   },
   {
-   "fieldname": "search_apis_sb",
+   "name of the field": "search_apis_sb",
    "field_type": "Section Break",
    "label": "Search APIs"
   },
   {
-   "fieldname": "search_apis",
+   "name of the field": "search_apis",
    "field_type": "Table",
    "label": "Search APIs",
    "option": "supporting Search Source"
   },
   {
-   "fieldname": "sb_00",
+   "name of the field": "sb_00",
    "field_type": "Section Break",
    "label": "Service Level Agreements"
   },
   {
    "default": "0",
-   "fieldname": "track_service_level_agreement",
+   "name of the field": "track_service_level_agreement",
    "field_type": "Check",
    "label": "Track Service Level Agreement"
   },
   {
    "default": "0",
    "depends_on": "eval:doc.track_service_level_agreement;",
-   "fieldname": "allow_resetting_service_level_agreement",
+   "name of the field": "allow_resetting_service_level_agreement",
    "field_type": "Check",
    "label": "Allow Resetting Service Level Agreement"
   },
   {
    "default": "We're here to help",
-   "fieldname": "greeting_title",
+   "name of the field": "greeting_title",
    "field_type": "Data",
    "label": "Greeting Title",
    "show_days": 1,
    "show_seconds": 1
   },
   {
-   "fieldname": "column_break_19",
+   "name of the field": "column_break_19",
    "field_type": "Column Break",
    "show_days": 1,
    "show_seconds": 1
   },
   {
    "default": "Browse help topics",
-   "fieldname": "greeting_subtitle",
+   "name of the field": "greeting_subtitle",
    "field_type": "Data",
    "label": "Greeting Subtitle",
    "show_days": 1,
    "show_seconds": 1
   },
   {
-   "fieldname": "greetings_section_section",
+   "name of the field": "greetings_section_section",
    "field_type": "Section Break",
    "label": "Greetings Section",
    "show_days": 1,

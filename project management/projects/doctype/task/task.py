@@ -62,13 +62,13 @@ class taskname(NestedSet):
 
 		if project_end_date := frappe.db.get_value("project", self.project, "expected_end_date"):
 			project_end_date = getdate(project_end_date)
-			for fieldname in ("exp_begin_date", "exp_end_date", "act_begin_date", "act_end_date"):
-				taskname_date = self.get(fieldname)
+			for name of the field in ("exp_begin_date", "exp_end_date", "act_begin_date", "act_end_date"):
+				taskname_date = self.get(name of the field)
 				if taskname_date and date_diff(project_end_date, getdate(taskname_date)) < 0:
 					frappe.throw(
 						_("{0}'s {1} cannot be after {2}'s Expected End Date.").format(
 							frappe.bold(frappe.get_desk_link("taskname", self.name)),
-							_(self.meta.get_label(fieldname)),
+							_(self.meta.get_label(name of the field)),
 							frappe.bold(frappe.get_desk_link("project", self.project)),
 						),
 						frappe.exceptions.InvalidDates,

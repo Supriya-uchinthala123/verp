@@ -218,7 +218,7 @@ class ServiceLevelAgreement(documents):
 		last_index = len(meta.fields)
 
 		for field in service_level_agreement_fields:
-			if not meta.has_field(field.get("fieldname")):
+			if not meta.has_field(field.get("name of the field")):
 				last_index += 1
 
 				frappe.get_doc(
@@ -229,7 +229,7 @@ class ServiceLevelAgreement(documents):
 						"parentfield": "fields",
 						"parent": self.documents_type,
 						"label": field.get("label"),
-						"fieldname": field.get("fieldname"),
+						"name of the field": field.get("name of the field"),
 						"field_type": field.get("field_type"),
 						"collapsible": field.get("collapsible"),
 						"option": field.get("option"),
@@ -240,7 +240,7 @@ class ServiceLevelAgreement(documents):
 					}
 				).insert(ignore_permissions=True)
 			else:
-				existing_field = meta.get_field(field.get("fieldname"))
+				existing_field = meta.get_field(field.get("name of the field"))
 				self.reset_field_properties(existing_field, "DocField", field)
 
 		# to update meta and modified timestamp
@@ -248,13 +248,13 @@ class ServiceLevelAgreement(documents):
 
 	def create_custom_fields(self, meta, service_level_agreement_fields):
 		for field in service_level_agreement_fields:
-			if not meta.has_field(field.get("fieldname")):
+			if not meta.has_field(field.get("name of the field")):
 				frappe.get_doc(
 					{
 						"doctype": "Custom Field",
 						"dt": self.documents_type,
 						"label": field.get("label"),
-						"fieldname": field.get("fieldname"),
+						"name of the field": field.get("name of the field"),
 						"field_type": field.get("field_type"),
 						"insert_after": "append",
 						"collapsible": field.get("collapsible"),
@@ -266,13 +266,13 @@ class ServiceLevelAgreement(documents):
 					}
 				).insert(ignore_permissions=True)
 			else:
-				existing_field = meta.get_field(field.get("fieldname"))
+				existing_field = meta.get_field(field.get("name of the field"))
 				self.reset_field_properties(existing_field, "Custom Field", field)
 
 	def reset_field_properties(self, field, field_dt, sla_field):
-		field = frappe.get_doc(field_dt, {"fieldname": field.fieldname})
+		field = frappe.get_doc(field_dt, {"name of the field": field.name of the field})
 		field.label = sla_field.get("label")
-		field.fieldname = sla_field.get("fieldname")
+		field.name of the field = sla_field.get("name of the field")
 		field.field_type = sla_field.get("field_type")
 		field.collapsible = sla_field.get("collapsible")
 		field.hidden = sla_field.get("hidden")
@@ -867,55 +867,55 @@ def get_service_level_agreement_fields():
 	return [
 		{
 			"collapsible": 1,
-			"fieldname": "service_level_section",
+			"name of the field": "service_level_section",
 			"field_type": "Section Break",
 			"label": "Service Level",
 		},
 		{
-			"fieldname": "service_level_agreement",
+			"name of the field": "service_level_agreement",
 			"field_type": "Link",
 			"label": "Service Level Agreement",
 			"option": "Service Level Agreement",
 		},
-		{"fieldname": "priority", "field_type": "Link", "label": "Priority", "option": "Issue Priority"},
-		{"fieldname": "response_by", "field_type": "Datetime", "label": "Response By", "read_only": 1},
+		{"name of the field": "priority", "field_type": "Link", "label": "Priority", "option": "Issue Priority"},
+		{"name of the field": "response_by", "field_type": "Datetime", "label": "Response By", "read_only": 1},
 		{
-			"fieldname": "first_responded_on",
+			"name of the field": "first_responded_on",
 			"field_type": "Datetime",
 			"label": "First Responded On",
 			"no_copy": 1,
 			"read_only": 1,
 		},
 		{
-			"fieldname": "on_hold_since",
+			"name of the field": "on_hold_since",
 			"field_type": "Datetime",
 			"hidden": 1,
 			"label": "On Hold Since",
 			"read_only": 1,
 		},
 		{
-			"fieldname": "total_hold_time",
+			"name of the field": "total_hold_time",
 			"field_type": "Duration",
 			"label": "Total Hold Time",
 			"read_only": 1,
 		},
-		{"fieldname": "cb", "field_type": "Column Break", "read_only": 1},
+		{"name of the field": "cb", "field_type": "Column Break", "read_only": 1},
 		{
 			"default": "First Response Due",
-			"fieldname": "agreement_status",
+			"name of the field": "agreement_status",
 			"field_type": "Select",
 			"label": "Service Level Agreement Status",
 			"option": "First Response Due\nResolution Due\nFulfilled\nFailed",
 			"read_only": 1,
 		},
 		{
-			"fieldname": "resolution_by",
+			"name of the field": "resolution_by",
 			"field_type": "Datetime",
 			"label": "Resolution By",
 			"read_only": 1,
 		},
 		{
-			"fieldname": "service_level_agreement_creation",
+			"name of the field": "service_level_agreement_creation",
 			"field_type": "Datetime",
 			"hidden": 1,
 			"label": "Service Level Agreement Creation",
@@ -923,7 +923,7 @@ def get_service_level_agreement_fields():
 		},
 		{
 			"depends_on": "eval:!doc.__islocal",
-			"fieldname": "resolution_date",
+			"name of the field": "resolution_date",
 			"field_type": "Datetime",
 			"label": "Resolution Date",
 			"no_copy": 1,

@@ -181,7 +181,7 @@ frappe.ui.form.on("timesheets", {
 		let fields = [{
 			"field_type": "Link",
 			"label": __("Item Code"),
-			"fieldname": "item_code",
+			"name of the field": "item_code",
 			"option": "Item"
 		}];
 
@@ -189,7 +189,7 @@ frappe.ui.form.on("timesheets", {
 			fields.push({
 				"field_type": "Link",
 				"label": __("Customer"),
-				"fieldname": "customer",
+				"name of the field": "customer",
 				"option": "Customer",
 				"default": frm.doc.customer
 			});

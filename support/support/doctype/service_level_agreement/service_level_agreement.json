@@ -34,7 +34,7 @@
  ],
  "fields": [
   {
-   "fieldname": "service_level",
+   "name of the field": "service_level",
    "field_type": "Data",
    "in_list_view": 1,
    "in_standard_filter": 1,
@@ -43,56 +43,56 @@
    "set_only_once": 1
   },
   {
-   "fieldname": "holiday_list",
+   "name of the field": "holiday_list",
    "field_type": "Link",
    "label": "Holiday List",
    "option": "Holiday List",
    "reqd": 1
   },
   {
-   "fieldname": "column_break_2",
+   "name of the field": "column_break_2",
    "field_type": "Column Break"
   },
   {
    "depends_on": "eval: doc.documents_type",
-   "fieldname": "agreement_details_section",
+   "name of the field": "agreement_details_section",
    "field_type": "Section Break",
    "label": "Valid From"
   },
   {
-   "fieldname": "start_date",
+   "name of the field": "start_date",
    "field_type": "Date",
    "label": "Start Date"
   },
   {
    "depends_on": "eval: !doc.default_contract",
-   "fieldname": "column_break_7",
+   "name of the field": "column_break_7",
    "field_type": "Column Break"
   },
   {
-   "fieldname": "end_date",
+   "name of the field": "end_date",
    "field_type": "Date",
    "label": "End Date"
   },
   {
-   "fieldname": "response_and_resolution_time_section",
+   "name of the field": "response_and_resolution_time_section",
    "field_type": "Section Break",
    "label": "Response and Resolution"
   },
   {
-   "fieldname": "supporting_and_resolution_section_break",
+   "name of the field": "supporting_and_resolution_section_break",
    "field_type": "Section Break",
    "label": "Working Hours"
   },
   {
-   "fieldname": "supporting_and_resolution",
+   "name of the field": "supporting_and_resolution",
    "field_type": "Table",
    "label": "Working Hours",
    "option": "Service Day",
    "reqd": 1
   },
   {
-   "fieldname": "priorities",
+   "name of the field": "priorities",
    "field_type": "Table",
    "label": "Priorities",
    "option": "Service Level Priority",
@@ -100,7 +100,7 @@
   },
   {
    "depends_on": "eval: !doc.default_service_level_agreement",
-   "fieldname": "entity",
+   "name of the field": "entity",
    "field_type": "Dynamic Link",
    "in_list_view": 1,
    "in_standard_filter": 1,
@@ -109,7 +109,7 @@
   },
   {
    "depends_on": "eval: !doc.default_service_level_agreement",
-   "fieldname": "entity_type",
+   "name of the field": "entity_type",
    "field_type": "Select",
    "in_standard_filter": 1,
    "label": "Entity Type",
@@ -117,25 +117,25 @@
   },
   {
    "default": "0",
-   "fieldname": "default_service_level_agreement",
+   "name of the field": "default_service_level_agreement",
    "field_type": "Check",
    "label": "Default Service Level Agreement"
   },
   {
-   "fieldname": "default_priority",
+   "name of the field": "default_priority",
    "field_type": "Link",
    "label": "Default Priority",
    "option": "Issue Priority",
    "read_only": 1
   },
   {
-   "fieldname": "pause_sla_on",
+   "name of the field": "pause_sla_on",
    "field_type": "Table",
    "label": "SLA Paused On",
    "option": "Pause SLA On Status"
   },
   {
-   "fieldname": "documents_type",
+   "name of the field": "documents_type",
    "field_type": "Link",
    "label": "Apply On",
    "option": "DocType",
@@ -144,18 +144,18 @@
   },
   {
    "default": "1",
-   "fieldname": "enabled",
+   "name of the field": "enabled",
    "field_type": "Check",
    "label": "Enabled"
   },
   {
    "depends_on": "documents_type",
-   "fieldname": "status_details",
+   "name of the field": "status_details",
    "field_type": "Section Break",
    "label": "Status Details"
   },
   {
-   "fieldname": "sla_fulfilled_on",
+   "name of the field": "sla_fulfilled_on",
    "field_type": "Table",
    "label": "SLA Fulfilled On",
    "option": "SLA Fulfilled On Status",
@@ -163,31 +163,31 @@
   },
   {
    "default": "1",
-   "fieldname": "apply_sla_for_resolution",
+   "name of the field": "apply_sla_for_resolution",
    "field_type": "Check",
    "label": "Apply SLA for Resolution Time"
   },
   {
    "depends_on": "documents_type",
-   "fieldname": "filters_section",
+   "name of the field": "filters_section",
    "field_type": "Section Break",
    "label": "Assignment Conditions"
   },
   {
-   "fieldname": "column_break_15",
+   "name of the field": "column_break_15",
    "field_type": "Column Break"
   },
   {
    "depends_on": "eval: !doc.default_service_level_agreement",
    "description": "Simple Python Expression, Example: doc.status == 'Open' and doc.issue_type == 'Bug'",
-   "fieldname": "condition",
+   "name of the field": "condition",
    "field_type": "Code",
    "label": "Condition",
    "max_height": "7rem",
    "option": "PythonExpression"
   },
   {
-   "fieldname": "column_break_22",
+   "name of the field": "column_break_22",
    "field_type": "Column Break"
   }
  ],

@@ -58,12 +58,12 @@
  ],
  "fields": [
   {
-   "fieldname": "subject_section",
+   "name of the field": "subject_section",
    "field_type": "Section Break",
    "option": "fa fa-flag"
   },
   {
-   "fieldname": "naming_series",
+   "name of the field": "naming_series",
    "field_type": "Select",
    "label": "Series",
    "no_copy": 1,
@@ -73,7 +73,7 @@
   },
   {
    "bold": 1,
-   "fieldname": "subject",
+   "name of the field": "subject",
    "field_type": "Data",
    "in_global_search": 1,
    "in_standard_filter": 1,
@@ -81,11 +81,11 @@
    "reqd": 1
   },
   {
-   "fieldname": "customer",
+   "name of the field": "customer",
    "field_type": "Link",
    "in_global_search": 1,
    "label": "Customer",
-   "oldfieldname": "customer",
+   "oldname of the field": "customer",
    "oldfield_type": "Link",
    "option": "Customer",
    "print_hide": 1,
@@ -94,34 +94,34 @@
   {
    "bold": 1,
    "depends_on": "eval:doc.__islocal",
-   "fieldname": "raised_by",
+   "name of the field": "raised_by",
    "field_type": "Data",
    "in_global_search": 1,
    "in_list_view": 1,
    "label": "Raised By (Email)",
-   "oldfieldname": "raised_by",
+   "oldname of the field": "raised_by",
    "oldfield_type": "Data",
    "option": "Email"
   },
   {
-   "fieldname": "cb00",
+   "name of the field": "cb00",
    "field_type": "Column Break"
   },
   {
    "default": "Open",
-   "fieldname": "status",
+   "name of the field": "status",
    "field_type": "Select",
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Status",
    "no_copy": 1,
-   "oldfieldname": "status",
+   "oldname of the field": "status",
    "oldfield_type": "Select",
    "option": "Open\nReplied\nOn Hold\nResolved\nClosed",
    "search_index": 1
   },
   {
-   "fieldname": "priority",
+   "name of the field": "priority",
    "field_type": "Link",
    "in_list_view": 1,
    "in_standard_filter": 1,
@@ -129,7 +129,7 @@
    "option": "Issue Priority"
   },
   {
-   "fieldname": "issue_type",
+   "name of the field": "issue_type",
    "field_type": "Link",
    "label": "Issue Type",
    "option": "Issue Type"
@@ -137,110 +137,110 @@
   {
    "collapsible": 1,
    "collapsible_depends_on": "eval:doc.status!=\"Closed\"",
-   "fieldname": "sb_details",
+   "name of the field": "sb_details",
    "field_type": "Section Break",
    "label": "Details"
   },
   {
    "bold": 1,
-   "fieldname": "description",
+   "name of the field": "description",
    "field_type": "Text Editor",
    "in_global_search": 1,
    "label": "Description",
-   "oldfieldname": "problem_description",
+   "oldname of the field": "problem_description",
    "oldfield_type": "Text"
   },
   {
    "collapsible": 1,
-   "fieldname": "service_level_section",
+   "name of the field": "service_level_section",
    "field_type": "Section Break",
    "label": "Service Level Agreement Details"
   },
   {
-   "fieldname": "service_level_agreement",
+   "name of the field": "service_level_agreement",
    "field_type": "Link",
    "label": "Service Level Agreement",
    "option": "Service Level Agreement"
   },
   {
    "depends_on": "eval: doc.status != 'Replied' && doc.service_level_agreement;",
-   "fieldname": "response_by",
+   "name of the field": "response_by",
    "field_type": "Datetime",
    "label": "Response By",
    "read_only": 1
   },
   {
    "collapsible": 1,
-   "fieldname": "cb",
+   "name of the field": "cb",
    "field_type": "Column Break",
    "option": "fa fa-pushpin",
    "read_only": 1
   },
   {
    "depends_on": "eval: doc.status != 'Replied' && doc.service_level_agreement;",
-   "fieldname": "resolution_by",
+   "name of the field": "resolution_by",
    "field_type": "Datetime",
    "label": "Resolution By",
    "read_only": 1
   },
   {
    "collapsible": 1,
-   "fieldname": "response",
+   "name of the field": "response",
    "field_type": "Section Break",
    "label": "Response Details"
   },
   {
-   "fieldname": "first_responded_on",
+   "name of the field": "first_responded_on",
    "field_type": "Datetime",
    "label": "First Responded On"
   },
   {
    "collapsible": 1,
-   "fieldname": "additional_info",
+   "name of the field": "additional_info",
    "field_type": "Section Break",
    "label": "Reference",
    "option": "fa fa-pushpin",
    "read_only": 1
   },
   {
-   "fieldname": "lead",
+   "name of the field": "lead",
    "field_type": "Link",
    "label": "Lead",
    "option": "Lead"
   },
   {
-   "fieldname": "contact",
+   "name of the field": "contact",
    "field_type": "Link",
    "label": "Contact",
    "option": "Contact"
   },
   {
-   "fieldname": "email_account",
+   "name of the field": "email_account",
    "field_type": "Link",
    "label": "Email Account",
    "option": "Email Account"
   },
   {
-   "fieldname": "column_break_16",
+   "name of the field": "column_break_16",
    "field_type": "Column Break"
   },
   {
    "bold": 1,
-   "fieldname": "customer_name",
+   "name of the field": "customer_name",
    "field_type": "Data",
    "label": "Customer Name",
-   "oldfieldname": "customer_name",
+   "oldname of the field": "customer_name",
    "oldfield_type": "Data",
    "read_only": 1
   },
   {
-   "fieldname": "projectect",
+   "name of the field": "projectect",
    "field_type": "Link",
    "label": "projectect",
    "option": "projectect"
   },
   {
-   "fieldname": "company",
+   "name of the field": "company",
    "field_type": "Link",
    "label": "Company",
    "option": "Company",
@@ -248,75 +248,75 @@
   },
   {
    "collapsible": 1,
-   "fieldname": "section_break_19",
+   "name of the field": "section_break_19",
    "field_type": "Section Break",
    "label": "Resolution Details"
   },
   {
    "depends_on": "eval:!doc.__islocal",
-   "fieldname": "resolution_details",
+   "name of the field": "resolution_details",
    "field_type": "Text Editor",
    "label": "Resolution Details",
    "no_copy": 1,
-   "oldfieldname": "resolution_details",
+   "oldname of the field": "resolution_details",
    "oldfield_type": "Text"
   },
   {
    "depends_on": "eval:!doc.__islocal",
-   "fieldname": "column_break1",
+   "name of the field": "column_break1",
    "field_type": "Column Break",
    "oldfield_type": "Column Break",
    "read_only": 1
   },
   {
    "default": "Today",
-   "fieldname": "opening_date",
+   "name of the field": "opening_date",
    "field_type": "Date",
    "label": "Opening Date",
    "no_copy": 1,
-   "oldfieldname": "opening_date",
+   "oldname of the field": "opening_date",
    "oldfield_type": "Date",
    "read_only": 1
   },
   {
-   "fieldname": "opening_time",
+   "name of the field": "opening_time",
    "field_type": "Time",
    "label": "Opening Time",
    "no_copy": 1,
-   "oldfieldname": "opening_time",
+   "oldname of the field": "opening_time",
    "oldfield_type": "Time",
    "read_only": 1
   },
   {
    "depends_on": "eval:!doc.__islocal",
-   "fieldname": "resolution_date",
+   "name of the field": "resolution_date",
    "field_type": "Datetime",
    "label": "Resolution Date",
    "no_copy": 1,
-   "oldfieldname": "resolution_date",
+   "oldname of the field": "resolution_date",
    "oldfield_type": "Date",
    "read_only": 1
   },
   {
-   "fieldname": "content_type",
+   "name of the field": "content_type",
    "field_type": "Data",
    "hidden": 1,
    "label": "Content Type"
   },
   {
-   "fieldname": "attachment",
+   "name of the field": "attachment",
    "field_type": "Attach",
    "hidden": 1,
    "label": "Attachment"
   },
   {
    "default": "0",
-   "fieldname": "via_customer_portal",
+   "name of the field": "via_customer_portal",
    "field_type": "Check",
    "label": "Via Customer Portal"
   },
   {
-   "fieldname": "service_level_agreement_creation",
+   "name of the field": "service_level_agreement_creation",
    "field_type": "Datetime",
    "hidden": 1,
    "label": "Service Level Agreement Creation",
@@ -324,49 +324,49 @@
   },
   {
    "depends_on": "eval: doc.service_level_agreement",
-   "fieldname": "reset_service_level_agreement",
+   "name of the field": "reset_service_level_agreement",
    "field_type": "Button",
    "label": "Reset Service Level Agreement"
   },
   {
-   "fieldname": "issue_split_from",
+   "name of the field": "issue_split_from",
    "field_type": "Link",
    "label": "Issue Split From",
    "option": "Issue",
    "read_only": 1
   },
   {
-   "fieldname": "column_break_26",
+   "name of the field": "column_break_26",
    "field_type": "Column Break"
   },
   {
    "bold": 1,
-   "fieldname": "avg_response_time",
+   "name of the field": "avg_response_time",
    "field_type": "Duration",
    "label": "Average Response Time",
    "read_only": 1
   },
   {
-   "fieldname": "resolution_time",
+   "name of the field": "resolution_time",
    "field_type": "Duration",
    "label": "Resolution Time",
    "read_only": 1
   },
   {
-   "fieldname": "user_resolution_time",
+   "name of the field": "user_resolution_time",
    "field_type": "Duration",
    "label": "User Resolution Time",
    "read_only": 1
   },
   {
-   "fieldname": "on_hold_since",
+   "name of the field": "on_hold_since",
    "field_type": "Datetime",
    "hidden": 1,
    "label": "On Hold Since",
    "read_only": 1
   },
   {
-   "fieldname": "total_hold_time",
+   "name of the field": "total_hold_time",
    "field_type": "Duration",
    "label": "Total Hold Time",
    "read_only": 1
@@ -374,7 +374,7 @@
   {
    "default": "First Response Due",
    "depends_on": "eval: doc.service_level_agreement",
-   "fieldname": "agreement_status",
+   "name of the field": "agreement_status",
    "field_type": "Select",
    "label": "Service Level Agreement Status",
    "option": "First Response Due\nResolution Due\nFulfilled\nFailed",
@@ -382,7 +382,7 @@
   },
   {
    "bold": 1,
-   "fieldname": "first_response_time",
+   "name of the field": "first_response_time",
    "field_type": "Duration",
    "label": "First Response Time",
    "read_only": 1

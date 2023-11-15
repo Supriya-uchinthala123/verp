@@ -14,7 +14,7 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
-   "fieldname": "taskname", 
+   "name of the field": "taskname", 
    "field_type": "Link", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 

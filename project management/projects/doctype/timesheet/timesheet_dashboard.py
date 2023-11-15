@@ -3,6 +3,6 @@ from frappe import _
 
 def get_data():
 	return {
-		"fieldname": "time_sheet",
+		"name of the field": "time_sheet",
 		"transactions": [{"label": _("References"), "item": ["Sales Invoice"]}],
 	}

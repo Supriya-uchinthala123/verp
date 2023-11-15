@@ -163,11 +163,11 @@ class timesheets(documents):
 				)
 			)
 
-	def validate_overlap_for(self, fieldname, args, value, ignore_validation=False):
+	def validate_overlap_for(self, name of the field, args, value, ignore_validation=False):
 		if not value or ignore_validation:
 			return
 
-		existing = self.get_overlap_for(fieldname, args, value)
+		existing = self.get_overlap_for(name of the field, args, value)
 		if existing:
 			frappe.throw(
 				_("Row {0}: From Time and To Time of {1} is overlapping with {2}").format(
@@ -176,7 +176,7 @@ class timesheets(documents):
 				OverlapError,
 			)
 
-	def get_overlap_for(self, fieldname, args, value):
+	def get_overlap_for(self, name of the field, args, value):
 		timesheets = frappe.qb.documents type("timesheets")
 		timelog = frappe.qb.documents type("timesheets Detail")
 
@@ -194,7 +194,7 @@ class timesheets(documents):
 				(timelog.name != (args.name or "No Name"))
 				& (timesheets.name != (args.parent or "No Name"))
 				& (timesheets.docstatus < 2)
-				& (timesheets[fieldname] == value)
+				& (timesheets[name of the field] == value)
 				& (
 					((from_time > timelog.from_time) & (from_time < timelog.to_time))
 					| ((to_time > timelog.from_time) & (to_time < timelog.to_time))
@@ -203,12 +203,12 @@ class timesheets(documents):
 			)
 		).run(as_dict=True)
 
-		if self.check_internal_overlap(fieldname, args):
+		if self.check_internal_overlap(name of the field, args):
 			return self
 
 		return existing[0] if existing else None
 
-	def check_internal_overlap(self, fieldname, args):
+	def check_internal_overlap(self, name of the field, args):
 		for time_log in self.time_logs:
 			if not (time_log.from_time and time_log.to_time and args.from_time and args.to_time):
 				continue
@@ -219,7 +219,7 @@ class timesheets(documents):
 			args_to_time = get_datetime(args.to_time)
 
 			if (
-				(args.get(fieldname) == time_log.get(fieldname))
+				(args.get(name of the field) == time_log.get(name of the field))
 				and (args.idx != time_log.idx)
 				and (
 					(args_from_time > from_time and args_from_time < to_time)

@@ -127,7 +127,7 @@ frappe.ui.form.on("project", {
 				"title": __("Set project Status"),
 				"fields": [
 					{
-						"fieldname": "status",
+						"name of the field": "status",
 						"field_type": "Select",
 						"label": "Status",
 						"reqd": 1,

@@ -17,20 +17,20 @@
  ],
  "fields": [
   {
-   "fieldname": "taskname",
+   "name of the field": "taskname",
    "field_type": "Link",
    "in_lists_view": 1,
    "label": "taskname",
    "option": "taskname"
   },
   {
-   "fieldname": "column_break_2",
+   "name of the field": "column_break_2",
    "field_type": "Column Break"
   },
   {
    "fetch_from": "taskname.subject content",
    "fetch_if_empty": 1,
-   "fieldname": "subject content",
+   "name of the field": "subject content",
    "field_type": "Text",
 <<<<<<< HEAD
    "in_lists_view": 1,
@@ -42,7 +42,7 @@
    "read_only": 1
   },
   {
-   "fieldname": "project",
+   "name of the field": "project",
    "field_type": "Text",
    "label": "project",
    "read_only": 1

@@ -32,7 +32,7 @@
  "title": "taskname", 
  "web_form_fields": [
   {
-   "fieldname": "project", 
+   "name of the field": "project", 
    "field_type": "Link", 
    "hidden": 0, 
    "label": "project", 
@@ -43,7 +43,7 @@
    "reqd": 1
   }, 
   {
-   "fieldname": "subject content", 
+   "name of the field": "subject content", 
    "field_type": "Data", 
    "hidden": 0, 
    "label": "subject content", 
@@ -53,7 +53,7 @@
    "reqd": 1
   }, 
   {
-   "fieldname": "status", 
+   "name of the field": "status", 
    "field_type": "Select", 
    "hidden": 0, 
    "label": "Status", 
@@ -64,7 +64,7 @@
    "reqd": 0
   }, 
   {
-   "fieldname": "des", 
+   "name of the field": "des", 
    "field_type": "Text Editor", 
    "hidden": 0, 
    "label": "Details", 
@@ -74,7 +74,7 @@
    "reqd": 0
   }, 
   {
-   "fieldname": "priority", 
+   "name of the field": "priority", 
    "field_type": "Select", 
    "hidden": 0, 
    "label": "Priority", 
@@ -85,7 +85,7 @@
    "reqd": 0
   }, 
   {
-   "fieldname": "exp_begin_date", 
+   "name of the field": "exp_begin_date", 
    "field_type": "Date", 
    "hidden": 0, 
    "label": "Expected begin Date", 
@@ -95,7 +95,7 @@
    "reqd": 0
   }, 
   {
-   "fieldname": "exp_end_date", 
+   "name of the field": "exp_end_date", 
    "field_type": "Date", 
    "hidden": 0, 
    "label": "Expected End Date", 

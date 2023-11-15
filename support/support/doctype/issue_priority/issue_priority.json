@@ -8,7 +8,7 @@
  ],
  "fields": [
   {
-   "fieldname": "description",
+   "name of the field": "description",
    "field_type": "Small Text",
    "label": "Description"
   }

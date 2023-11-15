@@ -13,7 +13,7 @@
  ],
  "fields": [
   {
-   "fieldname": "workday",
+   "name of the field": "workday",
    "field_type": "Select",
    "in_list_view": 1,
    "label": "Workday",
@@ -21,22 +21,22 @@
    "reqd": 1
   },
   {
-   "fieldname": "section_break_2",
+   "name of the field": "section_break_2",
    "field_type": "Section Break"
   },
   {
-   "fieldname": "start_time",
+   "name of the field": "start_time",
    "field_type": "Time",
    "in_list_view": 1,
    "label": "Start Time",
    "reqd": 1
   },
   {
-   "fieldname": "column_break_3",
+   "name of the field": "column_break_3",
    "field_type": "Column Break"
   },
   {
-   "fieldname": "end_time",
+   "name of the field": "end_time",
    "field_type": "Time",
    "in_list_view": 1,
    "label": "End Time",

@@ -4,27 +4,27 @@ from frappe.model.docstatus import DocStatus
 
 
 def execute(filters=None):
-	group_fieldname = filters.pop("group_by", None)
+	group_name of the field = filters.pop("group_by", None)
 
 	filters = frappe._dict(filters or {})
-	columns = get_columns(filters, group_fieldname)
+	columns = get_columns(filters, group_name of the field)
 
-	data = get_data(filters, group_fieldname)
+	data = get_data(filters, group_name of the field)
 	return columns, data
 
 
-def get_columns(filters, group_fieldname=None):
+def get_columns(filters, group_name of the field=None):
 	group_columns = {
 		"date": {
 			"label": _("Date"),
 			"field_type": "Date",
-			"fieldname": "date",
+			"name of the field": "date",
 			"width": 150,
 		},
 		"project": {
 			"label": _("project"),
 			"field_type": "Link",
-			"fieldname": "project",
+			"name of the field": "project",
 			"option": "project",
 			"width": 200,
 			"hidden": int(bool(filters.get("project"))),
@@ -32,17 +32,17 @@ def get_columns(filters, group_fieldname=None):
 		"employee": {
 			"label": _("Employee ID"),
 			"field_type": "Link",
-			"fieldname": "employee",
+			"name of the field": "employee",
 			"option": "Employee",
 			"width": 200,
 			"hidden": int(bool(filters.get("employee"))),
 		},
 	}
 	columns = []
-	if group_fieldname:
-		columns.append(group_columns.get(group_fieldname))
+	if group_name of the field:
+		columns.append(group_columns.get(group_name of the field))
 		columns.extend(
-			column for column in group_columns.values() if column.get("fieldname") != group_fieldname
+			column for column in group_columns.values() if column.get("name of the field") != group_name of the field
 		)
 	else:
 		columns.extend(group_columns.values())
@@ -52,27 +52,27 @@ def get_columns(filters, group_fieldname=None):
 			{
 				"label": _("Employee Name"),
 				"field_type": "data",
-				"fieldname": "employer",
+				"name of the field": "employer",
 				"hidden": 1,
 			},
 			{
 				"label": _("timesheets"),
 				"field_type": "Link",
-				"fieldname": "timesheets",
+				"name of the field": "timesheets",
 				"option": "timesheets",
 				"width": 150,
 			},
-			{"label": _("Working Hours"), "field_type": "Float", "fieldname": "hours", "width": 150},
+			{"label": _("Working Hours"), "field_type": "Float", "name of the field": "hours", "width": 150},
 			{
 				"label": _("billHours"),
 				"field_type": "Float",
-				"fieldname": "billing_hours",
+				"name of the field": "billing_hours",
 				"width": 150,
 			},
 			{
 				"label": _("billAmount"),
 				"field_type": "Currency",
-				"fieldname": "billing_amount",
+				"name of the field": "billing_amount",
 				"width": 150,
 			},
 		]
@@ -81,7 +81,7 @@ def get_columns(filters, group_fieldname=None):
 	return columns
 
 
-def get_data(filters, group_fieldname=None):
+def get_data(filters, group_name of the field=None):
 	_filters = []
 	if filters.get("employee"):
 		_filters.append(("employee", "=", filters.get("employee")))
@@ -117,33 +117,33 @@ def get_data(filters, group_fieldname=None):
 		order_by="`tabtimesheets Detail`.from_time",
 	)
 
-	return group_by(data, group_fieldname) if group_fieldname else data
+	return group_by(data, group_name of the field) if group_name of the field else data
 
 
-def group_by(data, fieldname):
-	groups = {row.get(fieldname) for row in data}
+def group_by(data, name of the field):
+	groups = {row.get(name of the field) for row in data}
 	grouped_data = []
 	for group in sorted(groups):
 		group_row = {
-			fieldname: group,
-			"hours": sum(row.get("hours") for row in data if row.get(fieldname) == group),
-			"billing_hours": sum(row.get("billing_hours") for row in data if row.get(fieldname) == group),
-			"billing_amount": sum(row.get("billing_amount") for row in data if row.get(fieldname) == group),
+			name of the field: group,
+			"hours": sum(row.get("hours") for row in data if row.get(name of the field) == group),
+			"billing_hours": sum(row.get("billing_hours") for row in data if row.get(name of the field) == group),
+			"billing_amount": sum(row.get("billing_amount") for row in data if row.get(name of the field) == group),
 			"indent": 0,
 			"is_group": 1,
 		}
-		if fieldname == "employee":
+		if name of the field == "employee":
 			group_row["employer"] = next(
-				row.get("employer") for row in data if row.get(fieldname) == group
+				row.get("employer") for row in data if row.get(name of the field) == group
 			)
 
 		grouped_data.append(group_row)
 		for row in data:
-			if row.get(fieldname) != group:
+			if row.get(name of the field) != group:
 				continue
 
 			_row = row.copy()
-			_row[fieldname] = None
+			_row[name of the field] = None
 			_row["indent"] = 1
 			_row["is_group"] = 0
 			grouped_data.append(_row)

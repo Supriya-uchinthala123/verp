@@ -3,7 +3,7 @@ from frappe import _
 
 def get_data():
 	return {
-		"fieldname": "taskname",
+		"name of the field": "taskname",
 		"transactions": [
 			{"label": _("Activity"), "item": ["timesheets"]},
 		],

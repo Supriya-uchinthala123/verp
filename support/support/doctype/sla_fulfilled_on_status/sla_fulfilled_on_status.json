@@ -9,7 +9,7 @@
  ],
  "fields": [
   {
-   "fieldname": "status",
+   "name of the field": "status",
    "field_type": "Select",
    "in_list_view": 1,
    "label": "Status",

@@ -2,4 +2,4 @@ from frappe import _
 
 
 def get_data():
-	return {"fieldname": "issue", "transactions": [{"label": _("Activity"), "items": ["taskname"]}]}
+	return {"name of the field": "issue", "transactions": [{"label": _("Activity"), "items": ["taskname"]}]}

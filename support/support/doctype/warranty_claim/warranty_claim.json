@@ -48,11 +48,11 @@
  ],
  "fields": [
   {
-   "fieldname": "naming_series",
+   "name of the field": "naming_series",
    "field_type": "Select",
    "label": "Series",
    "no_copy": 1,
-   "oldfieldname": "naming_series",
+   "oldname of the field": "naming_series",
    "oldfield_type": "Select",
    "option": "SER-WRN-.YYYY.-",
    "reqd": 1,
@@ -60,13 +60,13 @@
   },
   {
    "default": "Open",
-   "fieldname": "status",
+   "name of the field": "status",
    "field_type": "Select",
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Status",
    "no_copy": 1,
-   "oldfieldname": "status",
+   "oldname of the field": "status",
    "oldfield_type": "Select",
    "option": "\nOpen\nClosed\nWork In Progress\nCancelled",
    "reqd": 1,
@@ -74,33 +74,33 @@
   },
   {
    "default": "Today",
-   "fieldname": "complaint_date",
+   "name of the field": "complaint_date",
    "field_type": "Date",
    "label": "Issue Date",
-   "oldfieldname": "complaint_date",
+   "oldname of the field": "complaint_date",
    "oldfield_type": "Date",
    "reqd": 1,
    "search_index": 1
   },
   {
-   "fieldname": "column_break0",
+   "name of the field": "column_break0",
    "field_type": "Column Break",
    "oldfield_type": "Column Break",
    "width": "50%"
   },
   {
-   "fieldname": "serial_no",
+   "name of the field": "serial_no",
    "field_type": "Link",
    "label": "Serial No",
    "option": "Serial No"
   },
   {
-   "fieldname": "customer",
+   "name of the field": "customer",
    "field_type": "Link",
    "in_global_search": 1,
    "in_standard_filter": 1,
    "label": "Customer",
-   "oldfieldname": "customer",
+   "oldname of the field": "customer",
    "oldfield_type": "Link",
    "option": "Customer",
    "print_hide": 1,
@@ -108,116 +108,116 @@
    "search_index": 1
   },
   {
-   "fieldname": "section_break_7",
+   "name of the field": "section_break_7",
    "field_type": "Section Break"
   },
   {
-   "fieldname": "complaint",
+   "name of the field": "complaint",
    "field_type": "Text Editor",
    "label": "Issue",
    "no_copy": 1,
-   "oldfieldname": "complaint",
+   "oldname of the field": "complaint",
    "oldfield_type": "Small Text",
    "reqd": 1
   },
   {
-   "fieldname": "issue_details",
+   "name of the field": "issue_details",
    "field_type": "Section Break",
    "label": "Item and Warranty Details",
    "oldfield_type": "Section Break",
    "option": "fa fa-ticket"
   },
   {
-   "fieldname": "item_code",
+   "name of the field": "item_code",
    "field_type": "Link",
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Item Code",
-   "oldfieldname": "item_code",
+   "oldname of the field": "item_code",
    "oldfield_type": "Link",
    "option": "Item",
    "search_index": 1
   },
   {
    "depends_on": "eval:doc.item_code",
-   "fieldname": "item_name",
+   "name of the field": "item_name",
    "field_type": "Data",
    "label": "Item Name",
-   "oldfieldname": "item_name",
+   "oldname of the field": "item_name",
    "oldfield_type": "Data",
    "read_only": 1
   },
   {
    "depends_on": "eval:doc.item_code",
-   "fieldname": "description",
+   "name of the field": "description",
    "field_type": "Small Text",
    "label": "Description",
-   "oldfieldname": "description",
+   "oldname of the field": "description",
    "oldfield_type": "Small Text",
    "read_only": 1,
    "width": "300px"
   },
   {
-   "fieldname": "column_break1",
+   "name of the field": "column_break1",
    "field_type": "Column Break",
    "oldfield_type": "Column Break",
    "width": "50%"
   },
   {
-   "fieldname": "warranty_amc_status",
+   "name of the field": "warranty_amc_status",
    "field_type": "Select",
    "label": "Warranty / AMC Status",
    "option": "\nUnder Warranty\nOut of Warranty\nUnder AMC\nOut of AMC"
   },
   {
-   "fieldname": "warranty_expiry_date",
+   "name of the field": "warranty_expiry_date",
    "field_type": "Date",
    "label": "Warranty Expiry Date"
   },
   {
-   "fieldname": "amc_expiry_date",
+   "name of the field": "amc_expiry_date",
    "field_type": "Date",
    "label": "AMC Expiry Date"
   },
   {
-   "fieldname": "resolution_section",
+   "name of the field": "resolution_section",
    "field_type": "Section Break",
    "label": "Resolution",
    "oldfield_type": "Section Break",
    "option": "fa fa-thumbs-up"
   },
   {
-   "fieldname": "resolution_date",
+   "name of the field": "resolution_date",
    "field_type": "Datetime",
    "label": "Resolution Date",
    "no_copy": 1,
-   "oldfieldname": "resolution_date",
+   "oldname of the field": "resolution_date",
    "oldfield_type": "Date",
    "search_index": 1
   },
   {
-   "fieldname": "resolved_by",
+   "name of the field": "resolved_by",
    "field_type": "Link",
    "ignore_user_permissions": 1,
    "label": "Resolved By",
    "no_copy": 1,
-   "oldfieldname": "resolved_by",
+   "oldname of the field": "resolved_by",
    "oldfield_type": "Link",
    "option": "User",
    "search_index": 1
   },
   {
-   "fieldname": "resolution_details",
+   "name of the field": "resolution_details",
    "field_type": "Text",
    "label": "Resolution Details",
    "no_copy": 1,
-   "oldfieldname": "resolution_details",
+   "oldname of the field": "resolution_details",
    "oldfield_type": "Text"
   },
   {
    "collapsible": 1,
    "depends_on": "customer",
-   "fieldname": "contact_info",
+   "name of the field": "contact_info",
    "field_type": "Section Break",
    "label": "Customer Details",
    "option": "fa fa-bullhorn"
@@ -225,14 +225,14 @@
   {
    "bold": 1,
    "depends_on": "customer",
-   "fieldname": "customer_name",
+   "name of the field": "customer_name",
    "field_type": "Data",
    "in_global_search": 1,
    "label": "Customer Name",
    "read_only": 1
   },
   {
-   "fieldname": "contact_person",
+   "name of the field": "contact_person",
    "field_type": "Link",
    "label": "Contact Person",
    "option": "Contact",
@@ -240,7 +240,7 @@
   },
   {
    "depends_on": "customer",
-   "fieldname": "contact_display",
+   "name of the field": "contact_display",
    "field_type": "Small Text",
    "in_global_search": 1,
    "label": "Contact",
@@ -248,7 +248,7 @@
   },
   {
    "depends_on": "customer",
-   "fieldname": "contact_mobile",
+   "name of the field": "contact_mobile",
    "field_type": "Data",
    "label": "Mobile No",
    "option": "Phone",
@@ -256,7 +256,7 @@
   },
   {
    "depends_on": "customer",
-   "fieldname": "contact_email",
+   "name of the field": "contact_email",
    "field_type": "Data",
    "label": "Contact Email",
    "option": "Email",
@@ -264,10 +264,10 @@
   },
   {
    "depends_on": "customer",
-   "fieldname": "territory",
+   "name of the field": "territory",
    "field_type": "Link",
    "label": "Territory",
-   "oldfieldname": "territory",
+   "oldname of the field": "territory",
    "oldfield_type": "Link",
    "option": "Territory",
    "print_hide": 1,
@@ -276,7 +276,7 @@
   },
   {
    "depends_on": "customer",
-   "fieldname": "customer_group",
+   "name of the field": "customer_group",
    "field_type": "Link",
    "label": "Customer Group",
    "option": "Customer Group",
@@ -284,12 +284,12 @@
    "read_only": 1
   },
   {
-   "fieldname": "col_break4",
+   "name of the field": "col_break4",
    "field_type": "Column Break",
    "width": "50%"
   },
   {
-   "fieldname": "customer_address",
+   "name of the field": "customer_address",
    "field_type": "Link",
    "label": "Customer Address",
    "option": "Address",
@@ -297,7 +297,7 @@
   },
   {
    "depends_on": "customer",
-   "fieldname": "address_display",
+   "name of the field": "address_display",
    "field_type": "Small Text",
    "label": "Address",
    "read_only": 1
@@ -305,24 +305,24 @@
   {
    "depends_on": "customer",
    "description": "If different than customer address",
-   "fieldname": "service_address",
+   "name of the field": "service_address",
    "field_type": "Small Text",
    "label": "Service Address",
-   "oldfieldname": "service_address",
+   "oldname of the field": "service_address",
    "oldfield_type": "Small Text"
   },
   {
    "collapsible": 1,
-   "fieldname": "more_info",
+   "name of the field": "more_info",
    "field_type": "Section Break",
    "label": "More Information",
    "option": "fa fa-file-text"
   },
   {
-   "fieldname": "company",
+   "name of the field": "company",
    "field_type": "Link",
    "label": "Company",
-   "oldfieldname": "company",
+   "oldname of the field": "company",
    "oldfield_type": "Link",
    "option": "Company",
    "print_hide": 1,
@@ -331,32 +331,32 @@
    "search_index": 1
   },
   {
-   "fieldname": "col_break6",
+   "name of the field": "col_break6",
    "field_type": "Column Break",
    "width": "50%"
   },
   {
-   "fieldname": "complaint_raised_by",
+   "name of the field": "complaint_raised_by",
    "field_type": "Data",
    "label": "Raised By",
-   "oldfieldname": "complaint_raised_by",
+   "oldname of the field": "complaint_raised_by",
    "oldfield_type": "Data"
   },
   {
-   "fieldname": "from_company",
+   "name of the field": "from_company",
    "field_type": "Data",
    "label": "From Company",
-   "oldfieldname": "from_company",
+   "oldname of the field": "from_company",
    "oldfield_type": "Data"
   },
   {
-   "fieldname": "amended_from",
+   "name of the field": "amended_from",
    "field_type": "Link",
    "hidden": 1,
    "ignore_user_permissions": 1,
    "label": "Amended From",
    "no_copy": 1,
-   "oldfieldname": "amended_from",
+   "oldname of the field": "amended_from",
    "oldfield_type": "Data",
    "option": "Warranty Claim",
    "print_hide": 1,

@@ -5,14 +5,14 @@
 frappe.query_reports["First Response Time for Issues"] = {
 	"filters": [
 		{
-			"fieldname": "from_date",
+			"name of the field": "from_date",
 			"label": __("From Date"),
 			"field_type": "Date",
 			"reqd": 1,
 			"default": frappe.datetime.add_days(frappe.datetime.nowdate(), -30)
 		},
 		{
-			"fieldname": "to_date",
+			"name of the field": "to_date",
 			"label": __("To Date"),
 			"field_type": "Date",
 			"reqd": 1,

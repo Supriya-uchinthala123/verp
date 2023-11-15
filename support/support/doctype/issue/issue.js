@@ -40,7 +40,7 @@ frappe.ui.form.on("Issue", {
 			fields: [
 				{
 					field_type: "Data",
-					fieldname: "reason",
+					name of the field: "reason",
 					label: __("Reason"),
 					reqd: 1
 				}
@@ -88,7 +88,7 @@ frappe.ui.form.on("Issue", {
 						title: __("Split Issue"),
 						fields: [
 							{
-								fieldname: "subject",
+								name of the field: "subject",
 								field_type: "Data",
 								reqd: 1,
 								label: __("Subject"),

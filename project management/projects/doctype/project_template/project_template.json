@@ -11,7 +11,7 @@
  ],
  "fields": [
   {
-   "fieldname": "project_type",
+   "name of the field": "project_type",
    "field_type": "Link",
 <<<<<<< HEAD
    "in_lists_view": 1,
@@ -22,7 +22,7 @@
    "option": "project Type"
   },
   {
-   "fieldname": "tasknames",
+   "name of the field": "tasknames",
    "field_type": "Table",
    "label": "tasknames",
    "option": "project Temp taskname",

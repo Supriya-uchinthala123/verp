@@ -87,24 +87,24 @@ def get_chart_data(data):
 
 def get_columns():
 	columns = [
-		{"fieldname": "name", "field_type": "Link", "label": _("taskname"), "option": "taskname", "width": 150},
-		{"fieldname": "subject content", "field_type": "Data", "label": _("subject content"), "width": 200},
-		{"fieldname": "status", "field_type": "Data", "label": _("Status"), "width": 100},
-		{"fieldname": "priority", "field_type": "Data", "label": _("Priority"), "width": 80},
-		{"fieldname": "progress", "field_type": "Data", "label": _("Progress (%)"), "width": 120},
+		{"name of the field": "name", "field_type": "Link", "label": _("taskname"), "option": "taskname", "width": 150},
+		{"name of the field": "subject content", "field_type": "Data", "label": _("subject content"), "width": 200},
+		{"name of the field": "status", "field_type": "Data", "label": _("Status"), "width": 100},
+		{"name of the field": "priority", "field_type": "Data", "label": _("Priority"), "width": 80},
+		{"name of the field": "progress", "field_type": "Data", "label": _("Progress (%)"), "width": 120},
 		{
-			"fieldname": "exp_begin_date",
+			"name of the field": "exp_begin_date",
 			"field_type": "Date",
 			"label": _("Expected begin Date"),
 			"width": 150,
 		},
 		{
-			"fieldname": "exp_end_date",
+			"name of the field": "exp_end_date",
 			"field_type": "Date",
 			"label": _("Expected End Date"),
 			"width": 150,
 		},
-		{"fieldname": "completed_on", "field_type": "Date", "label": _("Actual End Date"), "width": 130},
-		{"fieldname": "delay", "field_type": "Data", "label": _("Delay (In Days)"), "width": 120},
+		{"name of the field": "completed_on", "field_type": "Date", "label": _("Actual End Date"), "width": 130},
+		{"name of the field": "delay", "field_type": "Data", "label": _("Delay (In Days)"), "width": 120},
 	]
 	return columns

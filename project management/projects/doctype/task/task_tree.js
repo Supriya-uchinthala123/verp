@@ -20,13 +20,13 @@ frappe.treeview_settings['taskname'] = {
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
 	filters: [
 		{
-			fieldname: "project",
+			name of the field: "project",
 			field_type:"Link",
 			option: "project",
 			label: __("project"),
 		},
 		{
-			fieldname: "taskname",
+			name of the field: "taskname",
 			field_type:"Link",
 			option: "taskname",
 			label: __("taskname"),
@@ -64,7 +64,7 @@ frappe.treeview_settings['taskname'] = {
 					title: __("Add Multiple tasknames"),
 					fields: [
 						{
-							fieldname: "multiple_tasknames", field_type: "Table",
+							name of the field: "multiple_tasknames", field_type: "Table",
 							in_place_edit: true, data: this.data,
 							get_data: () => {
 								return this.data;
@@ -72,10 +72,10 @@ frappe.treeview_settings['taskname'] = {
 							fields: [{
 								field_type:'Data',
 <<<<<<< HEAD
-								fieldname:"subject",
+								name of the field:"subject",
 								in_lists_view: 1,
 =======
-								fieldname:"subject content",
+								name of the field:"subject content",
 								in_list_view: 1,
 >>>>>>> ac800bcf64f53128e1e30e246cd0e5b5e326ab41
 								reqd: 1,

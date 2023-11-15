@@ -33,7 +33,7 @@ class IssueSummary(object):
 				{
 					"label": _("Customer"),
 					"option": "Customer",
-					"fieldname": "customer",
+					"name of the field": "customer",
 					"field_type": "Link",
 					"width": 200,
 				}
@@ -41,14 +41,14 @@ class IssueSummary(object):
 
 		elif self.filters.based_on == "Assigned To":
 			self.columns.append(
-				{"label": _("User"), "fieldname": "user", "field_type": "Link", "option": "User", "width": 200}
+				{"label": _("User"), "name of the field": "user", "field_type": "Link", "option": "User", "width": 200}
 			)
 
 		elif self.filters.based_on == "Issue Type":
 			self.columns.append(
 				{
 					"label": _("Issue Type"),
-					"fieldname": "issue_type",
+					"name of the field": "issue_type",
 					"field_type": "Link",
 					"option": "Issue Type",
 					"width": 200,
@@ -59,7 +59,7 @@ class IssueSummary(object):
 			self.columns.append(
 				{
 					"label": _("Issue Priority"),
-					"fieldname": "priority",
+					"name of the field": "priority",
 					"field_type": "Link",
 					"option": "Issue Priority",
 					"width": 200,
@@ -69,11 +69,11 @@ class IssueSummary(object):
 		self.statuses = ["Open", "Replied", "On Hold", "Resolved", "Closed"]
 		for status in self.statuses:
 			self.columns.append(
-				{"label": _(status), "fieldname": scrub(status), "field_type": "Int", "width": 80}
+				{"label": _(status), "name of the field": scrub(status), "field_type": "Int", "width": 80}
 			)
 
 		self.columns.append(
-			{"label": _("Total Issues"), "fieldname": "total_issues", "field_type": "Int", "width": 100}
+			{"label": _("Total Issues"), "name of the field": "total_issues", "field_type": "Int", "width": 100}
 		)
 
 		self.sla_status_map = {
@@ -83,9 +83,9 @@ class IssueSummary(object):
 			"Resolution Due": "resolution_due",
 		}
 
-		for label, fieldname in self.sla_status_map.items():
+		for label, name of the field in self.sla_status_map.items():
 			self.columns.append(
-				{"label": _(label), "fieldname": fieldname, "field_type": "Int", "width": 100}
+				{"label": _(label), "name of the field": name of the field, "field_type": "Int", "width": 100}
 			)
 
 		self.metrics = [
@@ -98,7 +98,7 @@ class IssueSummary(object):
 
 		for metric in self.metrics:
 			self.columns.append(
-				{"label": _(metric), "fieldname": scrub(metric), "field_type": "Duration", "width": 170}
+				{"label": _(metric), "name of the field": scrub(metric), "field_type": "Duration", "width": 170}
 			)
 
 	def get_data(self):

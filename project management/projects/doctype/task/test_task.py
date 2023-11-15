@@ -95,7 +95,7 @@ class Testtaskname(unittest.TestCase):
 					"reference_name": taskname.name,
 					"des": "Close this taskname",
 				},
-				fieldname=("allocated_to", "status"),
+				name of the field=("allocated_to", "status"),
 				as_dict=True,
 			)
 

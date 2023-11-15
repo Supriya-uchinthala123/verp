@@ -182,7 +182,7 @@ class TestServiceLevelAgreement(unittest.TestCase):
 
 		for field in sla_fields:
 			self.assertTrue(
-				frappe.db.exists("Custom Field", {"dt": doctype, "fieldname": field.get("fieldname")})
+				frappe.db.exists("Custom Field", {"dt": doctype, "name of the field": field.get("name of the field")})
 			)
 
 	def test_docfield_creation_for_sla_on_custom_dt(self):
@@ -208,7 +208,7 @@ class TestServiceLevelAgreement(unittest.TestCase):
 
 		for field in sla_fields:
 			self.assertTrue(
-				frappe.db.exists("DocField", {"fieldname": field.get("fieldname"), "parent": doctype.name})
+				frappe.db.exists("DocField", {"name of the field": field.get("name of the field"), "parent": doctype.name})
 			)
 
 	def test_sla_application(self):
@@ -613,12 +613,12 @@ def create_custom_doctype():
 				"module": "supporting",
 				"custom": 1,
 				"fields": [
-					{"label": "Date", "fieldname": "date", "field_type": "Date"},
-					{"label": "Description", "fieldname": "desc", "field_type": "Long Text"},
-					{"label": "Email ID", "fieldname": "email_id", "field_type": "Link", "option": "Customer"},
+					{"label": "Date", "name of the field": "date", "field_type": "Date"},
+					{"label": "Description", "name of the field": "desc", "field_type": "Long Text"},
+					{"label": "Email ID", "name of the field": "email_id", "field_type": "Link", "option": "Customer"},
 					{
 						"label": "Status",
-						"fieldname": "status",
+						"name of the field": "status",
 						"field_type": "Select",
 						"option": "Open\nReplied\nClosed",
 					},

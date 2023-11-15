@@ -65,7 +65,7 @@ def get_hours_count(start_time, end_time):
 
 
 def get_columns():
-	columns = [{"fieldname": "date", "label": _("Date"), "field_type": "Date", "width": 100}]
+	columns = [{"name of the field": "date", "label": _("Date"), "field_type": "Date", "width": 100}]
 
 	for label in [
 		"12AM - 3AM",
@@ -77,7 +77,7 @@ def get_columns():
 		"6PM - 9PM",
 		"9PM - 12AM",
 	]:
-		columns.append({"fieldname": label, "label": _(label), "field_type": "Data", "width": 120})
+		columns.append({"name of the field": label, "label": _(label), "field_type": "Data", "width": 120})
 
 	return columns
 

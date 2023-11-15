@@ -16,7 +16,7 @@
  "fields": [
   {
    "columns": 2,
-   "fieldname": "priority",
+   "name of the field": "priority",
    "field_type": "Link",
    "in_list_view": 1,
    "label": "Priority",
@@ -24,36 +24,36 @@
    "reqd": 1
   },
   {
-   "fieldname": "sb_00",
+   "name of the field": "sb_00",
    "field_type": "Section Break"
   },
   {
    "columns": 2,
-   "fieldname": "resolution_time",
+   "name of the field": "resolution_time",
    "field_type": "Duration",
    "hide_days": 1,
    "hide_seconds": 1,
    "label": "Resolution Time"
   },
   {
-   "fieldname": "cb_00",
+   "name of the field": "cb_00",
    "field_type": "Column Break"
   },
   {
-   "fieldname": "cb_01",
+   "name of the field": "cb_01",
    "field_type": "Column Break"
   },
   {
    "columns": 1,
    "default": "0",
-   "fieldname": "default_priority",
+   "name of the field": "default_priority",
    "field_type": "Check",
    "in_list_view": 1,
    "label": "Default Priority"
   },
   {
    "columns": 2,
-   "fieldname": "response_time",
+   "name of the field": "response_time",
    "field_type": "Duration",
    "hide_days": 1,
    "hide_seconds": 1,

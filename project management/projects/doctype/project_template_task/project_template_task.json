@@ -11,7 +11,7 @@
  "fields": [
   {
    "columns": 2,
-   "fieldname": "taskname",
+   "name of the field": "taskname",
    "field_type": "Link",
    "in_lists_view": 1,
    "label": "taskname",
@@ -21,7 +21,7 @@
   {
    "columns": 6,
    "fetch_from": "taskname.subject content",
-   "fieldname": "subject content",
+   "name of the field": "subject content",
    "field_type": "Read Only",
 <<<<<<< HEAD
    "in_lists_view": 1,

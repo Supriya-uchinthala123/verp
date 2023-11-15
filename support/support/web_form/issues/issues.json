@@ -36,7 +36,7 @@
  "web_form_fields": [
   {
    "allow_read_on_all_link_option": 0,
-   "fieldname": "subject",
+   "name of the field": "subject",
    "field_type": "Data",
    "hidden": 0,
    "label": "Subject",
@@ -49,7 +49,7 @@
   {
    "allow_read_on_all_link_option": 0,
    "default": "Open",
-   "fieldname": "status",
+   "name of the field": "status",
    "field_type": "Select",
    "hidden": 0,
    "label": "Status",
@@ -62,7 +62,7 @@
   },
   {
    "allow_read_on_all_link_option": 0,
-   "fieldname": "customer",
+   "name of the field": "customer",
    "field_type": "Data",
    "hidden": 0,
    "label": "Customer",
@@ -75,7 +75,7 @@
   },
   {
    "allow_read_on_all_link_option": 0,
-   "fieldname": "description",
+   "name of the field": "description",
    "field_type": "Text Editor",
    "hidden": 0,
    "label": "Description",
@@ -87,7 +87,7 @@
   },
   {
    "allow_read_on_all_link_option": 0,
-   "fieldname": "attachment",
+   "name of the field": "attachment",
    "field_type": "Attach",
    "hidden": 0,
    "label": "Attachment",
@@ -100,7 +100,7 @@
   {
    "allow_read_on_all_link_option": 0,
    "default": "Medium",
-   "fieldname": "priority",
+   "name of the field": "priority",
    "field_type": "Link",
    "hidden": 0,
    "label": "Priority",
@@ -114,7 +114,7 @@
   {
    "allow_read_on_all_link_option": 0,
    "default": "1",
-   "fieldname": "via_customer_portal",
+   "name of the field": "via_customer_portal",
    "field_type": "Check",
    "hidden": 1,
    "label": "Via Customer Portal",

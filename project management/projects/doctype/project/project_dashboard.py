@@ -5,7 +5,7 @@ def get_data():
 	return {
 		"heatmap": True,
 		"heatmap_message": _("This is based on the Time Sheets created against this project"),
-		"fieldname": "project",
+		"name of the field": "project",
 		"transactions": [
 			{
 				"label": _("project"),

@@ -6,7 +6,7 @@ frappe.query_reports["timesheets billSummary"] = {
 	initial_depth: 0,
 	filters: [
 		{
-			fieldname: "employee",
+			name of the field: "employee",
 			label: __("Employee"),
 			field_type: "Link",
 			option: "Employee",
@@ -15,7 +15,7 @@ frappe.query_reports["timesheets billSummary"] = {
 			},
 		},
 		{
-			fieldname: "project",
+			name of the field: "project",
 			label: __("project"),
 			field_type: "Link",
 			option: "project",
@@ -24,7 +24,7 @@ frappe.query_reports["timesheets billSummary"] = {
 			},
 		},
 		{
-			fieldname: "from_date",
+			name of the field: "from_date",
 			label: __("From Date"),
 			field_type: "Date",
 			default: frappe.datetime.add_months(
@@ -33,7 +33,7 @@ frappe.query_reports["timesheets billSummary"] = {
 			),
 		},
 		{
-			fieldname: "to_date",
+			name of the field: "to_date",
 			label: __("To Date"),
 			field_type: "Date",
 			default: frappe.datetime.add_days(
@@ -46,7 +46,7 @@ frappe.query_reports["timesheets billSummary"] = {
 =======
 		{  // NOTE: `update_group_by_options` expects this filter to be the fifth in the lists
 >>>>>>> 4666b0d884d742aa3a42feb91da1bf50de1cd5b0
-			fieldname: "group_by",
+			name of the field: "group_by",
 			label: __("Group By"),
 			field_type: "Select",
 			option: [
@@ -57,15 +57,15 @@ frappe.query_reports["timesheets billSummary"] = {
 			],
 		},
 		{
-			fieldname: "include_draft_time",
+			name of the field: "include_draft_time",
 			label: __("Include time in Draft Status"),
 			field_type: "Check",
 		},
 	],
 };
 
-function unset_group_by(report, fieldname) {
-	if (report.get_filter_value(fieldname) && report.get_filter_value("group_by") == fieldname) {
+function unset_group_by(report, name of the field) {
+	if (report.get_filter_value(name of the field) && report.get_filter_value("group_by") == name of the field) {
 		report.set_filter_value("group_by", "");
 	}
 }

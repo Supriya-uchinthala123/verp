@@ -42,36 +42,36 @@ def execute(filters=None):
 def get_columns():
 	return [
 		{
-			"fieldname": "name",
+			"name of the field": "name",
 			"label": _("project"),
 			"field_type": "Link",
 			"option": "project",
 			"width": 200,
 		},
 		{
-			"fieldname": "project_type",
+			"name of the field": "project_type",
 			"label": _("Type"),
 			"field_type": "Link",
 			"option": "project Type",
 			"width": 120,
 		},
-		{"fieldname": "status", "label": _("Status"), "field_type": "Data", "width": 120},
-		{"fieldname": "total_tasknames", "label": _("Total tasknames"), "field_type": "Data", "width": 120},
+		{"name of the field": "status", "label": _("Status"), "field_type": "Data", "width": 120},
+		{"name of the field": "total_tasknames", "label": _("Total tasknames"), "field_type": "Data", "width": 120},
 		{
-			"fieldname": "completed_tasknames",
+			"name of the field": "completed_tasknames",
 			"label": _("tasknames Completed"),
 			"field_type": "Data",
 			"width": 120,
 		},
-		{"fieldname": "overdue_tasknames", "label": _("tasknames Overdue"), "field_type": "Data", "width": 120},
-		{"fieldname": "percent_complete", "label": _("Completion"), "field_type": "Data", "width": 120},
+		{"name of the field": "overdue_tasknames", "label": _("tasknames Overdue"), "field_type": "Data", "width": 120},
+		{"name of the field": "percent_complete", "label": _("Completion"), "field_type": "Data", "width": 120},
 		{
-			"fieldname": "expected_begin_date",
+			"name of the field": "expected_begin_date",
 			"label": _("begin Date"),
 			"field_type": "Date",
 			"width": 120,
 		},
-		{"fieldname": "expected_end_date", "label": _("End Date"), "field_type": "Date", "width": 120},
+		{"name of the field": "expected_end_date", "label": _("End Date"), "field_type": "Date", "width": 120},
 	]
 
 

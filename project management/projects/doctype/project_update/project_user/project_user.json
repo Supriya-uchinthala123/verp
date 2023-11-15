@@ -17,7 +17,7 @@
  ],
  "fields": [
   {
-   "fieldname": "user",
+   "name of the field": "user",
    "field_type": "Link",
    "in_lists_view": 1,
    "label": "User",
@@ -27,45 +27,45 @@
   },
   {
    "fetch_from": "user.email",
-   "fieldname": "email",
+   "name of the field": "email",
    "field_type": "Read Only",
    "label": "Email"
   },
   {
    "fetch_from": "user.user_image",
-   "fieldname": "image",
+   "name of the field": "image",
    "field_type": "Read Only",
    "hidden": 1,
    "in_global_search": 1,
    "label": "Image"
   },
   {
-   "fieldname": "column_break_2",
+   "name of the field": "column_break_2",
    "field_type": "Column Break"
   },
   {
    "fetch_from": "user.full_name",
-   "fieldname": "full_name",
+   "name of the field": "full_name",
    "field_type": "Read Only",
    "in_lists_view": 1,
    "label": "Full Name"
   },
   {
    "default": "0",
-   "fieldname": "welcome_email_sent",
+   "name of the field": "welcome_email_sent",
    "field_type": "Check",
    "label": "Welcome email sent"
   },
   {
    "columns": 2,
    "default": "0",
-   "fieldname": "view_attachments",
+   "name of the field": "view_attachments",
    "field_type": "Check",
    "in_lists_view": 1,
    "label": "View attachments"
   },
   {
-   "fieldname": "section_break_5",
+   "name of the field": "section_break_5",
    "field_type": "Section Break"
   },
   {
@@ -75,10 +75,10 @@
 =======
    "depends_on": "eval:parent.documents type == 'projectect Update'",
 >>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
-   "fieldname": "projectect_status",
+   "name of the field": "projectect_status",
 =======
    "depends_on": "eval:parent.doctype == 'project Update'",
-   "fieldname": "project_status",
+   "name of the field": "project_status",
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
    "field_type": "Text",
    "label": "project Status"

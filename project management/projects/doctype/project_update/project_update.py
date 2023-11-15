@@ -12,7 +12,7 @@ class ProjectUpdate(doc):
 
 @frappe.whitelist()
 def daily_reminder():
-	project = frappe.db.sql(
+	proj= frappe.db.sql(
 		"""SELECT `tabProject`.project_name,`tabProject`.frequency,`tabProject`.expected_start_date,`tabProject`.expected_end_date,`tabProject`.percent_complete FROM `tabProject`;"""
 	)
 	for proj in project:
@@ -22,13 +22,13 @@ def daily_reminder():
 		date_end = proj[3]
 		progress = proj[4]
 		draft = frappe.db.sql(
-			"""SELECT count(docstatus) from `tabProject Update` WHERE `tabProject Update`.project = %s AND `tabProject Update`.docstatus = 0;""",
+			"""SELECT count(docstatus) from `tabprojUpdate` WHERE `tabprojUpdate`.proj= %s AND `tabprojUpdate`.docstatus = 0;""",
 			project_name,
 		)
 		for drafts in draft:
 			number_of_drafts = drafts[0]
 		update = frappe.db.sql(
-			"""SELECT name,date,time,progress,progress_details FROM `tabProject Update` WHERE `tabProject Update`.project = %s AND date = DATE_ADD(CURRENT_DATE, INTERVAL -1 DAY);""",
+			"""SELECT name,date,time,progress,progress_details FROM `tabprojUpdate` WHERE `tabprojUpdate`.proj= %s AND date = DATE_ADD(CURRENT_DATE, INTERVAL -1 DAY);""",
 			project_name,
 		)
 		email_sending(project_name, frequency, date_start, date_end, progress, number_of_drafts, update)
@@ -42,7 +42,7 @@ def email_sending(
 		"""SELECT holiday_date FROM `tabHoliday` where holiday_date = CURRENT_DATE;"""
 	)
 	msg = (
-		"<p>Project Name: "
+		"<p>projName: "
 		+ project_name
 		+ "</p><p>Frequency: "
 		+ " "
@@ -66,7 +66,7 @@ def email_sending(
 		+ "</p>"
 	)
 	msg += """</u></b></p><table class='table table-bordered'><tr>
-                <th>Project ID</th><th>Date Updated</th><th>Time Updated</th><th>Project Status</th><th>Notes</th>"""
+                <th>projID</th><th>Date Updated</th><th>Time Updated</th><th>projStatus</th><th>Notes</th>"""
 	for updates in update:
 		msg += (
 			"<tr><td>"
@@ -85,7 +85,7 @@ def email_sending(
 
 	msg += "</table>"
 	if len(holiday) == 0:
-		email = frappe.db.sql("""SELECT user from `tabProject User` WHERE parent = %s;""", project_name)
+		email = frappe.db.sql("""SELECT user from `tabprojUser` WHERE parent = %s;""", project_name)
 		for emails in email:
 			frappe.sendmail(
 				recipients=emails, subject=frappe._(project_name + " " + "Summary"), message=msg

@@ -123,7 +123,7 @@ class Timesheet(doc):
 				task.save()
 				tasks.append(data.task)
 
-			elif data.project and data.project not in proj:
+			elif data.projand data.projnot in proj:
 				frappe.get_doc("Project", data.project).update_project()
 				proj.append(data.project)
 
@@ -153,12 +153,12 @@ class Timesheet(doc):
 		self.validate_overlap_for("employee", data, self.employee, settings.ignore_employee_time_overlap)
 
 	def set_project(self, data):
-		data.project = data.project or frappe.db.get_value("Task", data.task, "project")
+		data.proj= data.projor frappe.db.get_value("Task", data.task, "project")
 
 	def validate_project(self, data):
-		if self.parent_project and self.parent_project != data.project:
+		if self.parent_projand self.parent_proj!= data.project:
 			frappe.throw(
-				_("Row {0}: Project must be same as the one set in the Timesheet: {1}.").format(
+				_("Row {0}: projmust be same as the one set in the Timesheet: {1}.").format(
 					data.idx, self.parent_project
 				)
 			)
@@ -255,7 +255,7 @@ class Timesheet(doc):
 def get_projectwise_timesheet_data(project=None, parent=None, from_time=None, to_time=None):
 	condition = ""
 	if project:
-		condition += "AND tsd.project = %(project)s "
+		condition += "AND tsd.proj= %(project)s "
 	if parent:
 		condition += "AND tsd.parent = %(parent)s "
 	if from_time and to_time:
@@ -317,7 +317,7 @@ def get_timesheet(doctype, txt, searchfield, start, page_len, filt):
 
 	condition = ""
 	if filt.get("project"):
-		condition = "and tsd.project = %(project)s"
+		condition = "and tsd.proj= %(project)s"
 
 	return frappe.db.sql(
 		"""select distinct tsd.parent from `tabTimesheet Detail` tsd,
@@ -340,7 +340,7 @@ def get_timesheet(doctype, txt, searchfield, start, page_len, filt):
 @frappe.whitelist()
 def get_timesheet_data(name, project):
 	data = None
-	if project and project != "":
+	if projand proj!= "":
 		data = get_projectwise_timesheet_data(project, name)
 	else:
 		data = frappe.get_all(
@@ -354,7 +354,7 @@ def get_timesheet_data(name, project):
 	return {
 		"billing_hours": data[0].billing_hours if data else None,
 		"billing_amount": data[0].billing_amt if data else None,
-		"timesheet_detail": data[0].name if data and project and project != "" else None,
+		"timesheet_detail": data[0].name if data and projand proj!= "" else None,
 	}
 
 
@@ -374,7 +374,7 @@ def make_sales_invoice(source_name, item_code=None, customer=None, currency=None
 	billing_rate = billing_amount / hours
 
 	target.company = timesheet.company
-	target.project = timesheet.parent_project
+	target.proj= timesheet.parent_project
 	if customer:
 		target.customer = customer
 
@@ -492,7 +492,7 @@ def get_timesheets_list(
 				(
 					ts.sales_invoice IN %(sales_invoices)s OR
 					tsd.sales_invoice IN %(sales_invoices)s OR
-					tsd.project IN %(proj)s
+					tsd.projIN %(proj)s
 				)
 			ORDER BY `end_date` ASC
 			LIMIT {1} offset {0}

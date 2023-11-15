@@ -57,13 +57,13 @@ class TestTimesheet(unittest.TestCase):
 
 	def test_timesheet_billing_based_on_project(self):
 		emp = make_employee("test_employee_6@salary.com")
-		project = frappe.get_value("Project", {"project_name": "_Test Project"})
+		proj= frappe.get_value("Project", {"project_name": "_Test Project"})
 
 		timesheet = make_timesheet(
 			emp, simulate=True, is_billable=1, project=project, company="_Test Company"
 		)
 		sales_invoice = create_sales_invoice(do_not_save=True)
-		sales_invoice.project = project
+		sales_invoice.proj= project
 		sales_invoice.submit()
 
 		ts = frappe.get_doc("Timesheet", timesheet.name)
@@ -214,7 +214,7 @@ def make_timesheet(
 	timesheet_detail.to_time = timesheet_detail.from_time + datetime.timedelta(
 		hours=timesheet_detail.hours
 	)
-	timesheet_detail.project = project
+	timesheet_detail.proj= project
 	timesheet_detail.task = task
 
 	for data in timesheet.get("time_logs"):

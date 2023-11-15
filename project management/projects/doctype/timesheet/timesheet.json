@@ -26,7 +26,7 @@
   "user",
   "start_date",
   "end_date",
-  "section_break_5",
+  "sect_break_5",
   "time_logs",
   "working_hours",
   "total_hours",
@@ -41,7 +41,7 @@
   "total_billed_amount",
   "total_cost_amount",
   "per_billed",
-  "section_break_18",
+  "sect_break_18",
   "note",
   "amended_from"
  ],
@@ -97,7 +97,7 @@
   },
   {
    "fieldname": "employee_detail",
-   "fieldtype": "Section Break",
+   "fieldtype": "sect Break",
    "label": "Employee Detail"
   },
   {
@@ -153,8 +153,8 @@
    "read_only": 1
   },
   {
-   "fieldname": "section_break_5",
-   "fieldtype": "Section Break"
+   "fieldname": "sect_break_5",
+   "fieldtype": "sect Break"
   },
   {
    "fieldname": "time_logs",
@@ -165,7 +165,7 @@
   },
   {
    "fieldname": "working_hours",
-   "fieldtype": "Section Break"
+   "fieldtype": "sect Break"
   },
   {
    "allow_on_submit": 1,
@@ -178,7 +178,7 @@
   {
    "collapsible": 1,
    "fieldname": "billing_details",
-   "fieldtype": "Section Break",
+   "fieldtype": "sect Break",
    "label": "Billing Details",
    "permlevel": 1
   },
@@ -240,8 +240,8 @@
    "read_only": 1
   },
   {
-   "fieldname": "section_break_18",
-   "fieldtype": "Section Break"
+   "fieldname": "sect_break_18",
+   "fieldtype": "sect Break"
   },
   {
    "fieldname": "note",

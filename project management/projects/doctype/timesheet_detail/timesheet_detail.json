@@ -9,7 +9,7 @@
   "activity_type",
   "from_time",
   "description",
-  "section_break_3",
+  "sect_break_3",
   "expected_hours",
   "to_time",
   "hours",
@@ -19,12 +19,12 @@
   "project_name",
   "column_break_2",
   "task",
-  "section_break_6",
+  "sect_break_6",
   "is_billable",
   "sales_invoice",
   "column_break_8",
   "billing_hours",
-  "section_break_11",
+  "sect_break_11",
   "base_billing_rate",
   "base_billing_amount",
   "base_cost_rate",
@@ -51,7 +51,7 @@
    "label": "From Time"
   },
   {
-   "fieldname": "section_break_3",
+   "fieldname": "sect_break_3",
    "fieldtype": "Column Break"
   },
   {
@@ -79,7 +79,7 @@
   },
   {
    "fieldname": "project_details",
-   "fieldtype": "Section Break"
+   "fieldtype": "sect Break"
   },
   {
    "columns": 3,
@@ -102,8 +102,8 @@
    "remember_last_selected_value": 1
   },
   {
-   "fieldname": "section_break_6",
-   "fieldtype": "Section Break"
+   "fieldname": "sect_break_6",
+   "fieldtype": "sect Break"
   },
   {
    "fieldname": "column_break_8",
@@ -119,8 +119,8 @@
   },
   {
    "depends_on": "is_billable",
-   "fieldname": "section_break_11",
-   "fieldtype": "Section Break"
+   "fieldname": "sect_break_11",
+   "fieldtype": "sect Break"
   },
   {
    "fieldname": "billing_rate",
@@ -184,7 +184,7 @@
    "fetch_from": "project.project_name",
    "fieldname": "project_name",
    "fieldtype": "Data",
-   "label": "Project Name",
+   "label": "projName",
    "read_only": 1
   },
   {

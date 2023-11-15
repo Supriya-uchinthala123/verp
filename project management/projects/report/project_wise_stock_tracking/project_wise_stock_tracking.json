@@ -10,10 +10,10 @@
  "modified": "2017-02-24 20:20:07.593667", 
  "modified_by": "admin", 
  "module": "proj", 
- "name": "Project wise Stock Tracking", 
+ "name": "projwise Stock Tracking", 
  "owner": "admin", 
  "ref_doctype": "Project", 
- "report_name": "Project wise Stock Tracking ", 
+ "report_name": "projwise Stock Tracking ", 
  "report_type": "Script Report", 
  "roles": [
   {

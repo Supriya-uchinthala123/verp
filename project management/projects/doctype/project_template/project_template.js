@@ -1,7 +1,7 @@
 // Copyright (c) 2019, Frappe Technologies Pvt. Ltd. and contributors
 // For license information, please see license.txt
 
-frappe.ui.form.on('Project Template', {
+frappe.ui.form.on('projTemplate', {
 	// refresh: function(frm) {
 
 	// }
@@ -16,7 +16,7 @@ frappe.ui.form.on('Project Template', {
 	}
 });
 
-frappe.ui.form.on('Project Template Task', {
+frappe.ui.form.on('projTemplate Task', {
 	task: function (frm, cdt, cdn) {
 		var row = locals[cdt][cdn];
 		frappe.db.get_value("Task", row.task, "subject", (value) => {

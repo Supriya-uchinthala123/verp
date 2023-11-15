@@ -64,7 +64,7 @@ frappe.ui.form.on("Project", {
 
 	set_custom_buttons: function(frm) {
 		if (!frm.is_new()) {
-			frm.add_custom_button(__('Duplicate Project with Tasks'), () => {
+			frm.add_custom_button(__('Duplicate projwith Tasks'), () => {
 				frm.events.create_duplicate(frm);
 			}, __("Actions"));
 
@@ -93,9 +93,9 @@ frappe.ui.form.on("Project", {
 	},
 
 	set_project_status_button: function(frm) {
-		frm.add_custom_button(__('Set Project Status'), () => {
+		frm.add_custom_button(__('Set projStatus'), () => {
 			let d = new frappe.ui.Dialog({
-				"title": __("Set Project Status"),
+				"title": __("Set projStatus"),
 				"fields": [
 					{
 						"fieldname": "status",
@@ -109,21 +109,21 @@ frappe.ui.form.on("Project", {
 					frm.events.set_status(frm, d.get_values().status);
 					d.hide();
 				},
-				primary_action_label: __("Set Project Status")
+				primary_action_label: __("Set projStatus")
 			}).show();
 		}, __("Actions"));
 	},
 
 	create_duplicate: function(frm) {
 		return new Promise(resolve => {
-			frappe.prompt('Project Name', (data) => {
+			frappe.prompt('projName', (data) => {
 				frappe.xcall('erpnext.proj.doctype.project.project.create_duplicate_project',
 					{
 						prev_doc: frm.doc,
 						project_name: data.value
 					}).then(() => {
 					frappe.set_route('Form', "Project", data.value);
-					frappe.show_alert(__("Duplicate project has been created"));
+					frappe.show_alert(__("Duplicate projhas been created"));
 				});
 				resolve();
 			});
@@ -131,7 +131,7 @@ frappe.ui.form.on("Project", {
 	},
 
 	set_status: function(frm, status) {
-		frappe.confirm(__('Set Project and all Tasks to status {0}?', [status.bold()]), () => {
+		frappe.confirm(__('Set projand all Tasks to status {0}?', [status.bold()]), () => {
 			frappe.xcall('erpnext.proj.doctype.project.project.set_project_status',
 				{project: frm.doc.name, status: status}).then(() => {
 				frm.reload_doc();
@@ -147,12 +147,12 @@ function open_form(frm, doctype, child_doctype, parentfield) {
 
 		// add a new row and set the project
 		let new_child_doc = frappe.model.get_new_doc(child_doctype);
-		new_child_doc.project = frm.doc.name;
+		new_child_doc.proj= frm.doc.name;
 		new_child_doc.parent = new_doc.name;
 		new_child_doc.parentfield = parentfield;
 		new_child_doc.parenttype = doctype;
 		new_doc[parentfield] = [new_child_doc];
-		new_doc.project = frm.doc.name;
+		new_doc.proj= frm.doc.name;
 
 		frappe.ui.form.make_quick_entry(doctype, null, null, new_doc);
 	});

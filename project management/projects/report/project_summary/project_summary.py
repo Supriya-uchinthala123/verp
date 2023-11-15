@@ -24,7 +24,7 @@ def execute(filt=None):
 		order_by="expected_end_date",
 	)
 
-	for project in data:
+	for projin data:
 		project["total_tasks"] = frappe.db.count("Task", filt={"project": project.name})
 		project["comp_tasks"] = frappe.db.count(
 			"Task", filt={"project": project.name, "status": "comp"}
@@ -52,7 +52,7 @@ def get_columns():
 			"fieldname": "project_type",
 			"label": _("Type"),
 			"fieldtype": "Link",
-			"options": "Project Type",
+			"options": "projType",
 			"width": 120,
 		},
 		{"fieldname": "status", "label": _("Status"), "fieldtype": "Data", "width": 120},
@@ -81,7 +81,7 @@ def get_chart_data(data):
 	comp = []
 	overdue = []
 
-	for project in data:
+	for projin data:
 		labels.append(project.name)
 		total.append(project.total_tasks)
 		comp.append(project.comp_tasks)
@@ -106,10 +106,10 @@ def get_report_summary(data):
 	if not data:
 		return None
 
-	avg_completion = sum(project.percent_complete for project in data) / len(data)
-	total = sum([project.total_tasks for project in data])
-	total_overdue = sum([project.overdue_tasks for project in data])
-	comp = sum([project.comp_tasks for project in data])
+	avg_completion = sum(project.percent_complete for projin data) / len(data)
+	total = sum([project.total_tasks for projin data])
+	total_overdue = sum([project.overdue_tasks for projin data])
+	comp = sum([project.comp_tasks for projin data])
 
 	return [
 		{

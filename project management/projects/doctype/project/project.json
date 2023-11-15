@@ -25,12 +25,12 @@
   "customer",
   "column_break_14",
   "sales_order",
-  "users_section",
+  "users_sect",
   "users",
   "copied_from",
-  "section_break0",
+  "sect_break0",
   "notes",
-  "section_break_18",
+  "sect_break_18",
   "actual_start_date",
   "actual_time",
   "column_break_20",
@@ -68,7 +68,7 @@
   {
    "fieldname": "project_name",
    "fieldtype": "Data",
-   "label": "Project Name",
+   "label": "projName",
    "oldfieldtype": "Data",
    "reqd": 1,
    "unique": 1
@@ -90,10 +90,10 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "in_standard_filter": 1,
-   "label": "Project Type",
+   "label": "projType",
    "oldfieldname": "project_type",
    "oldfieldtype": "Data",
-   "options": "Project Type"
+   "options": "projType"
   },
   {
    "fieldname": "is_active",
@@ -127,7 +127,7 @@
    "fieldname": "project_template",
    "fieldtype": "Link",
    "label": "From Template",
-   "options": "Project Template",
+   "options": "projTemplate",
    "set_only_once": 1
   },
   {
@@ -164,9 +164,9 @@
   {
    "collapsible": 1,
    "fieldname": "customer_details",
-   "fieldtype": "Section Break",
+   "fieldtype": "sect Break",
    "label": "Customer Details",
-   "oldfieldtype": "Section Break",
+   "oldfieldtype": "sect Break",
    "options": "fa fa-user"
   },
   {
@@ -192,16 +192,16 @@
   },
   {
    "collapsible": 1,
-   "fieldname": "users_section",
-   "fieldtype": "Section Break",
+   "fieldname": "users_sect",
+   "fieldtype": "sect Break",
    "label": "Users"
   },
   {
-   "description": "Project will be accessible on the website to these users",
+   "description": "projwill be accessible on the website to these users",
    "fieldname": "users",
    "fieldtype": "Table",
    "label": "Users",
-   "options": "Project User"
+   "options": "projUser"
   },
   {
    "fieldname": "copied_from",
@@ -212,10 +212,10 @@
   },
   {
    "collapsible": 1,
-   "fieldname": "section_break0",
-   "fieldtype": "Section Break",
+   "fieldname": "sect_break0",
+   "fieldtype": "sect Break",
    "label": "Notes",
-   "oldfieldtype": "Section Break",
+   "oldfieldtype": "sect Break",
    "options": "fa fa-list"
   },
   {
@@ -227,8 +227,8 @@
   },
   {
    "collapsible": 1,
-   "fieldname": "section_break_18",
-   "fieldtype": "Section Break",
+   "fieldname": "sect_break_18",
+   "fieldtype": "sect Break",
    "label": "Start and End Dates"
   },
   {
@@ -258,9 +258,9 @@
   {
    "collapsible": 1,
    "fieldname": "project_details",
-   "fieldtype": "Section Break",
+   "fieldtype": "sect Break",
    "label": "cost and Billing",
-   "oldfieldtype": "Section Break",
+   "oldfieldtype": "sect Break",
    "options": "fa fa-money"
   },
   {
@@ -329,7 +329,7 @@
   {
    "collapsible": 1,
    "fieldname": "margin",
-   "fieldtype": "Section Break",
+   "fieldtype": "sect Break",
    "label": "Margin",
    "oldfieldtype": "Column Break",
    "width": "50%"
@@ -358,7 +358,7 @@
   {
    "collapsible": 1,
    "fieldname": "monitor_progress",
-   "fieldtype": "Section Break",
+   "fieldtype": "sect Break",
    "label": "Monitor Progress"
   },
   {

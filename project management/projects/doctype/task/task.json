@@ -147,7 +147,7 @@
    "collapsible": 1,
    "collapsible_depends_on": "eval:doc.__islocal",
    "fieldname": "sb_timeline",
-   "fieldtype": "Section Break",
+   "fieldtype": "sect Break",
    "label": "Timeline"
   },
   {
@@ -199,9 +199,9 @@
   },
   {
    "fieldname": "sb_details",
-   "fieldtype": "Section Break",
+   "fieldtype": "sect Break",
    "label": "Details",
-   "oldfieldtype": "Section Break"
+   "oldfieldtype": "sect Break"
   },
   {
    "fieldname": "description",
@@ -214,9 +214,9 @@
   },
   {
    "fieldname": "sb_depends_on",
-   "fieldtype": "Section Break",
+   "fieldtype": "sect Break",
    "label": "Dependencies",
-   "oldfieldtype": "Section Break"
+   "oldfieldtype": "sect Break"
   },
   {
    "fieldname": "depends_on",
@@ -233,7 +233,7 @@
   },
   {
    "fieldname": "sb_actual",
-   "fieldtype": "Section Break",
+   "fieldtype": "sect Break",
    "oldfieldtype": "Column Break",
    "print_width": "50%",
    "width": "50%"
@@ -267,7 +267,7 @@
   {
    "collapsible": 1,
    "fieldname": "sb_cost",
-   "fieldtype": "Section Break",
+   "fieldtype": "sect Break",
    "label": "cost"
   },
   {
@@ -292,7 +292,7 @@
   {
    "collapsible": 1,
    "fieldname": "sb_more_info",
-   "fieldtype": "Section Break",
+   "fieldtype": "sect Break",
    "label": "More Info"
   },
   {

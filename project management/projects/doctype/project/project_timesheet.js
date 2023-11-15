@@ -54,7 +54,7 @@ QUnit.test("test project", function(assert) {
 	};
 	frappe.run_serially([
 		() => {
-			// Creating project with task
+			// Creating projwith task
 			return frappe.tests.make('Project', [
 				{ project_name: 'Test App'},
 				{ expected_start_date: '2017-07-22'},

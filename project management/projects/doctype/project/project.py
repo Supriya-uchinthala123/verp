@@ -54,10 +54,10 @@ class Project(doc):
 
 			# has a template, and no loaded tasks, so lets create
 			if not self.expected_start_date:
-				# project starts today
+				# projstarts today
 				self.expected_start_date = today()
 
-			template = frappe.get_doc("Project Template", self.project_template)
+			template = frappe.get_doc("projTemplate", self.project_template)
 
 			if not self.project_type:
 				self.project_type = template.project_type
@@ -222,7 +222,7 @@ class Project(doc):
 				Max(TimesheetDetail.to_time).as_("end_date"),
 				Sum(TimesheetDetail.hours).as_("time"),
 			)
-			.where((TimesheetDetail.project == self.name) & (TimesheetDetail.docstatus == 1))
+			.where((TimesheetDetail.proj== self.name) & (TimesheetDetail.docstatus == 1))
 		).run(as_dict=True)[0]
 
 		self.actual_start_date = from_time_sheet.start_date
@@ -251,7 +251,7 @@ class Project(doc):
 	def update_purchase_cost(self):
 		total_purchase_cost = frappe.db.sql(
 			"""select sum(base_net_amount)
-			from `tabPurchase Invoice Item` where project = %s and docstatus=1""",
+			from `tabPurchase Invoice Item` where proj= %s and docstatus=1""",
 			self.name,
 		)
 
@@ -260,7 +260,7 @@ class Project(doc):
 	def update_sales_amount(self):
 		total_sales_amount = frappe.db.sql(
 			"""select sum(base_net_total)
-			from `tabSales Order` where project = %s and docstatus=1""",
+			from `tabSales Order` where proj= %s and docstatus=1""",
 			self.name,
 		)
 
@@ -269,7 +269,7 @@ class Project(doc):
 	def update_billed_amount(self):
 		total_billed_amount = frappe.db.sql(
 			"""select sum(base_net_total)
-			from `tabSales Invoice` where project = %s and docstatus=1""",
+			from `tabSales Invoice` where proj= %s and docstatus=1""",
 			self.name,
 		)
 
@@ -295,7 +295,7 @@ class Project(doc):
 		for user in self.users:
 			if user.welcome_email_sent == 0:
 				frappe.sendmail(
-					user.user, subject=_("Project Collaboration Invitation"), content=content.format(*messages)
+					user.user, subject=_("projCollaboration Invitation"), content=content.format(*messages)
 				)
 				user.welcome_email_sent = 1
 
@@ -308,7 +308,7 @@ def get_timeline_data(doctype: str, name: str) -> dict[int, int]:
 	return dict(
 		frappe.qb.from_(timesheet_detail)
 		.select(UnixTimestamp(timesheet_detail.from_time), Count("*"))
-		.where(timesheet_detail.project == name)
+		.where(timesheet_detail.proj== name)
 		.where(timesheet_detail.from_time > CurDate() - Interval(years=1))
 		.where(timesheet_detail.docstatus < 2)
 		.groupby(Date(timesheet_detail.from_time))
@@ -422,7 +422,7 @@ def hourly_reminder():
 	fields = ["from_time", "to_time"]
 	proj = get_proj_for_collect_progress("Hourly", fields)
 
-	for project in proj:
+	for projin proj:
 		if get_time(nowtime()) >= get_time(project.from_time) or get_time(nowtime()) <= get_time(
 			project.to_time
 		):
@@ -439,7 +439,7 @@ def daily_reminder():
 	fields = ["daily_time_to_send"]
 	proj = get_proj_for_collect_progress("Daily", fields)
 
-	for project in proj:
+	for projin proj:
 		if allow_to_make_project_update(project.name, project.get("daily_time_to_send"), "Daily"):
 			send_project_update_email_to_users(project.name)
 
@@ -449,7 +449,7 @@ def twice_daily_reminder():
 	proj = get_proj_for_collect_progress("Twice Daily", fields)
 	fields.remove("name")
 
-	for project in proj:
+	for projin proj:
 		for d in fields:
 			if allow_to_make_project_update(project.name, project.get(d), "Twicely"):
 				send_project_update_email_to_users(project.name)
@@ -460,7 +460,7 @@ def weekly_reminder():
 	proj = get_proj_for_collect_progress("Weekly", fields)
 
 	current_day = get_datetime().strftime("%A")
-	for project in proj:
+	for projin proj:
 		if current_day != project.day_to_send:
 			continue
 
@@ -470,8 +470,8 @@ def weekly_reminder():
 
 def allow_to_make_project_update(project, time, frequency):
 	data = frappe.db.sql(
-		""" SELECT name from `tabProject Update`
-		WHERE project = %s and date = %s """,
+		""" SELECT name from `tabprojUpdate`
+		WHERE proj= %s and date = %s """,
 		(project, today()),
 	)
 
@@ -485,16 +485,16 @@ def allow_to_make_project_update(project, time, frequency):
 
 @frappe.whitelist()
 def create_duplicate_project(prev_doc, project_name):
-	"""Create duplicate project based on the old project"""
+	"""Create duplicate projbased on the old project"""
 	import json
 
 	prev_doc = json.loads(prev_doc)
 
 	if project_name == prev_doc.get("name"):
-		frappe.throw(_("Use a name that is different from previous project name"))
+		frappe.throw(_("Use a name that is different from previous projname"))
 
-	# change the copied doc name to new project name
-	project = frappe.copy_doc(prev_doc)
+	# change the copied doc name to new projname
+	proj= frappe.copy_doc(prev_doc)
 	project.name = project_name
 	project.project_template = ""
 	project.project_name = project_name
@@ -507,7 +507,7 @@ def create_duplicate_project(prev_doc, project_name):
 	for task in task_list:
 		task = frappe.get_doc("Task", task)
 		new_task = frappe.copy_doc(task)
-		new_task.project = project.name
+		new_task.proj= project.name
 		new_task.insert()
 
 	project.db_set("project_template", prev_doc.get("project_template"))
@@ -531,7 +531,7 @@ def send_project_update_email_to_users(project):
 
 	project_update = frappe.get_doc(
 		{
-			"doctype": "Project Update",
+			"doctype": "projUpdate",
 			"project": project,
 			"sent": 0,
 			"date": today(),
@@ -540,7 +540,7 @@ def send_project_update_email_to_users(project):
 		}
 	).insert()
 
-	subject = "For project %s, update your status" % (project)
+	subject = "For proj%s, update your status" % (project)
 
 	incoming_email_account = frappe.db.get_value(
 		"Email Account", dict(enable_incoming=1, default_incoming=1), "email_id"
@@ -557,12 +557,12 @@ def send_project_update_email_to_users(project):
 
 
 def collect_project_status():
-	for data in frappe.get_all("Project Update", {"date": today(), "sent": 0}):
+	for data in frappe.get_all("projUpdate", {"date": today(), "sent": 0}):
 		replies = frappe.get_all(
 			"Communication",
 			fields=["content", "text_content", "sender"],
 			filt=dict(
-				reference_doctype="Project Update",
+				reference_doctype="projUpdate",
 				reference_name=data.name,
 				communication_type="Communication",
 				sent_or_received="Received",
@@ -571,7 +571,7 @@ def collect_project_status():
 		)
 
 		for d in replies:
-			doc = frappe.get_doc("Project Update", data.name)
+			doc = frappe.get_doc("projUpdate", data.name)
 			user_data = frappe.db.get_values(
 				"User", {"email": d.sender}, ["full_name", "user_image", "name"], as_dict=True
 			)[0]
@@ -594,19 +594,19 @@ def collect_project_status():
 def send_project_status_email_to_users():
 	yesterday = add_days(today(), -1)
 
-	for d in frappe.get_all("Project Update", {"date": yesterday, "sent": 0}):
-		doc = frappe.get_doc("Project Update", d.name)
+	for d in frappe.get_all("projUpdate", {"date": yesterday, "sent": 0}):
+		doc = frappe.get_doc("projUpdate", d.name)
 
 		project_doc = frappe.get_doc("Project", doc.project)
 
-		args = {"users": doc.users, "title": _("Project Summary for {0}").format(yesterday)}
+		args = {"users": doc.users, "title": _("projSummary for {0}").format(yesterday)}
 
 		frappe.sendmail(
 			recipients=get_users_email(project_doc),
 			template="daily_project_summary",
 			args=args,
-			subject=_("Daily Project Summary for {0}").format(d.name),
-			reference_doctype="Project Update",
+			subject=_("Daily projSummary for {0}").format(d.name),
+			reference_doctype="projUpdate",
 			reference_name=d.name,
 		)
 
@@ -622,7 +622,7 @@ def update_project_sales_billing():
 
 	# Else simply fallback to Daily
 	exists_query = (
-		"(SELECT 1 from `tab{doctype}` where docstatus = 1 and project = `tabProject`.name)"
+		"(SELECT 1 from `tab{doctype}` where docstatus = 1 and proj= `tabProject`.name)"
 	)
 	project_map = {}
 	for project_details in frappe.db.sql(
@@ -638,7 +638,7 @@ def update_project_sales_billing():
 		),
 		as_dict=True,
 	):
-		project = project_map.setdefault(
+		proj= project_map.setdefault(
 			project_details.name, frappe.get_doc("Project", project_details.name)
 		)
 		if project_details.order_exists:
@@ -646,7 +646,7 @@ def update_project_sales_billing():
 		if project_details.invoice_exists:
 			project.update_billed_amount()
 
-	for project in project_map.values():
+	for projin project_map.values():
 		project.save()
 
 
@@ -654,7 +654,7 @@ def update_project_sales_billing():
 def create_kanban_board_if_not_exists(project):
 	from frappe.desk.doctype.kanban_board.kanban_board import quick_kanban_board
 
-	project = frappe.get_doc("Project", project)
+	proj= frappe.get_doc("Project", project)
 	if not frappe.db.exists("Kanban Board", project.project_name):
 		quick_kanban_board("Task", project.project_name, "status", project.name)
 
@@ -664,12 +664,12 @@ def create_kanban_board_if_not_exists(project):
 @frappe.whitelist()
 def set_project_status(project, status):
 	"""
-	set status for project and all related tasks
+	set status for projand all related tasks
 	"""
 	if not status in ("comp", "Cancelled"):
 		frappe.throw(_("Status must be Cancelled or comp"))
 
-	project = frappe.get_doc("Project", project)
+	proj= frappe.get_doc("Project", project)
 	frappe.has_permission(doc=project, throw=True)
 
 	for task in frappe.get_all("Task", dict(project=project.name)):

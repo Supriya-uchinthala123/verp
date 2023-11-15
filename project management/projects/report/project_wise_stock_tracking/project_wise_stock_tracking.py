@@ -13,7 +13,7 @@ def execute(filt=None):
 	dn_item_map = get_delivered_items_cost()
 
 	data = []
-	for project in proj_details:
+	for projin proj_details:
 		data.append(
 			[
 				project.name,
@@ -35,16 +35,16 @@ def execute(filt=None):
 
 def get_columns():
 	return [
-		_("Project Id") + ":Link/Project:140",
+		_("projId") + ":Link/Project:140",
 		_("Cost of Purchased Items") + ":Currency:160",
 		_("Cost of Issued Items") + ":Currency:160",
 		_("Cost of Delivered Items") + ":Currency:160",
-		_("Project Name") + "::120",
-		_("Project Status") + "::120",
+		_("projName") + "::120",
+		_("projStatus") + "::120",
 		_("Company") + ":Link/Company:100",
 		_("Customer") + ":Link/Customer:140",
-		_("Project Value") + ":Currency:120",
-		_("Project Start Date") + ":Date:120",
+		_("projValue") + ":Currency:120",
+		_("projStart Date") + ":Date:120",
 		_("Completion Date") + ":Date:120",
 	]
 
@@ -52,7 +52,7 @@ def get_columns():
 def get_project_details():
 	return frappe.db.sql(
 		""" select name, project_name, status, company, customer, estimated_cost,
-		expected_start_date, expected_end_date from tabProject where docstatus < 2""",
+		expected_start_date, expected_end_date from tabprojwhere docstatus < 2""",
 		as_dict=1,
 	)
 
@@ -77,7 +77,7 @@ def get_issued_items_cost():
 		"""select se.project, sum(se_item.amount) as amount
 		from `tabStock Entry` se, `tabStock Entry Detail` se_item
 		where se.name = se_item.parent and se.docstatus = 1 and ifnull(se_item.t_warehouse, '') = ''
-		and se.project != '' group by se.project""",
+		and se.proj!= '' group by se.project""",
 		as_dict=1,
 	)
 

@@ -12,7 +12,7 @@
   "column_break_2",
   "date",
   "time",
-  "section_break_5",
+  "sect_break_5",
   "users",
   "amended_from"
  ],
@@ -57,21 +57,21 @@
    "read_only": 1
   },
   {
-   "fieldname": "section_break_5",
-   "fieldtype": "Section Break"
+   "fieldname": "sect_break_5",
+   "fieldtype": "sect Break"
   },
   {
    "fieldname": "users",
    "fieldtype": "Table",
    "label": "Users",
-   "options": "Project User"
+   "options": "projUser"
   },
   {
    "fieldname": "amended_from",
    "fieldtype": "Link",
    "label": "Amended From",
    "no_copy": 1,
-   "options": "Project Update",
+   "options": "projUpdate",
    "print_hide": 1,
    "read_only": 1
   }
@@ -81,7 +81,7 @@
  "modified": "2023-06-28 18:59:50.678917",
  "modified_by": "admin",
  "module": "proj",
- "name": "Project Update",
+ "name": "projUpdate",
  "naming_rule": "By \"Naming Series\" field",
  "owner": "admin",
  "permissions": [

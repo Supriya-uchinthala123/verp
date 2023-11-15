@@ -2,7 +2,7 @@
 // For license information, please see license.txt
 
 
-frappe.query_reports["Project Summary"] = {
+frappe.query_reports["projSummary"] = {
 	"filt": [
 		{
 			"fieldname": "company",
@@ -28,9 +28,9 @@ frappe.query_reports["Project Summary"] = {
 		},
 		{
 			"fieldname": "project_type",
-			"label": __("Project Type"),
+			"label": __("projType"),
 			"fieldtype": "Link",
-			"options": "Project Type"
+			"options": "projType"
 		},
 		{
 			"fieldname": "priority",

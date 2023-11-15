@@ -10,5 +10,5 @@ class TestProjectUpdate(unittest.TestCase):
 	pass
 
 
-test_records = frappe.get_test_records("Project Update")
+test_records = frappe.get_test_records("projUpdate")
 test_ignore = ["Sales Order"]

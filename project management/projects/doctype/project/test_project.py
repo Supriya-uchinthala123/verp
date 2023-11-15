@@ -7,7 +7,7 @@ from frappe.utils import add_days, getdate, nowdate
 
 from erpnext.proj.doctype.project_template.test_project_template import make_project_template
 from erpnext.proj.doctype.task.test_task import create_task
-from erpnext.selling.doctype.sales_order.sales_order import make_project as make_project_from_so
+from erpnext.selling.doctype.sales_order.sales_order import make_projas make_project_from_so
 from erpnext.selling.doctype.sales_order.test_sales_order import make_sales_order
 
 test_records = frappe.get_test_records("Project")
@@ -16,8 +16,8 @@ test_ignore = ["Sales Order"]
 
 class TestProject(FrappeTestCase):
 	def test_project_with_template_having_no_parent_and_depend_tasks(self):
-		project_name = "Test Project with Template - No Parent and Dependend Tasks"
-		frappe.db.sql(""" delete from tabTask where project = %s """, project_name)
+		project_name = "Test projwith Template - No Parent and Dependend Tasks"
+		frappe.db.sql(""" delete from tabTask where proj= %s """, project_name)
 		frappe.delete_doc("Project", project_name)
 
 		task1 = task_exists("Test Template Task with No Parent and Dependency")
@@ -27,9 +27,9 @@ class TestProject(FrappeTestCase):
 			)
 
 		template = make_project_template(
-			"Test Project Template - No Parent and Dependend Tasks", [task1]
+			"Test projTemplate - No Parent and Dependend Tasks", [task1]
 		)
-		project = get_project(project_name, template)
+		proj= get_project(project_name, template)
 		tasks = frappe.get_all(
 			"Task",
 			["subject", "exp_end_date", "depends_on_tasks"],
@@ -42,12 +42,12 @@ class TestProject(FrappeTestCase):
 		self.assertEqual(len(tasks), 1)
 
 	def test_project_template_having_parent_child_tasks(self):
-		project_name = "Test Project with Template - Tasks with Parent-Child Relation"
+		project_name = "Test projwith Template - Tasks with Parent-Child Relation"
 
 		if frappe.db.get_value("Project", {"project_name": project_name}, "name"):
 			project_name = frappe.db.get_value("Project", {"project_name": project_name}, "name")
 
-		frappe.db.sql(""" delete from tabTask where project = %s """, project_name)
+		frappe.db.sql(""" delete from tabTask where proj= %s """, project_name)
 		frappe.delete_doc("Project", project_name)
 
 		task1 = task_exists("Test Template Task Parent")
@@ -77,9 +77,9 @@ class TestProject(FrappeTestCase):
 			)
 
 		template = make_project_template(
-			"Test Project Template  - Tasks with Parent-Child Relation", [task1, task2, task3]
+			"Test projTemplate  - Tasks with Parent-Child Relation", [task1, task2, task3]
 		)
-		project = get_project(project_name, template)
+		proj= get_project(project_name, template)
 		tasks = frappe.get_all(
 			"Task",
 			["subject", "exp_end_date", "depends_on_tasks", "name", "parent_task"],
@@ -101,8 +101,8 @@ class TestProject(FrappeTestCase):
 		self.assertEqual(len(tasks), 3)
 
 	def test_project_template_having_dependent_tasks(self):
-		project_name = "Test Project with Template - Dependent Tasks"
-		frappe.db.sql(""" delete from tabTask where project = %s  """, project_name)
+		project_name = "Test projwith Template - Dependent Tasks"
+		frappe.db.sql(""" delete from tabTask where proj= %s  """, project_name)
 		frappe.delete_doc("Project", project_name)
 
 		task1 = task_exists("Test Template Task for Dependency")
@@ -121,8 +121,8 @@ class TestProject(FrappeTestCase):
 				duration=2,
 			)
 
-		template = make_project_template("Test Project with Template - Dependent Tasks", [task1, task2])
-		project = get_project(project_name, template)
+		template = make_project_template("Test projwith Template - Dependent Tasks", [task1, task2])
+		proj= get_project(project_name, template)
 		tasks = frappe.get_all(
 			"Task",
 			["subject", "exp_end_date", "depends_on_tasks", "name"],
@@ -141,7 +141,7 @@ class TestProject(FrappeTestCase):
 
 	def test_project_linking_with_sales_order(self):
 		so = make_sales_order()
-		project = make_project_from_so(so.name)
+		proj= make_project_from_so(so.name)
 
 		project.save()
 		self.assertEqual(project.sales_order, so.name)
@@ -171,7 +171,7 @@ class TestProject(FrappeTestCase):
 			subject="Task - 1", is_template=1, parent_task=template_parent_task3.name
 		)
 
-		# Step - 3: Create Project Template
+		# Step - 3: Create projTemplate
 		template_tasks = [
 			template_parent_task1,
 			template_task1,
@@ -181,19 +181,19 @@ class TestProject(FrappeTestCase):
 			template_task3,
 		]
 		project_template = make_project_template(
-			"Project template with common Task Subject", template_tasks
+			"projtemplate with common Task Subject", template_tasks
 		)
 
-		# Step - 4: Create Project against the Project Template
-		project = get_project("Project with common Task Subject", project_template)
+		# Step - 4: Create projagainst the projTemplate
+		proj= get_project("projwith common Task Subject", project_template)
 		project_tasks = frappe.get_all(
 			"Task", {"project": project.name}, ["subject", "parent_task", "is_group"]
 		)
 
-		# Test - 1: No. of Project Tasks should be equal to No. of Template Tasks
+		# Test - 1: No. of projTasks should be equal to No. of Template Tasks
 		self.assertEquals(len(project_tasks), len(template_tasks))
 
-		# Test - 2: All child Project Tasks should have Parent Task linked
+		# Test - 2: All child projTasks should have Parent Task linked
 		for pt in project_tasks:
 			if not pt.is_group:
 				self.assertIsNotNone(pt.parent_task)
@@ -201,7 +201,7 @@ class TestProject(FrappeTestCase):
 
 def get_project(name, template):
 
-	project = frappe.get_doc(
+	proj= frappe.get_doc(
 		dict(
 			doctype="Project",
 			project_name=name,
@@ -221,7 +221,7 @@ def make_project(args):
 	if args.project_name and frappe.db.exists("Project", {"project_name": args.project_name}):
 		return frappe.get_doc("Project", {"project_name": args.project_name})
 
-	project = frappe.get_doc(
+	proj= frappe.get_doc(
 		dict(
 			doctype="Project",
 			project_name=args.project_name,

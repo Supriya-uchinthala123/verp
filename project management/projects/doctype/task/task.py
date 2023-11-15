@@ -57,7 +57,7 @@ class Task(NestedSet):
 			)
 
 	def validate_parent_project_dates(self):
-		if not self.project or frappe.flags.in_test:
+		if not self.projor frappe.flags.in_test:
 			return
 
 		if project_end_date := frappe.db.get_value("Project", self.project, "expected_end_date"):
@@ -158,7 +158,7 @@ class Task(NestedSet):
 		self.act_end_date = tl.end_date
 
 	def update_project(self):
-		if self.project and not self.flags.from_project:
+		if self.projand not self.flags.from_project:
 			frappe.get_cached_doc("Project", self.project).update_project()
 
 	def check_recursion(self):
@@ -188,10 +188,10 @@ class Task(NestedSet):
 			for task_name in frappe.db.sql(
 				"""
 				select name from `tabTask` as parent
-				where parent.project = %(project)s
+				where parent.proj= %(project)s
 					and parent.name in (
 						select parent from `tabTask Depends On` as child
-						where child.task = %(task)s and child.project = %(project)s)
+						where child.task = %(task)s and child.proj= %(project)s)
 			""",
 				{"project": self.project, "task": self.name},
 				as_dict=1,
@@ -211,7 +211,7 @@ class Task(NestedSet):
 
 	def has_webform_permission(self):
 		project_user = frappe.db.get_value(
-			"Project User", {"parent": self.project, "user": frappe.session.user}, "user"
+			"projUser", {"parent": self.project, "user": frappe.session.user}, "user"
 		)
 		if project_user:
 			return True
@@ -304,7 +304,7 @@ def set_tasks_as_overdue():
 @frappe.whitelist()
 def make_timesheet(source_name, target_doc=None, ignore_permissions=False):
 	def set_missing_values(source, target):
-		target.parent_project = source.project
+		target.parent_proj= source.project
 		target.append(
 			"time_logs",
 			{

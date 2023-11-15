@@ -12,7 +12,7 @@
   "full_name",
   "welcome_email_sent",
   "view_attachments",
-  "section_break_5",
+  "sect_break_5",
   "project_status"
  ],
  "fields": [
@@ -65,14 +65,14 @@
    "label": "View attachments"
   },
   {
-   "fieldname": "section_break_5",
-   "fieldtype": "Section Break"
+   "fieldname": "sect_break_5",
+   "fieldtype": "sect Break"
   },
   {
-   "depends_on": "eval:parent.doctype == 'Project Update'",
+   "depends_on": "eval:parent.doctype == 'projUpdate'",
    "fieldname": "project_status",
    "fieldtype": "Text",
-   "label": "Project Status"
+   "label": "projStatus"
   }
  ],
  "istable": 1,
@@ -80,7 +80,7 @@
  "modified": "2020-02-09 23:26:50.321417",
  "modified_by": "admin",
  "module": "proj",
- "name": "Project User",
+ "name": "projUser",
  "owner": "admin",
  "permissions": [],
  "sort_field": "modified",

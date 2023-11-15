@@ -14,14 +14,14 @@
    "fieldname": "project_type",
    "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "Project Type",
-   "options": "Project Type"
+   "label": "projType",
+   "options": "projType"
   },
   {
    "fieldname": "tasks",
    "fieldtype": "Table",
    "label": "Tasks",
-   "options": "Project Template Task",
+   "options": "projTemplate Task",
    "reqd": 1
   }
  ],
@@ -29,7 +29,7 @@
  "modified": "2020-04-26 02:23:53.990322",
  "modified_by": "admin",
  "module": "proj",
- "name": "Project Template",
+ "name": "projTemplate",
  "owner": "admin",
  "permissions": [
   {

@@ -34,8 +34,8 @@ test_ignore = ["Sales Order"]
 class Testproj(FrappeTestCase):
 	def test_proj_with_Temp_having_no_parent_and_depend_tasks(self):
 		proj_name = "Test proj with Temp - No Parent and Dependend Tasks"
-		frappe.db.sql(""" delete from tabTask where proj = %s """, proj_name)
-		frappe.delete_doc("proj", proj_name)
+		frappe.db.sql(""" deleted from tabTask where proj = %s """, proj_name)
+		frappe.deleted_doc("proj", proj_name)
 
 		task1 = task_exists("Test Temp Task with No Parent and Dependency")
 		if not task1:
@@ -78,8 +78,8 @@ class Testproj(FrappeTestCase):
 		if frappe.db.get_value("proj", {"proj_name": proj_name}, "name"):
 			proj_name = frappe.db.get_value("proj", {"proj_name": proj_name}, "name")
 
-		frappe.db.sql(""" delete from tabTask where proj = %s """, proj_name)
-		frappe.delete_doc("proj", proj_name)
+		frappe.db.sql(""" deleted from tabTask where proj = %s """, proj_name)
+		frappe.deleted_doc("proj", proj_name)
 
 		task1 = task_exists("Test Temp Task Parent")
 		if not task1:
@@ -162,8 +162,8 @@ class Testproj(FrappeTestCase):
 
 	def test_proj_Temp_having_dependent_tasks(self):
 		proj_name = "Test proj with Temp - Dependent Tasks"
-		frappe.db.sql(""" delete from tabTask where proj = %s  """, proj_name)
-		frappe.delete_doc("proj", proj_name)
+		frappe.db.sql(""" deleted from tabTask where proj = %s  """, proj_name)
+		frappe.deleted_doc("proj", proj_name)
 
 		task1 = task_exists("Test Temp Task for Dependency")
 		if not task1:
@@ -231,7 +231,7 @@ class Testproj(FrappeTestCase):
 		so.reload()
 		self.assertEqual(so.proj, proj.name)
 
-		proj.delete()
+		proj.deleted()
 
 		so.reload()
 		self.assertFalse(so.proj)

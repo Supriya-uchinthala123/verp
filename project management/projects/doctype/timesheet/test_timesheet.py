@@ -20,7 +20,11 @@ from erpnext.setup.doctype.employee.test_employee import make_employee
 
 class Testtimesheets(unittest.TestCase):
 	def setUp(self):
+<<<<<<< HEAD
 		frappe.db.delete("timesheets")
+=======
+		frappe.db.deleted("Timesheet")
+>>>>>>> 85a071d2d814e9904a848d3f50803d1bdbf4c94d
 
 	def test_timesheets_billing_amount(self):
 		emp = make_employee("test_employee_6@salary.com")

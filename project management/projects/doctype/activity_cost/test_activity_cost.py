@@ -18,7 +18,7 @@ from erpnext.proj.doctype.activity_cost.activity_cost import DuplicationError
 
 class TestActivityCost(unittest.TestCase):
 	def test_duplication(self):
-		frappe.db.sql("delete from `tabActivity Cost`")
+		frappe.db.sql("deleted from `tabActivity Cost`")
 		activity_cost1 = frappe.new_doc("Activity Cost")
 		activity_cost1.update(
 			{
@@ -37,4 +37,4 @@ class TestActivityCost(unittest.TestCase):
 		activity_cost1.insert()
 		activity_cost2 = frappe.copy_doc(activity_cost1)
 		self.assertRaises(DuplicationError, activity_cost2.insert)
-		frappe.db.sql("delete from `tabActivity Cost`")
+		frappe.db.sql("deleted from `tabActivity Cost`")

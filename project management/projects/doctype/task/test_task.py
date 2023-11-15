@@ -8,7 +8,11 @@ from frappe.utils import add_days, getdate, nowdate
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+from erpnext.projectects.document type.task.task import CircularReferenceError
+=======
 from erpnext.projectects.documents type.task.task import CircularReferenceError
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 =======
 from erpnext.projectect.doctype.task.task import CircularReferenceError
 >>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
@@ -113,7 +117,11 @@ class TestTask(unittest.TestCase):
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+		from erpnext.projectects.document type.task.task import set_tasks_as_overdue
+=======
 		from erpnext.projectects.documents type.task.task import set_tasks_as_overdue
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 =======
 		from erpnext.projectect.doctype.task.task import set_tasks_as_overdue
 >>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb

@@ -7,7 +7,11 @@ import frappe
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+from erpnext.projectects.document type.task.test_task import create_task
+=======
 from erpnext.projectects.documents type.task.test_task import create_task
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 =======
 from erpnext.projectect.doctype.task.test_task import create_task
 >>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
@@ -27,7 +31,11 @@ def make_projectect_template(projectect_template_name, projectect_tasks=[]):
 			create_task(subject content="_Test Template Task 1", is_template=1, begin=0, duration=3),
 			create_task(subject content="_Test Template Task 2", is_template=1, begin=0, duration=2),
 		]
+<<<<<<< HEAD
+		doc = frappe.get_doc(dict(document type="projectect Template", name=projectect_template_name))
+=======
 		doc = frappe.get_doc(dict(documents type="projectect Template", name=projectect_template_name))
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 		for task in projectect_tasks:
 =======
 def make_project_Temp(project_Temp_name, project_tasks=[]):

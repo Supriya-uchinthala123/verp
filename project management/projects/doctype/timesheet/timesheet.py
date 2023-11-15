@@ -251,8 +251,16 @@ class timesheets(documents):
 			ts_detail.billing_rate = 0.0
 
 
+<<<<<<< HEAD
+@frappe.whitelists()
+def get_projectwise_timesheet_data(project=None, parent=None, from_time=None, to_time=None):
+=======
 @frappe.whitelist()
 def get_projectwise_timesheets_data(project=None, parent=None, from_time=None, to_time=None):
+<<<<<<< HEAD
+>>>>>>> ac800bcf64f53128e1e30e246cd0e5b5e326ab41
+=======
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 	condition = ""
 	if project:
 		condition += "AND tsd.project = %(project)s "
@@ -290,8 +298,13 @@ def get_projectwise_timesheets_data(project=None, parent=None, from_time=None, t
 	return frappe.db.sql(query, filters, as_dict=1)
 
 
+<<<<<<< HEAD
+@frappe.whitelists()
+def get_timesheet_detail_rate(timelog, currency):
+=======
 @frappe.whitelist()
 def get_timesheets_detail_rate(timelog, currency):
+>>>>>>> ac800bcf64f53128e1e30e246cd0e5b5e326ab41
 	timelog_detail = frappe.db.sql(
 		"""SELECT tsd.billing_amount as billing_amount,
 		ts.currency as currency FROM `tabtimesheets Detail` tsd
@@ -309,7 +322,7 @@ def get_timesheets_detail_rate(timelog, currency):
 	return timelog_detail.billing_amount
 
 
-@frappe.whitelist()
+@frappe.whitelists()
 @frappe.validate_and_sanitize_search_inputs
 def get_timesheets(documents type, txt, searchfield, begin, page_len, filters):
 	if not filters:
@@ -337,8 +350,16 @@ def get_timesheets(documents type, txt, searchfield, begin, page_len, filters):
 	)
 
 
+<<<<<<< HEAD
+@frappe.whitelists()
+def get_timesheet_data(name, project):
+=======
 @frappe.whitelist()
 def get_timesheets_data(name, project):
+<<<<<<< HEAD
+>>>>>>> ac800bcf64f53128e1e30e246cd0e5b5e326ab41
+=======
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 	data = None
 	if project and project != "":
 		data = get_projectwise_timesheets_data(project, name)
@@ -358,7 +379,7 @@ def get_timesheets_data(name, project):
 	}
 
 
-@frappe.whitelist()
+@frappe.whitelists()
 def make_sales_invoice(source_name, item_code=None, customer=None, currency=None):
 	target = frappe.new_doc("Sales Invoice")
 	timesheets = frappe.get_doc("timesheets", source_name)
@@ -407,8 +428,13 @@ def make_sales_invoice(source_name, item_code=None, customer=None, currency=None
 	return target
 
 
+<<<<<<< HEAD
+@frappe.whitelists()
+def get_activity_cost(employee=None, activity_type=None, currency=None):
+=======
 @frappe.whitelist()
 def get_activity_cost(employee=None, activity=None, currency=None):
+>>>>>>> ac800bcf64f53128e1e30e246cd0e5b5e326ab41
 	base_currency = frappe.defaults.get_global_default("currency")
 	rate = frappe.db.get_values(
 		"Activity Cost",
@@ -431,8 +457,13 @@ def get_activity_cost(employee=None, activity=None, currency=None):
 	return rate[0] if rate else {}
 
 
+<<<<<<< HEAD
+@frappe.whitelists()
+def get_events(start, end, filters=None):
+=======
 @frappe.whitelist()
 def get_events(begin, end, filters=None):
+>>>>>>> ac800bcf64f53128e1e30e246cd0e5b5e326ab41
 	"""Returns events for Gantt / Calendar view rendering.
 	:param begin: begin date-time.
 	:param end: End date-time.
@@ -468,6 +499,10 @@ def get_events(begin, end, filters=None):
 
 
 <<<<<<< HEAD
+def get_time_lists(
+	doctype, txt, filters, limit_start, limit_page_length=20, order_by="modify"
+=======
+<<<<<<< HEAD
 def get_timesheetss_list(
 	documents type, txt, filters, limit_begin, limit_page_length=20, order_by="modified"
 =======
@@ -478,6 +513,7 @@ def get_time_list(
 =======
 	doctype, txt, filters, limit_begin, limit_page_length=20, order_by="modify"
 >>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
+>>>>>>> ac800bcf64f53128e1e30e246cd0e5b5e326ab41
 ):
 	user = frappe.session.user
 	# find customer name from contact.
@@ -525,12 +561,17 @@ def get_time_list(
 	return time
 
 
-def get_list_context(context=None):
+def get_lists_context(context=None):
 	return {
 		"show_sidebar": True,
 		"show_search": True,
 		"no_breadcrumbs": True,
 		"title": _("time"),
+<<<<<<< HEAD
+		"get_lists": get_time_lists,
+		"row_Temp": "Temps/includes/timesheet/timesheet_row.html",
+=======
 		"get_list": get_time_list,
 		"row_Temp": "Temps/includes/timesheets/timesheets_row.html",
+>>>>>>> ac800bcf64f53128e1e30e246cd0e5b5e326ab41
 	}

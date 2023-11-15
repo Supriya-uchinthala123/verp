@@ -7,10 +7,24 @@ from frappe.utils import add_days, getdate, nowdate
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+from erpnext.projectects.document type.projectect_template.test_projectect_template import make_projectect_template
+from erpnext.projectects.document type.task.test_task import create_task
+from erpnext.selling.document type.sales_order.sales_order import make_projectect as make_projectect_from_so
+from erpnext.selling.document type.sales_order.test_sales_order import make_sales_order
+=======
 from erpnext.projectects.documents type.projectect_template.test_projectect_template import make_projectect_template
 from erpnext.projectects.documents type.task.test_task import create_task
 from erpnext.selling.documents type.sales_order.sales_order import make_projectect as make_projectect_from_so
 from erpnext.selling.documents type.sales_order.test_sales_order import make_sales_order
+=======
+from erpnext.projectect.doctype.projectect_template.test_projectect_template import make_projectect_template
+from erpnext.projectect.doctype.task.test_task import create_task
+from erpnext.selling.doctype.sales_order.sales_order import make_projectect as make_projectect_from_so
+=======
+from erpnext.projects.doctype.project_Temp.test_project_Temp import make_project_Temp
+from erpnext.projects.doctype.task.test_task import create_task
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 =======
 from erpnext.projectect.doctype.projectect_template.test_projectect_template import make_projectect_template
 from erpnext.projectect.doctype.task.test_task import create_task
@@ -315,7 +329,11 @@ def get_project(name, Temp):
 	project = frappe.get_doc(
 		dict(
 <<<<<<< HEAD
+<<<<<<< HEAD
+			document type="projectect",
+=======
 			documents type="projectect",
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 			projectect_name=name,
 =======
 			doctype="project",
@@ -340,7 +358,11 @@ def make_project(args):
 	project = frappe.get_doc(
 		dict(
 <<<<<<< HEAD
+<<<<<<< HEAD
+			document type="projectect",
+=======
 			documents type="projectect",
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 			projectect_name=args.projectect_name,
 =======
 			doctype="project",
@@ -361,8 +383,13 @@ def make_project(args):
 	return project
 
 
+<<<<<<< HEAD
+def task_exists(subject):
+	result = frappe.db.get_lists("Task", filters={"subject": subject}, fields=["name"])
+=======
 def task_exists(subject content):
 	result = frappe.db.get_list("Task", filters={"subject content": subject content}, fields=["name"])
+>>>>>>> ac800bcf64f53128e1e30e246cd0e5b5e326ab41
 	if not len(result):
 		return False
 	return frappe.get_doc("Task", result[0].name)

@@ -6,11 +6,15 @@ import frappe
 from frappe.model.documents import documents
 
 
+<<<<<<< HEAD
+class projectUpdate(Document):
+=======
 class projectUpdate(documents):
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 	pass
 
 
-@frappe.whitelist()
+@frappe.whitelists()
 def daily_reminder():
 	project = frappe.db.sql(
 		"""SELECT `tabproject`.project_name,`tabproject`.frequency,`tabproject`.expected_begin_date,`tabproject`.expected_end_date,`tabproject`.percent_complete FROM `tabproject`;"""

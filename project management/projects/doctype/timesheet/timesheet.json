@@ -140,8 +140,13 @@
   {
    "fieldname": "begin_date",
    "fieldtype": "Date",
+<<<<<<< HEAD
+   "in_lists_view": 1,
+   "label": "Start Date",
+=======
    "in_list_view": 1,
    "label": "begin Date",
+>>>>>>> ac800bcf64f53128e1e30e246cd0e5b5e326ab41
    "print_hide": 1,
    "read_only": 1
   },
@@ -233,8 +238,13 @@
    "allow_on_submit": 1,
    "fieldname": "per_bill",
    "fieldtype": "Percent",
+<<<<<<< HEAD
+   "in_lists_view": 1,
+   "label": "% Amount Billed",
+=======
    "in_list_view": 1,
    "label": "% Amount bill",
+>>>>>>> 331b07eabc5d1060a6ecfa22a3cf26a091811461
    "no_copy": 1,
    "print_hide": 1,
    "read_only": 1

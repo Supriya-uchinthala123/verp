@@ -208,7 +208,11 @@ frappe.ui.form.on("timesheets", {
 				type: "GET",
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+				method: "erpnext.projectects.document type.timesheets.timesheets.make_sales_invoice",
+=======
 				method: "erpnext.projectects.documents type.timesheets.timesheets.make_sales_invoice",
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 =======
 				method: "erpnext.projectect.doctype.timesheets.timesheets.make_sales_invoice",
 >>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
@@ -305,7 +309,11 @@ frappe.ui.form.on("timesheets Detail", {
 		frappe.call({
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+			method: "erpnext.projectects.document type.timesheets.timesheets.get_activity_cost",
+=======
 			method: "erpnext.projectects.documents type.timesheets.timesheets.get_activity_cost",
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 =======
 			method: "erpnext.projectect.doctype.timesheets.timesheets.get_activity_cost",
 >>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
@@ -423,7 +431,11 @@ function set_project_in_timelog(frm) {
 	if(frm.doc.parent_project) {
 		$.each(frm.doc.time_logs || [], function(i, item) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+			frappe.model.set_value(item.document type, item.name, "projectect", frm.doc.parent_projectect);
+=======
 			frappe.model.set_value(item.documents type, item.name, "projectect", frm.doc.parent_projectect);
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 =======
 			frappe.model.set_value(item.doctype, item.name, "project", frm.doc.parent_project);
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f

@@ -5,7 +5,11 @@ from frappe.utils import add_days, add_months, nowdate
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+from erpnext.projectects.document type.task.test_task import create_task
+=======
 from erpnext.projectects.documents type.task.test_task import create_task
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 from erpnext.projectects.report.delayed_tasks_summary.delayed_tasks_summary import execute
 =======
 from erpnext.projectect.doctype.task.test_task import create_task
@@ -41,14 +45,22 @@ class TestDelayedTasksSummary(unittest.TestCase):
 			{"subject content": "_Test Task 98", "status": "Completed", "priority": "Low", "delay": -1},
 		]
 		report = execute(filters)
+<<<<<<< HEAD
+		data = lists(filter(lambda x: x.subject == "_Test Task 99", report[1]))[0]
+=======
 		data = list(filter(lambda x: x.subject content == "_Test Task 99", report[1]))[0]
+>>>>>>> ac800bcf64f53128e1e30e246cd0e5b5e326ab41
 
 		for key in ["subject content", "status", "priority", "delay"]:
 			self.assertEqual(expected_data[0].get(key), data.get(key))
 
 		filters.status = "Completed"
 		report = execute(filters)
+<<<<<<< HEAD
+		data = lists(filter(lambda x: x.subject == "_Test Task 98", report[1]))[0]
+=======
 		data = list(filter(lambda x: x.subject content == "_Test Task 98", report[1]))[0]
+>>>>>>> ac800bcf64f53128e1e30e246cd0e5b5e326ab41
 
 		for key in ["subject content", "status", "priority", "delay"]:
 			self.assertEqual(expected_data[1].get(key), data.get(key))

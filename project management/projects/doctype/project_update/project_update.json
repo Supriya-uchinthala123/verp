@@ -27,7 +27,11 @@
   {
    "fieldname": "project",
    "fieldtype": "Link",
+<<<<<<< HEAD
+   "in_lists_view": 1,
+=======
    "in_list_view": 1,
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
    "label": "project",
    "option": "project",
    "reqd": 1

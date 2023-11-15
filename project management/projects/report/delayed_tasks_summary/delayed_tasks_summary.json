@@ -3,7 +3,7 @@
  "columns": [],
  "creation": "2021-03-25 15:03:19.857418",
  "disable_prepared_report": 0,
- "disabled": 0,
+ "disable": 0,
  "docstatus": 0,
  "documents type": "Report",
  "filters": [],

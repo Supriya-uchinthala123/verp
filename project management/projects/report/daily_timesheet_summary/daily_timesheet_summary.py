@@ -49,7 +49,7 @@ def get_data(conditions, filters):
 		`tabtimesheets Detail`.parent = `tabtimesheets`.name and %s order by `tabtimesheets`.name"""
 		% (conditions),
 		filters,
-		as_list=1,
+		as_lists=1,
 	)
 
 	return time_sheet

@@ -79,8 +79,8 @@ frappe.ui.form.on("Issue", {
 				</a>
 			`);
 
-			let communication_box = frm.timeline.wrapper.find('.timeline-item[data-doctype="Communication"]');
-			communication_box.find('.actions').prepend(split_issue_btn);
+			let communicate_box = frm.timeline.wrapper.find('.timeline-item[data-doctype="communicate"]');
+			communicate_box.find('.actions').prepend(split_issue_btn);
 
 			if (!frm.timeline.wrapper.data("split-issue-event-attached")) {
 				frm.timeline.wrapper.on('click', '.btn-split-issue', (e) => {
@@ -92,14 +92,14 @@ frappe.ui.form.on("Issue", {
 								fieldtype: "Data",
 								reqd: 1,
 								label: __("Subject"),
-								description: __("All communications including and above this shall be moved into the new Issue")
+								description: __("All communicates including and above this shall be moved into the new Issue")
 							}
 						],
 						primary_action_label: __("Split"),
 						primary_action: () => {
 							frm.call("split_issue", {
 								subject: dialog.fields_dict.subject.value,
-								communication_id: e.currentTarget.closest(".timeline-item").getAttribute("data-name")
+								communicate_id: e.currentTarget.closest(".timeline-item").getAttribute("data-name")
 							}, (r) => {
 								frappe.msgprint(`New issue created: <a href="/app/issue/${r.message}">${r.message}</a>`);
 								frm.reload_doc();
@@ -124,11 +124,11 @@ frappe.ui.form.on("Issue", {
 		// 		</a>
 		// 	`);
 
-		// 	let communication_box = frm.timeline.wrapper.find('.timeline-item[data-doctype="Communication"]');
-		// 	communication_box.find('.actions').prepend(help_article);
+		// 	let communicate_box = frm.timeline.wrapper.find('.timeline-item[data-doctype="communicate"]');
+		// 	communicate_box.find('.actions').prepend(help_article);
 		// 	if (!frm.timeline.wrapper.data("help-article-event-attached")) {
 		// 		frm.timeline.wrapper.on('click', '.btn-add-to-kb', function () {
-		// 			const content = $(this).parents('.timeline-item[data-doctype="Communication"]:first').find(".content").html();
+		// 			const content = $(this).parents('.timeline-item[data-doctype="communicate"]:first').find(".content").html();
 		// 			const doc = frappe.model.get_new_doc("Help Article");
 		// 			doc.title = frm.doc.subject;
 		// 			doc.content = content;

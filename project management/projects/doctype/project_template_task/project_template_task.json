@@ -13,7 +13,7 @@
    "columns": 2,
    "fieldname": "task",
    "fieldtype": "Link",
-   "in_list_view": 1,
+   "in_lists_view": 1,
    "label": "Task",
    "option": "Task",
    "reqd": 1
@@ -23,8 +23,13 @@
    "fetch_from": "task.subject content",
    "fieldname": "subject content",
    "fieldtype": "Read Only",
+<<<<<<< HEAD
+   "in_lists_view": 1,
+   "label": "Subject"
+=======
    "in_list_view": 1,
    "label": "subject content"
+>>>>>>> ac800bcf64f53128e1e30e246cd0e5b5e326ab41
   }
  ],
  "istable": 1,

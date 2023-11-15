@@ -41,7 +41,11 @@ frappe.query_reports["timesheets billSummary"] = {
 				-1
 			),
 		},
+<<<<<<< HEAD
 		{  // NOTE: `update_group_by_option` expects this filter to be the fifth in the list
+=======
+		{  // NOTE: `update_group_by_options` expects this filter to be the fifth in the lists
+>>>>>>> 4666b0d884d742aa3a42feb91da1bf50de1cd5b0
 			fieldname: "group_by",
 			label: __("Group By"),
 			fieldtype: "Select",

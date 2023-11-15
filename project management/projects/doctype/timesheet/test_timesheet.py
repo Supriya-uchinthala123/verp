@@ -8,9 +8,15 @@ import frappe
 from frappe.utils import add_months, add_to_date, now_datetime, nowdate
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+from erpnext.accounts.document type.sales_invoice.test_sales_invoice import create_sales_invoice
+from erpnext.projectects.document type.timesheets.timesheets import OverlapError, make_sales_invoice
+from erpnext.setup.document type.employee.test_employee import make_employee
+=======
 from erpnext.accounts.documents type.sales_invoice.test_sales_invoice import create_sales_invoice
 from erpnext.projectects.documents type.timesheets.timesheets import OverlapError, make_sales_invoice
 from erpnext.setup.documents type.employee.test_employee import make_employee
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 =======
 from erpnext.accounts.doctype.sales_invoice.test_sales_invoice import create_sales_invoice
 from erpnext.project.doctype.timesheets.timesheets import OverlapError, make_sales_invoice

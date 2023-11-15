@@ -164,20 +164,20 @@ class Task(NestedSet):
 	def check_recursion(self):
 		if self.flags.ignore_recursion_check:
 			return
-		check_list = [["task", "parent"], ["parent", "task"]]
-		for d in check_list:
-			task_list, count = [self.name], 0
-			while len(task_list) > count:
+		check_lists = [["task", "parent"], ["parent", "task"]]
+		for d in check_lists:
+			task_lists, count = [self.name], 0
+			while len(task_lists) > count:
 				tasks = frappe.db.sql(
 					" select %s from `tabTask Depends On` where %s = %s " % (d[0], d[1], "%s"),
-					cstr(task_list[count]),
+					cstr(task_lists[count]),
 				)
 				count = count + 1
 				for b in tasks:
 					if b[0] == self.name:
 						frappe.throw(_("Circular Reference Error"), CircularReferenceError)
 					if b[0]:
-						task_list.append(b[0])
+						task_lists.append(b[0])
 
 				if count == 15:
 					break
@@ -243,17 +243,21 @@ class Task(NestedSet):
 				self.update_project()
 
 
-@frappe.whitelist()
+@frappe.whitelists()
 def check_if_child_exists(name):
 	child_tasks = frappe.get_all("Task", filters={"parent_task": name})
 	child_tasks = [get_link_to_form("Task", task.name) for task in child_tasks]
 	return child_tasks
 
 
-@frappe.whitelist()
+@frappe.whitelists()
 @frappe.validate_and_sanitize_search_inputs
 <<<<<<< HEAD
+<<<<<<< HEAD
+def get_projectect(document type, txt, searchfield, begin, page_len, filters):
+=======
 def get_projectect(documents type, txt, searchfield, begin, page_len, filters):
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 =======
 def get_project(doctype, txt, searchfield, begin, page_len, filters):
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
@@ -283,7 +287,7 @@ def get_project(doctype, txt, searchfield, begin, page_len, filters):
 	)
 
 
-@frappe.whitelist()
+@frappe.whitelists()
 def set_multiple_status(names, status):
 	names = json.loads(names)
 	for name in names:
@@ -305,8 +309,13 @@ def set_tasks_as_overdue():
 		frappe.get_doc("Task", task.name).update_status()
 
 
+<<<<<<< HEAD
+@frappe.whitelists()
+def make_timesheet(source_name, target_doc=None, ignore_permissions=False):
+=======
 @frappe.whitelist()
 def make_timesheets(source_name, target_doc=None, ignore_permissions=False):
+>>>>>>> ac800bcf64f53128e1e30e246cd0e5b5e326ab41
 	def set_missing_values(source, target):
 		target.parent_project = source.project
 		target.append(
@@ -319,7 +328,7 @@ def make_timesheets(source_name, target_doc=None, ignore_permissions=False):
 			},
 		)
 
-	doclist = get_mapped_doc(
+	doclists = get_mapped_doc(
 		"Task",
 		source_name,
 		{"Task": {"documents type": "timesheets"}},
@@ -328,13 +337,22 @@ def make_timesheets(source_name, target_doc=None, ignore_permissions=False):
 		ignore_permissions=ignore_permissions,
 	)
 
-	return doclist
+	return doclists
 
 
+<<<<<<< HEAD
+@frappe.whitelists()
+=======
 @frappe.whitelist()
 <<<<<<< HEAD
+<<<<<<< HEAD
+def get_children(document type, parent, task=None, projectect=None, is_root=False):
+=======
+>>>>>>> ac800bcf64f53128e1e30e246cd0e5b5e326ab41
+=======
 def get_children(documents type, parent, task=None, projectect=None, is_root=False):
 =======
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 def get_children(doctype, parent, task=None, project=None, is_root=False):
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
 
@@ -351,9 +369,15 @@ def get_children(doctype, parent, task=None, project=None, is_root=False):
 	if project:
 		filters.append(["project", "=", project])
 
+<<<<<<< HEAD
+	tasks = frappe.get_lists(
+		doctype,
+		fields=["name as value", "subject as title", "is_group as expandable"],
+=======
 	tasks = frappe.get_list(
 		documents type,
 		fields=["name as value", "subject content as title", "is_group as expandable"],
+>>>>>>> ac800bcf64f53128e1e30e246cd0e5b5e326ab41
 		filters=filters,
 		order_by="name",
 	)
@@ -362,7 +386,7 @@ def get_children(doctype, parent, task=None, project=None, is_root=False):
 	return tasks
 
 
-@frappe.whitelist()
+@frappe.whitelists()
 def add_node():
 	from frappe.desk.treeview import make_tree_args
 
@@ -376,11 +400,15 @@ def add_node():
 	frappe.get_doc(args).insert()
 
 
-@frappe.whitelist()
+@frappe.whitelists()
 def add_multiple_tasks(data, parent):
 	data = json.loads(data)
 <<<<<<< HEAD
+<<<<<<< HEAD
+	new_doc = {"document type": "Task", "parent_task": parent if parent != "All Tasks" else ""}
+=======
 	new_doc = {"documents type": "Task", "parent_task": parent if parent != "All Tasks" else ""}
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 	new_doc["projectect"] = frappe.db.get_value("Task", {"name": parent}, "projectect") or ""
 =======
 	new_doc = {"doctype": "Task", "parent_task": parent if parent != "All Tasks" else ""}

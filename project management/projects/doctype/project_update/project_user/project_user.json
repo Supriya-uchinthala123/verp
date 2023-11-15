@@ -19,7 +19,7 @@
   {
    "fieldname": "user",
    "fieldtype": "Link",
-   "in_list_view": 1,
+   "in_lists_view": 1,
    "label": "User",
    "option": "User",
    "reqd": 1,
@@ -47,7 +47,7 @@
    "fetch_from": "user.full_name",
    "fieldname": "full_name",
    "fieldtype": "Read Only",
-   "in_list_view": 1,
+   "in_lists_view": 1,
    "label": "Full Name"
   },
   {
@@ -61,7 +61,7 @@
    "default": "0",
    "fieldname": "view_attachments",
    "fieldtype": "Check",
-   "in_list_view": 1,
+   "in_lists_view": 1,
    "label": "View attachments"
   },
   {
@@ -70,7 +70,11 @@
   },
   {
 <<<<<<< HEAD
+<<<<<<< HEAD
+   "depends_on": "eval:parent.document type == 'projectect Update'",
+=======
    "depends_on": "eval:parent.documents type == 'projectect Update'",
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
    "fieldname": "projectect_status",
 =======
    "depends_on": "eval:parent.doctype == 'project Update'",

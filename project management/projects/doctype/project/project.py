@@ -14,11 +14,23 @@ from frappe.utils.user import is_website_user
 
 from erpnext import get_default_company
 from erpnext.controllers.queries import get_filters_cond
+<<<<<<< HEAD
+from erpnext.controllers.website_lists_for_contact import get_customers_suppliers
+from erpnext.setup.doctype.holiday_lists.holiday_lists import is_holiday
+=======
 from erpnext.controllers.website_list_for_contact import get_customers_suppliers
+<<<<<<< HEAD
+from erpnext.setup.document type.holiday_list.holiday_list import is_holiday
+>>>>>>> ac800bcf64f53128e1e30e246cd0e5b5e326ab41
+
+
+class project(Document):
+=======
 from erpnext.setup.documents type.holiday_list.holiday_list import is_holiday
 
 
 class project(documents):
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 	def onload(self):
 		self.set_onload(
 			"activity_summary",
@@ -112,8 +124,8 @@ class project(documents):
 		return self.update_if_holiday(self.end_date)
 
 	def update_if_holiday(self, date):
-		holiday_list = self.holiday_list or get_holiday_list(self.company)
-		while is_holiday(holiday_list, date):
+		holiday_lists = self.holiday_lists or get_holiday_lists(self.company)
+		while is_holiday(holiday_lists, date):
 			date = add_days(date, 1)
 		return date
 
@@ -246,7 +258,7 @@ class project(documents):
 		self.total_billable_amount = from_time_sheet.billing_amount
 		self.actual_time = from_time_sheet.time
 
-		self.update_purchase_costing()
+		self.update_purchased_costing()
 		self.update_sales_amount()
 		self.update_bill_amount()
 		self.calculate_gross_margin()
@@ -254,7 +266,7 @@ class project(documents):
 	def calculate_gross_margin(self):
 		expense_amount = (
 			flt(self.total_costing_amount)
-			+ flt(self.total_purchase_cost)
+			+ flt(self.total_purchased_cost)
 			+ flt(self.get("total_consumed_material_cost", 0))
 		)
 
@@ -262,14 +274,14 @@ class project(documents):
 		if self.total_bill_amount:
 			self.per_gross_margin = (self.gross_margin / flt(self.total_bill_amount)) * 100
 
-	def update_purchase_costing(self):
-		total_purchase_cost = frappe.db.sql(
+	def update_purchased_costing(self):
+		total_purchased_cost = frappe.db.sql(
 			"""select sum(base_net_amount)
-			from `tabPurchase Invoice Item` where project = %s and docstatus=1""",
+			from `tabpurchased Invoice Item` where project = %s and docstatus=1""",
 			self.name,
 		)
 
-		self.total_purchase_cost = total_purchase_cost and total_purchase_cost[0][0] or 0
+		self.total_purchased_cost = total_purchased_cost and total_purchased_cost[0][0] or 0
 
 	def update_sales_amount(self):
 		total_sales_amount = frappe.db.sql(
@@ -335,6 +347,13 @@ def get_timeline_data(documents type: str, name: str) -> dict[int, int]:
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+def get_project_lists(
+	doctype, txt, filters, limit_start, limit_page_length=20, order_by="modify"
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 def get_projectect_list(
 <<<<<<< HEAD
 	documents type, txt, filters, limit_begin, limit_page_length=20, order_by="modified"
@@ -344,6 +363,7 @@ def get_project_list(
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
 	doctype, txt, filters, limit_begin, limit_page_length=20, order_by="modify"
 >>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
+>>>>>>> ac800bcf64f53128e1e30e246cd0e5b5e326ab41
 ):
 	user = frappe.session.user
 	customers, suppliers = get_customers_suppliers("project", frappe.session.user)
@@ -381,8 +401,17 @@ def get_project_list(
 			else:
 				filters.append([documents type, "name", "like", "%" + txt + "%"])
 
+<<<<<<< HEAD
+	return frappe.get_lists(
+		doctype,
+=======
 	return frappe.get_list(
+<<<<<<< HEAD
+		document type,
+>>>>>>> ac800bcf64f53128e1e30e246cd0e5b5e326ab41
+=======
 		documents type,
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 		fields=fields,
 		filters=filters,
 		or_filters=or_filters,
@@ -393,17 +422,21 @@ def get_project_list(
 	)
 
 
-def get_list_context(context=None):
-	from erpnext.controllers.website_list_for_contact import get_list_context
+def get_lists_context(context=None):
+	from erpnext.controllers.website_lists_for_contact import get_lists_context
 
-	list_context = get_list_context(context)
-	list_context.update(
+	lists_context = get_lists_context(context)
+	lists_context.update(
 		{
 			"show_sidebar": True,
 			"show_search": True,
 			"no_breadcrumbs": True,
 			"title": _("project"),
+<<<<<<< HEAD
+			"get_lists": get_project_lists,
+=======
 			"get_list": get_project_list,
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 <<<<<<< HEAD
 			"row_Temp": "Temps/includes/projects/project_row.html",
 =======
@@ -412,13 +445,17 @@ def get_list_context(context=None):
 		}
 	)
 
-	return list_context
+	return lists_context
 
 
-@frappe.whitelist()
+@frappe.whitelists()
 @frappe.validate_and_sanitize_search_inputs
 <<<<<<< HEAD
+<<<<<<< HEAD
+def get_users_for_projectect(document type, txt, searchfield, begin, page_len, filters):
+=======
 def get_users_for_projectect(documents type, txt, searchfield, begin, page_len, filters):
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 =======
 def get_users_for_project(doctype, txt, searchfield, begin, page_len, filters):
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
@@ -447,7 +484,11 @@ def get_users_for_project(doctype, txt, searchfield, begin, page_len, filters):
 	)
 
 
+<<<<<<< HEAD
+@frappe.whitelists()
+=======
 @frappe.whitelist()
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 def get_cost_center_name(project):
 	return frappe.db.get_value("project", project, "cost_center")
 
@@ -517,7 +558,11 @@ def allow_to_make_project_update(project, time, frequency):
 		return True
 
 
+<<<<<<< HEAD
+@frappe.whitelists()
+=======
 @frappe.whitelist()
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 def create_duplicate_project(prev_doc, project_name):
 	"""Create duplicate project based on the old project"""
 	import json
@@ -535,10 +580,14 @@ def create_duplicate_project(prev_doc, project_name):
 	project.insert()
 
 	# fetch all the task linked with the old project
+<<<<<<< HEAD
+	task_lists = frappe.get_all("Task", filters={"project": prev_doc.get("name")}, fields=["name"])
+=======
 	task_list = frappe.get_all("Task", filters={"project": prev_doc.get("name")}, fields=["name"])
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 
 	# Create duplicate task for all the task
-	for task in task_list:
+	for task in task_lists:
 		task = frappe.get_doc("Task", task)
 		new_task = frappe.copy_doc(task)
 		new_task.project = project.name
@@ -560,13 +609,17 @@ def get_project_for_collect_progress(frequency, fields):
 def send_project_update_email_to_users(project):
 	doc = frappe.get_doc("project", project)
 
-	if is_holiday(doc.holiday_list) or not doc.users:
+	if is_holiday(doc.holiday_lists) or not doc.users:
 		return
 
 	project_update = frappe.get_doc(
 		{
 <<<<<<< HEAD
+<<<<<<< HEAD
+			"document type": "projectect Update",
+=======
 			"documents type": "projectect Update",
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 			"projectect": projectect,
 =======
 			"doctype": "project Update",
@@ -594,7 +647,11 @@ def send_project_update_email_to_users(project):
 		message=doc.message,
 <<<<<<< HEAD
 		subject content=_(subject content),
+<<<<<<< HEAD
+		reference_document type=projectect_update.document type,
+=======
 		reference_documents type=projectect_update.documents type,
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 		reference_name=projectect_update.name,
 =======
 		subject=_(subject),
@@ -608,16 +665,20 @@ def send_project_update_email_to_users(project):
 def collect_project_status():
 	for data in frappe.get_all("project Update", {"date": today(), "sent": 0}):
 		replies = frappe.get_all(
-			"Communication",
+			"communicate",
 			fields=["content", "text_content", "sender"],
 			filters=dict(
 <<<<<<< HEAD
+<<<<<<< HEAD
+				reference_document type="projectect Update",
+=======
 				reference_documents type="projectect Update",
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 =======
 				reference_doctype="project Update",
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
 				reference_name=data.name,
-				communication_type="Communication",
+				communicate_type="communicate",
 				sent_or_received="Received",
 			),
 			order_by="creation asc",
@@ -660,7 +721,11 @@ def send_project_status_email_to_users():
 			args=args,
 <<<<<<< HEAD
 			subject content=_("Daily projectect Summary for {0}").format(d.name),
+<<<<<<< HEAD
+			reference_document type="projectect Update",
+=======
 			reference_documents type="projectect Update",
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 =======
 			subject=_("Daily project Summary for {0}").format(d.name),
 			reference_doctype="project Update",
@@ -681,7 +746,11 @@ def update_project_sales_billing():
 	# Else simply fallback to Daily
 	exists_query = (
 <<<<<<< HEAD
+<<<<<<< HEAD
+		"(SELECT 1 from `tab{document type}` where docstatus = 1 and projectect = `tabprojectect`.name)"
+=======
 		"(SELECT 1 from `tab{documents type}` where docstatus = 1 and projectect = `tabprojectect`.name)"
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 =======
 		"(SELECT 1 from `tab{doctype}` where docstatus = 1 and project = `tabproject`.name)"
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
@@ -712,11 +781,20 @@ def update_project_sales_billing():
 		project.save()
 
 
+<<<<<<< HEAD
+@frappe.whitelists()
+=======
 @frappe.whitelist()
 <<<<<<< HEAD
 def create_kanban_board_if_not_exists(projectect):
+<<<<<<< HEAD
+	from frappe.desk.document type.kanban_board.kanban_board import quick_kanban_board
+=======
+>>>>>>> ac800bcf64f53128e1e30e246cd0e5b5e326ab41
+=======
 	from frappe.desk.documents type.kanban_board.kanban_board import quick_kanban_board
 =======
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 def create_kanban_board_if_not_exists(project):
 	from frappe.desk.doctype.kanban_board.kanban_board import quick_kanban_board
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
@@ -728,7 +806,11 @@ def create_kanban_board_if_not_exists(project):
 	return True
 
 
+<<<<<<< HEAD
+@frappe.whitelists()
+=======
 @frappe.whitelist()
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 def set_project_status(project, status):
 	"""
 	set status for project and all related tasks
@@ -746,18 +828,18 @@ def set_project_status(project, status):
 	project.save()
 
 
-def get_holiday_list(company=None):
+def get_holiday_lists(company=None):
 	if not company:
 		company = get_default_company() or frappe.get_all("Company")[0].name
 
-	holiday_list = frappe.get_cached_value("Company", company, "default_holiday_list")
-	if not holiday_list:
+	holiday_lists = frappe.get_cached_value("Company", company, "default_holiday_lists")
+	if not holiday_lists:
 		frappe.throw(
-			_("Please set a default Holiday List for Company {0}").format(
+			_("Please set a default Holiday lists for Company {0}").format(
 				frappe.bold(get_default_company())
 			)
 		)
-	return holiday_list
+	return holiday_lists
 
 
 def get_users_email(doc):

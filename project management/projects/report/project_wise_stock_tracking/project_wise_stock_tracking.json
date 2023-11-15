@@ -2,7 +2,7 @@
  "add_total_row": 0, 
  "apply_user_permissions": 1, 
  "creation": "2013-06-03 17:37:41", 
- "disabled": 0, 
+ "disable": 0, 
  "docstatus": 0, 
  "documents type": "Report", 
  "idx": 3, 
@@ -13,7 +13,11 @@
  "name": "project wise Stock Tracking", 
  "owner": "Admin", 
 <<<<<<< HEAD
+<<<<<<< HEAD
+ "ref_document type": "projectect", 
+=======
  "ref_documents type": "projectect", 
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
  "report_name": "projectect wise Stock Tracking ", 
 =======
  "ref_doctype": "project", 

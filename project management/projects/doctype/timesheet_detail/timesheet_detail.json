@@ -39,7 +39,7 @@
   {
    "fieldname": "activity",
    "fieldtype": "Link",
-   "in_list_view": 1,
+   "in_lists_view": 1,
    "label": "Activity Type",
    "option": "Activity Type"
   },
@@ -47,7 +47,7 @@
    "columns": 2,
    "fieldname": "from_time",
    "fieldtype": "Datetime",
-   "in_list_view": 1,
+   "in_lists_view": 1,
    "label": "From Time"
   },
   {
@@ -63,7 +63,7 @@
    "columns": 1,
    "fieldname": "hours",
    "fieldtype": "Float",
-   "in_list_view": 1,
+   "in_lists_view": 1,
    "label": "Hrs"
   },
   {
@@ -85,7 +85,11 @@
    "columns": 3,
    "fieldname": "project",
    "fieldtype": "Link",
+<<<<<<< HEAD
+   "in_lists_view": 1,
+=======
    "in_list_view": 1,
+>>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
    "label": "project",
    "option": "project",
    "read_only_depends_on": "eval: parent.parent_project"
@@ -176,7 +180,7 @@
    "default": "0",
    "fieldname": "is_billable",
    "fieldtype": "Check",
-   "in_list_view": 1,
+   "in_lists_view": 1,
    "label": "Is Billable",
    "print_hide": 1
   },

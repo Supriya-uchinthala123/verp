@@ -38,7 +38,7 @@
   "project_details",
   "estimated_costing",
   "total_costing_amount",
-  "total_purchase_cost",
+  "total_purchased_cost",
   "company",
   "column_break_28",
   "total_sales_amount",
@@ -52,7 +52,7 @@
   "per_gross_margin",
   "monitor_progress",
   "collect_progress",
-  "holiday_list",
+  "holiday_lists",
   "frequency",
   "from_time",
   "to_time",
@@ -88,7 +88,7 @@
   {
    "fieldname": "project_type",
    "fieldtype": "Link",
-   "in_list_view": 1,
+   "in_lists_view": 1,
    "in_standard_filter": 1,
    "label": "project Type",
    "oldfieldname": "project_type",
@@ -141,7 +141,7 @@
    "bold": 1,
    "fieldname": "expected_end_date",
    "fieldtype": "Date",
-   "in_list_view": 1,
+   "in_lists_view": 1,
    "label": "Expected End Date",
    "oldfieldname": "completion_date",
    "oldfieldtype": "Date"
@@ -216,7 +216,11 @@
    "fieldtype": "Section Break",
    "label": "Notes",
    "oldfieldtype": "Section Break",
+<<<<<<< HEAD
    "option": "fa fa-list"
+=======
+   "options": "fa fa-lists"
+>>>>>>> 4666b0d884d742aa3a42feb91da1bf50de1cd5b0
   },
   {
    "fieldname": "notes",
@@ -266,7 +270,7 @@
   {
    "fieldname": "estimated_costing",
    "fieldtype": "Currency",
-   "in_list_view": 1,
+   "in_lists_view": 1,
    "label": "Estimated Cost",
    "oldfieldname": "project_value",
    "oldfieldtype": "Currency",
@@ -279,9 +283,9 @@
    "read_only": 1
   },
   {
-   "fieldname": "total_purchase_cost",
+   "fieldname": "total_purchased_cost",
    "fieldtype": "Currency",
-   "label": "Total Purchase Cost (via Purchase Invoice)",
+   "label": "Total purchased Cost (via purchased Invoice)",
    "read_only": 1
   },
   {
@@ -370,10 +374,15 @@
   },
   {
    "depends_on": "collect_progress",
-   "fieldname": "holiday_list",
+   "fieldname": "holiday_lists",
    "fieldtype": "Link",
+<<<<<<< HEAD
    "label": "Holiday List",
    "option": "Holiday List"
+=======
+   "label": "Holiday lists",
+   "options": "Holiday lists"
+>>>>>>> 4666b0d884d742aa3a42feb91da1bf50de1cd5b0
   },
   {
    "depends_on": "eval:doc.collect_progress == true",

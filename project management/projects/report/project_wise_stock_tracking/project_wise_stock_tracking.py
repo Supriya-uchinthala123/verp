@@ -24,7 +24,7 @@ def execute(filt=None):
 				project.status,
 				project.company,
 				project.customer,
-				project.estimated_costing,
+				project.estimated_cost,
 				project.expected_start_date,
 				project.expected_end_date,
 			]
@@ -51,7 +51,7 @@ def get_columns():
 
 def get_project_details():
 	return frappe.db.sql(
-		""" select name, project_name, status, company, customer, estimated_costing,
+		""" select name, project_name, status, company, customer, estimated_cost,
 		expected_start_date, expected_end_date from tabProject where docstatus < 2""",
 		as_dict=1,
 	)

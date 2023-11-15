@@ -34,12 +34,12 @@
   "total_billable_hours",
   "base_total_billable_amount",
   "base_total_billed_amount",
-  "base_total_costing_amount",
+  "base_total_cost_amount",
   "column_break_10",
   "total_billed_hours",
   "total_billable_amount",
   "total_billed_amount",
-  "total_costing_amount",
+  "total_cost_amount",
   "per_billed",
   "section_break_18",
   "note",
@@ -200,9 +200,9 @@
   },
   {
    "allow_on_submit": 1,
-   "fieldname": "total_costing_amount",
+   "fieldname": "total_cost_amount",
    "fieldtype": "Currency",
-   "label": "Total Costing Amount",
+   "label": "Total cost Amount",
    "options": "currency",
    "print_hide": 1,
    "read_only": 1
@@ -279,9 +279,9 @@
    "options": "Currency"
   },
   {
-   "fieldname": "base_total_costing_amount",
+   "fieldname": "base_total_cost_amount",
    "fieldtype": "Currency",
-   "label": "Base Total Costing Amount",
+   "label": "Base Total cost Amount",
    "print_hide": 1,
    "read_only": 1
   },

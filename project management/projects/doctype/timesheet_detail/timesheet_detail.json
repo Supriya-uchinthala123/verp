@@ -27,13 +27,13 @@
   "section_break_11",
   "base_billing_rate",
   "base_billing_amount",
-  "base_costing_rate",
-  "base_costing_amount",
+  "base_cost_rate",
+  "base_cost_amount",
   "column_break_14",
   "billing_rate",
   "billing_amount",
-  "costing_rate",
-  "costing_amount"
+  "cost_rate",
+  "cost_amount"
  ],
  "fields": [
   {
@@ -144,18 +144,18 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "costing_rate",
+   "fieldname": "cost_rate",
    "fieldtype": "Currency",
-   "label": "Costing Rate",
+   "label": "cost Rate",
    "options": "currency",
    "permlevel": 1
   },
   {
    "allow_on_submit": 1,
    "default": "0",
-   "fieldname": "costing_amount",
+   "fieldname": "cost_amount",
    "fieldtype": "Currency",
-   "label": "Costing Amount",
+   "label": "cost Amount",
    "options": "currency",
    "permlevel": 1,
    "read_only": 1
@@ -207,16 +207,16 @@
    "read_only": 1
   },
   {
-   "fieldname": "base_costing_rate",
+   "fieldname": "base_cost_rate",
    "fieldtype": "Currency",
-   "label": "Costing Rate",
+   "label": "cost Rate",
    "print_hide": 1,
    "read_only": 1
   },
   {
-   "fieldname": "base_costing_amount",
+   "fieldname": "base_cost_amount",
    "fieldtype": "Currency",
-   "label": "Costing Amount",
+   "label": "cost Amount",
    "print_hide": 1,
    "read_only": 1
   }

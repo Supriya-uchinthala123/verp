@@ -146,25 +146,25 @@ frappe.ui.form.on("Timesheet", {
 
 	exchange_rate: function(frm) {
 		$.each(frm.doc.time_logs, function(i, d) {
-			calculate_billing_costing_amount(frm, d.doctype, d.name);
+			calculate_billing_cost_amount(frm, d.doctype, d.name);
 		});
 		calculate_time_and_amount(frm);
 	},
 
 	set_dynamic_field_label: function(frm) {
 		let base_currency = frappe.defaults.get_global_default('currency');
-		frm.set_currency_labels(["base_total_costing_amount", "base_total_billable_amount", "base_total_billed_amount"], base_currency);
-		frm.set_currency_labels(["total_costing_amount", "total_billable_amount", "total_billed_amount"], frm.doc.currency);
+		frm.set_currency_labels(["base_total_cost_amount", "base_total_billable_amount", "base_total_billed_amount"], base_currency);
+		frm.set_currency_labels(["total_cost_amount", "total_billable_amount", "total_billed_amount"], frm.doc.currency);
 
-		frm.toggle_display(["base_total_costing_amount", "base_total_billable_amount", "base_total_billed_amount"],
+		frm.toggle_display(["base_total_cost_amount", "base_total_billable_amount", "base_total_billed_amount"],
 			frm.doc.currency != base_currency);
 
 		if (frm.doc.time_logs.length > 0) {
-			frm.set_currency_labels(["base_billing_rate", "base_billing_amount", "base_costing_rate", "base_costing_amount"], base_currency, "time_logs");
-			frm.set_currency_labels(["billing_rate", "billing_amount", "costing_rate", "costing_amount"], frm.doc.currency, "time_logs");
+			frm.set_currency_labels(["base_billing_rate", "base_billing_amount", "base_cost_rate", "base_cost_amount"], base_currency, "time_logs");
+			frm.set_currency_labels(["billing_rate", "billing_amount", "cost_rate", "cost_amount"], frm.doc.currency, "time_logs");
 
 			let time_logs_grid = frm.fields_dict.time_logs.grid;
-			$.each(["base_billing_rate", "base_billing_amount", "base_costing_rate", "base_costing_amount"], function(i, d) {
+			$.each(["base_billing_rate", "base_billing_amount", "base_cost_rate", "base_cost_amount"], function(i, d) {
 				if (frappe.meta.get_docfield(time_logs_grid.doctype, d))
 					time_logs_grid.set_column_disp(d, frm.doc.currency != base_currency);
 			});
@@ -260,29 +260,29 @@ frappe.ui.form.on("Timesheet Detail", {
 
 	hours: function(frm, cdt, cdn) {
 		calculate_end_time(frm, cdt, cdn);
-		calculate_billing_costing_amount(frm, cdt, cdn);
+		calculate_billing_cost_amount(frm, cdt, cdn);
 		calculate_time_and_amount(frm);
 	},
 
 	billing_hours: function(frm, cdt, cdn) {
-		calculate_billing_costing_amount(frm, cdt, cdn);
+		calculate_billing_cost_amount(frm, cdt, cdn);
 		calculate_time_and_amount(frm);
 	},
 
 	billing_rate: function(frm, cdt, cdn) {
-		calculate_billing_costing_amount(frm, cdt, cdn);
+		calculate_billing_cost_amount(frm, cdt, cdn);
 		calculate_time_and_amount(frm);
 	},
 
-	costing_rate: function(frm, cdt, cdn) {
-		calculate_billing_costing_amount(frm, cdt, cdn);
+	cost_rate: function(frm, cdt, cdn) {
+		calculate_billing_cost_amount(frm, cdt, cdn);
 		calculate_time_and_amount(frm);
 	},
 
 	is_billable: function(frm, cdt, cdn) {
 		update_billing_hours(frm, cdt, cdn);
 		update_time_rates(frm, cdt, cdn);
-		calculate_billing_costing_amount(frm, cdt, cdn);
+		calculate_billing_cost_amount(frm, cdt, cdn);
 		calculate_time_and_amount(frm);
 	},
 
@@ -299,8 +299,8 @@ frappe.ui.form.on("Timesheet Detail", {
 			callback: function (r) {
 				if (r.message) {
 					frappe.model.set_value(cdt, cdn, "billing_rate", r.message["billing_rate"]);
-					frappe.model.set_value(cdt, cdn, "costing_rate", r.message["costing_rate"]);
-					calculate_billing_costing_amount(frm, cdt, cdn);
+					frappe.model.set_value(cdt, cdn, "cost_rate", r.message["cost_rate"]);
+					calculate_billing_cost_amount(frm, cdt, cdn);
 				}
 			}
 		});
@@ -343,22 +343,22 @@ var update_time_rates = function(frm, cdt, cdn) {
 	}
 };
 
-var calculate_billing_costing_amount = function(frm, cdt, cdn) {
+var calculate_billing_cost_amount = function(frm, cdt, cdn) {
 	let row = frappe.get_doc(cdt, cdn);
 	let billing_amount = 0.0;
 	let base_billing_amount = 0.0;
 	let exchange_rate = flt(frm.doc.exchange_rate);
 	frappe.model.set_value(cdt, cdn, 'base_billing_rate', flt(row.billing_rate) * exchange_rate);
-	frappe.model.set_value(cdt, cdn, 'base_costing_rate', flt(row.costing_rate) * exchange_rate);
+	frappe.model.set_value(cdt, cdn, 'base_cost_rate', flt(row.cost_rate) * exchange_rate);
 	if (row.billing_hours && row.is_billable) {
 		base_billing_amount = flt(row.billing_hours) * flt(row.base_billing_rate);
 		billing_amount = flt(row.billing_hours) * flt(row.billing_rate);
 	}
 
 	frappe.model.set_value(cdt, cdn, 'base_billing_amount', base_billing_amount);
-	frappe.model.set_value(cdt, cdn, 'base_costing_amount', flt(row.base_costing_rate) * flt(row.hours));
+	frappe.model.set_value(cdt, cdn, 'base_cost_amount', flt(row.base_cost_rate) * flt(row.hours));
 	frappe.model.set_value(cdt, cdn, 'billing_amount', billing_amount);
-	frappe.model.set_value(cdt, cdn, 'costing_amount', flt(row.costing_rate) * flt(row.hours));
+	frappe.model.set_value(cdt, cdn, 'cost_amount', flt(row.cost_rate) * flt(row.hours));
 };
 
 var calculate_time_and_amount = function(frm) {
@@ -366,12 +366,12 @@ var calculate_time_and_amount = function(frm) {
 	let total_working_hr = 0;
 	let total_billing_hr = 0;
 	let total_billable_amount = 0;
-	let total_costing_amount = 0;
+	let total_cost_amount = 0;
 	for(var i=0; i<tl.length; i++) {
 		if (tl[i].hours) {
 			total_working_hr += tl[i].hours;
 			total_billable_amount += tl[i].billing_amount;
-			total_costing_amount += tl[i].costing_amount;
+			total_cost_amount += tl[i].cost_amount;
 
 			if (tl[i].is_billable) {
 				total_billing_hr += tl[i].billing_hours;
@@ -382,7 +382,7 @@ var calculate_time_and_amount = function(frm) {
 	frm.set_value("total_billable_hours", total_billing_hr);
 	frm.set_value("total_hours", total_working_hr);
 	frm.set_value("total_billable_amount", total_billable_amount);
-	frm.set_value("total_costing_amount", total_costing_amount);
+	frm.set_value("total_cost_amount", total_cost_amount);
 };
 
 // set employee (and company) to the one that's currently logged in

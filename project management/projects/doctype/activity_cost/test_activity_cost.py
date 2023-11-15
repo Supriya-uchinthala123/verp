@@ -18,7 +18,7 @@ class TestActivityCost(unittest.TestCase):
 				"employee_name": "_Test Employee",
 				"activity_type": "_Test Activity Type 1",
 				"billing_rate": 100,
-				"costing_rate": 50,
+				"cost_rate": 50,
 			}
 		)
 		activity_cost1.insert()

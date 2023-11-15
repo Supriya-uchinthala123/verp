@@ -32,7 +32,7 @@ class Project(Document):
 			),
 		)
 
-		self.update_costing()
+		self.update_cost()
 
 	def before_print(self, settings=None):
 		self.onload()
@@ -41,7 +41,7 @@ class Project(Document):
 		if not self.is_new():
 			self.copy_from_template()
 		self.send_welcome_email()
-		self.update_costing()
+		self.update_cost()
 		self.update_percent_complete()
 		self.validate_from_to_dates("expected_start_date", "expected_end_date")
 		self.validate_from_to_dates("actual_start_date", "actual_end_date")
@@ -145,7 +145,7 @@ class Project(Document):
 	def update_project(self):
 		"""Called externally by Task"""
 		self.update_percent_complete()
-		self.update_costing()
+		self.update_cost()
 		self.db_update()
 
 	def after_insert(self):
@@ -209,14 +209,14 @@ class Project(Document):
 		if self.percent_complete == 100:
 			self.status = "comp"
 
-	def update_costing(self):
+	def update_cost(self):
 		from frappe.query_builder.functions import Max, Min, Sum
 
 		TimesheetDetail = frappe.qb.DocType("Timesheet Detail")
 		from_time_sheet = (
 			frappe.qb.from_(TimesheetDetail)
 			.select(
-				Sum(TimesheetDetail.costing_amount).as_("costing_amount"),
+				Sum(TimesheetDetail.cost_amount).as_("cost_amount"),
 				Sum(TimesheetDetail.billing_amount).as_("billing_amount"),
 				Min(TimesheetDetail.from_time).as_("start_date"),
 				Max(TimesheetDetail.to_time).as_("end_date"),
@@ -228,18 +228,18 @@ class Project(Document):
 		self.actual_start_date = from_time_sheet.start_date
 		self.actual_end_date = from_time_sheet.end_date
 
-		self.total_costing_amount = from_time_sheet.costing_amount
+		self.total_cost_amount = from_time_sheet.cost_amount
 		self.total_billable_amount = from_time_sheet.billing_amount
 		self.actual_time = from_time_sheet.time
 
-		self.update_purchase_costing()
+		self.update_purchase_cost()
 		self.update_sales_amount()
 		self.update_billed_amount()
 		self.calculate_gross_margin()
 
 	def calculate_gross_margin(self):
 		expense_amount = (
-			flt(self.total_costing_amount)
+			flt(self.total_cost_amount)
 			+ flt(self.total_purchase_cost)
 			+ flt(self.get("total_consumed_material_cost", 0))
 		)
@@ -248,7 +248,7 @@ class Project(Document):
 		if self.total_billed_amount:
 			self.per_gross_margin = (self.gross_margin / flt(self.total_billed_amount)) * 100
 
-	def update_purchase_costing(self):
+	def update_purchase_cost(self):
 		total_purchase_cost = frappe.db.sql(
 			"""select sum(base_net_amount)
 			from `tabPurchase Invoice Item` where project = %s and docstatus=1""",

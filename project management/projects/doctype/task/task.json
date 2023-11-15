@@ -40,8 +40,8 @@
   "actual_time",
   "column_break_15",
   "act_end_date",
-  "sb_costing",
-  "total_costing_amount",
+  "sb_cost",
+  "total_cost_amount",
   "column_break_20",
   "total_billing_amount",
   "sb_more_info",
@@ -266,14 +266,14 @@
   },
   {
    "collapsible": 1,
-   "fieldname": "sb_costing",
+   "fieldname": "sb_cost",
    "fieldtype": "Section Break",
-   "label": "Costing"
+   "label": "cost"
   },
   {
-   "fieldname": "total_costing_amount",
+   "fieldname": "total_cost_amount",
    "fieldtype": "Currency",
-   "label": "Total Costing Amount (via Timesheet)",
+   "label": "Total cost Amount (via Timesheet)",
    "oldfieldname": "actual_budget",
    "oldfieldtype": "Currency",
    "options": "Company:company:default_currency",

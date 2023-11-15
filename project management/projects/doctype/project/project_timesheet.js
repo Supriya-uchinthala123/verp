@@ -21,33 +21,33 @@ QUnit.test("test project", function(assert) {
 							{task: task.name},
 							{billable: '1'},
 							{billing_rate: bill_rate},
-							{costing_rate: cost_rate}
+							{cost_rate: cost_rate}
 						]
 					]}
 				]);
 			},
-			// To check if a correct billable and costing amount is calculated for every task
+			// To check if a correct billable and cost amount is calculated for every task
 			() => {
 				if(title=== 'Documentation')
 				{
 					assert.ok(cur_frm.get_field('total_billable_amount').get_value()==20,
 						'Billable amount for Documentation task is correctly calculated');
-					assert.ok(cur_frm.get_field('total_costing_amount').get_value()==16,
-						'Costing amount for Documentation task is correctly calculated');
+					assert.ok(cur_frm.get_field('total_cost_amount').get_value()==16,
+						'cost amount for Documentation task is correctly calculated');
 				}
 				if(title=== 'Implementation')
 				{
 					assert.ok(cur_frm.get_field('total_billable_amount').get_value()==40,
 						'Billable amount for Implementation task is correctly calculated');
-					assert.ok(cur_frm.get_field('total_costing_amount').get_value()==32,
-						'Costing amount for Implementation task is correctly calculated');
+					assert.ok(cur_frm.get_field('total_cost_amount').get_value()==32,
+						'cost amount for Implementation task is correctly calculated');
 				}
 				if(title=== 'Testing')
 				{
 					assert.ok(cur_frm.get_field('total_billable_amount').get_value()==60,
 						'Billable amount for Testing task correctly calculated');
-					assert.ok(cur_frm.get_field('total_costing_amount').get_value()==50,
-						'Costing amount for Testing task is correctly calculated');
+					assert.ok(cur_frm.get_field('total_cost_amount').get_value()==50,
+						'cost amount for Testing task is correctly calculated');
 				}
 			},
 		]);
@@ -59,7 +59,7 @@ QUnit.test("test project", function(assert) {
 				{ project_name: 'Test App'},
 				{ expected_start_date: '2017-07-22'},
 				{ expected_end_date: '2017-09-22'},
-				{ estimated_costing: '10,000.00'},
+				{ estimated_cost: '10,000.00'},
 				{ tasks:[
 					[
 						{title: 'Documentation'},

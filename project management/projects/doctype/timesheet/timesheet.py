@@ -42,7 +42,7 @@ class Timesheet(Document):
 		self.total_billable_hours = 0.0
 		self.total_billed_hours = 0.0
 		self.total_billable_amount = self.base_total_billable_amount = 0.0
-		self.total_costing_amount = self.base_total_costing_amount = 0.0
+		self.total_cost_amount = self.base_total_cost_amount = 0.0
 		self.total_billed_amount = self.base_total_billed_amount = 0.0
 
 		for d in self.get("time_logs"):
@@ -50,8 +50,8 @@ class Timesheet(Document):
 			self.update_time_rates(d)
 
 			self.total_hours += flt(d.hours)
-			self.total_costing_amount += flt(d.costing_amount)
-			self.base_total_costing_amount += flt(d.base_costing_amount)
+			self.total_cost_amount += flt(d.cost_amount)
+			self.base_total_cost_amount += flt(d.base_cost_amount)
 			if d.is_billable:
 				self.total_billable_hours += flt(d.billing_hours)
 				self.total_billable_amount += flt(d.billing_amount)
@@ -119,7 +119,7 @@ class Timesheet(Document):
 		for data in self.time_logs:
 			if data.task and data.task not in tasks:
 				task = frappe.get_doc("Task", data.task)
-				task.update_time_and_costing()
+				task.update_time_and_cost()
 				task.save()
 				tasks.append(data.task)
 
@@ -235,16 +235,16 @@ class Timesheet(Document):
 			if data.activity_type or data.is_billable:
 				rate = get_activity_cost(self.employee, data.activity_type)
 				hours = data.billing_hours or 0
-				costing_hours = data.billing_hours or data.hours or 0
+				cost_hours = data.billing_hours or data.hours or 0
 				if rate:
 					data.billing_rate = (
 						flt(rate.get("billing_rate")) if flt(data.billing_rate) == 0 else data.billing_rate
 					)
-					data.costing_rate = (
-						flt(rate.get("costing_rate")) if flt(data.costing_rate) == 0 else data.costing_rate
+					data.cost_rate = (
+						flt(rate.get("cost_rate")) if flt(data.cost_rate) == 0 else data.cost_rate
 					)
 					data.billing_amount = data.billing_rate * hours
-					data.costing_amount = data.costing_rate * costing_hours
+					data.cost_amount = data.cost_rate * cost_hours
 
 	def update_time_rates(self, ts_detail):
 		if not ts_detail.is_billable:
@@ -413,19 +413,19 @@ def get_activity_cost(employee=None, activity_type=None, currency=None):
 	rate = frappe.db.get_values(
 		"Activity Cost",
 		{"employee": employee, "activity_type": activity_type},
-		["costing_rate", "billing_rate"],
+		["cost_rate", "billing_rate"],
 		as_dict=True,
 	)
 	if not rate:
 		rate = frappe.db.get_values(
 			"Activity Type",
 			{"activity_type": activity_type},
-			["costing_rate", "billing_rate"],
+			["cost_rate", "billing_rate"],
 			as_dict=True,
 		)
 		if rate and currency and currency != base_currency:
 			exchange_rate = get_exchange_rate(base_currency, currency)
-			rate[0]["costing_rate"] = rate[0]["costing_rate"] * exchange_rate
+			rate[0]["cost_rate"] = rate[0]["cost_rate"] * exchange_rate
 			rate[0]["billing_rate"] = rate[0]["billing_rate"] * exchange_rate
 
 	return rate[0] if rate else {}

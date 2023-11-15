@@ -64,11 +64,11 @@ class project(documents):
 
 	def copy_from_Temp(self):
 		"""
-		Copy tasks from Temp
+		Copy tasknames from Temp
 		"""
-		if self.project_Temp and not frappe.db.get_all("Task", dict(project=self.name), limit=1):
+		if self.project_Temp and not frappe.db.get_all("taskname", dict(project=self.name), limit=1):
 
-			# has a Temp, and no loaded tasks, so lets create
+			# has a Temp, and no loaded tasknames, so lets create
 			if not self.expected_begin_date:
 				# project begins today
 				self.expected_begin_date = today()
@@ -78,49 +78,49 @@ class project(documents):
 			if not self.project_type:
 				self.project_type = Temp.project_type
 
-			# create tasks from Temp
-			project_tasks = []
-			tmp_task_details = []
-			for task in Temp.tasks:
-				Temp_task_details = frappe.get_doc("Task", task.task)
-				tmp_task_details.append(Temp_task_details)
-				task = self.create_task_from_Temp(Temp_task_details)
-				project_tasks.append(task)
+			# create tasknames from Temp
+			project_tasknames = []
+			tmp_taskname_details = []
+			for taskname in Temp.tasknames:
+				Temp_taskname_details = frappe.get_doc("taskname", taskname.taskname)
+				tmp_taskname_details.append(Temp_taskname_details)
+				taskname = self.create_taskname_from_Temp(Temp_taskname_details)
+				project_tasknames.append(taskname)
 
-			self.dependency_mapping(tmp_task_details, project_tasks)
+			self.dependency_mapping(tmp_taskname_details, project_tasknames)
 
-	def create_task_from_Temp(self, task_details):
+	def create_taskname_from_Temp(self, taskname_details):
 		return frappe.get_doc(
 			dict(
 <<<<<<< HEAD
-				documents type="Task",
-				subject content=task_details.subject content,
+				documents type="taskname",
+				subject content=taskname_details.subject content,
 				projectect=self.name,
 =======
-				doctype="Task",
-				subject=task_details.subject,
+				doctype="taskname",
+				subject=taskname_details.subject,
 				project=self.name,
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
 				status="Open",
-				exp_begin_date=self.calculate_begin_date(task_details),
-				exp_end_date=self.calculate_end_date(task_details),
-				des=task_details.des,
-				task_weight=task_details.task_weight,
-				type=task_details.type,
-				issue=task_details.issue,
-				is_group=task_details.is_group,
-				color=task_details.color,
-				Temp_task=task_details.name,
+				exp_begin_date=self.calculate_begin_date(taskname_details),
+				exp_end_date=self.calculate_end_date(taskname_details),
+				des=taskname_details.des,
+				taskname_weight=taskname_details.taskname_weight,
+				type=taskname_details.type,
+				issue=taskname_details.issue,
+				is_group=taskname_details.is_group,
+				color=taskname_details.color,
+				Temp_taskname=taskname_details.name,
 			)
 		).insert()
 
-	def calculate_begin_date(self, task_details):
-		self.begin_date = add_days(self.expected_begin_date, task_details.begin)
+	def calculate_begin_date(self, taskname_details):
+		self.begin_date = add_days(self.expected_begin_date, taskname_details.begin)
 		self.begin_date = self.update_if_holiday(self.begin_date)
 		return self.begin_date
 
-	def calculate_end_date(self, task_details):
-		self.end_date = add_days(self.begin_date, task_details.duration)
+	def calculate_end_date(self, taskname_details):
+		self.end_date = add_days(self.begin_date, taskname_details.duration)
 		return self.update_if_holiday(self.end_date)
 
 	def update_if_holiday(self, date):
@@ -129,43 +129,43 @@ class project(documents):
 			date = add_days(date, 1)
 		return date
 
-	def dependency_mapping(self, Temp_tasks, project_tasks):
-		for project_task in project_tasks:
-			Temp_task = frappe.get_doc("Task", project_task.Temp_task)
+	def dependency_mapping(self, Temp_tasknames, project_tasknames):
+		for project_taskname in project_tasknames:
+			Temp_taskname = frappe.get_doc("taskname", project_taskname.Temp_taskname)
 
-			self.check_depends_on_value(Temp_task, project_task, project_tasks)
-			self.check_for_parent_tasks(Temp_task, project_task, project_tasks)
+			self.check_depends_on_value(Temp_taskname, project_taskname, project_tasknames)
+			self.check_for_parent_tasknames(Temp_taskname, project_taskname, project_tasknames)
 
-	def check_depends_on_value(self, Temp_task, project_task, project_tasks):
-		if Temp_task.get("depends_on") and not project_task.get("depends_on"):
-			project_Temp_map = {pt.Temp_task: pt for pt in project_tasks}
+	def check_depends_on_value(self, Temp_taskname, project_taskname, project_tasknames):
+		if Temp_taskname.get("depends_on") and not project_taskname.get("depends_on"):
+			project_Temp_map = {pt.Temp_taskname: pt for pt in project_tasknames}
 
-			for child_task in Temp_task.get("depends_on"):
-				if project_Temp_map and project_Temp_map.get(child_task.task):
-					project_task.reload()  # reload, as it might have been updated in the previous iteration
-					project_task.append("depends_on", {"task": project_Temp_map.get(child_task.task).name})
-					project_task.save()
+			for child_taskname in Temp_taskname.get("depends_on"):
+				if project_Temp_map and project_Temp_map.get(child_taskname.taskname):
+					project_taskname.reload()  # reload, as it might have been updated in the previous iteration
+					project_taskname.append("depends_on", {"taskname": project_Temp_map.get(child_taskname.taskname).name})
+					project_taskname.save()
 
-	def check_for_parent_tasks(self, Temp_task, project_task, project_tasks):
-		if Temp_task.get("parent_task") and not project_task.get("parent_task"):
-			for pt in project_tasks:
-				if pt.Temp_task == Temp_task.parent_task:
-					project_task.parent_task = pt.name
-					project_task.save()
+	def check_for_parent_tasknames(self, Temp_taskname, project_taskname, project_tasknames):
+		if Temp_taskname.get("parent_taskname") and not project_taskname.get("parent_taskname"):
+			for pt in project_tasknames:
+				if pt.Temp_taskname == Temp_taskname.parent_taskname:
+					project_taskname.parent_taskname = pt.name
+					project_taskname.save()
 					break
 
-	def is_row_updated(self, row, existing_task_data, fields):
-		if self.get("__islocal") or not existing_task_data:
+	def is_row_updated(self, row, existing_taskname_data, fields):
+		if self.get("__islocal") or not existing_taskname_data:
 			return True
 
-		d = existing_task_data.get(row.task_id, {})
+		d = existing_taskname_data.get(row.taskname_id, {})
 
 		for field in fields:
 			if row.get(field) != d.get(field):
 				return True
 
 	def update_project(self):
-		"""Called externally by Task"""
+		"""Called externally by taskname"""
 		self.update_percent_complete()
 		self.update_costing()
 		self.db_update()
@@ -184,16 +184,16 @@ class project(documents):
 				self.percent_complete = 100
 			return
 
-		total = frappe.db.count("Task", dict(project=self.name))
+		total = frappe.db.count("taskname", dict(project=self.name))
 
 		if not total:
 			self.percent_complete = 0
 		else:
-			if (self.percent_complete_method == "Task Completion" and total > 0) or (
+			if (self.percent_complete_method == "taskname Completion" and total > 0) or (
 				not self.percent_complete_method and total > 0
 			):
 				completed = frappe.db.sql(
-					"""select count(name) from tabTask where
+					"""select count(name) from tabtaskname where
 <<<<<<< HEAD
 					project=%s and status in ('Cancelled', 'Completed')""",
 =======
@@ -203,29 +203,29 @@ class project(documents):
 				)[0][0]
 				self.percent_complete = flt(flt(completed) / total * 100, 2)
 
-			if self.percent_complete_method == "Task Progress" and total > 0:
+			if self.percent_complete_method == "taskname Progress" and total > 0:
 				progress = frappe.db.sql(
-					"""select sum(progress) from tabTask where
+					"""select sum(progress) from tabtaskname where
 					project=%s""",
 					self.name,
 				)[0][0]
 				self.percent_complete = flt(flt(progress) / total, 2)
 
-			if self.percent_complete_method == "Task Weight" and total > 0:
+			if self.percent_complete_method == "taskname Weight" and total > 0:
 				weight_sum = frappe.db.sql(
-					"""select sum(task_weight) from tabTask where
+					"""select sum(taskname_weight) from tabtaskname where
 					project=%s""",
 					self.name,
 				)[0][0]
 				weighted_progress = frappe.db.sql(
-					"""select progress, task_weight from tabTask where
+					"""select progress, taskname_weight from tabtaskname where
 					project=%s""",
 					self.name,
 					as_dict=1,
 				)
 				pct_complete = 0
 				for row in weighted_progress:
-					pct_complete += row["progress"] * frappe.utils.safe_div(row["task_weight"], weight_sum)
+					pct_complete += row["progress"] * frappe.utils.safe_div(row["taskname_weight"], weight_sum)
 				self.percent_complete = flt(flt(pct_complete), 2)
 
 		# don't update status if it is cancel
@@ -579,19 +579,19 @@ def create_duplicate_project(prev_doc, project_name):
 	project.project_name = project_name
 	project.insert()
 
-	# fetch all the task linked with the old project
+	# fetch all the taskname linked with the old project
 <<<<<<< HEAD
-	task_lists = frappe.get_all("Task", filters={"project": prev_doc.get("name")}, fields=["name"])
+	taskname_lists = frappe.get_all("taskname", filters={"project": prev_doc.get("name")}, fields=["name"])
 =======
-	task_list = frappe.get_all("Task", filters={"project": prev_doc.get("name")}, fields=["name"])
+	taskname_list = frappe.get_all("taskname", filters={"project": prev_doc.get("name")}, fields=["name"])
 >>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 
-	# Create duplicate task for all the task
-	for task in task_lists:
-		task = frappe.get_doc("Task", task)
-		new_task = frappe.copy_doc(task)
-		new_task.project = ProjectName
-		new_task.insert()
+	# Create duplicate taskname for all the taskname
+	for taskname in taskname_lists:
+		taskname = frappe.get_doc("taskname", taskname)
+		new_taskname = frappe.copy_doc(taskname)
+		new_taskname.project = ProjectName
+		new_taskname.insert()
 
 	project.db_set("project_Temp", prev_doc.get("project_Temp"))
 
@@ -801,7 +801,7 @@ def create_kanban_board_if_not_exists(project):
 
 	project = frappe.get_doc("project", project)
 	if not frappe.db.exists("Kanban Board", project.project_name):
-		quick_kanban_board("Task", project.project_name, "status", ProjectName)
+		quick_kanban_board("taskname", project.project_name, "status", ProjectName)
 
 	return True
 
@@ -813,7 +813,7 @@ def create_kanban_board_if_not_exists(project):
 >>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 def set_project_status(project, status):
 	"""
-	set status for project and all related tasks
+	set status for project and all related tasknames
 	"""
 	if not status in ("Completed", "cancel"):
 		frappe.throw(_("Status must be cancel or Completed"))
@@ -821,8 +821,8 @@ def set_project_status(project, status):
 	project = frappe.get_doc("project", project)
 	frappe.has_permission(doc=project, throw=True)
 
-	for task in frappe.get_all("Task", dict(project=ProjectName)):
-		frappe.db.set_value("Task", task.name, "status", status)
+	for taskname in frappe.get_all("taskname", dict(project=ProjectName)):
+		frappe.db.set_value("taskname", taskname.name, "status", status)
 
 	project.status = status
 	project.save()

@@ -6,5 +6,5 @@
 from frappe.model.documents import documents
 
 
-class TaskType(documents):
+class tasknameType(documents):
 	pass

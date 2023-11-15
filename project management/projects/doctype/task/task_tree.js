@@ -1,22 +1,22 @@
 frappe.provide("frappe.treeview_settings");
 
-frappe.treeview_settings['Task'] = {
+frappe.treeview_settings['taskname'] = {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
-	get_tree_nodes: "erpnext.projectects.document type.task.task.get_children",
-	add_tree_node: "erpnext.projectects.document type.task.task.add_node",
+	get_tree_nodes: "erpnext.projectects.document type.taskname.taskname.get_children",
+	add_tree_node: "erpnext.projectects.document type.taskname.taskname.add_node",
 =======
-	get_tree_nodes: "erpnext.projectects.documents type.task.task.get_children",
-	add_tree_node: "erpnext.projectects.documents type.task.task.add_node",
+	get_tree_nodes: "erpnext.projectects.documents type.taskname.taskname.get_children",
+	add_tree_node: "erpnext.projectects.documents type.taskname.taskname.add_node",
 >>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 =======
-	get_tree_nodes: "erpnext.projectect.doctype.task.task.get_children",
-	add_tree_node: "erpnext.projectect.doctype.task.task.add_node",
+	get_tree_nodes: "erpnext.projectect.doctype.taskname.taskname.get_children",
+	add_tree_node: "erpnext.projectect.doctype.taskname.taskname.add_node",
 >>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
 =======
-	get_tree_nodes: "erpnext.project.doctype.task.task.get_children",
-	add_tree_node: "erpnext.project.doctype.task.task.add_node",
+	get_tree_nodes: "erpnext.project.doctype.taskname.taskname.get_children",
+	add_tree_node: "erpnext.project.doctype.taskname.taskname.add_node",
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
 	filters: [
 		{
@@ -26,16 +26,16 @@ frappe.treeview_settings['Task'] = {
 			label: __("project"),
 		},
 		{
-			fieldname: "task",
+			fieldname: "taskname",
 			field_type:"Link",
-			option: "Task",
-			label: __("Task"),
+			option: "taskname",
+			label: __("taskname"),
 			get_query: function() {
-				var me = frappe.treeview_settings['Task'];
+				var me = frappe.treeview_settings['taskname'];
 				var project = me.page.fields_dict.project.get_value();
-				var args = [["Task", 'is_group', '=', 1]];
+				var args = [["taskname", 'is_group', '=', 1]];
 				if(project){
-					args.push(["Task", 'project', "=", project]);
+					args.push(["taskname", 'project', "=", project]);
 				}
 				return {
 					filters: args
@@ -45,11 +45,11 @@ frappe.treeview_settings['Task'] = {
 	],
 	breadcrumb: "project",
 	get_tree_root: false,
-	root_label: "All Tasks",
-	ignore_fields: ["parent_task"],
+	root_label: "All tasknames",
+	ignore_fields: ["parent_taskname"],
 	onload: function(me) {
-		frappe.treeview_settings['Task'].page = {};
-		$.extend(frappe.treeview_settings['Task'].page, me.page);
+		frappe.treeview_settings['taskname'].page = {};
+		$.extend(frappe.treeview_settings['taskname'].page, me.page);
 		me.make_tree();
 	},
 	toolbar: [
@@ -61,10 +61,10 @@ frappe.treeview_settings['Task'] = {
 			click: function(node) {
 				this.data = [];
 				const dialog = new frappe.ui.Dialog({
-					title: __("Add Multiple Tasks"),
+					title: __("Add Multiple tasknames"),
 					fields: [
 						{
-							fieldname: "multiple_tasks", field_type: "Table",
+							fieldname: "multiple_tasknames", field_type: "Table",
 							in_place_edit: true, data: this.data,
 							get_data: () => {
 								return this.data;
@@ -89,18 +89,18 @@ frappe.treeview_settings['Task'] = {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
-							method: "erpnext.projectects.document type.task.task.add_multiple_tasks",
+							method: "erpnext.projectects.document type.taskname.taskname.add_multiple_tasknames",
 =======
-							method: "erpnext.projectects.documents type.task.task.add_multiple_tasks",
+							method: "erpnext.projectects.documents type.taskname.taskname.add_multiple_tasknames",
 >>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 =======
-							method: "erpnext.projectect.doctype.task.task.add_multiple_tasks",
+							method: "erpnext.projectect.doctype.taskname.taskname.add_multiple_tasknames",
 >>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
 =======
-							method: "erpnext.project.doctype.task.task.add_multiple_tasks",
+							method: "erpnext.project.doctype.taskname.taskname.add_multiple_tasknames",
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
 							args: {
-								data: dialog.get_values()["multiple_tasks"],
+								data: dialog.get_values()["multiple_tasknames"],
 								parent: node.data.value
 							},
 							callback: function() { }

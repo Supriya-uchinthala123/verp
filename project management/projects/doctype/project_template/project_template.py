@@ -17,21 +17,21 @@ class projectTemp(documents):
 		self.validate_dependencies()
 
 	def validate_dependencies(self):
-		for task in self.tasks:
-			task_details = frappe.get_doc("Task", task.task)
-			if task_details.depends_on:
-				for dependency_task in task_details.depends_on:
-					if not self.check_dependent_task_presence(dependency_task.task):
-						task_details_format = get_link_to_form("Task", task_details.name)
-						dependency_task_format = get_link_to_form("Task", dependency_task.task)
+		for taskname in self.tasknames:
+			taskname_details = frappe.get_doc("taskname", taskname.taskname)
+			if taskname_details.depends_on:
+				for dependency_taskname in taskname_details.depends_on:
+					if not self.check_dependent_taskname_presence(dependency_taskname.taskname):
+						taskname_details_format = get_link_to_form("taskname", taskname_details.name)
+						dependency_taskname_format = get_link_to_form("taskname", dependency_taskname.taskname)
 						frappe.throw(
-							_("Task {0} depends on Task {1}. Please add Task {1} to the Tasks lists.").format(
-								frappe.bold(task_details_format), frappe.bold(dependency_task_format)
+							_("taskname {0} depends on taskname {1}. Please add taskname {1} to the tasknames lists.").format(
+								frappe.bold(taskname_details_format), frappe.bold(dependency_taskname_format)
 							)
 						)
 
-	def check_dependent_task_presence(self, task):
-		for task_details in self.tasks:
-			if task_details.task == task:
+	def check_dependent_taskname_presence(self, taskname):
+		for taskname_details in self.tasknames:
+			if taskname_details.taskname == taskname:
 				return True
 		return False

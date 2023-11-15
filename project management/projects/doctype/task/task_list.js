@@ -1,35 +1,35 @@
 <<<<<<< HEAD
-frappe.listsview_settings['Task'] = {
+frappe.listsview_settings['taskname'] = {
 	add_fields: ["project", "status", "priority", "exp_start_date",
 =======
-frappe.listview_settings['Task'] = {
+frappe.listview_settings['taskname'] = {
 <<<<<<< HEAD
 	add_fields: ["projectect", "status", "priority", "exp_begin_date",
-		"exp_end_date", "subject content", "progress", "depends_on_tasks"],
+		"exp_end_date", "subject content", "progress", "depends_on_tasknames"],
 	filters: [["status", "=", "Open"]],
 	onload: function(listview) {
 <<<<<<< HEAD
 <<<<<<< HEAD
-		var method = "erpnext.projectects.document type.task.task.set_multiple_status";
+		var method = "erpnext.projectects.document type.taskname.taskname.set_multiple_status";
 =======
-		var method = "erpnext.projectects.documents type.task.task.set_multiple_status";
+		var method = "erpnext.projectects.documents type.taskname.taskname.set_multiple_status";
 >>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 =======
-		var method = "erpnext.projectect.doctype.task.task.set_multiple_status";
+		var method = "erpnext.projectect.doctype.taskname.taskname.set_multiple_status";
 >>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
 =======
 	add_fields: ["project", "status", "priority", "exp_begin_date",
 <<<<<<< HEAD
 >>>>>>> ac800bcf64f53128e1e30e246cd0e5b5e326ab41
-		"exp_end_date", "subject", "progress", "depends_on_tasks"],
+		"exp_end_date", "subject", "progress", "depends_on_tasknames"],
 	filters: [["status", "=", "Open"]],
 	onload: function(listsview) {
 =======
-		"exp_end_date", "subject", "progress", "depends_on_tasks"],
+		"exp_end_date", "subject", "progress", "depends_on_tasknames"],
 	filters: [["status", "=", "Open"]],
 	onload: function(listview) {
 >>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
-		var method = "erpnext.project.doctype.task.task.set_multiple_status";
+		var method = "erpnext.project.doctype.taskname.taskname.set_multiple_status";
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
 
 <<<<<<< HEAD
@@ -61,19 +61,19 @@ frappe.listview_settings['Task'] = {
 		}
 		return [__(doc.status), colors[doc.status], "status,=," + doc.status];
 	},
-	gantt_custom_popup_html: function (ganttobj, task) {
+	gantt_custom_popup_html: function (ganttobj, taskname) {
 		let html = `
 			<a class="text-white mb-2 inline-block cursor-pointer"
-				href="/app/task/${ganttobj.id}"">
+				href="/app/taskname/${ganttobj.id}"">
 				${ganttobj.name}
 			</a>
 		`;
 
-		if (task.project) {
+		if (taskname.project) {
 			html += `<p class="mb-1">${__("project")}:
 				<a class="text-white inline-block"
-					href="/app/project/${task.project}"">
-					${task.project}
+					href="/app/project/${taskname.project}"">
+					${taskname.project}
 				</a>
 			</p>`;
 		}
@@ -82,8 +82,8 @@ frappe.listview_settings['Task'] = {
 			<span class="text-white">${ganttobj.progress}%</span>
 		</p>`;
 
-		if (task._assign) {
-			const assign_lists = JSON.parse(task._assign);
+		if (taskname._assign) {
+			const assign_lists = JSON.parse(taskname._assign);
 			const assignment_wrapper = `
 				<span>Assigned to:</span>
 				<span class="text-white">

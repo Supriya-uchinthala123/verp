@@ -76,19 +76,19 @@ frappe.ui.form.on("project", {
 
 	set_custom_buttons: function(frm) {
 		if (!frm.is_new()) {
-			frm.add_custom_button(__('Duplicate project with Tasks'), () => {
+			frm.add_custom_button(__('Duplicate project with tasknames'), () => {
 				frm.events.create_duplicate(frm);
 			}, __("Actions"));
 
 			frm.trigger("set_project_status_button");
 
 
-			if (frappe.model.can_read("Task")) {
+			if (frappe.model.can_read("taskname")) {
 				frm.add_custom_button(__("Gantt Chart"), function () {
 					frappe.route_option = {
 						"project": frm.doc.name
 					};
-					frappe.set_route("lists", "Task", "Gantt");
+					frappe.set_route("lists", "taskname", "Gantt");
 				}, __("View"));
 
 				frm.add_custom_button(__("Kanban Board"), () => {
@@ -109,9 +109,9 @@ frappe.ui.form.on("project", {
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
 					}).then(() => {
 <<<<<<< HEAD
-						frappe.set_route('lists', 'Task', 'Kanban', frm.doc.project_name);
+						frappe.set_route('lists', 'taskname', 'Kanban', frm.doc.project_name);
 =======
-						frappe.set_route('List', 'Task', 'Kanban', frm.doc.project_name);
+						frappe.set_route('List', 'taskname', 'Kanban', frm.doc.project_name);
 >>>>>>> a53df7e9faa6237062c38bc575881cce8bf345e1
 					});
 				}, __("View"));
@@ -174,7 +174,7 @@ frappe.ui.form.on("project", {
 
 	set_status: function(frm, status) {
 <<<<<<< HEAD
-		frappe.confirm(__('Set projectect and all Tasks to status {0}?', [status.bold()]), () => {
+		frappe.confirm(__('Set projectect and all tasknames to status {0}?', [status.bold()]), () => {
 <<<<<<< HEAD
 <<<<<<< HEAD
 			frappe.xcall('erpnext.projectects.document type.projectect.projectect.set_projectect_status',
@@ -186,7 +186,7 @@ frappe.ui.form.on("project", {
 >>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
 				{projectect: frm.doc.name, status: status}).then(() => {
 =======
-		frappe.confirm(__('Set project and all Tasks to status {0}?', [status.bold()]), () => {
+		frappe.confirm(__('Set project and all tasknames to status {0}?', [status.bold()]), () => {
 			frappe.xcall('erpnext.project.doctype.project.project.set_project_status',
 				{project: frm.doc.name, status: status}).then(() => {
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f

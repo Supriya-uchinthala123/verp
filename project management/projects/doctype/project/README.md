@@ -1,1 +1,1 @@
-project details. project can be internal or external and can have Tasks, Milestones associated to it.
+project details. project can be internal or external and can have tasknames, Milestones associated to it.

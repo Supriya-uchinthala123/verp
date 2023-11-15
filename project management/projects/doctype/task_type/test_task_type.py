@@ -4,5 +4,5 @@
 import unittest
 
 
-class TestTaskType(unittest.TestCase):
+class TesttasknameType(unittest.TestCase):
 	pass

@@ -5,22 +5,22 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "task",
+  "taskname",
   "subject content"
  ],
  "fields": [
   {
    "columns": 2,
-   "fieldname": "task",
+   "fieldname": "taskname",
    "field_type": "Link",
    "in_lists_view": 1,
-   "label": "Task",
-   "option": "Task",
+   "label": "taskname",
+   "option": "taskname",
    "reqd": 1
   },
   {
    "columns": 6,
-   "fetch_from": "task.subject content",
+   "fetch_from": "taskname.subject content",
    "fieldname": "subject content",
    "field_type": "Read Only",
 <<<<<<< HEAD
@@ -39,14 +39,14 @@
  "modified_by": "Admin",
 <<<<<<< HEAD
  "module": "projects",
- "name": "project Temp Task",
+ "name": "project Temp taskname",
 =======
 =======
  "modify": "2021-02-24 15:18:49.095071",
  "modify_by": "Admin",
 >>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
  "module": "project",
- "name": "project Template Task",
+ "name": "project Template taskname",
 >>>>>>> 9a4b643c8d5f6a3649134610a05210686833bd74
  "owner": "Admin",
  "permissions": [],

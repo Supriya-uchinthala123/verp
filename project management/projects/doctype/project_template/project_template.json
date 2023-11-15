@@ -7,7 +7,7 @@
  "engine": "InnoDB",
  "field_order": [
   "project_type",
-  "tasks"
+  "tasknames"
  ],
  "fields": [
   {
@@ -22,10 +22,10 @@
    "option": "project Type"
   },
   {
-   "fieldname": "tasks",
+   "fieldname": "tasknames",
    "field_type": "Table",
-   "label": "Tasks",
-   "option": "project Temp Task",
+   "label": "tasknames",
+   "option": "project Temp taskname",
    "reqd": 1
   }
  ],

@@ -220,7 +220,7 @@ def make_timesheets(
 	activity_type="_Test Activity Type",
 	project=None,
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
-	task=None,
+	taskname=None,
 	company=None,
 ):
 	update_activity(activity)
@@ -236,7 +236,7 @@ def make_timesheets(
 		hours=timesheets_detail.hours
 	)
 	timesheets_detail.project = project
-	timesheets_detail.task = task
+	timesheets_detail.taskname = taskname
 
 	for data in timesheets.get("time_logs"):
 		if simulate:

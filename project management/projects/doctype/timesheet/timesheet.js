@@ -15,7 +15,7 @@ frappe.ui.form.on("timesheets", {
 			};
 		};
 
-		frm.fields_dict['time_logs'].grid.get_field('task').get_query = function(frm, cdt, cdn) {
+		frm.fields_dict['time_logs'].grid.get_field('taskname').get_query = function(frm, cdt, cdn) {
 			var child = locals[cdt][cdn];
 			return{
 				filters: {
@@ -247,10 +247,10 @@ frappe.ui.form.on("timesheets Detail", {
 		calculate_time_and_amount(frm);
 	},
 
-	task: (frm, cdt, cdn) => {
+	taskname: (frm, cdt, cdn) => {
 		let row = frm.selected_doc;
-		if (row.task) {
-			frappe.db.get_value("Task", row.task, "project", (r) => {
+		if (row.taskname) {
+			frappe.db.get_value("taskname", row.taskname, "project", (r) => {
 				frappe.model.set_value(cdt, cdn, "project", r.project);
 			});
 		}

@@ -1,1 +1,1 @@
-Type of Activity (set in Task, Time Log)
+Type of Activity (set in taskname, Time Log)

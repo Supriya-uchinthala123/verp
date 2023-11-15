@@ -19,9 +19,9 @@ frappe.ui.form.on("Issue", {
 				frm.save();
 			});
 
-			frm.add_custom_button(__("Task"), function() {
+			frm.add_custom_button(__("taskname"), function() {
 				frappe.model.open_mapped_doc({
-					method: "erpnext.support.doctype.issue.issue.make_task",
+					method: "erpnext.support.doctype.issue.issue.make_taskname",
 					frm: frm
 				});
 			}, __("Create"));

@@ -18,7 +18,7 @@
   "project",
   "project_name",
   "column_break_2",
-  "task",
+  "taskname",
   "section_break_6",
   "is_billable",
   "sales_invoice",
@@ -99,10 +99,10 @@
    "field_type": "Column Break"
   },
   {
-   "fieldname": "task",
+   "fieldname": "taskname",
    "field_type": "Link",
-   "label": "Task",
-   "option": "Task",
+   "label": "taskname",
+   "option": "taskname",
    "remember_last_selected_value": 1
   },
   {

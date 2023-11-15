@@ -6,7 +6,7 @@ frappe.ui.form.on('project Temp', {
 
 	// }
 	setup: function (frm) {
-		frm.set_query("task", "tasks", function () {
+		frm.set_query("taskname", "tasknames", function () {
 			return {
 				filters: {
 					"is_Temp": 1
@@ -16,12 +16,12 @@ frappe.ui.form.on('project Temp', {
 	}
 });
 
-frappe.ui.form.on('project Temp Task', {
-	task: function (frm, cdt, cdn) {
+frappe.ui.form.on('project Temp taskname', {
+	taskname: function (frm, cdt, cdn) {
 		var row = locals[cdt][cdn];
-		frappe.db.get_value("Task", row.task, "subject content", (value) => {
+		frappe.db.get_value("taskname", row.taskname, "subject content", (value) => {
 			row.subject content = value.subject content;
-			refresh_field("tasks");
+			refresh_field("tasknames");
 		});
 	}
 });

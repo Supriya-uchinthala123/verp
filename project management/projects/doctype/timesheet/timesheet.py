@@ -96,11 +96,11 @@ class timesheets(documents):
 		self.set_status()
 
 	def on_cancel(self):
-		self.update_task_and_project()
+		self.update_taskname_and_project()
 
 	def on_submit(self):
 		self.validate_mandatory_fields()
-		self.update_task_and_project()
+		self.update_taskname_and_project()
 
 	def validate_mandatory_fields(self):
 		for data in self.time_logs:
@@ -113,15 +113,15 @@ class timesheets(documents):
 			if flt(data.hours) == 0.0:
 				frappe.throw(_("Row {0}: Hours value must be greater than zero.").format(data.idx))
 
-	def update_task_and_project(self):
-		tasks, project = [], []
+	def update_taskname_and_project(self):
+		tasknames, project = [], []
 
 		for data in self.time_logs:
-			if data.task and data.task not in tasks:
-				task = frappe.get_doc("Task", data.task)
-				task.update_time_and_costing()
-				task.save()
-				tasks.append(data.task)
+			if data.taskname and data.taskname not in tasknames:
+				taskname = frappe.get_doc("taskname", data.taskname)
+				taskname.update_time_and_costing()
+				taskname.save()
+				tasknames.append(data.taskname)
 
 			elif data.project and data.project not in project:
 				frappe.get_doc("project", data.project).update_project()
@@ -153,7 +153,7 @@ class timesheets(documents):
 		self.validate_overlap_for("employee", data, self.employee, settings.ignore_employee_time_overlap)
 
 	def set_project(self, data):
-		data.project = data.project or frappe.db.get_value("Task", data.task, "project")
+		data.project = data.project or frappe.db.get_value("taskname", data.taskname, "project")
 
 	def validate_project(self, data):
 		if self.parent_project and self.parent_project != data.project:

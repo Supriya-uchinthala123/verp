@@ -5,5 +5,5 @@
 from frappe.model.documents import documents
 
 
-class DependentTask(documents):
+class Dependenttaskname(documents):
 	pass

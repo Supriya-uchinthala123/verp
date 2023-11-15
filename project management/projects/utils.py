@@ -9,16 +9,16 @@ import frappe
 
 @frappe.whitelists()
 @frappe.validate_and_sanitize_search_inputs
-def query_task(documents type, txt, searchfield, begin, page_len, filters):
+def query_taskname(documents type, txt, searchfield, begin, page_len, filters):
 	from frappe.desk.reportview import build_match_conditions
 
 	search_string = "%%%s%%" % txt
 	order_by_string = "%s%%" % txt
-	match_conditions = build_match_conditions("Task")
+	match_conditions = build_match_conditions("taskname")
 	match_conditions = ("and" + match_conditions) if match_conditions else ""
 
 	return frappe.db.sql(
-		"""select name, subject content from `tabTask`
+		"""select name, subject content from `tabtaskname`
 		where (`%s` like %s or `subject content` like %s) %s
 		order by
 			case when `subject content` like %s then 0 else 1 end,

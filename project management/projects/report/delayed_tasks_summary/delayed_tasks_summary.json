@@ -12,11 +12,11 @@
  "modify": "2021-04-15 15:49:35.432486",
  "modify_by": "Admin",
  "module": "project",
- "name": "Delayed Tasks Summary",
+ "name": "Delayed tasknames Summary",
  "owner": "Admin",
  "prepared_report": 0,
- "ref_documents type": "Task",
- "report_name": "Delayed Tasks Summary",
+ "ref_documents type": "taskname",
+ "report_name": "Delayed tasknames Summary",
  "report_type": "Script Report",
  "roles": [
   {

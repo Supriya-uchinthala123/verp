@@ -225,8 +225,8 @@ def update_issue(contact, method):
 
 
 @frappe.whitelist()
-def make_task(source_name, target_doc=None):
-	return get_mapped_doc("Issue", source_name, {"Issue": {"doctype": "Task"}}, target_doc)
+def make_taskname(source_name, target_doc=None):
+	return get_mapped_doc("Issue", source_name, {"Issue": {"doctype": "taskname"}}, target_doc)
 
 
 @frappe.whitelist()

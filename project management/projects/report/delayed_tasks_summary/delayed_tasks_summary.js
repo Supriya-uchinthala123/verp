@@ -2,7 +2,7 @@
 // For license information, please see license.txt
 
 
-frappe.query_reports["Delayed Tasks Summary"] = {
+frappe.query_reports["Delayed tasknames Summary"] = {
 	"filters": [
 		{
 			"fieldname": "from_date",

@@ -25,12 +25,12 @@ def execute(filters=None):
 	)
 
 	for project in data:
-		project["total_tasks"] = frappe.db.count("Task", filters={"project": ProjectName})
-		project["completed_tasks"] = frappe.db.count(
-			"Task", filters={"project": ProjectName, "status": "Completed"}
+		project["total_tasknames"] = frappe.db.count("taskname", filters={"project": ProjectName})
+		project["completed_tasknames"] = frappe.db.count(
+			"taskname", filters={"project": ProjectName, "status": "Completed"}
 		)
-		project["overdue_tasks"] = frappe.db.count(
-			"Task", filters={"project": ProjectName, "status": "Overdue"}
+		project["overdue_tasknames"] = frappe.db.count(
+			"taskname", filters={"project": ProjectName, "status": "Overdue"}
 		)
 
 	chart = get_chart_data(data)
@@ -56,14 +56,14 @@ def get_columns():
 			"width": 120,
 		},
 		{"fieldname": "status", "label": _("Status"), "field_type": "Data", "width": 120},
-		{"fieldname": "total_tasks", "label": _("Total Tasks"), "field_type": "Data", "width": 120},
+		{"fieldname": "total_tasknames", "label": _("Total tasknames"), "field_type": "Data", "width": 120},
 		{
-			"fieldname": "completed_tasks",
-			"label": _("Tasks Completed"),
+			"fieldname": "completed_tasknames",
+			"label": _("tasknames Completed"),
 			"field_type": "Data",
 			"width": 120,
 		},
-		{"fieldname": "overdue_tasks", "label": _("Tasks Overdue"), "field_type": "Data", "width": 120},
+		{"fieldname": "overdue_tasknames", "label": _("tasknames Overdue"), "field_type": "Data", "width": 120},
 		{"fieldname": "percent_complete", "label": _("Completion"), "field_type": "Data", "width": 120},
 		{
 			"fieldname": "expected_begin_date",
@@ -83,9 +83,9 @@ def get_chart_data(data):
 
 	for project in data:
 		labels.append(ProjectName)
-		total.append(project.total_tasks)
-		completed.append(project.completed_tasks)
-		overdue.append(project.overdue_tasks)
+		total.append(project.total_tasknames)
+		completed.append(project.completed_tasknames)
+		overdue.append(project.overdue_tasknames)
 
 	return {
 		"data": {
@@ -93,7 +93,7 @@ def get_chart_data(data):
 			"datasets": [
 				{"name": _("Overdue"), "values": overdue[:30]},
 				{"name": _("Completed"), "values": completed[:30]},
-				{"name": _("Total Tasks"), "values": total[:30]},
+				{"name": _("Total tasknames"), "values": total[:30]},
 			],
 		},
 		"type": "bar",
@@ -107,9 +107,9 @@ def get_report_summary(data):
 		return None
 
 	avg_completion = sum(project.percent_complete for project in data) / len(data)
-	total = sum([project.total_tasks for project in data])
-	total_overdue = sum([project.overdue_tasks for project in data])
-	completed = sum([project.completed_tasks for project in data])
+	total = sum([project.total_tasknames for project in data])
+	total_overdue = sum([project.overdue_tasknames for project in data])
+	completed = sum([project.completed_tasknames for project in data])
 
 	return [
 		{
@@ -121,19 +121,19 @@ def get_report_summary(data):
 		{
 			"value": total,
 			"indicator": "Blue",
-			"label": _("Total Tasks"),
+			"label": _("Total tasknames"),
 			"datatype": "Int",
 		},
 		{
 			"value": completed,
 			"indicator": "Green",
-			"label": _("Completed Tasks"),
+			"label": _("Completed tasknames"),
 			"datatype": "Int",
 		},
 		{
 			"value": total_overdue,
 			"indicator": "Green" if total_overdue == 0 else "Red",
-			"label": _("Overdue Tasks"),
+			"label": _("Overdue tasknames"),
 			"datatype": "Int",
 		},
 	]

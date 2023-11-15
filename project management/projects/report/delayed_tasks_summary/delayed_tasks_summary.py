@@ -17,8 +17,8 @@ def execute(filters=None):
 
 def get_data(filters):
 	conditions = get_conditions(filters)
-	tasks = frappe.get_all(
-		"Task",
+	tasknames = frappe.get_all(
+		"taskname",
 		filters=conditions,
 		fields=[
 			"name",
@@ -32,26 +32,26 @@ def get_data(filters):
 		],
 		order_by="creation",
 	)
-	for task in tasks:
-		if task.exp_end_date:
-			if task.completed_on:
-				task.delay = date_diff(task.completed_on, task.exp_end_date)
-			elif task.status == "Completed":
-				# task is completed but completed on is not set (for older tasks)
-				task.delay = 0
+	for taskname in tasknames:
+		if taskname.exp_end_date:
+			if taskname.completed_on:
+				taskname.delay = date_diff(taskname.completed_on, taskname.exp_end_date)
+			elif taskname.status == "Completed":
+				# taskname is completed but completed on is not set (for older tasknames)
+				taskname.delay = 0
 			else:
-				# task not completed
-				task.delay = date_diff(nowdate(), task.exp_end_date)
+				# taskname not completed
+				taskname.delay = date_diff(nowdate(), taskname.exp_end_date)
 		else:
-			# task has no end date, hence no delay
-			task.delay = 0
+			# taskname has no end date, hence no delay
+			taskname.delay = 0
 
-		task.status = _(task.status)
-		task.priority = _(task.priority)
+		taskname.status = _(taskname.status)
+		taskname.priority = _(taskname.priority)
 
 	# Sort by descending order of delay
-	tasks.sort(key=lambda x: x["delay"], reverse=True)
-	return tasks
+	tasknames.sort(key=lambda x: x["delay"], reverse=True)
+	return tasknames
 
 
 def get_conditions(filters):
@@ -87,7 +87,7 @@ def get_chart_data(data):
 
 def get_columns():
 	columns = [
-		{"fieldname": "name", "field_type": "Link", "label": _("Task"), "option": "Task", "width": 150},
+		{"fieldname": "name", "field_type": "Link", "label": _("taskname"), "option": "taskname", "width": 150},
 		{"fieldname": "subject content", "field_type": "Data", "label": _("subject content"), "width": 200},
 		{"fieldname": "status", "field_type": "Data", "label": _("Status"), "width": 100},
 		{"fieldname": "priority", "field_type": "Data", "label": _("Priority"), "width": 80},

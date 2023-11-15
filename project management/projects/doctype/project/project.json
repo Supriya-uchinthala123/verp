@@ -104,11 +104,11 @@
    "option": "Yes\nNo"
   },
   {
-   "default": "Task Completion",
+   "default": "taskname Completion",
    "fieldname": "percent_complete_method",
    "field_type": "Select",
    "label": "% Complete Method",
-   "option": "Manual\nTask Completion\nTask Progress\nTask Weight"
+   "option": "Manual\ntaskname Completion\ntaskname Progress\ntaskname Weight"
   },
   {
    "bold": 1,

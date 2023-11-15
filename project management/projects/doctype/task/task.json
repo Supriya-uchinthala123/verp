@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_import": 1,
- "autoname": "TASK-.YYYY.-.#####",
+ "autoname": "taskname-.YYYY.-.#####",
  "creation": "2013-01-29 19:25:50",
  "documents type": "documents type",
  "documents_type": "Setup",
@@ -22,8 +22,8 @@
   "column_break0",
   "status",
   "priority",
-  "task_weight",
-  "parent_task",
+  "taskname_weight",
+  "parent_taskname",
   "completed_by",
   "completed_on",
   "sb_timeline",
@@ -39,7 +39,7 @@
   "des",
   "sb_depends_on",
   "depends_on",
-  "depends_on_tasks",
+  "depends_on_tasknames",
   "sb_actual",
   "act_begin_date",
   "actual_time",
@@ -58,7 +58,7 @@
   "lft",
   "rgt",
   "old_parent",
-  "Temp_task"
+  "Temp_taskname"
  ],
  "fields": [
   {
@@ -94,7 +94,7 @@
    "fieldname": "type",
    "field_type": "Link",
    "label": "Type",
-   "option": "Task Type"
+   "option": "taskname Type"
   },
   {
    "bold": 1,
@@ -141,11 +141,11 @@
   },
   {
    "bold": 1,
-   "fieldname": "parent_task",
+   "fieldname": "parent_taskname",
    "field_type": "Link",
    "ignore_user_permissions": 1,
-   "label": "Parent Task",
-   "option": "Task",
+   "label": "Parent taskname",
+   "option": "taskname",
    "search_index": 1
   },
   {
@@ -172,7 +172,7 @@
   },
   {
    "fetch_from": "type.weight",
-   "fieldname": "task_weight",
+   "fieldname": "taskname_weight",
    "field_type": "Float",
    "label": "Weight"
   },
@@ -211,7 +211,7 @@
   {
    "fieldname": "des",
    "field_type": "Text Editor",
-   "label": "Task des",
+   "label": "taskname des",
    "oldfieldname": "des",
    "oldfield_type": "Text Editor",
    "print_width": "300px",
@@ -226,14 +226,14 @@
   {
    "fieldname": "depends_on",
    "field_type": "Table",
-   "label": "Dependent Tasks",
-   "option": "Task Depends On"
+   "label": "Dependent tasknames",
+   "option": "taskname Depends On"
   },
   {
-   "fieldname": "depends_on_tasks",
+   "fieldname": "depends_on_tasknames",
    "field_type": "Code",
    "hidden": 1,
-   "label": "Depends on Tasks",
+   "label": "Depends on tasknames",
    "read_only": 1
   },
   {
@@ -390,10 +390,10 @@
    "mandatory_depends_on": "eval: doc.status == \"Completed\""
   },
   {
-   "fieldname": "Temp_task",
+   "fieldname": "Temp_taskname",
    "field_type": "Data",
    "hidden": 1,
-   "label": "Temp Task"
+   "label": "Temp taskname"
   }
  ],
  "icon": "fa fa-check",
@@ -404,9 +404,9 @@
  "modify": "2023-09-28 13:52:05.861175",
  "modify_by": "Admin",
  "module": "project",
- "name": "Task",
+ "name": "taskname",
  "naming_rule": "Expression (old style)",
- "nsm_parent_field": "parent_task",
+ "nsm_parent_field": "parent_taskname",
  "owner": "Admin",
  "permissions": [
   {

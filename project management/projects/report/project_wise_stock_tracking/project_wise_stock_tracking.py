@@ -16,10 +16,10 @@ def execute(filters=None):
 	for project in project_details:
 		data.append(
 			[
-				project.name,
-				pr_item_map.get(project.name, 0),
-				se_item_map.get(project.name, 0),
-				dn_item_map.get(project.name, 0),
+				ProjectName,
+				pr_item_map.get(ProjectName, 0),
+				se_item_map.get(ProjectName, 0),
+				dn_item_map.get(ProjectName, 0),
 				project.project_name,
 				project.status,
 				project.company,

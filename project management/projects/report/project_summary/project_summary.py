@@ -25,12 +25,12 @@ def execute(filters=None):
 	)
 
 	for project in data:
-		project["total_tasks"] = frappe.db.count("Task", filters={"project": project.name})
+		project["total_tasks"] = frappe.db.count("Task", filters={"project": ProjectName})
 		project["completed_tasks"] = frappe.db.count(
-			"Task", filters={"project": project.name, "status": "Completed"}
+			"Task", filters={"project": ProjectName, "status": "Completed"}
 		)
 		project["overdue_tasks"] = frappe.db.count(
-			"Task", filters={"project": project.name, "status": "Overdue"}
+			"Task", filters={"project": ProjectName, "status": "Overdue"}
 		)
 
 	chart = get_chart_data(data)
@@ -82,7 +82,7 @@ def get_chart_data(data):
 	overdue = []
 
 	for project in data:
-		labels.append(project.name)
+		labels.append(ProjectName)
 		total.append(project.total_tasks)
 		completed.append(project.completed_tasks)
 		overdue.append(project.overdue_tasks)

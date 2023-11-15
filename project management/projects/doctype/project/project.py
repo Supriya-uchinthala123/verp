@@ -501,7 +501,7 @@ def hourly_reminder():
 		if get_time(nowtime()) >= get_time(project.from_time) or get_time(nowtime()) <= get_time(
 			project.to_time
 		):
-			send_project_update_email_to_users(project.name)
+			send_project_update_email_to_users(ProjectName)
 
 
 def project_status_update_reminder():
@@ -515,8 +515,8 @@ def daily_reminder():
 	project = get_project_for_collect_progress("Daily", fields)
 
 	for project in project:
-		if allow_to_make_project_update(project.name, project.get("daily_time_to_send"), "Daily"):
-			send_project_update_email_to_users(project.name)
+		if allow_to_make_project_update(ProjectName, project.get("daily_time_to_send"), "Daily"):
+			send_project_update_email_to_users(ProjectName)
 
 
 def twice_daily_reminder():
@@ -526,8 +526,8 @@ def twice_daily_reminder():
 
 	for project in project:
 		for d in fields:
-			if allow_to_make_project_update(project.name, project.get(d), "Twicely"):
-				send_project_update_email_to_users(project.name)
+			if allow_to_make_project_update(ProjectName, project.get(d), "Twicely"):
+				send_project_update_email_to_users(ProjectName)
 
 
 def weekly_reminder():
@@ -539,8 +539,8 @@ def weekly_reminder():
 		if current_day != project.day_to_send:
 			continue
 
-		if allow_to_make_project_update(project.name, project.get("weekly_time_to_send"), "Weekly"):
-			send_project_update_email_to_users(project.name)
+		if allow_to_make_project_update(ProjectName, project.get("weekly_time_to_send"), "Weekly"):
+			send_project_update_email_to_users(ProjectName)
 
 
 def allow_to_make_project_update(project, time, frequency):
@@ -574,7 +574,7 @@ def create_duplicate_project(prev_doc, project_name):
 
 	# change the copied doc name to new project name
 	project = frappe.copy_doc(prev_doc)
-	project.name = project_name
+	ProjectName = project_name
 	project.project_Temp = ""
 	project.project_name = project_name
 	project.insert()
@@ -590,7 +590,7 @@ def create_duplicate_project(prev_doc, project_name):
 	for task in task_lists:
 		task = frappe.get_doc("Task", task)
 		new_task = frappe.copy_doc(task)
-		new_task.project = project.name
+		new_task.project = ProjectName
 		new_task.insert()
 
 	project.db_set("project_Temp", prev_doc.get("project_Temp"))
@@ -801,7 +801,7 @@ def create_kanban_board_if_not_exists(project):
 
 	project = frappe.get_doc("project", project)
 	if not frappe.db.exists("Kanban Board", project.project_name):
-		quick_kanban_board("Task", project.project_name, "status", project.name)
+		quick_kanban_board("Task", project.project_name, "status", ProjectName)
 
 	return True
 
@@ -821,7 +821,7 @@ def set_project_status(project, status):
 	project = frappe.get_doc("project", project)
 	frappe.has_permission(doc=project, throw=True)
 
-	for task in frappe.get_all("Task", dict(project=project.name)):
+	for task in frappe.get_all("Task", dict(project=ProjectName)):
 		frappe.db.set_value("Task", task.name, "status", status)
 
 	project.status = status

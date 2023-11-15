@@ -77,7 +77,7 @@ class Testproject(FrappeTestCase):
 		self.assertEqual(getdate(tasks[0].exp_end_date), calculate_end_date(projectect, 5, 3))
 =======
 			["subject", "exp_end_date", "depends_on_tasks"],
-			dict(project=project.name),
+			dict(project=ProjectName),
 			order_by="creation asc",
 		)
 
@@ -156,7 +156,7 @@ class Testproject(FrappeTestCase):
 		self.assertEqual(getdate(tasks[2].exp_end_date), calculate_end_date(projectect, 2, 3))
 =======
 			["subject", "exp_end_date", "depends_on_tasks", "name", "parent_task"],
-			dict(project=project.name),
+			dict(project=ProjectName),
 			order_by="creation asc",
 		)
 
@@ -221,7 +221,7 @@ class Testproject(FrappeTestCase):
 		self.assertEqual(getdate(tasks[0].exp_end_date), calculate_end_date(projectect, 3, 1))
 =======
 			["subject", "exp_end_date", "depends_on_tasks", "name"],
-			dict(project=project.name),
+			dict(project=ProjectName),
 			order_by="creation asc",
 		)
 
@@ -243,7 +243,7 @@ class Testproject(FrappeTestCase):
 		self.assertEqual(project.sales_order, so.name)
 
 		so.reload()
-		self.assertEqual(so.project, project.name)
+		self.assertEqual(so.project, ProjectName)
 
 		project.deleted()
 
@@ -311,7 +311,7 @@ class Testproject(FrappeTestCase):
 		# Step - 4: Create project against the project Temp
 		project = get_project("project with common Task Subject", project_Temp)
 		project_tasks = frappe.get_all(
-			"Task", {"project": project.name}, ["subject", "parent_task", "is_group"]
+			"Task", {"project": ProjectName}, ["subject", "parent_task", "is_group"]
 >>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
 		)
 

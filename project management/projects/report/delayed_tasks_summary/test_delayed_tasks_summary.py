@@ -3,8 +3,8 @@ import unittest
 import frappe
 from frappe.utils import add_days, add_months, nowdate
 
-from erpnext.project.doctype.task.test_task import create_task
-from erpnext.project.report.delayed_tasks_summary.delayed_tasks_summary import execute
+from erpnext.proj.doctype.task.test_task import create_task
+from erpnext.proj.report.delayed_tasks_summary.delayed_tasks_summary import execute
 
 
 class TestDelayedTasksSummary(unittest.TestCase):

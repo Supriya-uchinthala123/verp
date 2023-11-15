@@ -6,7 +6,7 @@ import unittest
 import frappe
 from frappe.utils import add_days, getdate, nowdate
 
-from erpnext.project.doctype.task.task import CircularReferenceError
+from erpnext.proj.doctype.task.task import CircularReferenceError
 
 
 class TestTask(unittest.TestCase):
@@ -28,16 +28,16 @@ class TestTask(unittest.TestCase):
 		task3.append("depends_on", {"task": task4.name})
 
 	def test_reschedule_dependent_task(self):
-		project = frappe.get_value("Project", {"project_name": "_Test Project"})
+		proj = frappe.get_value("proj", {"proj_name": "_Test proj"})
 
 		task1 = create_task("_Test Task 1", nowdate(), add_days(nowdate(), 10))
 
 		task2 = create_task("_Test Task 2", add_days(nowdate(), 11), add_days(nowdate(), 15), task1.name)
-		task2.get("depends_on")[0].project = project
+		task2.get("depends_on")[0].proj = proj
 		task2.save()
 
 		task3 = create_task("_Test Task 3", add_days(nowdate(), 11), add_days(nowdate(), 15), task2.name)
-		task3.get("depends_on")[0].project = project
+		task3.get("depends_on")[0].proj = proj
 		task3.save()
 
 		task1.update({"exp_end_date": add_days(nowdate(), 20)})
@@ -103,7 +103,7 @@ class TestTask(unittest.TestCase):
 	def test_overdue(self):
 		task = create_task("Testing Overdue", add_days(nowdate(), -10), add_days(nowdate(), -5))
 
-		from erpnext.project.doctype.task.task import set_tasks_as_overdue
+		from erpnext.proj.doctype.task.task import set_tasks_as_overdue
 
 		set_tasks_as_overdue()
 
@@ -115,7 +115,7 @@ def create_task(
 	start=None,
 	end=None,
 	depends_on=None,
-	project=None,
+	proj=None,
 	parent_task=None,
 	is_group=0,
 	is_Temp=0,
@@ -129,10 +129,10 @@ def create_task(
 		task.subject = subject
 		task.exp_start_date = start or nowdate()
 		task.exp_end_date = end or nowdate()
-		task.project = (
-			project or None
+		task.proj = (
+			proj or None
 			if is_Temp
-			else frappe.get_value("Project", {"project_name": "_Test Project"})
+			else frappe.get_value("proj", {"proj_name": "_Test proj"})
 		)
 		task.is_Temp = is_Temp
 		task.start = begin

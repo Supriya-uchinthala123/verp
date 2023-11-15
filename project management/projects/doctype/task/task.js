@@ -1,13 +1,13 @@
 // Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 // License: GNU General Public License v3. See license.txt
 
-frappe.provide("erpnext.project");
+frappe.provide("erpnext.proj");
 
 frappe.ui.form.on("Task", {
 	setup: function (frm) {
 		frm.make_methods = {
 			'Timesheet': () => frappe.model.open_mapped_doc({
-				method: 'erpnext.project.doctype.task.task.make_timesheet',
+				method: 'erpnext.proj.doctype.task.task.make_timesheet',
 				frm: frm
 			})
 		}
@@ -18,7 +18,7 @@ frappe.ui.form.on("Task", {
 			let filters = {
 				name: ["!=", frm.doc.name]
 			};
-			if (frm.doc.project) filters["project"] = frm.doc.project;
+			if (frm.doc.proj) filters["proj"] = frm.doc.proj;
 			return {
 				filters: filters
 			};
@@ -29,7 +29,7 @@ frappe.ui.form.on("Task", {
 				"is_group": 1,
 				"name": ["!=", frm.doc.name]
 			};
-			if (frm.doc.project) filters["project"] = frm.doc.project;
+			if (frm.doc.proj) filters["proj"] = frm.doc.proj;
 			return {
 				filters: filters
 			}
@@ -38,7 +38,7 @@ frappe.ui.form.on("Task", {
 
 	is_group: function (frm) {
 		frappe.call({
-			method: "erpnext.project.doctype.task.task.check_if_child_exists",
+			method: "erpnext.proj.doctype.task.task.check_if_child_exists",
 			args: {
 				name: frm.doc.name
 			},
@@ -55,7 +55,7 @@ frappe.ui.form.on("Task", {
 	},
 
 	validate: function (frm) {
-		frm.doc.project && frappe.model.remove_from_locals("Project",
-			frm.doc.project);
+		frm.doc.proj && frappe.model.remove_from_locals("proj",
+			frm.doc.proj);
 	}
 });

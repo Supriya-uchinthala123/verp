@@ -6,5 +6,5 @@
 from frappe.model.document import Document
 
 
-class ProjectTempTask(Document):
+class projTempTask(Document):
 	pass

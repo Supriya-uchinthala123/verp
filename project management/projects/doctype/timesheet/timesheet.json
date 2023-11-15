@@ -17,7 +17,7 @@
   "sales_invoice",
   "column_break_3",
   "status",
-  "parent_project",
+  "parent_proj",
   "employee_detail",
   "employee",
   "employee_name",
@@ -259,10 +259,10 @@
    "read_only": 1
   },
   {
-   "fieldname": "parent_project",
+   "fieldname": "parent_proj",
    "fieldtype": "Link",
-   "label": "Project",
-   "options": "Project"
+   "label": "proj",
+   "options": "proj"
   },
   {
    "fieldname": "customer",
@@ -312,7 +312,7 @@
  "links": [],
  "modify": "2023-04-20 15:59:11.107831",
  "modify_by": "Admin",
- "module": "project",
+ "module": "proj",
  "name": "Timesheet",
  "naming_rule": "By \"Naming Series\" field",
  "owner": "Admin",
@@ -326,7 +326,7 @@
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "project User",
+   "role": "proj User",
    "share": 1,
    "submit": 1,
    "write": 1

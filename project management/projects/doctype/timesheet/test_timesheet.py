@@ -8,7 +8,7 @@ import frappe
 from frappe.utils import add_months, add_to_date, now_datetime, nowdate
 
 from erpnext.accounts.doctype.sales_invoice.test_sales_invoice import create_sales_invoice
-from erpnext.project.doctype.timesheet.timesheet import OverlapError, make_sales_invoice
+from erpnext.proj.doctype.timesheet.timesheet import OverlapError, make_sales_invoice
 from erpnext.setup.doctype.employee.test_employee import make_employee
 
 
@@ -55,15 +55,15 @@ class TestTimesheet(unittest.TestCase):
 		self.assertEqual(item.qty, 2.00)
 		self.assertEqual(item.rate, 50.00)
 
-	def test_timesheet_billing_based_on_project(self):
+	def test_timesheet_billing_based_on_proj(self):
 		emp = make_employee("test_employee_6@salary.com")
-		project = frappe.get_value("Project", {"project_name": "_Test Project"})
+		proj = frappe.get_value("proj", {"proj_name": "_Test proj"})
 
 		timesheet = make_timesheet(
-			emp, simulate=True, is_billable=1, project=project, company="_Test Company"
+			emp, simulate=True, is_billable=1, proj=proj, company="_Test Company"
 		)
 		sales_invoice = create_sales_invoice(do_not_save=True)
-		sales_invoice.project = project
+		sales_invoice.proj = proj
 		sales_invoice.submit()
 
 		ts = frappe.get_doc("Timesheet", timesheet.name)
@@ -73,7 +73,7 @@ class TestTimesheet(unittest.TestCase):
 	def test_timesheet_time_overlap(self):
 		emp = make_employee("test_employee_6@salary.com")
 
-		settings = frappe.get_single("project Settings")
+		settings = frappe.get_single("proj Settings")
 		initial_setting = settings.ignore_employee_time_overlap
 		settings.ignore_employee_time_overlap = 0
 		settings.save()
@@ -198,7 +198,7 @@ def make_timesheet(
 	simulate=False,
 	is_billable=0,
 	activity_type="_Test Activity Type",
-	project=None,
+	proj=None,
 	task=None,
 	company=None,
 ):
@@ -214,7 +214,7 @@ def make_timesheet(
 	timesheet_detail.to_time = timesheet_detail.from_time + datetime.timedelta(
 		hours=timesheet_detail.hours
 	)
-	timesheet_detail.project = project
+	timesheet_detail.proj = proj
 	timesheet_detail.task = task
 
 	for data in timesheet.get("time_logs"):

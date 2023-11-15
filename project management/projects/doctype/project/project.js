@@ -1,6 +1,6 @@
 // Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 // License: GNU General Public License v3. See license.txt
-frappe.ui.form.on("Project", {
+frappe.ui.form.on("proj", {
 	setup(frm) {
 		frm.make_methods = {
 			'Timesheet': () => {
@@ -23,7 +23,7 @@ frappe.ui.form.on("Project", {
 			if (frm.is_new()) return {};
 			return {
 				"customer": frm.doc.customer,
-				"project_name": frm.doc.name
+				"proj_name": frm.doc.name
 			};
 		};
 
@@ -31,14 +31,14 @@ frappe.ui.form.on("Project", {
 
 		frm.set_query("user", "users", function () {
 			return {
-				query: "erpnext.project.doctype.project.project.get_users_for_project"
+				query: "erpnext.proj.doctype.proj.proj.get_users_for_proj"
 			};
 		});
 
 		// sales order
 		frm.set_query('sales_order', function () {
 			var filters = {
-				'project': ["in", frm.doc.__islocal ? [""] : [frm.doc.name, ""]]
+				'proj': ["in", frm.doc.__islocal ? [""] : [frm.doc.name, ""]]
 			};
 
 			if (frm.doc.customer) {
@@ -55,7 +55,7 @@ frappe.ui.form.on("Project", {
 		if (frm.doc.__islocal) {
 			frm.web_link && frm.web_link.remove();
 		} else {
-			frm.add_web_link("/project?project=" + encodeURIComponent(frm.doc.name));
+			frm.add_web_link("/proj?proj=" + encodeURIComponent(frm.doc.name));
 
 			frm.trigger('show_dashboard');
 		}
@@ -64,26 +64,26 @@ frappe.ui.form.on("Project", {
 
 	set_custom_buttons: function(frm) {
 		if (!frm.is_new()) {
-			frm.add_custom_button(__('Duplicate Project with Tasks'), () => {
+			frm.add_custom_button(__('Duplicate proj with Tasks'), () => {
 				frm.events.create_duplicate(frm);
 			}, __("Actions"));
 
-			frm.trigger("set_project_status_button");
+			frm.trigger("set_proj_status_button");
 
 
 			if (frappe.model.can_read("Task")) {
 				frm.add_custom_button(__("Gantt Chart"), function () {
 					frappe.route_options = {
-						"project": frm.doc.name
+						"proj": frm.doc.name
 					};
 					frappe.set_route("List", "Task", "Gantt");
 				}, __("View"));
 
 				frm.add_custom_button(__("Kanban Board"), () => {
-					frappe.call('erpnext.project.doctype.project.project.create_kanban_board_if_not_exists', {
-						project: frm.doc.name
+					frappe.call('erpnext.proj.doctype.proj.proj.create_kanban_board_if_not_exists', {
+						proj: frm.doc.name
 					}).then(() => {
-						frappe.set_route('List', 'Task', 'Kanban', frm.doc.project_name);
+						frappe.set_route('List', 'Task', 'Kanban', frm.doc.proj_name);
 					});
 				}, __("View"));
 			}
@@ -92,10 +92,10 @@ frappe.ui.form.on("Project", {
 
 	},
 
-	set_project_status_button: function(frm) {
-		frm.add_custom_button(__('Set Project Status'), () => {
+	set_proj_status_button: function(frm) {
+		frm.add_custom_button(__('Set proj Status'), () => {
 			let d = new frappe.ui.Dialog({
-				"title": __("Set Project Status"),
+				"title": __("Set proj Status"),
 				"fields": [
 					{
 						"fieldname": "status",
@@ -109,21 +109,21 @@ frappe.ui.form.on("Project", {
 					frm.events.set_status(frm, d.get_values().status);
 					d.hide();
 				},
-				primary_action_label: __("Set Project Status")
+				primary_action_label: __("Set proj Status")
 			}).show();
 		}, __("Actions"));
 	},
 
 	create_duplicate: function(frm) {
 		return new Promise(resolve => {
-			frappe.prompt('Project Name', (data) => {
-				frappe.xcall('erpnext.project.doctype.project.project.create_duplicate_project',
+			frappe.prompt('proj Name', (data) => {
+				frappe.xcall('erpnext.proj.doctype.proj.proj.create_duplicate_proj',
 					{
 						prev_doc: frm.doc,
-						project_name: data.value
+						proj_name: data.value
 					}).then(() => {
-					frappe.set_route('Form', "Project", data.value);
-					frappe.show_alert(__("Duplicate project has been created"));
+					frappe.set_route('Form', "proj", data.value);
+					frappe.show_alert(__("Duplicate proj has been created"));
 				});
 				resolve();
 			});
@@ -131,9 +131,9 @@ frappe.ui.form.on("Project", {
 	},
 
 	set_status: function(frm, status) {
-		frappe.confirm(__('Set Project and all Tasks to status {0}?', [status.bold()]), () => {
-			frappe.xcall('erpnext.project.doctype.project.project.set_project_status',
-				{project: frm.doc.name, status: status}).then(() => {
+		frappe.confirm(__('Set proj and all Tasks to status {0}?', [status.bold()]), () => {
+			frappe.xcall('erpnext.proj.doctype.proj.proj.set_proj_status',
+				{proj: frm.doc.name, status: status}).then(() => {
 				frm.reload_doc();
 			});
 		});
@@ -145,14 +145,14 @@ function open_form(frm, doctype, child_doctype, parentfield) {
 	frappe.model.with_doctype(doctype, () => {
 		let new_doc = frappe.model.get_new_doc(doctype);
 
-		// add a new row and set the project
+		// add a new row and set the proj
 		let new_child_doc = frappe.model.get_new_doc(child_doctype);
-		new_child_doc.project = frm.doc.name;
+		new_child_doc.proj = frm.doc.name;
 		new_child_doc.parent = new_doc.name;
 		new_child_doc.parentfield = parentfield;
 		new_child_doc.parenttype = doctype;
 		new_doc[parentfield] = [new_child_doc];
-		new_doc.project = frm.doc.name;
+		new_doc.proj = frm.doc.name;
 
 		frappe.ui.form.make_quick_entry(doctype, null, null, new_doc);
 	});

@@ -8,7 +8,7 @@ from frappe.model.document import Document
 from frappe.utils import get_link_to_form
 
 
-class ProjectTemp(Document):
+class projTemp(Document):
 	def validate(self):
 		self.validate_dependencies()
 

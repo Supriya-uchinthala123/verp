@@ -13,7 +13,7 @@
   "welcome_email_sent",
   "view_attachments",
   "section_break_5",
-  "project_status"
+  "proj_status"
  ],
  "fields": [
   {
@@ -69,18 +69,18 @@
    "fieldtype": "Section Break"
   },
   {
-   "depends_on": "eval:parent.doctype == 'Project Update'",
-   "fieldname": "project_status",
+   "depends_on": "eval:parent.doctype == 'proj Update'",
+   "fieldname": "proj_status",
    "fieldtype": "Text",
-   "label": "Project Status"
+   "label": "proj Status"
   }
  ],
  "istable": 1,
  "links": [],
  "modify": "2020-02-09 23:26:50.321417",
  "modify_by": "Admin",
- "module": "project",
- "name": "Project User",
+ "module": "proj",
+ "name": "proj User",
  "owner": "Admin",
  "permissions": [],
  "sort_field": "modify",

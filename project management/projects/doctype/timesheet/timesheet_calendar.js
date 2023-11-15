@@ -17,9 +17,9 @@ frappe.views.calendar["Timesheet"] = {
 	filters: [
 		{
 			"fieldtype": "Link",
-			"fieldname": "project",
-			"options": "Project",
-			"label": __("Project")
+			"fieldname": "proj",
+			"options": "proj",
+			"label": __("proj")
 		},
 		{
 			"fieldtype": "Link",
@@ -28,5 +28,5 @@ frappe.views.calendar["Timesheet"] = {
 			"label": __("Employee")
 		}
 	],
-	get_events_method: "erpnext.project.doctype.timesheet.timesheet.get_events"
+	get_events_method: "erpnext.proj.doctype.timesheet.timesheet.get_events"
 }

@@ -33,7 +33,7 @@
  "web_form_fields": [
   {
    "fieldname": "project", 
-   "fieldtype": "Link", 
+   "field_type": "Link", 
    "hidden": 0, 
    "label": "project", 
    "max_length": 0, 
@@ -44,7 +44,7 @@
   }, 
   {
    "fieldname": "subject content", 
-   "fieldtype": "Data", 
+   "field_type": "Data", 
    "hidden": 0, 
    "label": "subject content", 
    "max_length": 0, 
@@ -54,7 +54,7 @@
   }, 
   {
    "fieldname": "status", 
-   "fieldtype": "Select", 
+   "field_type": "Select", 
    "hidden": 0, 
    "label": "Status", 
    "max_length": 0, 
@@ -65,7 +65,7 @@
   }, 
   {
    "fieldname": "des", 
-   "fieldtype": "Text Editor", 
+   "field_type": "Text Editor", 
    "hidden": 0, 
    "label": "Details", 
    "max_length": 0, 
@@ -75,7 +75,7 @@
   }, 
   {
    "fieldname": "priority", 
-   "fieldtype": "Select", 
+   "field_type": "Select", 
    "hidden": 0, 
    "label": "Priority", 
    "max_length": 0, 
@@ -86,7 +86,7 @@
   }, 
   {
    "fieldname": "exp_begin_date", 
-   "fieldtype": "Date", 
+   "field_type": "Date", 
    "hidden": 0, 
    "label": "Expected begin Date", 
    "max_length": 0, 
@@ -96,7 +96,7 @@
   }, 
   {
    "fieldname": "exp_end_date", 
-   "fieldtype": "Date", 
+   "field_type": "Date", 
    "hidden": 0, 
    "label": "Expected End Date", 
    "max_length": 0, 

@@ -67,145 +67,145 @@
  "fields": [
   {
    "fieldname": "project_name",
-   "fieldtype": "Data",
+   "field_type": "Data",
    "label": "project Name",
-   "oldfieldtype": "Data",
+   "oldfield_type": "Data",
    "reqd": 1,
    "unique": 1
   },
   {
    "default": "Open",
    "fieldname": "status",
-   "fieldtype": "Select",
+   "field_type": "Select",
    "in_standard_filter": 1,
    "label": "Status",
    "no_copy": 1,
    "oldfieldname": "status",
-   "oldfieldtype": "Select",
+   "oldfield_type": "Select",
    "option": "Open\nCompleted\ncancel",
    "search_index": 1
   },
   {
    "fieldname": "project_type",
-   "fieldtype": "Link",
+   "field_type": "Link",
    "in_lists_view": 1,
    "in_standard_filter": 1,
    "label": "project Type",
    "oldfieldname": "project_type",
-   "oldfieldtype": "Data",
+   "oldfield_type": "Data",
    "option": "project Type"
   },
   {
    "fieldname": "in active",
-   "fieldtype": "Select",
+   "field_type": "Select",
    "label": "Is Active",
    "oldfieldname": "in active",
-   "oldfieldtype": "Select",
+   "oldfield_type": "Select",
    "option": "Yes\nNo"
   },
   {
    "default": "Task Completion",
    "fieldname": "percent_complete_method",
-   "fieldtype": "Select",
+   "field_type": "Select",
    "label": "% Complete Method",
    "option": "Manual\nTask Completion\nTask Progress\nTask Weight"
   },
   {
    "bold": 1,
    "fieldname": "percent_complete",
-   "fieldtype": "Percent",
+   "field_type": "Percent",
    "label": "% Completed",
    "no_copy": 1,
    "read_only": 1
   },
   {
    "fieldname": "column_break_5",
-   "fieldtype": "Column Break"
+   "field_type": "Column Break"
   },
   {
    "allow_in_quick_entry": 1,
    "fieldname": "project_Temp",
-   "fieldtype": "Link",
+   "field_type": "Link",
    "label": "From Temp",
    "option": "project Temp",
    "set_only_once": 1
   },
   {
    "fieldname": "expected_begin_date",
-   "fieldtype": "Date",
+   "field_type": "Date",
    "label": "Expected begin Date",
    "oldfieldname": "project_begin_date",
-   "oldfieldtype": "Date"
+   "oldfield_type": "Date"
   },
   {
    "bold": 1,
    "fieldname": "expected_end_date",
-   "fieldtype": "Date",
+   "field_type": "Date",
    "in_lists_view": 1,
    "label": "Expected End Date",
    "oldfieldname": "completion_date",
-   "oldfieldtype": "Date"
+   "oldfield_type": "Date"
   },
   {
    "fieldname": "priority",
-   "fieldtype": "Select",
+   "field_type": "Select",
    "in_standard_filter": 1,
    "label": "Priority",
    "oldfieldname": "priority",
-   "oldfieldtype": "Select",
+   "oldfield_type": "Select",
    "option": "Medium\nLow\nHigh"
   },
   {
    "fieldname": "department",
-   "fieldtype": "Link",
+   "field_type": "Link",
    "label": "Department",
    "option": "Department"
   },
   {
    "collapsible": 1,
    "fieldname": "customer_details",
-   "fieldtype": "Section Break",
+   "field_type": "Section Break",
    "label": "Customer Details",
-   "oldfieldtype": "Section Break",
+   "oldfield_type": "Section Break",
    "option": "fa fa-user"
   },
   {
    "fieldname": "customer",
-   "fieldtype": "Link",
+   "field_type": "Link",
    "in_global_search": 1,
    "label": "Customer",
    "oldfieldname": "customer",
-   "oldfieldtype": "Link",
+   "oldfield_type": "Link",
    "option": "Customer",
    "print_hide": 1,
    "search_index": 1
   },
   {
    "fieldname": "column_break_14",
-   "fieldtype": "Column Break"
+   "field_type": "Column Break"
   },
   {
    "fieldname": "sales_order",
-   "fieldtype": "Link",
+   "field_type": "Link",
    "label": "Sales Order",
    "option": "Sales Order"
   },
   {
    "collapsible": 1,
    "fieldname": "users_section",
-   "fieldtype": "Section Break",
+   "field_type": "Section Break",
    "label": "Users"
   },
   {
    "des": "project will be accessible on the website to these users",
    "fieldname": "users",
-   "fieldtype": "Table",
+   "field_type": "Table",
    "label": "Users",
    "option": "project User"
   },
   {
    "fieldname": "copied_from",
-   "fieldtype": "Data",
+   "field_type": "Data",
    "hidden": 1,
    "label": "Copied From",
    "read_only": 1
@@ -213,9 +213,9 @@
   {
    "collapsible": 1,
    "fieldname": "section_break0",
-   "fieldtype": "Section Break",
+   "field_type": "Section Break",
    "label": "Notes",
-   "oldfieldtype": "Section Break",
+   "oldfield_type": "Section Break",
 <<<<<<< HEAD
    "option": "fa fa-list"
 =======
@@ -224,73 +224,73 @@
   },
   {
    "fieldname": "notes",
-   "fieldtype": "Text Editor",
+   "field_type": "Text Editor",
    "label": "Notes",
    "oldfieldname": "notes",
-   "oldfieldtype": "Text Editor"
+   "oldfield_type": "Text Editor"
   },
   {
    "collapsible": 1,
    "fieldname": "section_break_18",
-   "fieldtype": "Section Break",
+   "field_type": "Section Break",
    "label": "begin and End Dates"
   },
   {
    "fieldname": "actual_begin_date",
-   "fieldtype": "Date",
+   "field_type": "Date",
    "label": "Actual begin Date (via timesheets)",
    "read_only": 1
   },
   {
    "fieldname": "actual_time",
-   "fieldtype": "Float",
+   "field_type": "Float",
    "label": "Actual Time in Hours (via timesheets)",
    "read_only": 1
   },
   {
    "fieldname": "column_break_20",
-   "fieldtype": "Column Break"
+   "field_type": "Column Break"
   },
   {
    "fieldname": "actual_end_date",
-   "fieldtype": "Date",
+   "field_type": "Date",
    "label": "Actual End Date (via timesheets)",
    "oldfieldname": "act_completion_date",
-   "oldfieldtype": "Date",
+   "oldfield_type": "Date",
    "read_only": 1
   },
   {
    "collapsible": 1,
    "fieldname": "project_details",
-   "fieldtype": "Section Break",
+   "field_type": "Section Break",
    "label": "Costing and Billing",
-   "oldfieldtype": "Section Break",
+   "oldfield_type": "Section Break",
    "option": "fa fa-money"
   },
   {
    "fieldname": "estimated_costing",
-   "fieldtype": "Currency",
+   "field_type": "Currency",
    "in_lists_view": 1,
    "label": "Estimated Cost",
    "oldfieldname": "project_value",
-   "oldfieldtype": "Currency",
+   "oldfield_type": "Currency",
    "option": "Company:company:default_currency"
   },
   {
    "fieldname": "total_costing_amount",
-   "fieldtype": "Currency",
+   "field_type": "Currency",
    "label": "Total Costing Amount (via timesheets)",
    "read_only": 1
   },
   {
    "fieldname": "total_purchased_cost",
-   "fieldtype": "Currency",
+   "field_type": "Currency",
    "label": "Total purchased Cost (via purchased Invoice)",
    "read_only": 1
   },
   {
    "fieldname": "company",
-   "fieldtype": "Link",
+   "field_type": "Link",
    "label": "Company",
    "option": "Company",
    "remember_last_selected_value": 1,
@@ -298,84 +298,84 @@
   },
   {
    "fieldname": "column_break_28",
-   "fieldtype": "Column Break"
+   "field_type": "Column Break"
   },
   {
    "fieldname": "total_sales_amount",
-   "fieldtype": "Currency",
+   "field_type": "Currency",
    "label": "Total Sales Amount (via Sales Order)",
    "read_only": 1
   },
   {
    "fieldname": "total_billable_amount",
-   "fieldtype": "Currency",
+   "field_type": "Currency",
    "label": "Total Billable Amount (via timesheets)",
    "read_only": 1
   },
   {
    "fieldname": "total_bill_amount",
-   "fieldtype": "Currency",
+   "field_type": "Currency",
    "label": "Total bill Amount (via Sales Invoice)",
    "read_only": 1
   },
   {
    "fieldname": "total_consumed_material_cost",
-   "fieldtype": "Currency",
+   "field_type": "Currency",
    "label": "Total Consumed Material Cost (via Stock Entry)",
    "read_only": 1
   },
   {
    "fieldname": "cost_center",
-   "fieldtype": "Link",
+   "field_type": "Link",
    "label": "Default Cost Center",
    "option": "Cost Center"
   },
   {
    "collapsible": 1,
    "fieldname": "margin",
-   "fieldtype": "Section Break",
+   "field_type": "Section Break",
    "label": "Margin",
-   "oldfieldtype": "Column Break",
+   "oldfield_type": "Column Break",
    "width": "50%"
   },
   {
    "fieldname": "gross_margin",
-   "fieldtype": "Currency",
+   "field_type": "Currency",
    "label": "Gross Margin",
    "oldfieldname": "gross_margin_value",
-   "oldfieldtype": "Currency",
+   "oldfield_type": "Currency",
    "option": "Company:company:default_currency",
    "read_only": 1
   },
   {
    "fieldname": "column_break_37",
-   "fieldtype": "Column Break"
+   "field_type": "Column Break"
   },
   {
    "fieldname": "per_gross_margin",
-   "fieldtype": "Percent",
+   "field_type": "Percent",
    "label": "Gross Margin %",
    "oldfieldname": "per_gross_margin",
-   "oldfieldtype": "Currency",
+   "oldfield_type": "Currency",
    "read_only": 1
   },
   {
    "collapsible": 1,
    "fieldname": "monitor_progress",
-   "fieldtype": "Section Break",
+   "field_type": "Section Break",
    "label": "Monitor Progress"
   },
   {
    "default": "0",
    "fieldname": "collect_progress",
-   "fieldtype": "Check",
+   "field_type": "Check",
    "label": "Collect Progress",
    "search_index": 1
   },
   {
    "depends_on": "collect_progress",
    "fieldname": "holiday_lists",
-   "fieldtype": "Link",
+   "field_type": "Link",
 <<<<<<< HEAD
    "label": "Holiday List",
    "option": "Holiday List"
@@ -387,68 +387,68 @@
   {
    "depends_on": "eval:doc.collect_progress == true",
    "fieldname": "frequency",
-   "fieldtype": "Select",
+   "field_type": "Select",
    "label": "Frequency To Collect Progress",
    "option": "Hourly\nTwice Daily\nDaily\nWeekly"
   },
   {
    "depends_on": "eval:(doc.frequency == \"Hourly\" && doc.collect_progress)",
    "fieldname": "from_time",
-   "fieldtype": "Time",
+   "field_type": "Time",
    "label": "From Time"
   },
   {
    "depends_on": "eval:(doc.frequency == \"Hourly\" && doc.collect_progress)",
    "fieldname": "to_time",
-   "fieldtype": "Time",
+   "field_type": "Time",
    "label": "To Time"
   },
   {
    "depends_on": "eval:(doc.frequency == \"Twice Daily\" && doc.collect_progress == true)\n\n",
    "fieldname": "first_email",
-   "fieldtype": "Time",
+   "field_type": "Time",
    "label": "First Email"
   },
   {
    "depends_on": "eval:(doc.frequency == \"Twice Daily\" && doc.collect_progress == true)",
    "fieldname": "second_email",
-   "fieldtype": "Time",
+   "field_type": "Time",
    "label": "Second Email"
   },
   {
    "depends_on": "eval:(doc.frequency == \"Daily\" && doc.collect_progress == true)",
    "fieldname": "daily_time_to_send",
-   "fieldtype": "Time",
+   "field_type": "Time",
    "label": "Daily Time to send"
   },
   {
    "depends_on": "eval:(doc.frequency == \"Weekly\" && doc.collect_progress == true)",
    "fieldname": "day_to_send",
-   "fieldtype": "Select",
+   "field_type": "Select",
    "label": "Day to Send",
    "option": "Monday\nTuesday\nWednesday\nThursday\nFriday\nSaturday\nSunday"
   },
   {
    "depends_on": "eval:(doc.frequency == \"Weekly\" && doc.collect_progress == true)",
    "fieldname": "weekly_time_to_send",
-   "fieldtype": "Time",
+   "field_type": "Time",
    "label": "Weekly Time to send"
   },
   {
    "fieldname": "column_break_45",
-   "fieldtype": "Column Break"
+   "field_type": "Column Break"
   },
   {
    "depends_on": "collect_progress",
    "des": "Message will be sent to the users to get their status on the project",
    "fieldname": "message",
-   "fieldtype": "Text",
+   "field_type": "Text",
    "label": "Message",
    "mandatory_depends_on": "collect_progress"
   },
   {
    "fieldname": "naming_series",
-   "fieldtype": "Select",
+   "field_type": "Select",
    "label": "Series",
    "no_copy": 1,
    "option": "project-.####",

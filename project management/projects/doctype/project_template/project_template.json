@@ -12,7 +12,7 @@
  "fields": [
   {
    "fieldname": "project_type",
-   "fieldtype": "Link",
+   "field_type": "Link",
 <<<<<<< HEAD
    "in_lists_view": 1,
 =======
@@ -23,7 +23,7 @@
   },
   {
    "fieldname": "tasks",
-   "fieldtype": "Table",
+   "field_type": "Table",
    "label": "Tasks",
    "option": "project Temp Task",
    "reqd": 1

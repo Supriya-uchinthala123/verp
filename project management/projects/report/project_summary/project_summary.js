@@ -7,7 +7,7 @@ frappe.query_reports["project Summary"] = {
 		{
 			"fieldname": "company",
 			"label": __("Company"),
-			"fieldtype": "Link",
+			"field_type": "Link",
 			"option": "Company",
 			"default": frappe.defaults.get_user_default("Company"),
 			"reqd": 1
@@ -15,27 +15,27 @@ frappe.query_reports["project Summary"] = {
 		{
 			"fieldname": "in active",
 			"label": __("Is Active"),
-			"fieldtype": "Select",
+			"field_type": "Select",
 			"option": "\nYes\nNo",
 			"default": "Yes",
 		},
 		{
 			"fieldname": "status",
 			"label": __("Status"),
-			"fieldtype": "Select",
+			"field_type": "Select",
 			"option": "\nOpen\nCompleted\ncancel",
 			"default": "Open"
 		},
 		{
 			"fieldname": "project_type",
 			"label": __("project Type"),
-			"fieldtype": "Link",
+			"field_type": "Link",
 			"option": "project Type"
 		},
 		{
 			"fieldname": "priority",
 			"label": __("Priority"),
-			"fieldtype": "Select",
+			"field_type": "Select",
 			"option": "\nLow\nMedium\nHigh"
 		}
 	]

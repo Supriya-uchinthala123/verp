@@ -34,14 +34,14 @@ class IssueSummary(object):
 					"label": _("Customer"),
 					"option": "Customer",
 					"fieldname": "customer",
-					"fieldtype": "Link",
+					"field_type": "Link",
 					"width": 200,
 				}
 			)
 
 		elif self.filters.based_on == "Assigned To":
 			self.columns.append(
-				{"label": _("User"), "fieldname": "user", "fieldtype": "Link", "option": "User", "width": 200}
+				{"label": _("User"), "fieldname": "user", "field_type": "Link", "option": "User", "width": 200}
 			)
 
 		elif self.filters.based_on == "Issue Type":
@@ -49,7 +49,7 @@ class IssueSummary(object):
 				{
 					"label": _("Issue Type"),
 					"fieldname": "issue_type",
-					"fieldtype": "Link",
+					"field_type": "Link",
 					"option": "Issue Type",
 					"width": 200,
 				}
@@ -60,7 +60,7 @@ class IssueSummary(object):
 				{
 					"label": _("Issue Priority"),
 					"fieldname": "priority",
-					"fieldtype": "Link",
+					"field_type": "Link",
 					"option": "Issue Priority",
 					"width": 200,
 				}
@@ -69,11 +69,11 @@ class IssueSummary(object):
 		self.statuses = ["Open", "Replied", "On Hold", "Resolved", "Closed"]
 		for status in self.statuses:
 			self.columns.append(
-				{"label": _(status), "fieldname": scrub(status), "fieldtype": "Int", "width": 80}
+				{"label": _(status), "fieldname": scrub(status), "field_type": "Int", "width": 80}
 			)
 
 		self.columns.append(
-			{"label": _("Total Issues"), "fieldname": "total_issues", "fieldtype": "Int", "width": 100}
+			{"label": _("Total Issues"), "fieldname": "total_issues", "field_type": "Int", "width": 100}
 		)
 
 		self.sla_status_map = {
@@ -85,7 +85,7 @@ class IssueSummary(object):
 
 		for label, fieldname in self.sla_status_map.items():
 			self.columns.append(
-				{"label": _(label), "fieldname": fieldname, "fieldtype": "Int", "width": 100}
+				{"label": _(label), "fieldname": fieldname, "field_type": "Int", "width": 100}
 			)
 
 		self.metrics = [
@@ -98,7 +98,7 @@ class IssueSummary(object):
 
 		for metric in self.metrics:
 			self.columns.append(
-				{"label": _(metric), "fieldname": scrub(metric), "fieldtype": "Duration", "width": 170}
+				{"label": _(metric), "fieldname": scrub(metric), "field_type": "Duration", "width": 170}
 			)
 
 	def get_data(self):

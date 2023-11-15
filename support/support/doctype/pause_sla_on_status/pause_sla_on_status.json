@@ -10,7 +10,7 @@
  "fields": [
   {
    "fieldname": "status",
-   "fieldtype": "Select",
+   "field_type": "Select",
    "in_list_view": 1,
    "label": "Status",
    "reqd": 1,

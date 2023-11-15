@@ -21,13 +21,13 @@ frappe.treeview_settings['Task'] = {
 	filters: [
 		{
 			fieldname: "project",
-			fieldtype:"Link",
+			field_type:"Link",
 			option: "project",
 			label: __("project"),
 		},
 		{
 			fieldname: "task",
-			fieldtype:"Link",
+			field_type:"Link",
 			option: "Task",
 			label: __("Task"),
 			get_query: function() {
@@ -64,13 +64,13 @@ frappe.treeview_settings['Task'] = {
 					title: __("Add Multiple Tasks"),
 					fields: [
 						{
-							fieldname: "multiple_tasks", fieldtype: "Table",
+							fieldname: "multiple_tasks", field_type: "Table",
 							in_place_edit: true, data: this.data,
 							get_data: () => {
 								return this.data;
 							},
 							fields: [{
-								fieldtype:'Data',
+								field_type:'Data',
 <<<<<<< HEAD
 								fieldname:"subject",
 								in_lists_view: 1,

@@ -128,7 +128,7 @@ frappe.ui.form.on("project", {
 				"fields": [
 					{
 						"fieldname": "status",
-						"fieldtype": "Select",
+						"field_type": "Select",
 						"label": "Status",
 						"reqd": 1,
 						"option": "Completed\ncancel",

@@ -12,7 +12,7 @@
   {
    "columns": 2,
    "fieldname": "task",
-   "fieldtype": "Link",
+   "field_type": "Link",
    "in_lists_view": 1,
    "label": "Task",
    "option": "Task",
@@ -22,7 +22,7 @@
    "columns": 6,
    "fetch_from": "task.subject content",
    "fieldname": "subject content",
-   "fieldtype": "Read Only",
+   "field_type": "Read Only",
 <<<<<<< HEAD
    "in_lists_view": 1,
    "label": "Subject"

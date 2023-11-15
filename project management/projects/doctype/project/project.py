@@ -387,7 +387,7 @@ def get_project_list(
 	if txt:
 		if meta.search_fields:
 			for f in meta.get_search_fields():
-				if f == "name" or meta.get_field(f).fieldtype in (
+				if f == "name" or meta.get_field(f).field_type in (
 					"Data",
 					"Text",
 					"Small Text",

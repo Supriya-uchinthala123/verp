@@ -230,7 +230,7 @@ class ServiceLevelAgreement(documents):
 						"parent": self.documents_type,
 						"label": field.get("label"),
 						"fieldname": field.get("fieldname"),
-						"fieldtype": field.get("fieldtype"),
+						"field_type": field.get("field_type"),
 						"collapsible": field.get("collapsible"),
 						"option": field.get("option"),
 						"read_only": field.get("read_only"),
@@ -255,7 +255,7 @@ class ServiceLevelAgreement(documents):
 						"dt": self.documents_type,
 						"label": field.get("label"),
 						"fieldname": field.get("fieldname"),
-						"fieldtype": field.get("fieldtype"),
+						"field_type": field.get("field_type"),
 						"insert_after": "append",
 						"collapsible": field.get("collapsible"),
 						"option": field.get("option"),
@@ -273,7 +273,7 @@ class ServiceLevelAgreement(documents):
 		field = frappe.get_doc(field_dt, {"fieldname": field.fieldname})
 		field.label = sla_field.get("label")
 		field.fieldname = sla_field.get("fieldname")
-		field.fieldtype = sla_field.get("fieldtype")
+		field.field_type = sla_field.get("field_type")
 		field.collapsible = sla_field.get("collapsible")
 		field.hidden = sla_field.get("hidden")
 		field.option = sla_field.get("option")
@@ -868,55 +868,55 @@ def get_service_level_agreement_fields():
 		{
 			"collapsible": 1,
 			"fieldname": "service_level_section",
-			"fieldtype": "Section Break",
+			"field_type": "Section Break",
 			"label": "Service Level",
 		},
 		{
 			"fieldname": "service_level_agreement",
-			"fieldtype": "Link",
+			"field_type": "Link",
 			"label": "Service Level Agreement",
 			"option": "Service Level Agreement",
 		},
-		{"fieldname": "priority", "fieldtype": "Link", "label": "Priority", "option": "Issue Priority"},
-		{"fieldname": "response_by", "fieldtype": "Datetime", "label": "Response By", "read_only": 1},
+		{"fieldname": "priority", "field_type": "Link", "label": "Priority", "option": "Issue Priority"},
+		{"fieldname": "response_by", "field_type": "Datetime", "label": "Response By", "read_only": 1},
 		{
 			"fieldname": "first_responded_on",
-			"fieldtype": "Datetime",
+			"field_type": "Datetime",
 			"label": "First Responded On",
 			"no_copy": 1,
 			"read_only": 1,
 		},
 		{
 			"fieldname": "on_hold_since",
-			"fieldtype": "Datetime",
+			"field_type": "Datetime",
 			"hidden": 1,
 			"label": "On Hold Since",
 			"read_only": 1,
 		},
 		{
 			"fieldname": "total_hold_time",
-			"fieldtype": "Duration",
+			"field_type": "Duration",
 			"label": "Total Hold Time",
 			"read_only": 1,
 		},
-		{"fieldname": "cb", "fieldtype": "Column Break", "read_only": 1},
+		{"fieldname": "cb", "field_type": "Column Break", "read_only": 1},
 		{
 			"default": "First Response Due",
 			"fieldname": "agreement_status",
-			"fieldtype": "Select",
+			"field_type": "Select",
 			"label": "Service Level Agreement Status",
 			"option": "First Response Due\nResolution Due\nFulfilled\nFailed",
 			"read_only": 1,
 		},
 		{
 			"fieldname": "resolution_by",
-			"fieldtype": "Datetime",
+			"field_type": "Datetime",
 			"label": "Resolution By",
 			"read_only": 1,
 		},
 		{
 			"fieldname": "service_level_agreement_creation",
-			"fieldtype": "Datetime",
+			"field_type": "Datetime",
 			"hidden": 1,
 			"label": "Service Level Agreement Creation",
 			"read_only": 1,
@@ -924,7 +924,7 @@ def get_service_level_agreement_fields():
 		{
 			"depends_on": "eval:!doc.__islocal",
 			"fieldname": "resolution_date",
-			"fieldtype": "Datetime",
+			"field_type": "Datetime",
 			"label": "Resolution Date",
 			"no_copy": 1,
 			"read_only": 1,

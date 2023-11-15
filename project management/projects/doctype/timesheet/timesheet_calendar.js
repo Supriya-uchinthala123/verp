@@ -16,13 +16,13 @@ frappe.views.calendar["timesheets"] = {
 	gantt: true,
 	filters: [
 		{
-			"fieldtype": "Link",
+			"field_type": "Link",
 			"fieldname": "project",
 			"option": "project",
 			"label": __("project")
 		},
 		{
-			"fieldtype": "Link",
+			"field_type": "Link",
 			"fieldname": "employee",
 			"option": "Employee",
 			"label": __("Employee")

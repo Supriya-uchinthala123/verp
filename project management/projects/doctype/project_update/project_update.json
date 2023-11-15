@@ -19,14 +19,14 @@
  "fields": [
   {
    "fieldname": "naming_series",
-   "fieldtype": "Data",
+   "field_type": "Data",
    "hidden": 1,
    "label": "Series",
    "option": "project-UPD-.YYYY.-"
   },
   {
    "fieldname": "project",
-   "fieldtype": "Link",
+   "field_type": "Link",
 <<<<<<< HEAD
    "in_lists_view": 1,
 =======
@@ -39,40 +39,40 @@
   {
    "default": "0",
    "fieldname": "sent",
-   "fieldtype": "Check",
+   "field_type": "Check",
    "label": "Sent",
    "read_only": 1
   },
   {
    "fieldname": "column_break_2",
-   "fieldtype": "Column Break"
+   "field_type": "Column Break"
   },
   {
    "fieldname": "date",
-   "fieldtype": "Date",
+   "field_type": "Date",
    "label": "Date",
    "read_only": 1,
    "search_index": 1
   },
   {
    "fieldname": "time",
-   "fieldtype": "Time",
+   "field_type": "Time",
    "label": "Time",
    "read_only": 1
   },
   {
    "fieldname": "section_break_5",
-   "fieldtype": "Section Break"
+   "field_type": "Section Break"
   },
   {
    "fieldname": "users",
-   "fieldtype": "Table",
+   "field_type": "Table",
    "label": "Users",
    "option": "project User"
   },
   {
    "fieldname": "amended_from",
-   "fieldtype": "Link",
+   "field_type": "Link",
    "label": "Amended From",
    "no_copy": 1,
    "option": "project Update",

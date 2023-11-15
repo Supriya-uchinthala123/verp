@@ -39,7 +39,7 @@ frappe.ui.form.on("Issue", {
 			title: __("Reset Service Level Agreement"),
 			fields: [
 				{
-					fieldtype: "Data",
+					field_type: "Data",
 					fieldname: "reason",
 					label: __("Reason"),
 					reqd: 1
@@ -89,7 +89,7 @@ frappe.ui.form.on("Issue", {
 						fields: [
 							{
 								fieldname: "subject",
-								fieldtype: "Data",
+								field_type: "Data",
 								reqd: 1,
 								label: __("Subject"),
 								description: __("All communicates including and above this shall be moved into the new Issue")

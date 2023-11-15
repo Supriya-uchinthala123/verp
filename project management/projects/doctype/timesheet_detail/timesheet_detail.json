@@ -38,7 +38,7 @@
  "fields": [
   {
    "fieldname": "activity",
-   "fieldtype": "Link",
+   "field_type": "Link",
    "in_lists_view": 1,
    "label": "Activity Type",
    "option": "Activity Type"
@@ -46,45 +46,45 @@
   {
    "columns": 2,
    "fieldname": "from_time",
-   "fieldtype": "Datetime",
+   "field_type": "Datetime",
    "in_lists_view": 1,
    "label": "From Time"
   },
   {
    "fieldname": "section_break_3",
-   "fieldtype": "Column Break"
+   "field_type": "Column Break"
   },
   {
    "fieldname": "expected_hours",
-   "fieldtype": "Float",
+   "field_type": "Float",
    "label": "Expected Hrs"
   },
   {
    "columns": 1,
    "fieldname": "hours",
-   "fieldtype": "Float",
+   "field_type": "Float",
    "in_lists_view": 1,
    "label": "Hrs"
   },
   {
    "fieldname": "to_time",
-   "fieldtype": "Datetime",
+   "field_type": "Datetime",
    "label": "To Time"
   },
   {
    "default": "0",
    "fieldname": "completed",
-   "fieldtype": "Check",
+   "field_type": "Check",
    "label": "Completed"
   },
   {
    "fieldname": "project_details",
-   "fieldtype": "Section Break"
+   "field_type": "Section Break"
   },
   {
    "columns": 3,
    "fieldname": "project",
-   "fieldtype": "Link",
+   "field_type": "Link",
 <<<<<<< HEAD
    "in_lists_view": 1,
 =======
@@ -96,39 +96,39 @@
   },
   {
    "fieldname": "column_break_2",
-   "fieldtype": "Column Break"
+   "field_type": "Column Break"
   },
   {
    "fieldname": "task",
-   "fieldtype": "Link",
+   "field_type": "Link",
    "label": "Task",
    "option": "Task",
    "remember_last_selected_value": 1
   },
   {
    "fieldname": "section_break_6",
-   "fieldtype": "Section Break"
+   "field_type": "Section Break"
   },
   {
    "fieldname": "column_break_8",
-   "fieldtype": "Column Break"
+   "field_type": "Column Break"
   },
   {
    "allow_on_submit": 1,
    "depends_on": "is_billable",
    "fieldname": "billing_hours",
-   "fieldtype": "Float",
+   "field_type": "Float",
    "label": "billHours",
    "permlevel": 1
   },
   {
    "depends_on": "is_billable",
    "fieldname": "section_break_11",
-   "fieldtype": "Section Break"
+   "field_type": "Section Break"
   },
   {
    "fieldname": "billing_rate",
-   "fieldtype": "Currency",
+   "field_type": "Currency",
    "label": "billRate",
    "option": "currency",
    "permlevel": 1
@@ -137,7 +137,7 @@
    "allow_on_submit": 1,
    "default": "0",
    "fieldname": "billing_amount",
-   "fieldtype": "Currency",
+   "field_type": "Currency",
    "label": "billAmount",
    "option": "currency",
    "permlevel": 1,
@@ -145,11 +145,11 @@
   },
   {
    "fieldname": "column_break_14",
-   "fieldtype": "Column Break"
+   "field_type": "Column Break"
   },
   {
    "fieldname": "costing_rate",
-   "fieldtype": "Currency",
+   "field_type": "Currency",
    "label": "Costing Rate",
    "option": "currency",
    "permlevel": 1
@@ -158,7 +158,7 @@
    "allow_on_submit": 1,
    "default": "0",
    "fieldname": "costing_amount",
-   "fieldtype": "Currency",
+   "field_type": "Currency",
    "label": "Costing Amount",
    "option": "currency",
    "permlevel": 1,
@@ -167,7 +167,7 @@
   {
    "allow_on_submit": 1,
    "fieldname": "sales_invoice",
-   "fieldtype": "Link",
+   "field_type": "Link",
    "label": "Sales Invoice",
    "no_copy": 1,
    "option": "Sales Invoice",
@@ -179,7 +179,7 @@
    "columns": 1,
    "default": "0",
    "fieldname": "is_billable",
-   "fieldtype": "Check",
+   "field_type": "Check",
    "in_lists_view": 1,
    "label": "Is Billable",
    "print_hide": 1
@@ -187,39 +187,39 @@
   {
    "fetch_from": "project.project_name",
    "fieldname": "project_name",
-   "fieldtype": "Data",
+   "field_type": "Data",
    "label": "project Name",
    "read_only": 1
   },
   {
    "fieldname": "des",
-   "fieldtype": "Small Text",
+   "field_type": "Small Text",
    "label": "des"
   },
   {
    "fieldname": "base_billing_rate",
-   "fieldtype": "Currency",
+   "field_type": "Currency",
    "label": "billRate",
    "print_hide": 1,
    "read_only": 1
   },
   {
    "fieldname": "base_billing_amount",
-   "fieldtype": "Currency",
+   "field_type": "Currency",
    "label": "billAmount",
    "print_hide": 1,
    "read_only": 1
   },
   {
    "fieldname": "base_costing_rate",
-   "fieldtype": "Currency",
+   "field_type": "Currency",
    "label": "Costing Rate",
    "print_hide": 1,
    "read_only": 1
   },
   {
    "fieldname": "base_costing_amount",
-   "fieldtype": "Currency",
+   "field_type": "Currency",
    "label": "Costing Amount",
    "print_hide": 1,
    "read_only": 1

@@ -18,20 +18,20 @@
  "fields": [
   {
    "fieldname": "task",
-   "fieldtype": "Link",
+   "field_type": "Link",
    "in_lists_view": 1,
    "label": "Task",
    "option": "Task"
   },
   {
    "fieldname": "column_break_2",
-   "fieldtype": "Column Break"
+   "field_type": "Column Break"
   },
   {
    "fetch_from": "task.subject content",
    "fetch_if_empty": 1,
    "fieldname": "subject content",
-   "fieldtype": "Text",
+   "field_type": "Text",
 <<<<<<< HEAD
    "in_lists_view": 1,
    "label": "Subject",
@@ -43,7 +43,7 @@
   },
   {
    "fieldname": "project",
-   "fieldtype": "Text",
+   "field_type": "Text",
    "label": "project",
    "read_only": 1
   }

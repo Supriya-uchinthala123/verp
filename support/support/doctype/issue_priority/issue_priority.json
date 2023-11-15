@@ -9,7 +9,7 @@
  "fields": [
   {
    "fieldname": "description",
-   "fieldtype": "Small Text",
+   "field_type": "Small Text",
    "label": "Description"
   }
  ],

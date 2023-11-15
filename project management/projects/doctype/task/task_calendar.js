@@ -13,7 +13,7 @@ frappe.views.calendar["Task"] = {
 	gantt: true,
 	filters: [
 		{
-			"fieldtype": "Link",
+			"field_type": "Link",
 			"fieldname": "project",
 			"option": "project",
 			"label": __("project")

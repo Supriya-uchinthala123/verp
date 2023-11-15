@@ -179,7 +179,7 @@ frappe.ui.form.on("timesheets", {
 
 	make_invoice: function(frm) {
 		let fields = [{
-			"fieldtype": "Link",
+			"field_type": "Link",
 			"label": __("Item Code"),
 			"fieldname": "item_code",
 			"option": "Item"
@@ -187,7 +187,7 @@ frappe.ui.form.on("timesheets", {
 
 		if (!frm.doc.customer) {
 			fields.push({
-				"fieldtype": "Link",
+				"field_type": "Link",
 				"label": __("Customer"),
 				"fieldname": "customer",
 				"option": "Customer",

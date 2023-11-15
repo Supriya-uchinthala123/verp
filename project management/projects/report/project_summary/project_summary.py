@@ -44,34 +44,34 @@ def get_columns():
 		{
 			"fieldname": "name",
 			"label": _("project"),
-			"fieldtype": "Link",
+			"field_type": "Link",
 			"option": "project",
 			"width": 200,
 		},
 		{
 			"fieldname": "project_type",
 			"label": _("Type"),
-			"fieldtype": "Link",
+			"field_type": "Link",
 			"option": "project Type",
 			"width": 120,
 		},
-		{"fieldname": "status", "label": _("Status"), "fieldtype": "Data", "width": 120},
-		{"fieldname": "total_tasks", "label": _("Total Tasks"), "fieldtype": "Data", "width": 120},
+		{"fieldname": "status", "label": _("Status"), "field_type": "Data", "width": 120},
+		{"fieldname": "total_tasks", "label": _("Total Tasks"), "field_type": "Data", "width": 120},
 		{
 			"fieldname": "completed_tasks",
 			"label": _("Tasks Completed"),
-			"fieldtype": "Data",
+			"field_type": "Data",
 			"width": 120,
 		},
-		{"fieldname": "overdue_tasks", "label": _("Tasks Overdue"), "fieldtype": "Data", "width": 120},
-		{"fieldname": "percent_complete", "label": _("Completion"), "fieldtype": "Data", "width": 120},
+		{"fieldname": "overdue_tasks", "label": _("Tasks Overdue"), "field_type": "Data", "width": 120},
+		{"fieldname": "percent_complete", "label": _("Completion"), "field_type": "Data", "width": 120},
 		{
 			"fieldname": "expected_begin_date",
 			"label": _("begin Date"),
-			"fieldtype": "Date",
+			"field_type": "Date",
 			"width": 120,
 		},
-		{"fieldname": "expected_end_date", "label": _("End Date"), "fieldtype": "Date", "width": 120},
+		{"fieldname": "expected_end_date", "label": _("End Date"), "field_type": "Date", "width": 120},
 	]
 
 

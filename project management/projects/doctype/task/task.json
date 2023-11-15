@@ -63,7 +63,7 @@
  "fields": [
   {
    "fieldname": "subject content",
-   "fieldtype": "Data",
+   "field_type": "Data",
    "in_global_search": 1,
    "in_standard_filter": 1,
    "label": "subject content",
@@ -73,26 +73,26 @@
   {
    "bold": 1,
    "fieldname": "project",
-   "fieldtype": "Link",
+   "field_type": "Link",
    "in_global_search": 1,
    "in_lists_view": 1,
    "in_standard_filter": 1,
    "label": "project",
    "oldfieldname": "project",
-   "oldfieldtype": "Link",
+   "oldfield_type": "Link",
    "option": "project",
    "remember_last_selected_value": 1,
    "search_index": 1
   },
   {
    "fieldname": "issue",
-   "fieldtype": "Link",
+   "field_type": "Link",
    "label": "Issue",
    "option": "Issue"
   },
   {
    "fieldname": "type",
-   "fieldtype": "Link",
+   "field_type": "Link",
    "label": "Type",
    "option": "Task Type"
   },
@@ -100,49 +100,49 @@
    "bold": 1,
    "default": "0",
    "fieldname": "is_group",
-   "fieldtype": "Check",
+   "field_type": "Check",
    "in_lists_view": 1,
    "label": "Is Group"
   },
   {
    "fieldname": "column_break0",
-   "fieldtype": "Column Break",
-   "oldfieldtype": "Column Break",
+   "field_type": "Column Break",
+   "oldfield_type": "Column Break",
    "print_width": "50%",
    "width": "50%"
   },
   {
    "bold": 1,
    "fieldname": "status",
-   "fieldtype": "Select",
+   "field_type": "Select",
    "in_lists_view": 1,
    "in_standard_filter": 1,
    "label": "Status",
    "no_copy": 1,
    "oldfieldname": "status",
-   "oldfieldtype": "Select",
+   "oldfield_type": "Select",
    "option": "Open\nWorking\nPending Review\nOverdue\nTemp\nCompleted\ncancel"
   },
   {
    "fieldname": "priority",
-   "fieldtype": "Select",
+   "field_type": "Select",
    "in_lists_view": 1,
    "in_standard_filter": 1,
    "label": "Priority",
    "oldfieldname": "priority",
-   "oldfieldtype": "Select",
+   "oldfield_type": "Select",
    "option": "Low\nMedium\nHigh\nUrgent",
    "search_index": 1
   },
   {
    "fieldname": "color",
-   "fieldtype": "Color",
+   "field_type": "Color",
    "label": "Color"
   },
   {
    "bold": 1,
    "fieldname": "parent_task",
-   "fieldtype": "Link",
+   "field_type": "Link",
    "ignore_user_permissions": 1,
    "label": "Parent Task",
    "option": "Task",
@@ -152,205 +152,205 @@
    "collapsible": 1,
    "collapsible_depends_on": "eval:doc.__islocal",
    "fieldname": "sb_timeline",
-   "fieldtype": "Section Break",
+   "field_type": "Section Break",
    "label": "Timeline"
   },
   {
    "fieldname": "exp_begin_date",
-   "fieldtype": "Date",
+   "field_type": "Date",
    "label": "Expected begin Date",
    "oldfieldname": "exp_begin_date",
-   "oldfieldtype": "Date"
+   "oldfield_type": "Date"
   },
   {
    "default": "0",
    "fieldname": "expected_time",
-   "fieldtype": "Float",
+   "field_type": "Float",
    "label": "Expected Time (in hours)",
    "oldfieldname": "exp_total_hrs",
-   "oldfieldtype": "Data"
+   "oldfield_type": "Data"
   },
   {
    "fetch_from": "type.weight",
    "fieldname": "task_weight",
-   "fieldtype": "Float",
+   "field_type": "Float",
    "label": "Weight"
   },
   {
    "fieldname": "column_break_11",
-   "fieldtype": "Column Break"
+   "field_type": "Column Break"
   },
   {
    "bold": 1,
    "fieldname": "exp_end_date",
-   "fieldtype": "Date",
+   "field_type": "Date",
    "label": "Expected End Date",
    "oldfieldname": "exp_end_date",
-   "oldfieldtype": "Date",
+   "oldfield_type": "Date",
    "search_index": 1
   },
   {
    "fieldname": "progress",
-   "fieldtype": "Percent",
+   "field_type": "Percent",
    "label": "% Progress",
    "no_copy": 1
   },
   {
    "default": "0",
    "fieldname": "is_milestone",
-   "fieldtype": "Check",
+   "field_type": "Check",
    "in_lists_view": 1,
    "label": "Is Milestone"
   },
   {
    "fieldname": "sb_details",
-   "fieldtype": "Section Break",
+   "field_type": "Section Break",
    "label": "Details",
-   "oldfieldtype": "Section Break"
+   "oldfield_type": "Section Break"
   },
   {
    "fieldname": "des",
-   "fieldtype": "Text Editor",
+   "field_type": "Text Editor",
    "label": "Task des",
    "oldfieldname": "des",
-   "oldfieldtype": "Text Editor",
+   "oldfield_type": "Text Editor",
    "print_width": "300px",
    "width": "300px"
   },
   {
    "fieldname": "sb_depends_on",
-   "fieldtype": "Section Break",
+   "field_type": "Section Break",
    "label": "Dependencies",
-   "oldfieldtype": "Section Break"
+   "oldfield_type": "Section Break"
   },
   {
    "fieldname": "depends_on",
-   "fieldtype": "Table",
+   "field_type": "Table",
    "label": "Dependent Tasks",
    "option": "Task Depends On"
   },
   {
    "fieldname": "depends_on_tasks",
-   "fieldtype": "Code",
+   "field_type": "Code",
    "hidden": 1,
    "label": "Depends on Tasks",
    "read_only": 1
   },
   {
    "fieldname": "sb_actual",
-   "fieldtype": "Section Break",
-   "oldfieldtype": "Column Break",
+   "field_type": "Section Break",
+   "oldfield_type": "Column Break",
    "print_width": "50%",
    "width": "50%"
   },
   {
    "fieldname": "act_begin_date",
-   "fieldtype": "Date",
+   "field_type": "Date",
    "label": "Actual begin Date (via timesheets)",
    "oldfieldname": "act_begin_date",
-   "oldfieldtype": "Date",
+   "oldfield_type": "Date",
    "read_only": 1
   },
   {
    "fieldname": "actual_time",
-   "fieldtype": "Float",
+   "field_type": "Float",
    "label": "Actual Time in Hours (via timesheets)",
    "read_only": 1
   },
   {
    "fieldname": "column_break_15",
-   "fieldtype": "Column Break"
+   "field_type": "Column Break"
   },
   {
    "fieldname": "act_end_date",
-   "fieldtype": "Date",
+   "field_type": "Date",
    "label": "Actual End Date (via timesheets)",
    "oldfieldname": "act_end_date",
-   "oldfieldtype": "Date",
+   "oldfield_type": "Date",
    "read_only": 1
   },
   {
    "collapsible": 1,
    "fieldname": "sb_costing",
-   "fieldtype": "Section Break",
+   "field_type": "Section Break",
    "label": "Costing"
   },
   {
    "fieldname": "total_costing_amount",
-   "fieldtype": "Currency",
+   "field_type": "Currency",
    "label": "Total Costing Amount (via timesheets)",
    "oldfieldname": "actual_budget",
-   "oldfieldtype": "Currency",
+   "oldfield_type": "Currency",
    "option": "Company:company:default_currency",
    "read_only": 1
   },
   {
    "fieldname": "column_break_20",
-   "fieldtype": "Column Break"
+   "field_type": "Column Break"
   },
   {
    "fieldname": "total_billing_amount",
-   "fieldtype": "Currency",
+   "field_type": "Currency",
    "label": "Total Billable Amount (via timesheets)",
    "read_only": 1
   },
   {
    "collapsible": 1,
    "fieldname": "sb_more_info",
-   "fieldtype": "Section Break",
+   "field_type": "Section Break",
    "label": "More Info"
   },
   {
    "depends_on": "eval:doc.status == \"Closed\" || doc.status == \"Pending Review\"",
    "fieldname": "review_date",
-   "fieldtype": "Date",
+   "field_type": "Date",
    "label": "Review Date",
    "oldfieldname": "review_date",
-   "oldfieldtype": "Date"
+   "oldfield_type": "Date"
   },
   {
    "depends_on": "eval:doc.status == \"Closed\"",
    "fieldname": "closing_date",
-   "fieldtype": "Date",
+   "field_type": "Date",
    "label": "Closing Date",
    "oldfieldname": "closing_date",
-   "oldfieldtype": "Date"
+   "oldfield_type": "Date"
   },
   {
    "fieldname": "column_break_22",
-   "fieldtype": "Column Break"
+   "field_type": "Column Break"
   },
   {
    "fieldname": "department",
-   "fieldtype": "Link",
+   "field_type": "Link",
    "label": "Department",
    "option": "Department"
   },
   {
    "fetch_from": "project.company",
    "fieldname": "company",
-   "fieldtype": "Link",
+   "field_type": "Link",
    "label": "Company",
    "option": "Company",
    "remember_last_selected_value": 1
   },
   {
    "fieldname": "lft",
-   "fieldtype": "Int",
+   "field_type": "Int",
    "hidden": 1,
    "label": "lft",
    "read_only": 1
   },
   {
    "fieldname": "rgt",
-   "fieldtype": "Int",
+   "field_type": "Int",
    "hidden": 1,
    "label": "rgt",
    "read_only": 1
   },
   {
    "fieldname": "old_parent",
-   "fieldtype": "Data",
+   "field_type": "Data",
    "hidden": 1,
    "ignore_user_permissions": 1,
    "label": "Old Parent",
@@ -359,7 +359,7 @@
   {
    "depends_on": "eval: doc.status == \"Completed\"",
    "fieldname": "completed_by",
-   "fieldtype": "Link",
+   "field_type": "Link",
    "label": "Completed By",
    "no_copy": 1,
    "option": "User"
@@ -367,31 +367,31 @@
   {
    "default": "0",
    "fieldname": "is_Temp",
-   "fieldtype": "Check",
+   "field_type": "Check",
    "label": "Is Temp"
   },
   {
    "depends_on": "is_Temp",
    "fieldname": "begin",
-   "fieldtype": "Int",
+   "field_type": "Int",
    "label": "Begin On (Days)"
   },
   {
    "depends_on": "is_Temp",
    "fieldname": "duration",
-   "fieldtype": "Int",
+   "field_type": "Int",
    "label": "Duration (Days)"
   },
   {
    "depends_on": "eval: doc.status == \"Completed\"",
    "fieldname": "completed_on",
-   "fieldtype": "Date",
+   "field_type": "Date",
    "label": "Completed On",
    "mandatory_depends_on": "eval: doc.status == \"Completed\""
   },
   {
    "fieldname": "Temp_task",
-   "fieldtype": "Data",
+   "field_type": "Data",
    "hidden": 1,
    "label": "Temp Task"
   }

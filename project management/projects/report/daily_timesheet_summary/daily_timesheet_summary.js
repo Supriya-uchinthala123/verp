@@ -6,13 +6,13 @@ frappe.query_reports["Daily timesheets Summary"] = {
 		{
 			"fieldname":"from_date",
 			"label": __("From Date"),
-			"fieldtype": "Date",
+			"field_type": "Date",
 			"default": frappe.datetime.get_today()
 		},
 		{
 			"fieldname":"to_date",
 			"label": __("To Date"),
-			"fieldtype": "Date",
+			"field_type": "Date",
 			"default": frappe.datetime.get_today()
 		},
 	]

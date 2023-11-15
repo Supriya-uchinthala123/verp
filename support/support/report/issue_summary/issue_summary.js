@@ -7,7 +7,7 @@ frappe.query_reports["Issue Summary"] = {
 		{
 			fieldname: "company",
 			label: __("Company"),
-			fieldtype: "Link",
+			field_type: "Link",
 			option: "Company",
 			default: frappe.defaults.get_user_default("Company"),
 			reqd: 1
@@ -15,7 +15,7 @@ frappe.query_reports["Issue Summary"] = {
 		{
 			fieldname: "based_on",
 			label: __("Based On"),
-			fieldtype: "Select",
+			field_type: "Select",
 			option: ["Customer", "Issue Type", "Issue Priority", "Assigned To"],
 			default: "Customer",
 			reqd: 1
@@ -23,21 +23,21 @@ frappe.query_reports["Issue Summary"] = {
 		{
 			fieldname: "from_date",
 			label: __("From Date"),
-			fieldtype: "Date",
+			field_type: "Date",
 			default: frappe.defaults.get_global_default("year_start_date"),
 			reqd: 1
 		},
 		{
 			fieldname:"to_date",
 			label: __("To Date"),
-			fieldtype: "Date",
+			field_type: "Date",
 			default: frappe.defaults.get_global_default("year_end_date"),
 			reqd: 1
 		},
 		{
 			fieldname: "status",
 			label: __("Status"),
-			fieldtype: "Select",
+			field_type: "Select",
 			option:[
 				"",
 				{label: __('Open'), value: 'Open'},
@@ -50,25 +50,25 @@ frappe.query_reports["Issue Summary"] = {
 		{
 			fieldname: "priority",
 			label: __("Issue Priority"),
-			fieldtype: "Link",
+			field_type: "Link",
 			option: "Issue Priority"
 		},
 		{
 			fieldname: "customer",
 			label: __("Customer"),
-			fieldtype: "Link",
+			field_type: "Link",
 			option: "Customer"
 		},
 		{
 			fieldname: "projectect",
 			label: __("projectect"),
-			fieldtype: "Link",
+			field_type: "Link",
 			option: "projectect"
 		},
 		{
 			fieldname: "assigned_to",
 			label: __("Assigned To"),
-			fieldtype: "Link",
+			field_type: "Link",
 			option: "User"
 		}
 	]

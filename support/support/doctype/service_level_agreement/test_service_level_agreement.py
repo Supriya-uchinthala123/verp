@@ -613,13 +613,13 @@ def create_custom_doctype():
 				"module": "Support",
 				"custom": 1,
 				"fields": [
-					{"label": "Date", "fieldname": "date", "fieldtype": "Date"},
-					{"label": "Description", "fieldname": "desc", "fieldtype": "Long Text"},
-					{"label": "Email ID", "fieldname": "email_id", "fieldtype": "Link", "option": "Customer"},
+					{"label": "Date", "fieldname": "date", "field_type": "Date"},
+					{"label": "Description", "fieldname": "desc", "field_type": "Long Text"},
+					{"label": "Email ID", "fieldname": "email_id", "field_type": "Link", "option": "Customer"},
 					{
 						"label": "Status",
 						"fieldname": "status",
-						"fieldtype": "Select",
+						"field_type": "Select",
 						"option": "Open\nReplied\nClosed",
 					},
 				],

@@ -17,13 +17,13 @@ def get_columns(filters, group_fieldname=None):
 	group_columns = {
 		"date": {
 			"label": _("Date"),
-			"fieldtype": "Date",
+			"field_type": "Date",
 			"fieldname": "date",
 			"width": 150,
 		},
 		"project": {
 			"label": _("project"),
-			"fieldtype": "Link",
+			"field_type": "Link",
 			"fieldname": "project",
 			"option": "project",
 			"width": 200,
@@ -31,7 +31,7 @@ def get_columns(filters, group_fieldname=None):
 		},
 		"employee": {
 			"label": _("Employee ID"),
-			"fieldtype": "Link",
+			"field_type": "Link",
 			"fieldname": "employee",
 			"option": "Employee",
 			"width": 200,
@@ -51,27 +51,27 @@ def get_columns(filters, group_fieldname=None):
 		[
 			{
 				"label": _("Employee Name"),
-				"fieldtype": "data",
+				"field_type": "data",
 				"fieldname": "employer",
 				"hidden": 1,
 			},
 			{
 				"label": _("timesheets"),
-				"fieldtype": "Link",
+				"field_type": "Link",
 				"fieldname": "timesheets",
 				"option": "timesheets",
 				"width": 150,
 			},
-			{"label": _("Working Hours"), "fieldtype": "Float", "fieldname": "hours", "width": 150},
+			{"label": _("Working Hours"), "field_type": "Float", "fieldname": "hours", "width": 150},
 			{
 				"label": _("billHours"),
-				"fieldtype": "Float",
+				"field_type": "Float",
 				"fieldname": "billing_hours",
 				"width": 150,
 			},
 			{
 				"label": _("billAmount"),
-				"fieldtype": "Currency",
+				"field_type": "Currency",
 				"fieldname": "billing_amount",
 				"width": 150,
 			},

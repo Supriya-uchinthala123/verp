@@ -11,12 +11,12 @@
  "fields": [
   {
    "fieldname": "weight",
-   "fieldtype": "Float",
+   "field_type": "Float",
    "label": "Weight"
   },
   {
    "fieldname": "des",
-   "fieldtype": "Small Text",
+   "field_type": "Small Text",
    "label": "des"
   }
  ],

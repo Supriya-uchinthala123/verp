@@ -8,10 +8,10 @@ from frappe import _
 
 def execute(filters=None):
 	columns = [
-		{"fieldname": "creation_date", "label": _("Date"), "fieldtype": "Date", "width": 300},
+		{"fieldname": "creation_date", "label": _("Date"), "field_type": "Date", "width": 300},
 		{
 			"fieldname": "first_response_time",
-			"fieldtype": "Duration",
+			"field_type": "Duration",
 			"label": _("First Response Time"),
 			"width": 300,
 		},

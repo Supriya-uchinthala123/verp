@@ -37,14 +37,14 @@ class IssueAnalytics(object):
 					"label": _("Customer"),
 					"option": "Customer",
 					"fieldname": "customer",
-					"fieldtype": "Link",
+					"field_type": "Link",
 					"width": 200,
 				}
 			)
 
 		elif self.filters.based_on == "Assigned To":
 			self.columns.append(
-				{"label": _("User"), "fieldname": "user", "fieldtype": "Link", "option": "User", "width": 200}
+				{"label": _("User"), "fieldname": "user", "field_type": "Link", "option": "User", "width": 200}
 			)
 
 		elif self.filters.based_on == "Issue Type":
@@ -52,7 +52,7 @@ class IssueAnalytics(object):
 				{
 					"label": _("Issue Type"),
 					"fieldname": "issue_type",
-					"fieldtype": "Link",
+					"field_type": "Link",
 					"option": "Issue Type",
 					"width": 200,
 				}
@@ -63,7 +63,7 @@ class IssueAnalytics(object):
 				{
 					"label": _("Issue Priority"),
 					"fieldname": "priority",
-					"fieldtype": "Link",
+					"field_type": "Link",
 					"option": "Issue Priority",
 					"width": 200,
 				}
@@ -72,11 +72,11 @@ class IssueAnalytics(object):
 		for end_date in self.periodic_daterange:
 			period = self.get_period(end_date)
 			self.columns.append(
-				{"label": _(period), "fieldname": scrub(period), "fieldtype": "Int", "width": 120}
+				{"label": _(period), "fieldname": scrub(period), "field_type": "Int", "width": 120}
 			)
 
 		self.columns.append(
-			{"label": _("Total"), "fieldname": "total", "fieldtype": "Int", "width": 120}
+			{"label": _("Total"), "fieldname": "total", "field_type": "Int", "width": 120}
 		)
 
 	def get_data(self):

@@ -1,9 +1,9 @@
 // Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 // License: GNU General Public License v3. See license.txt
 
-frappe.ui.form.on("Timesheet", {
+frappe.ui.form.on("timesheets", {
 	setup: function(frm) {
-		frappe.require("/assets/erpnext/js/project/timer.js");
+		frappe.require("/assets/erpnext/js/proj/timer.js");
 
 		frm.ignore_document types_on_cancel_all = ['Sales Invoice'];
 
@@ -19,13 +19,13 @@ frappe.ui.form.on("Timesheet", {
 			var child = locals[cdt][cdn];
 			return{
 				filters: {
-					'project': child.project,
+					'proj': child.proj,
 					'status': ["!=", "Cancelled"]
 				}
 			};
 		};
 
-		frm.fields_dict['time_logs'].grid.get_field('project').get_query = function() {
+		frm.fields_dict['time_logs'].grid.get_field('proj').get_query = function() {
 			return{
 				filters: {
 					'company': frm.doc.company
@@ -71,7 +71,7 @@ frappe.ui.form.on("Timesheet", {
 				$.each(frm.doc.time_logs || [], function(i, row) {
 					// Fetch the row for which from_time is not present
 					if (flag && row.activity && !row.from_time){
-						erpnext.timesheet.timer(frm, row);
+						erpnext.timesheets.timer(frm, row);
 						row.from_time = frappe.datetime.now_datetime();
 						frm.refresh_fields("time_logs");
 						frm.save();
@@ -80,13 +80,13 @@ frappe.ui.form.on("Timesheet", {
 					// Fetch the row for timer where activity is not completed and from_time is before now_time
 					if (flag && row.from_time <= frappe.datetime.now_datetime() && !row.completed) {
 						let timestamp = moment(frappe.datetime.now_datetime()).diff(moment(row.from_time),"seconds");
-						erpnext.timesheet.timer(frm, row, timestamp);
+						erpnext.timesheets.timer(frm, row, timestamp);
 						flag = false;
 					}
 				});
 				// If no activities found to start a timer, create new
 				if (flag) {
-					erpnext.timesheet.timer(frm);
+					erpnext.timesheets.timer(frm);
 				}
 			}).addClass("btn-primary");
 		}
@@ -103,7 +103,7 @@ frappe.ui.form.on("Timesheet", {
 			filters["customer"] = frm.doc.customer;
 		}
 
-		frm.set_query('parent_project', function(doc) {
+		frm.set_query('parent_proj', function(doc) {
 			return {
 				filters: filters
 			};
@@ -114,7 +114,7 @@ frappe.ui.form.on("Timesheet", {
 	},
 
 	customer: function(frm) {
-		frm.set_query('project', 'time_logs', function(doc) {
+		frm.set_query('proj', 'time_logs', function(doc) {
 			return {
 				filters: {
 					"customer": doc.customer
@@ -202,10 +202,14 @@ frappe.ui.form.on("Timesheet", {
 			return frappe.call({
 				type: "GET",
 <<<<<<< HEAD
-				method: "erpnext.projects.document type.timesheet.timesheet.make_sales_invoice",
+<<<<<<< HEAD
+				method: "erpnext.projects.document type.timesheets.timesheets.make_sales_invoice",
 =======
-				method: "erpnext.project.doctype.timesheet.timesheet.make_sales_invoice",
+				method: "erpnext.project.doctype.timesheets.timesheets.make_sales_invoice",
 >>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
+=======
+				method: "erpnext.proj.doctype.timesheets.timesheets.make_sales_invoice",
+>>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
 				args: {
 					"source_name": frm.doc.name,
 					"item_code": args.item_code,
@@ -224,12 +228,12 @@ frappe.ui.form.on("Timesheet", {
 		dialog.show();
 	},
 
-	parent_project: function(frm) {
-		set_project_in_timelog(frm);
+	parent_proj: function(frm) {
+		set_proj_in_timelog(frm);
 	}
 });
 
-frappe.ui.form.on("Timesheet Detail", {
+frappe.ui.form.on("timesheets Detail", {
 	time_logs_remove: function(frm) {
 		calculate_time_and_amount(frm);
 	},
@@ -237,8 +241,8 @@ frappe.ui.form.on("Timesheet Detail", {
 	task: (frm, cdt, cdn) => {
 		let row = frm.selected_doc;
 		if (row.task) {
-			frappe.db.get_value("Task", row.task, "project", (r) => {
-				frappe.model.set_value(cdt, cdn, "project", r.project);
+			frappe.db.get_value("Task", row.task, "proj", (r) => {
+				frappe.model.set_value(cdt, cdn, "proj", r.proj);
 			});
 		}
 	},
@@ -257,8 +261,8 @@ frappe.ui.form.on("Timesheet Detail", {
 	},
 
 	time_logs_add: function(frm, cdt, cdn) {
-		if(frm.doc.parent_project) {
-			frappe.model.set_value(cdt, cdn, 'project', frm.doc.parent_project);
+		if(frm.doc.parent_proj) {
+			frappe.model.set_value(cdt, cdn, 'proj', frm.doc.parent_proj);
 		}
 	},
 
@@ -295,10 +299,14 @@ frappe.ui.form.on("Timesheet Detail", {
 
 		frappe.call({
 <<<<<<< HEAD
-			method: "erpnext.projects.document type.timesheet.timesheet.get_activity_cost",
+<<<<<<< HEAD
+			method: "erpnext.projects.document type.timesheets.timesheets.get_activity_cost",
 =======
-			method: "erpnext.project.doctype.timesheet.timesheet.get_activity_cost",
+			method: "erpnext.project.doctype.timesheets.timesheets.get_activity_cost",
 >>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
+=======
+			method: "erpnext.proj.doctype.timesheets.timesheets.get_activity_cost",
+>>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
 			args: {
 				employee: frm.doc.employee,
 				activity: frm.selected_doc.activity,
@@ -406,10 +414,14 @@ const set_employee_and_company = function(frm) {
 	});
 };
 
-function set_project_in_timelog(frm) {
-	if(frm.doc.parent_project) {
+function set_proj_in_timelog(frm) {
+	if(frm.doc.parent_proj) {
 		$.each(frm.doc.time_logs || [], function(i, item) {
+<<<<<<< HEAD
 			frappe.model.set_value(item.document type, item.name, "project", frm.doc.parent_project);
+=======
+			frappe.model.set_value(item.doctype, item.name, "proj", frm.doc.parent_proj);
+>>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
 		});
 	}
 }

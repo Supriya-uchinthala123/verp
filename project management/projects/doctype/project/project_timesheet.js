@@ -1,5 +1,5 @@
 
-QUnit.test("test project", function(assert) {
+QUnit.test("test proj", function(assert) {
 	assert.expect(6);
 	let done = assert.async();
 	var task_title = ["Documentation","Implementation","Testing"];
@@ -9,7 +9,7 @@ QUnit.test("test project", function(assert) {
 		return frappe.run_serially([
 			() => frappe.db.get_value('Task', {'subject content': title}, 'name'),
 			(task) => {
-				// Creating timesheet for a project
+				// Creating timesheet for a proj
 				return frappe.tests.make('Timesheet', [
 					{time_logs:[
 						[
@@ -17,7 +17,7 @@ QUnit.test("test project", function(assert) {
 							{from_time: start_time},
 							{to_time: end_time},
 							{hours: 2},
-							{project: 'Test App'},
+							{proj: 'Test App'},
 							{task: task.name},
 							{billable: '1'},
 							{billing_rate: bill_rate},
@@ -54,9 +54,9 @@ QUnit.test("test project", function(assert) {
 	};
 	frappe.run_serially([
 		() => {
-			// Creating project with task
-			return frappe.tests.make('Project', [
-				{ project_name: 'Test App'},
+			// Creating proj with task
+			return frappe.tests.make('proj', [
+				{ proj_name: 'Test App'},
 				{ expected_start_date: '2017-07-22'},
 				{ expected_end_date: '2017-09-22'},
 				{ estimated_costing: '10,000.00'},

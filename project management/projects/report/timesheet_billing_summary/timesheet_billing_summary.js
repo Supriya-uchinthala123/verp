@@ -1,7 +1,7 @@
 // Copyright (c) 2023, Frappe Technologies Pvt. Ltd. and contributors
 // For license information, please see license.txt
 
-frappe.query_reports["Timesheet Billing Summary"] = {
+frappe.query_reports["Timesheet billSummary"] = {
 	tree: true,
 	initial_depth: 0,
 	filters: [
@@ -15,12 +15,12 @@ frappe.query_reports["Timesheet Billing Summary"] = {
 			},
 		},
 		{
-			fieldname: "project",
-			label: __("Project"),
+			fieldname: "proj",
+			label: __("proj"),
 			fieldtype: "Link",
-			options: "Project",
+			options: "proj",
 			on_change: function (report) {
-				unset_group_by(report, "project");
+				unset_group_by(report, "proj");
 			},
 		},
 		{
@@ -48,7 +48,7 @@ frappe.query_reports["Timesheet Billing Summary"] = {
 			options: [
 				"",
 				{ value: "employee", label: __("Employee") },
-				{ value: "project", label: __("Project") },
+				{ value: "proj", label: __("proj") },
 				{ value: "date", label: __("Start Date") },
 			],
 		},

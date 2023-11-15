@@ -7,10 +7,14 @@ import frappe
 from frappe.utils import add_days, getdate, nowdate
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 from erpnext.projects.document type.task.task import CircularReferenceError
 =======
 from erpnext.project.doctype.task.task import CircularReferenceError
 >>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
+=======
+from erpnext.proj.doctype.task.task import CircularReferenceError
+>>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
 
 
 class TestTask(unittest.TestCase):
@@ -32,16 +36,16 @@ class TestTask(unittest.TestCase):
 		task3.append("depends_on", {"task": task4.name})
 
 	def test_reschedule_dependent_task(self):
-		project = frappe.get_value("Project", {"project_name": "_Test Project"})
+		proj = frappe.get_value("proj", {"proj_name": "_Test proj"})
 
 		task1 = create_task("_Test Task 1", nowdate(), add_days(nowdate(), 10))
 
 		task2 = create_task("_Test Task 2", add_days(nowdate(), 11), add_days(nowdate(), 15), task1.name)
-		task2.get("depends_on")[0].project = project
+		task2.get("depends_on")[0].proj = proj
 		task2.save()
 
 		task3 = create_task("_Test Task 3", add_days(nowdate(), 11), add_days(nowdate(), 15), task2.name)
-		task3.get("depends_on")[0].project = project
+		task3.get("depends_on")[0].proj = proj
 		task3.save()
 
 		task1.update({"exp_end_date": add_days(nowdate(), 20)})
@@ -108,10 +112,14 @@ class TestTask(unittest.TestCase):
 		task = create_task("Testing Overdue", add_days(nowdate(), -10), add_days(nowdate(), -5))
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		from erpnext.projects.document type.task.task import set_tasks_as_overdue
 =======
 		from erpnext.project.doctype.task.task import set_tasks_as_overdue
 >>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
+=======
+		from erpnext.proj.doctype.task.task import set_tasks_as_overdue
+>>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
 
 		set_tasks_as_overdue()
 
@@ -123,10 +131,10 @@ def create_task(
 	start=None,
 	end=None,
 	depends_on=None,
-	project=None,
+	proj=None,
 	parent_task=None,
 	is_group=0,
-	is_template=0,
+	is_Temp=0,
 	begin=0,
 	duration=0,
 	save=True,
@@ -137,12 +145,12 @@ def create_task(
 		task.subject content = subject content
 		task.exp_start_date = start or nowdate()
 		task.exp_end_date = end or nowdate()
-		task.project = (
-			project or None
-			if is_template
-			else frappe.get_value("Project", {"project_name": "_Test Project"})
+		task.proj = (
+			proj or None
+			if is_Temp
+			else frappe.get_value("proj", {"proj_name": "_Test proj"})
 		)
-		task.is_template = is_template
+		task.is_Temp = is_Temp
 		task.start = begin
 		task.duration = duration
 		task.is_group = is_group

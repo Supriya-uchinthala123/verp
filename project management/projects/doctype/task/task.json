@@ -7,13 +7,18 @@
  "document_type": "Setup",
  "engine": "InnoDB",
  "field_order": [
+<<<<<<< HEAD
   "subject content",
   "project",
+=======
+  "subject",
+  "proj",
+>>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
   "issue",
   "type",
   "color",
   "is_group",
-  "is_template",
+  "is_Temp",
   "column_break0",
   "status",
   "priority",
@@ -53,7 +58,7 @@
   "lft",
   "rgt",
   "old_parent",
-  "template_task"
+  "Temp_task"
  ],
  "fields": [
   {
@@ -67,15 +72,15 @@
   },
   {
    "bold": 1,
-   "fieldname": "project",
+   "fieldname": "proj",
    "fieldtype": "Link",
    "in_global_search": 1,
    "in_list_view": 1,
    "in_standard_filter": 1,
-   "label": "Project",
-   "oldfieldname": "project",
+   "label": "proj",
+   "oldfieldname": "proj",
    "oldfieldtype": "Link",
-   "options": "Project",
+   "options": "proj",
    "remember_last_selected_value": 1,
    "search_index": 1
   },
@@ -116,7 +121,7 @@
    "no_copy": 1,
    "oldfieldname": "status",
    "oldfieldtype": "Select",
-   "options": "Open\nWorking\nPending Review\nOverdue\nTemplate\nCompleted\nCancelled"
+   "options": "Open\nWorking\nPending Review\nOverdue\nTemp\nCompleted\nCancelled"
   },
   {
    "fieldname": "priority",
@@ -241,7 +246,7 @@
   {
    "fieldname": "act_start_date",
    "fieldtype": "Date",
-   "label": "Actual Start Date (via Timesheet)",
+   "label": "Actual Start Date (via timesheets)",
    "oldfieldname": "act_start_date",
    "oldfieldtype": "Date",
    "read_only": 1
@@ -249,7 +254,7 @@
   {
    "fieldname": "actual_time",
    "fieldtype": "Float",
-   "label": "Actual Time in Hours (via Timesheet)",
+   "label": "Actual Time in Hours (via timesheets)",
    "read_only": 1
   },
   {
@@ -259,7 +264,7 @@
   {
    "fieldname": "act_end_date",
    "fieldtype": "Date",
-   "label": "Actual End Date (via Timesheet)",
+   "label": "Actual End Date (via timesheets)",
    "oldfieldname": "act_end_date",
    "oldfieldtype": "Date",
    "read_only": 1
@@ -273,7 +278,7 @@
   {
    "fieldname": "total_costing_amount",
    "fieldtype": "Currency",
-   "label": "Total Costing Amount (via Timesheet)",
+   "label": "Total Costing Amount (via timesheets)",
    "oldfieldname": "actual_budget",
    "oldfieldtype": "Currency",
    "options": "Company:company:default_currency",
@@ -286,7 +291,7 @@
   {
    "fieldname": "total_billing_amount",
    "fieldtype": "Currency",
-   "label": "Total Billable Amount (via Timesheet)",
+   "label": "Total Billable Amount (via timesheets)",
    "read_only": 1
   },
   {
@@ -322,7 +327,7 @@
    "options": "Department"
   },
   {
-   "fetch_from": "project.company",
+   "fetch_from": "proj.company",
    "fieldname": "company",
    "fieldtype": "Link",
    "label": "Company",
@@ -361,18 +366,18 @@
   },
   {
    "default": "0",
-   "fieldname": "is_template",
+   "fieldname": "is_Temp",
    "fieldtype": "Check",
-   "label": "Is Template"
+   "label": "Is Temp"
   },
   {
-   "depends_on": "is_template",
+   "depends_on": "is_Temp",
    "fieldname": "start",
    "fieldtype": "Int",
    "label": "Begin On (Days)"
   },
   {
-   "depends_on": "is_template",
+   "depends_on": "is_Temp",
    "fieldname": "duration",
    "fieldtype": "Int",
    "label": "Duration (Days)"
@@ -385,10 +390,10 @@
    "mandatory_depends_on": "eval: doc.status == \"Completed\""
   },
   {
-   "fieldname": "template_task",
+   "fieldname": "Temp_task",
    "fieldtype": "Data",
    "hidden": 1,
-   "label": "Template Task"
+   "label": "Temp Task"
   }
  ],
  "icon": "fa fa-check",
@@ -398,7 +403,7 @@
  "max_attachments": 5,
  "modify": "2023-09-28 13:52:05.861175",
  "modify_by": "Admin",
- "module": "project",
+ "module": "proj",
  "name": "Task",
  "naming_rule": "Expression (old style)",
  "nsm_parent_field": "parent_task",
@@ -411,7 +416,7 @@
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "project User",
+   "role": "proj User",
    "share": 1,
    "write": 1
   }
@@ -422,7 +427,12 @@
  "sort_field": "modify",
  "sort_order": "DESC",
  "states": [],
+<<<<<<< HEAD
  "timeline_field": "project",
  "title_field": "subject content",
+=======
+ "timeline_field": "proj",
+ "title_field": "subject",
+>>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
  "track_seen": 1
 }

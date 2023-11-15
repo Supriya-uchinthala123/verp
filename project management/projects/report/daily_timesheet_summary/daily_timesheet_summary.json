@@ -9,7 +9,7 @@
  "is_standard": "Yes", 
  "modify": "2017-02-24 20:05:46.782115", 
  "modify_by": "Admin", 
- "module": "project", 
+ "module": "proj", 
  "name": "Daily Timesheet Summary", 
  "owner": "Admin", 
  "ref_document type": "Timesheet", 
@@ -17,7 +17,7 @@
  "report_type": "Script Report", 
  "roles": [
   {
-   "role": "project User"
+   "role": "proj User"
   }, 
   {
    "role": "HR User"

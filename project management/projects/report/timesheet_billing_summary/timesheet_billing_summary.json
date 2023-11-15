@@ -12,16 +12,21 @@
  "letterhead": null,
  "modify": "2023-10-11 00:58:30.639078",
  "modify_by": "Admin",
- "module": "project",
- "name": "Timesheet Billing Summary",
+ "module": "proj",
+ "name": "timesheets billSummary",
  "owner": "Admin",
  "prepared_report": 0,
- "ref_document type": "Timesheet",
- "report_name": "Timesheet Billing Summary",
+<<<<<<< HEAD
+ "ref_document type": "timesheets",
+ "report_name": "timesheets Billing Summary",
+=======
+ "ref_doctype": "timesheets",
+ "report_name": "timesheets billSummary",
+>>>>>>> e8df006b8a1506a845b89c7f3ecd99acb6216e2f
  "report_type": "Script Report",
  "roles": [
   {
-   "role": "project User"
+   "role": "proj User"
   },
   {
    "role": "Employee"

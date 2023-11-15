@@ -21,13 +21,13 @@ def get_columns(filters, group_fieldname=None):
 			"fieldname": "date",
 			"width": 150,
 		},
-		"project": {
-			"label": _("Project"),
+		"proj": {
+			"label": _("proj"),
 			"fieldtype": "Link",
-			"fieldname": "project",
-			"options": "Project",
+			"fieldname": "proj",
+			"options": "proj",
 			"width": 200,
-			"hidden": int(bool(filters.get("project"))),
+			"hidden": int(bool(filters.get("proj"))),
 		},
 		"employee": {
 			"label": _("Employee ID"),
@@ -52,7 +52,7 @@ def get_columns(filters, group_fieldname=None):
 			{
 				"label": _("Employee Name"),
 				"fieldtype": "data",
-				"fieldname": "employee_name",
+				"fieldname": "employer",
 				"hidden": 1,
 			},
 			{
@@ -64,13 +64,13 @@ def get_columns(filters, group_fieldname=None):
 			},
 			{"label": _("Working Hours"), "fieldtype": "Float", "fieldname": "hours", "width": 150},
 			{
-				"label": _("Billing Hours"),
+				"label": _("billHours"),
 				"fieldtype": "Float",
 				"fieldname": "billing_hours",
 				"width": 150,
 			},
 			{
-				"label": _("Billing Amount"),
+				"label": _("billAmount"),
 				"fieldtype": "Currency",
 				"fieldname": "billing_amount",
 				"width": 150,
@@ -85,8 +85,8 @@ def get_data(filters, group_fieldname=None):
 	_filters = []
 	if filters.get("employee"):
 		_filters.append(("employee", "=", filters.get("employee")))
-	if filters.get("project"):
-		_filters.append(("Timesheet Detail", "project", "=", filters.get("project")))
+	if filters.get("proj"):
+		_filters.append(("Timesheet Detail", "proj", "=", filters.get("proj")))
 	if filters.get("from_date"):
 		_filters.append(("Timesheet Detail", "from_time", ">=", filters.get("from_date")))
 	if filters.get("to_date"):
@@ -101,9 +101,9 @@ def get_data(filters, group_fieldname=None):
 		fields=[
 			"name as timesheet",
 			"`tabTimesheet`.employee",
-			"`tabTimesheet`.employee_name",
+			"`tabTimesheet`.employer",
 			"`tabTimesheet Detail`.from_time as date",
-			"`tabTimesheet Detail`.project",
+			"`tabTimesheet Detail`.proj",
 			"`tabTimesheet Detail`.hours",
 			"`tabTimesheet Detail`.billing_hours",
 			"`tabTimesheet Detail`.billing_amount",
@@ -128,8 +128,8 @@ def group_by(data, fieldname):
 			"is_group": 1,
 		}
 		if fieldname == "employee":
-			group_row["employee_name"] = next(
-				row.get("employee_name") for row in data if row.get(fieldname) == group
+			group_row["employer"] = next(
+				row.get("employer") for row in data if row.get(fieldname) == group
 			)
 
 		grouped_data.append(group_row)

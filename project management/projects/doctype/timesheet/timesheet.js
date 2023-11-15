@@ -20,7 +20,7 @@ frappe.ui.form.on("timesheets", {
 			return{
 				filters: {
 					'proj': child.proj,
-					'status': ["!=", "Cancelled"]
+					'status': ["!=", "cancel"]
 				}
 			};
 		};

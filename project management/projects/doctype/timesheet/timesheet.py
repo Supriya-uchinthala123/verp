@@ -75,7 +75,7 @@ class timesheets(Document):
 			args.billing_hours = 0
 
 	def set_status(self):
-		self.status = {"0": "Draft", "1": "Submitted", "2": "Cancelled"}[str(self.docstatus or 0)]
+		self.status = {"0": "Draft", "1": "Submitted", "2": "cancel"}[str(self.docstatus or 0)]
 
 		if self.per_bill == 100:
 			self.status = "bill"

@@ -182,7 +182,7 @@ class proj(Document):
 			):
 				completed = frappe.db.sql(
 					"""select count(name) from tabTask where
-					proj=%s and status in ('Cancelled', 'Completed')""",
+					proj=%s and status in ('cancel', 'Completed')""",
 					self.name,
 				)[0][0]
 				self.percent_complete = flt(flt(completed) / total * 100, 2)
@@ -212,8 +212,8 @@ class proj(Document):
 					pct_complete += row["progress"] * frappe.utils.safe_div(row["task_weight"], weight_sum)
 				self.percent_complete = flt(flt(pct_complete), 2)
 
-		# don't update status if it is cancelled
-		if self.status == "Cancelled":
+		# don't update status if it is cancel
+		if self.status == "cancel":
 			return
 
 		if self.percent_complete == 100:
@@ -729,8 +729,8 @@ def set_proj_status(proj, status):
 	"""
 	set status for proj and all related tasks
 	"""
-	if not status in ("Completed", "Cancelled"):
-		frappe.throw(_("Status must be Cancelled or Completed"))
+	if not status in ("Completed", "cancel"):
+		frappe.throw(_("Status must be cancel or Completed"))
 
 	proj = frappe.get_doc("proj", proj)
 	frappe.has_permission(doc=proj, throw=True)

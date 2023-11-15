@@ -1,1 +1,1 @@
-Task to be completed for a Project (optional).
+Task to be comp for a Project (optional).

@@ -61,7 +61,7 @@ frappe.ui.form.on("Timesheet", {
 
 			let button = 'Start Timer';
 			$.each(frm.doc.time_logs || [], function(i, row) {
-				if ((row.from_time <= frappe.datetime.now_datetime()) && !row.completed) {
+				if ((row.from_time <= frappe.datetime.now_datetime()) && !row.comp) {
 					button = 'Resume Timer';
 				}
 			});
@@ -77,8 +77,8 @@ frappe.ui.form.on("Timesheet", {
 						frm.save();
 						flag = false;
 					}
-					// Fetch the row for timer where activity is not completed and from_time is before now_time
-					if (flag && row.from_time <= frappe.datetime.now_datetime() && !row.completed) {
+					// Fetch the row for timer where activity is not comp and from_time is before now_time
+					if (flag && row.from_time <= frappe.datetime.now_datetime() && !row.comp) {
 						let timestamp = moment(frappe.datetime.now_datetime()).diff(moment(row.from_time),"seconds");
 						erpnext.timesheet.timer(frm, row, timestamp);
 						flag = false;

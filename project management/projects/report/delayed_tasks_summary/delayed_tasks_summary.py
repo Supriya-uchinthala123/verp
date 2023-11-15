@@ -27,20 +27,20 @@ def get_data(filt):
 			"exp_end_date",
 			"status",
 			"priority",
-			"completed_on",
+			"comp_on",
 			"progress",
 		],
 		order_by="creation",
 	)
 	for task in tasks:
 		if task.exp_end_date:
-			if task.completed_on:
-				task.delay = date_diff(task.completed_on, task.exp_end_date)
-			elif task.status == "Completed":
-				# task is completed but completed on is not set (for older tasks)
+			if task.comp_on:
+				task.delay = date_diff(task.comp_on, task.exp_end_date)
+			elif task.status == "comp":
+				# task is comp but comp on is not set (for older tasks)
 				task.delay = 0
 			else:
-				# task not completed
+				# task not comp
 				task.delay = date_diff(nowdate(), task.exp_end_date)
 		else:
 			# task has no end date, hence no delay
@@ -104,7 +104,7 @@ def get_columns():
 			"label": _("Expected End Date"),
 			"width": 150,
 		},
-		{"fieldname": "completed_on", "fieldtype": "Date", "label": _("Actual End Date"), "width": 130},
+		{"fieldname": "comp_on", "fieldtype": "Date", "label": _("Actual End Date"), "width": 130},
 		{"fieldname": "delay", "fieldtype": "Data", "label": _("Delay (In Days)"), "width": 120},
 	]
 	return columns

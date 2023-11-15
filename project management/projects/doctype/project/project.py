@@ -158,7 +158,7 @@ class Project(Document):
 
 	def update_percent_complete(self):
 		if self.percent_complete_method == "Manual":
-			if self.status == "Completed":
+			if self.status == "comp":
 				self.percent_complete = 100
 			return
 
@@ -170,12 +170,12 @@ class Project(Document):
 			if (self.percent_complete_method == "Task Completion" and total > 0) or (
 				not self.percent_complete_method and total > 0
 			):
-				completed = frappe.db.sql(
+				comp = frappe.db.sql(
 					"""select count(name) from tabTask where
-					project=%s and status in ('Cancelled', 'Completed')""",
+					project=%s and status in ('Cancelled', 'comp')""",
 					self.name,
 				)[0][0]
-				self.percent_complete = flt(flt(completed) / total * 100, 2)
+				self.percent_complete = flt(flt(comp) / total * 100, 2)
 
 			if self.percent_complete_method == "Task Progress" and total > 0:
 				progress = frappe.db.sql(
@@ -207,7 +207,7 @@ class Project(Document):
 			return
 
 		if self.percent_complete == 100:
-			self.status = "Completed"
+			self.status = "comp"
 
 	def update_costing(self):
 		from frappe.query_builder.functions import Max, Min, Sum
@@ -666,8 +666,8 @@ def set_project_status(project, status):
 	"""
 	set status for project and all related tasks
 	"""
-	if not status in ("Completed", "Cancelled"):
-		frappe.throw(_("Status must be Cancelled or Completed"))
+	if not status in ("comp", "Cancelled"):
+		frappe.throw(_("Status must be Cancelled or comp"))
 
 	project = frappe.get_doc("Project", project)
 	frappe.has_permission(doc=project, throw=True)

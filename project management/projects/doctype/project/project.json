@@ -82,7 +82,7 @@
    "no_copy": 1,
    "oldfieldname": "status",
    "oldfieldtype": "Select",
-   "options": "Open\nCompleted\nCancelled",
+   "options": "Open\ncomp\nCancelled",
    "search_index": 1
   },
   {
@@ -114,7 +114,7 @@
    "bold": 1,
    "fieldname": "percent_complete",
    "fieldtype": "Percent",
-   "label": "% Completed",
+   "label": "% comp",
    "no_copy": 1,
    "read_only": 1
   },

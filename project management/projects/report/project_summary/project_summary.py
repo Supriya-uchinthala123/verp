@@ -26,8 +26,8 @@ def execute(filt=None):
 
 	for project in data:
 		project["total_tasks"] = frappe.db.count("Task", filt={"project": project.name})
-		project["completed_tasks"] = frappe.db.count(
-			"Task", filt={"project": project.name, "status": "Completed"}
+		project["comp_tasks"] = frappe.db.count(
+			"Task", filt={"project": project.name, "status": "comp"}
 		)
 		project["overdue_tasks"] = frappe.db.count(
 			"Task", filt={"project": project.name, "status": "Overdue"}
@@ -58,8 +58,8 @@ def get_columns():
 		{"fieldname": "status", "label": _("Status"), "fieldtype": "Data", "width": 120},
 		{"fieldname": "total_tasks", "label": _("Total Tasks"), "fieldtype": "Data", "width": 120},
 		{
-			"fieldname": "completed_tasks",
-			"label": _("Tasks Completed"),
+			"fieldname": "comp_tasks",
+			"label": _("Tasks comp"),
 			"fieldtype": "Data",
 			"width": 120,
 		},
@@ -78,13 +78,13 @@ def get_columns():
 def get_chart_data(data):
 	labels = []
 	total = []
-	completed = []
+	comp = []
 	overdue = []
 
 	for project in data:
 		labels.append(project.name)
 		total.append(project.total_tasks)
-		completed.append(project.completed_tasks)
+		comp.append(project.comp_tasks)
 		overdue.append(project.overdue_tasks)
 
 	return {
@@ -92,7 +92,7 @@ def get_chart_data(data):
 			"labels": labels[:30],
 			"datasets": [
 				{"name": _("Overdue"), "values": overdue[:30]},
-				{"name": _("Completed"), "values": completed[:30]},
+				{"name": _("comp"), "values": comp[:30]},
 				{"name": _("Total Tasks"), "values": total[:30]},
 			],
 		},
@@ -109,7 +109,7 @@ def get_report_summary(data):
 	avg_completion = sum(project.percent_complete for project in data) / len(data)
 	total = sum([project.total_tasks for project in data])
 	total_overdue = sum([project.overdue_tasks for project in data])
-	completed = sum([project.completed_tasks for project in data])
+	comp = sum([project.comp_tasks for project in data])
 
 	return [
 		{
@@ -125,9 +125,9 @@ def get_report_summary(data):
 			"datatype": "Int",
 		},
 		{
-			"value": completed,
+			"value": comp,
 			"indicator": "Green",
-			"label": _("Completed Tasks"),
+			"label": _("comp Tasks"),
 			"datatype": "Int",
 		},
 		{

@@ -13,7 +13,7 @@
   "expected_hours",
   "to_time",
   "hours",
-  "completed",
+  "comp",
   "project_details",
   "project",
   "project_name",
@@ -73,9 +73,9 @@
   },
   {
    "default": "0",
-   "fieldname": "completed",
+   "fieldname": "comp",
    "fieldtype": "Check",
-   "label": "Completed"
+   "label": "comp"
   },
   {
    "fieldname": "project_details",

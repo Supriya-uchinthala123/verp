@@ -81,7 +81,7 @@ class Timesheet(Document):
 			self.status = "Billed"
 
 		if self.sales_invoice:
-			self.status = "Completed"
+			self.status = "comp"
 
 	def set_dates(self):
 		if self.docstatus < 2 and self.time_logs:

@@ -9,8 +9,8 @@ frappe.listview_settings['Task'] = {
 			listview.call_for_selected_items(method, {"status": "Open"});
 		});
 
-		listview.page.add_menu_item(__("Set as Completed"), function() {
-			listview.call_for_selected_items(method, {"status": "Completed"});
+		listview.page.add_menu_item(__("Set as comp"), function() {
+			listview.call_for_selected_items(method, {"status": "comp"});
 		});
 	},
 	get_indicator: function(doc) {
@@ -19,7 +19,7 @@ frappe.listview_settings['Task'] = {
 			"Overdue": "red",
 			"Pending Review": "orange",
 			"Working": "orange",
-			"Completed": "green",
+			"comp": "green",
 			"Cancelled": "dark grey",
 			"Template": "blue"
 		}

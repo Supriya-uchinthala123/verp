@@ -9,8 +9,8 @@ frappe.listview_settings['Timesheet'] = {
 			return [__("Payslip"), "green", "status,=," + "Payslip"]
 		}
 
-		if (doc.status== "Completed") {
-			return [__("Completed"), "green", "status,=," + "Completed"]
+		if (doc.status== "comp") {
+			return [__("comp"), "green", "status,=," + "comp"]
 		}
 	}
 };

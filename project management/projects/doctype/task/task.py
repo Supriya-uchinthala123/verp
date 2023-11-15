@@ -32,7 +32,7 @@ class Task(NestedSet):
 		self.validate_status()
 		self.update_depends_on()
 		self.validate_dependencies_for_template_task()
-		self.validate_completed_on()
+		self.validate_comp_on()
 
 	def validate_dates(self):
 		self.validate_from_to_dates("exp_start_date", "exp_end_date")
@@ -77,12 +77,12 @@ class Task(NestedSet):
 	def validate_status(self):
 		if self.is_template and self.status != "Template":
 			self.status = "Template"
-		if self.status != self.get_db_value("status") and self.status == "Completed":
+		if self.status != self.get_db_value("status") and self.status == "comp":
 			for d in self.depends_on:
-				if frappe.db.get_value("Task", d.task, "status") not in ("Completed", "Cancelled"):
+				if frappe.db.get_value("Task", d.task, "status") not in ("comp", "Cancelled"):
 					frappe.throw(
 						_(
-							"Cannot complete task {0} as its dependant task {1} are not completed / cancelled."
+							"Cannot complete task {0} as its dependant task {1} are not comp / cancelled."
 						).format(frappe.bold(self.name), frappe.bold(d.task))
 					)
 
@@ -92,7 +92,7 @@ class Task(NestedSet):
 		if flt(self.progress or 0) > 100:
 			frappe.throw(_("Progress % for a task cannot be more than 100."))
 
-		if self.status == "Completed":
+		if self.status == "comp":
 			self.progress = 100
 
 	def validate_dependencies_for_template_task(self):
@@ -113,9 +113,9 @@ class Task(NestedSet):
 					dependent_task_format = """<a href="#Form/Task/{0}">{0}</a>""".format(task.task)
 					frappe.throw(_("Dependent Task {0} is not a Template Task").format(dependent_task_format))
 
-	def validate_completed_on(self):
-		if self.completed_on and getdate(self.completed_on) > getdate():
-			frappe.throw(_("Completed On cannot be greater than Today"))
+	def validate_comp_on(self):
+		if self.comp_on and getdate(self.comp_on) > getdate():
+			frappe.throw(_("comp On cannot be greater than Today"))
 
 	def update_depends_on(self):
 		depends_on_tasks = ""
@@ -136,7 +136,7 @@ class Task(NestedSet):
 		self.populate_depends_on()
 
 	def unassign_todo(self):
-		if self.status == "Completed":
+		if self.status == "comp":
 			close_all_assignments(self.doctype, self.name)
 		if self.status == "Cancelled":
 			clear(self.doctype, self.name)
@@ -235,7 +235,7 @@ class Task(NestedSet):
 		self.update_project()
 
 	def update_status(self):
-		if self.status not in ("Cancelled", "Completed") and self.exp_end_date:
+		if self.status not in ("Cancelled", "comp") and self.exp_end_date:
 			from datetime import datetime
 
 			if self.exp_end_date < datetime.now().date():
@@ -291,7 +291,7 @@ def set_multiple_status(names, status):
 def set_tasks_as_overdue():
 	tasks = frappe.get_all(
 		"Task",
-		filt={"status": ["not in", ["Cancelled", "Completed"]]},
+		filt={"status": ["not in", ["Cancelled", "comp"]]},
 		fields=["name", "status", "review_date"],
 	)
 	for task in tasks:
@@ -309,7 +309,7 @@ def make_timesheet(source_name, target_doc=None, ignore_permissions=False):
 			"time_logs",
 			{
 				"hours": source.actual_time,
-				"completed": source.status == "Completed",
+				"comp": source.status == "comp",
 				"project": source.project,
 				"task": source.name,
 			},

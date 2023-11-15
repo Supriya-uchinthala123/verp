@@ -151,11 +151,11 @@
  "istable": 0, 
  "max_attachments": 0, 
  "modified": "2018-02-21 16:42:42.357209", 
- "modified_by": "Administrator", 
+ "modified_by": "admin", 
  "module": "Projects", 
  "name": "Projects Settings", 
  "name_case": "", 
- "owner": "Administrator", 
+ "owner": "admin", 
  "permissions": [
   {
    "amend": 0, 

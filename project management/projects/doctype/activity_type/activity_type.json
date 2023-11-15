@@ -174,10 +174,10 @@
  "istable": 0, 
  "max_attachments": 0, 
  "modified": "2017-07-25 20:11:05.229092", 
- "modified_by": "Administrator", 
+ "modified_by": "admin", 
  "module": "Projects", 
  "name": "Activity Type", 
- "owner": "Administrator", 
+ "owner": "admin", 
  "permissions": [
   {
    "amend": 0, 

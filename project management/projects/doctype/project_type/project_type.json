@@ -85,11 +85,11 @@
  "istable": 0, 
  "max_attachments": 0, 
  "modified": "2017-07-26 17:19:30.126346", 
- "modified_by": "Administrator", 
+ "modified_by": "admin", 
  "module": "Projects", 
  "name": "Project Type", 
  "name_case": "", 
- "owner": "Administrator", 
+ "owner": "admin", 
  "permissions": [
   {
    "amend": 0, 

@@ -78,10 +78,10 @@
  "istable": 1,
  "links": [],
  "modified": "2020-02-09 23:26:50.321417",
- "modified_by": "Administrator",
+ "modified_by": "admin",
  "module": "Projects",
  "name": "Project User",
- "owner": "Administrator",
+ "owner": "admin",
  "permissions": [],
  "sort_field": "modified",
  "sort_order": "DESC"

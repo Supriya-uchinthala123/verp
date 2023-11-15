@@ -352,11 +352,11 @@
  "istable": 0, 
  "max_attachments": 0, 
  "modified": "2019-01-30 11:28:17.991944", 
- "modified_by": "Administrator", 
+ "modified_by": "admin", 
  "module": "Projects", 
  "name": "Activity Cost", 
  "name_case": "", 
- "owner": "Administrator", 
+ "owner": "admin", 
  "permissions": [
   {
    "amend": 0, 

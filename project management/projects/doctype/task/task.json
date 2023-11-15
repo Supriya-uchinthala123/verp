@@ -397,12 +397,12 @@
  "links": [],
  "max_attachments": 5,
  "modified": "2023-09-28 13:52:05.861175",
- "modified_by": "Administrator",
+ "modified_by": "admin",
  "module": "Projects",
  "name": "Task",
  "naming_rule": "Expression (old style)",
  "nsm_parent_field": "parent_task",
- "owner": "Administrator",
+ "owner": "admin",
  "permissions": [
   {
    "create": 1,

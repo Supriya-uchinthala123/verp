@@ -270,7 +270,7 @@ def get_projectwise_timesheet_data(project=None, parent=None, from_time=None, to
 			tsd.billing_hours as billing_hours,
 			tsd.billing_amount as billing_amount,
 			tsd.activity_type as activity_type,
-			tsd.description as description,
+			tsd.des as des,
 			ts.currency as currency,
 			tsd.project_name as project_name
 		FROM `tabTimesheet Detail` tsd
@@ -397,7 +397,7 @@ def make_sales_invoice(source_name, item_code=None, customer=None, currency=None
 					"billing_amount": time_log.billing_amount,
 					"timesheet_detail": time_log.name,
 					"activity_type": time_log.activity_type,
-					"description": time_log.description,
+					"des": time_log.des,
 				},
 			)
 

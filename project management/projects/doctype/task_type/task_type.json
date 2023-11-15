@@ -6,7 +6,7 @@
  "engine": "InnoDB",
  "field_order": [
   "weight",
-  "description"
+  "des"
  ],
  "fields": [
   {
@@ -15,9 +15,9 @@
    "label": "Weight"
   },
   {
-   "fieldname": "description",
+   "fieldname": "des",
    "fieldtype": "Small Text",
-   "label": "Description"
+   "label": "des"
   }
  ],
  "links": [],

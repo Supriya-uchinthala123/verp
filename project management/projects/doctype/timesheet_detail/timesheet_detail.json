@@ -8,7 +8,7 @@
  "field_order": [
   "activity_type",
   "from_time",
-  "description",
+  "des",
   "section_break_3",
   "expected_hours",
   "to_time",
@@ -188,9 +188,9 @@
    "read_only": 1
   },
   {
-   "fieldname": "description",
+   "fieldname": "des",
    "fieldtype": "Small Text",
-   "label": "Description"
+   "label": "des"
   },
   {
    "fieldname": "base_billing_rate",

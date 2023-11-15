@@ -110,7 +110,7 @@ frappe.ui.form.on("Timesheet", {
 		});
 
 		frm.trigger('setup_filt');
-		frm.trigger('set_dynamic_field_label');
+		frm.trigger('set_dynamic_field_lab');
 	},
 
 	customer: function(frm) {
@@ -141,7 +141,7 @@ frappe.ui.form.on("Timesheet", {
 				}
 			});
 		}
-		frm.trigger('set_dynamic_field_label');
+		frm.trigger('set_dynamic_field_lab');
 	},
 
 	exchange_rate: function(frm) {
@@ -151,17 +151,17 @@ frappe.ui.form.on("Timesheet", {
 		calculate_time_and_amount(frm);
 	},
 
-	set_dynamic_field_label: function(frm) {
+	set_dynamic_field_lab: function(frm) {
 		let base_currency = frappe.defaults.get_global_default('currency');
-		frm.set_currency_labels(["base_total_cost_amount", "base_total_billable_amount", "base_total_bill_amount"], base_currency);
-		frm.set_currency_labels(["total_cost_amount", "total_billable_amount", "total_bill_amount"], frm.doc.currency);
+		frm.set_currency_labs(["base_total_cost_amount", "base_total_billable_amount", "base_total_bill_amount"], base_currency);
+		frm.set_currency_labs(["total_cost_amount", "total_billable_amount", "total_bill_amount"], frm.doc.currency);
 
 		frm.toggle_display(["base_total_cost_amount", "base_total_billable_amount", "base_total_bill_amount"],
 			frm.doc.currency != base_currency);
 
 		if (frm.doc.time_logs.length > 0) {
-			frm.set_currency_labels(["base_billing_rate", "base_billing_amount", "base_cost_rate", "base_cost_amount"], base_currency, "time_logs");
-			frm.set_currency_labels(["billing_rate", "billing_amount", "cost_rate", "cost_amount"], frm.doc.currency, "time_logs");
+			frm.set_currency_labs(["base_billing_rate", "base_billing_amount", "base_cost_rate", "base_cost_amount"], base_currency, "time_logs");
+			frm.set_currency_labs(["billing_rate", "billing_amount", "cost_rate", "cost_amount"], frm.doc.currency, "time_logs");
 
 			let time_logs_grid = frm.fields_dict.time_logs.grid;
 			$.each(["base_billing_rate", "base_billing_amount", "base_cost_rate", "base_cost_amount"], function(i, d) {
@@ -175,7 +175,7 @@ frappe.ui.form.on("Timesheet", {
 	make_invoice: function(frm) {
 		let fields = [{
 			"fieldtype": "Link",
-			"label": __("Item Code"),
+			"lab": __("Item Code"),
 			"fieldname": "item_code",
 			"options": "Item"
 		}];
@@ -183,7 +183,7 @@ frappe.ui.form.on("Timesheet", {
 		if (!frm.doc.customer) {
 			fields.push({
 				"fieldtype": "Link",
-				"label": __("Customer"),
+				"lab": __("Customer"),
 				"fieldname": "customer",
 				"options": "Customer",
 				"default": frm.doc.customer

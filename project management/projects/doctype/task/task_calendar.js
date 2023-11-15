@@ -16,7 +16,7 @@ frappe.views.calendar["Task"] = {
 			"fieldtype": "Link",
 			"fieldname": "project",
 			"options": "Project",
-			"label": __("Project")
+			"lab": __("Project")
 		}
 	],
 	get_events_method: "frappe.desk.calendar.get_events"

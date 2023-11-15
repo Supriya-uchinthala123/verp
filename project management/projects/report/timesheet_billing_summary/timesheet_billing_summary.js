@@ -7,7 +7,7 @@ frappe.query_reports["Timesheet Billing Summary"] = {
 	filt: [
 		{
 			fieldname: "employee",
-			label: __("Employee"),
+			lab: __("Employee"),
 			fieldtype: "Link",
 			options: "Employee",
 			on_change: function (report) {
@@ -16,7 +16,7 @@ frappe.query_reports["Timesheet Billing Summary"] = {
 		},
 		{
 			fieldname: "project",
-			label: __("Project"),
+			lab: __("Project"),
 			fieldtype: "Link",
 			options: "Project",
 			on_change: function (report) {
@@ -25,7 +25,7 @@ frappe.query_reports["Timesheet Billing Summary"] = {
 		},
 		{
 			fieldname: "from_date",
-			label: __("From Date"),
+			lab: __("From Date"),
 			fieldtype: "Date",
 			default: frappe.datetime.add_months(
 				frappe.datetime.month_start(),
@@ -34,7 +34,7 @@ frappe.query_reports["Timesheet Billing Summary"] = {
 		},
 		{
 			fieldname: "to_date",
-			label: __("To Date"),
+			lab: __("To Date"),
 			fieldtype: "Date",
 			default: frappe.datetime.add_days(
 				frappe.datetime.month_start(),
@@ -43,18 +43,18 @@ frappe.query_reports["Timesheet Billing Summary"] = {
 		},
 		{  // NOTE: `update_group_by_options` expects this filter to be the fifth in the list
 			fieldname: "group_by",
-			label: __("Group By"),
+			lab: __("Group By"),
 			fieldtype: "Select",
 			options: [
 				"",
-				{ value: "employee", label: __("Employee") },
-				{ value: "project", label: __("Project") },
-				{ value: "date", label: __("Start Date") },
+				{ value: "employee", lab: __("Employee") },
+				{ value: "project", lab: __("Project") },
+				{ value: "date", lab: __("Start Date") },
 			],
 		},
 		{
 			fieldname: "include_draft_timesheets",
-			label: __("Include Timesheets in Draft Status"),
+			lab: __("Include Timesheets in Draft Status"),
 			fieldtype: "Check",
 		},
 	],

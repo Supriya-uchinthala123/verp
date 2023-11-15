@@ -14,13 +14,13 @@
    "fieldname": "project_type",
    "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "projType",
+   "lab": "projType",
    "options": "projType"
   },
   {
    "fieldname": "tasks",
    "fieldtype": "Table",
-   "label": "Tasks",
+   "lab": "Tasks",
    "options": "projTemplate Task",
    "reqd": 1
   }

@@ -100,7 +100,7 @@ frappe.ui.form.on("Project", {
 					{
 						"fieldname": "status",
 						"fieldtype": "Select",
-						"label": "Status",
+						"lab": "Status",
 						"reqd": 1,
 						"options": "comp\nCancelled",
 					},
@@ -109,7 +109,7 @@ frappe.ui.form.on("Project", {
 					frm.events.set_status(frm, d.get_values().status);
 					d.hide();
 				},
-				primary_action_label: __("Set projStatus")
+				primary_action_lab: __("Set projStatus")
 			}).show();
 		}, __("Actions"));
 	},

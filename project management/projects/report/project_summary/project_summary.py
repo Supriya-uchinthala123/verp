@@ -43,53 +43,53 @@ def get_columns():
 	return [
 		{
 			"fieldname": "name",
-			"label": _("Project"),
+			"lab": _("Project"),
 			"fieldtype": "Link",
 			"options": "Project",
 			"width": 200,
 		},
 		{
 			"fieldname": "project_type",
-			"label": _("Type"),
+			"lab": _("Type"),
 			"fieldtype": "Link",
 			"options": "projType",
 			"width": 120,
 		},
-		{"fieldname": "status", "label": _("Status"), "fieldtype": "Data", "width": 120},
-		{"fieldname": "total_tasks", "label": _("Total Tasks"), "fieldtype": "Data", "width": 120},
+		{"fieldname": "status", "lab": _("Status"), "fieldtype": "Data", "width": 120},
+		{"fieldname": "total_tasks", "lab": _("Total Tasks"), "fieldtype": "Data", "width": 120},
 		{
 			"fieldname": "comp_tasks",
-			"label": _("Tasks comp"),
+			"lab": _("Tasks comp"),
 			"fieldtype": "Data",
 			"width": 120,
 		},
-		{"fieldname": "overdue_tasks", "label": _("Tasks Overdue"), "fieldtype": "Data", "width": 120},
-		{"fieldname": "percent_complete", "label": _("Completion"), "fieldtype": "Data", "width": 120},
+		{"fieldname": "overdue_tasks", "lab": _("Tasks Overdue"), "fieldtype": "Data", "width": 120},
+		{"fieldname": "percent_complete", "lab": _("Completion"), "fieldtype": "Data", "width": 120},
 		{
 			"fieldname": "expected_start_date",
-			"label": _("Start Date"),
+			"lab": _("Start Date"),
 			"fieldtype": "Date",
 			"width": 120,
 		},
-		{"fieldname": "expected_end_date", "label": _("End Date"), "fieldtype": "Date", "width": 120},
+		{"fieldname": "expected_end_date", "lab": _("End Date"), "fieldtype": "Date", "width": 120},
 	]
 
 
 def get_chart_data(data):
-	labels = []
+	labs = []
 	total = []
 	comp = []
 	overdue = []
 
 	for projin data:
-		labels.append(project.name)
+		labs.append(project.name)
 		total.append(project.total_tasks)
 		comp.append(project.comp_tasks)
 		overdue.append(project.overdue_tasks)
 
 	return {
 		"data": {
-			"labels": labels[:30],
+			"labs": labs[:30],
 			"datasets": [
 				{"name": _("Overdue"), "values": overdue[:30]},
 				{"name": _("comp"), "values": comp[:30]},
@@ -115,25 +115,25 @@ def get_report_summary(data):
 		{
 			"value": avg_completion,
 			"indicator": "Green" if avg_completion > 50 else "Red",
-			"label": _("Average Completion"),
+			"lab": _("Average Completion"),
 			"datatype": "Percent",
 		},
 		{
 			"value": total,
 			"indicator": "Blue",
-			"label": _("Total Tasks"),
+			"lab": _("Total Tasks"),
 			"datatype": "Int",
 		},
 		{
 			"value": comp,
 			"indicator": "Green",
-			"label": _("comp Tasks"),
+			"lab": _("comp Tasks"),
 			"datatype": "Int",
 		},
 		{
 			"value": total_overdue,
 			"indicator": "Green" if total_overdue == 0 else "Red",
-			"label": _("Overdue Tasks"),
+			"lab": _("Overdue Tasks"),
 			"datatype": "Int",
 		},
 	]

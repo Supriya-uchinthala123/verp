@@ -19,13 +19,13 @@ frappe.views.calendar["Timesheet"] = {
 			"fieldtype": "Link",
 			"fieldname": "project",
 			"options": "Project",
-			"label": __("Project")
+			"lab": __("Project")
 		},
 		{
 			"fieldtype": "Link",
 			"fieldname": "employee",
 			"options": "Employee",
-			"label": __("Employee")
+			"lab": __("Employee")
 		}
 	],
 	get_events_method: "erpnext.proj.doctype.timesheet.timesheet.get_events"

@@ -14,7 +14,7 @@
    "fieldname": "task",
    "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "Task",
+   "lab": "Task",
    "options": "Task",
    "reqd": 1
   },
@@ -24,7 +24,7 @@
    "fieldname": "subject",
    "fieldtype": "Read Only",
    "in_list_view": 1,
-   "label": "Subject"
+   "lab": "Subject"
   }
  ],
  "istable": 1,

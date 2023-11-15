@@ -40,7 +40,7 @@
    "fieldname": "activity_type",
    "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "Activity Type",
+   "lab": "Activity Type",
    "options": "Activity Type"
   },
   {
@@ -48,7 +48,7 @@
    "fieldname": "from_time",
    "fieldtype": "Datetime",
    "in_list_view": 1,
-   "label": "From Time"
+   "lab": "From Time"
   },
   {
    "fieldname": "sect_break_3",
@@ -57,25 +57,25 @@
   {
    "fieldname": "expected_hours",
    "fieldtype": "Float",
-   "label": "Expected Hrs"
+   "lab": "Expected Hrs"
   },
   {
    "columns": 1,
    "fieldname": "hours",
    "fieldtype": "Float",
    "in_list_view": 1,
-   "label": "Hrs"
+   "lab": "Hrs"
   },
   {
    "fieldname": "to_time",
    "fieldtype": "Datetime",
-   "label": "To Time"
+   "lab": "To Time"
   },
   {
    "default": "0",
    "fieldname": "comp",
    "fieldtype": "Check",
-   "label": "comp"
+   "lab": "comp"
   },
   {
    "fieldname": "project_details",
@@ -86,7 +86,7 @@
    "fieldname": "project",
    "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "Project",
+   "lab": "Project",
    "options": "Project",
    "read_only_depends_on": "eval: parent.parent_project"
   },
@@ -97,7 +97,7 @@
   {
    "fieldname": "task",
    "fieldtype": "Link",
-   "label": "Task",
+   "lab": "Task",
    "options": "Task",
    "remember_last_selected_value": 1
   },
@@ -114,7 +114,7 @@
    "depends_on": "is_billable",
    "fieldname": "billing_hours",
    "fieldtype": "Float",
-   "label": "Billing Hours",
+   "lab": "Billing Hours",
    "permlevel": 1
   },
   {
@@ -125,7 +125,7 @@
   {
    "fieldname": "billing_rate",
    "fieldtype": "Currency",
-   "label": "Billing Rate",
+   "lab": "Billing Rate",
    "options": "currency",
    "permlevel": 1
   },
@@ -134,7 +134,7 @@
    "default": "0",
    "fieldname": "billing_amount",
    "fieldtype": "Currency",
-   "label": "Billing Amount",
+   "lab": "Billing Amount",
    "options": "currency",
    "permlevel": 1,
    "read_only": 1
@@ -146,7 +146,7 @@
   {
    "fieldname": "cost_rate",
    "fieldtype": "Currency",
-   "label": "cost Rate",
+   "lab": "cost Rate",
    "options": "currency",
    "permlevel": 1
   },
@@ -155,7 +155,7 @@
    "default": "0",
    "fieldname": "cost_amount",
    "fieldtype": "Currency",
-   "label": "cost Amount",
+   "lab": "cost Amount",
    "options": "currency",
    "permlevel": 1,
    "read_only": 1
@@ -164,7 +164,7 @@
    "allow_on_submit": 1,
    "fieldname": "sales_invoice",
    "fieldtype": "Link",
-   "label": "Sales Invoice",
+   "lab": "Sales Invoice",
    "no_copy": 1,
    "options": "Sales Invoice",
    "print_hide": 1,
@@ -177,46 +177,46 @@
    "fieldname": "is_billable",
    "fieldtype": "Check",
    "in_list_view": 1,
-   "label": "Is Billable",
+   "lab": "Is Billable",
    "print_hide": 1
   },
   {
    "fetch_from": "project.project_name",
    "fieldname": "project_name",
    "fieldtype": "Data",
-   "label": "projName",
+   "lab": "projName",
    "read_only": 1
   },
   {
    "fieldname": "description",
    "fieldtype": "Small Text",
-   "label": "Description"
+   "lab": "Description"
   },
   {
    "fieldname": "base_billing_rate",
    "fieldtype": "Currency",
-   "label": "Billing Rate",
+   "lab": "Billing Rate",
    "print_hide": 1,
    "read_only": 1
   },
   {
    "fieldname": "base_billing_amount",
    "fieldtype": "Currency",
-   "label": "Billing Amount",
+   "lab": "Billing Amount",
    "print_hide": 1,
    "read_only": 1
   },
   {
    "fieldname": "base_cost_rate",
    "fieldtype": "Currency",
-   "label": "cost Rate",
+   "lab": "cost Rate",
    "print_hide": 1,
    "read_only": 1
   },
   {
    "fieldname": "base_cost_amount",
    "fieldtype": "Currency",
-   "label": "cost Amount",
+   "lab": "cost Amount",
    "print_hide": 1,
    "read_only": 1
   }

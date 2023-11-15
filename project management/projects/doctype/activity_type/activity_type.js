@@ -1,6 +1,6 @@
 frappe.ui.form.on("Activity Type", {
 	onload: function(frm) {
-		frm.set_currency_labels(["billing_rate", "cost_rate"], frappe.defaults.get_global_default('currency'));
+		frm.set_currency_labs(["billing_rate", "cost_rate"], frappe.defaults.get_global_default('currency'));
 	},
 
 	refresh: function(frm) {

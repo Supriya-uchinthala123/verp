@@ -15,7 +15,7 @@
    "fieldname": "task",
    "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "Task",
+   "lab": "Task",
    "options": "Task"
   },
   {
@@ -28,13 +28,13 @@
    "fieldname": "subject",
    "fieldtype": "Text",
    "in_list_view": 1,
-   "label": "Subject",
+   "lab": "Subject",
    "read_only": 1
   },
   {
    "fieldname": "project",
    "fieldtype": "Text",
-   "label": "Project",
+   "lab": "Project",
    "read_only": 1
   }
  ],

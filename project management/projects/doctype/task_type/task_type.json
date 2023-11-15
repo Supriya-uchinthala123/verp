@@ -12,12 +12,12 @@
   {
    "fieldname": "weight",
    "fieldtype": "Float",
-   "label": "Weight"
+   "lab": "Weight"
   },
   {
    "fieldname": "description",
    "fieldtype": "Small Text",
-   "label": "Description"
+   "lab": "Description"
   }
  ],
  "links": [],

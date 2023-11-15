@@ -68,7 +68,7 @@
   {
    "fieldname": "project_name",
    "fieldtype": "Data",
-   "label": "projName",
+   "lab": "projName",
    "oldfieldtype": "Data",
    "reqd": 1,
    "unique": 1
@@ -78,7 +78,7 @@
    "fieldname": "status",
    "fieldtype": "Select",
    "in_standard_filter": 1,
-   "label": "Status",
+   "lab": "Status",
    "no_copy": 1,
    "oldfieldname": "status",
    "oldfieldtype": "Select",
@@ -90,7 +90,7 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "in_standard_filter": 1,
-   "label": "projType",
+   "lab": "projType",
    "oldfieldname": "project_type",
    "oldfieldtype": "Data",
    "options": "projType"
@@ -98,7 +98,7 @@
   {
    "fieldname": "is_active",
    "fieldtype": "Select",
-   "label": "Is Active",
+   "lab": "Is Active",
    "oldfieldname": "is_active",
    "oldfieldtype": "Select",
    "options": "Yes\nNo"
@@ -107,14 +107,14 @@
    "default": "Task Completion",
    "fieldname": "percent_complete_method",
    "fieldtype": "Select",
-   "label": "% Complete Method",
+   "lab": "% Complete Method",
    "options": "Manual\nTask Completion\nTask Progress\nTask Weight"
   },
   {
    "bold": 1,
    "fieldname": "percent_complete",
    "fieldtype": "Percent",
-   "label": "% comp",
+   "lab": "% comp",
    "no_copy": 1,
    "read_only": 1
   },
@@ -126,14 +126,14 @@
    "allow_in_quick_entry": 1,
    "fieldname": "project_template",
    "fieldtype": "Link",
-   "label": "From Template",
+   "lab": "From Template",
    "options": "projTemplate",
    "set_only_once": 1
   },
   {
    "fieldname": "expected_start_date",
    "fieldtype": "Date",
-   "label": "Expected Start Date",
+   "lab": "Expected Start Date",
    "oldfieldname": "project_start_date",
    "oldfieldtype": "Date"
   },
@@ -142,7 +142,7 @@
    "fieldname": "expected_end_date",
    "fieldtype": "Date",
    "in_list_view": 1,
-   "label": "Expected End Date",
+   "lab": "Expected End Date",
    "oldfieldname": "completion_date",
    "oldfieldtype": "Date"
   },
@@ -150,7 +150,7 @@
    "fieldname": "priority",
    "fieldtype": "Select",
    "in_standard_filter": 1,
-   "label": "Priority",
+   "lab": "Priority",
    "oldfieldname": "priority",
    "oldfieldtype": "Select",
    "options": "Medium\nLow\nHigh"
@@ -158,14 +158,14 @@
   {
    "fieldname": "department",
    "fieldtype": "Link",
-   "label": "Department",
+   "lab": "Department",
    "options": "Department"
   },
   {
    "collapsible": 1,
    "fieldname": "customer_details",
    "fieldtype": "sect Break",
-   "label": "Customer Details",
+   "lab": "Customer Details",
    "oldfieldtype": "sect Break",
    "options": "fa fa-user"
   },
@@ -173,7 +173,7 @@
    "fieldname": "customer",
    "fieldtype": "Link",
    "in_global_search": 1,
-   "label": "Customer",
+   "lab": "Customer",
    "oldfieldname": "customer",
    "oldfieldtype": "Link",
    "options": "Customer",
@@ -187,41 +187,41 @@
   {
    "fieldname": "sales_order",
    "fieldtype": "Link",
-   "label": "Sales Order",
+   "lab": "Sales Order",
    "options": "Sales Order"
   },
   {
    "collapsible": 1,
    "fieldname": "users_sect",
    "fieldtype": "sect Break",
-   "label": "Users"
+   "lab": "Users"
   },
   {
    "description": "projwill be accessible on the website to these users",
    "fieldname": "users",
    "fieldtype": "Table",
-   "label": "Users",
+   "lab": "Users",
    "options": "projUser"
   },
   {
    "fieldname": "copied_from",
    "fieldtype": "Data",
    "hidden": 1,
-   "label": "Copied From",
+   "lab": "Copied From",
    "read_only": 1
   },
   {
    "collapsible": 1,
    "fieldname": "sect_break0",
    "fieldtype": "sect Break",
-   "label": "Notes",
+   "lab": "Notes",
    "oldfieldtype": "sect Break",
    "options": "fa fa-list"
   },
   {
    "fieldname": "notes",
    "fieldtype": "Text Editor",
-   "label": "Notes",
+   "lab": "Notes",
    "oldfieldname": "notes",
    "oldfieldtype": "Text Editor"
   },
@@ -229,18 +229,18 @@
    "collapsible": 1,
    "fieldname": "sect_break_18",
    "fieldtype": "sect Break",
-   "label": "Start and End Dates"
+   "lab": "Start and End Dates"
   },
   {
    "fieldname": "actual_start_date",
    "fieldtype": "Date",
-   "label": "Actual Start Date (via Timesheet)",
+   "lab": "Actual Start Date (via Timesheet)",
    "read_only": 1
   },
   {
    "fieldname": "actual_time",
    "fieldtype": "Float",
-   "label": "Actual Time in Hours (via Timesheet)",
+   "lab": "Actual Time in Hours (via Timesheet)",
    "read_only": 1
   },
   {
@@ -250,7 +250,7 @@
   {
    "fieldname": "actual_end_date",
    "fieldtype": "Date",
-   "label": "Actual End Date (via Timesheet)",
+   "lab": "Actual End Date (via Timesheet)",
    "oldfieldname": "act_completion_date",
    "oldfieldtype": "Date",
    "read_only": 1
@@ -259,7 +259,7 @@
    "collapsible": 1,
    "fieldname": "project_details",
    "fieldtype": "sect Break",
-   "label": "cost and Billing",
+   "lab": "cost and Billing",
    "oldfieldtype": "sect Break",
    "options": "fa fa-money"
   },
@@ -267,7 +267,7 @@
    "fieldname": "estimated_cost",
    "fieldtype": "Currency",
    "in_list_view": 1,
-   "label": "Estimated Cost",
+   "lab": "Estimated Cost",
    "oldfieldname": "project_value",
    "oldfieldtype": "Currency",
    "options": "Company:company:default_currency"
@@ -275,19 +275,19 @@
   {
    "fieldname": "total_cost_amount",
    "fieldtype": "Currency",
-   "label": "Total cost Amount (via Timesheet)",
+   "lab": "Total cost Amount (via Timesheet)",
    "read_only": 1
   },
   {
    "fieldname": "total_purchase_cost",
    "fieldtype": "Currency",
-   "label": "Total Purchase Cost (via Purchase Invoice)",
+   "lab": "Total Purchase Cost (via Purchase Invoice)",
    "read_only": 1
   },
   {
    "fieldname": "company",
    "fieldtype": "Link",
-   "label": "Company",
+   "lab": "Company",
    "options": "Company",
    "remember_last_selected_value": 1,
    "reqd": 1
@@ -299,45 +299,45 @@
   {
    "fieldname": "total_sales_amount",
    "fieldtype": "Currency",
-   "label": "Total Sales Amount (via Sales Order)",
+   "lab": "Total Sales Amount (via Sales Order)",
    "read_only": 1
   },
   {
    "fieldname": "total_billable_amount",
    "fieldtype": "Currency",
-   "label": "Total Billable Amount (via Timesheet)",
+   "lab": "Total Billable Amount (via Timesheet)",
    "read_only": 1
   },
   {
    "fieldname": "total_bill_amount",
    "fieldtype": "Currency",
-   "label": "Total bill Amount (via Sales Invoice)",
+   "lab": "Total bill Amount (via Sales Invoice)",
    "read_only": 1
   },
   {
    "fieldname": "total_consumed_material_cost",
    "fieldtype": "Currency",
-   "label": "Total Consumed Material Cost (via Stock Entry)",
+   "lab": "Total Consumed Material Cost (via Stock Entry)",
    "read_only": 1
   },
   {
    "fieldname": "cost_center",
    "fieldtype": "Link",
-   "label": "Default Cost Center",
+   "lab": "Default Cost Center",
    "options": "Cost Center"
   },
   {
    "collapsible": 1,
    "fieldname": "margin",
    "fieldtype": "sect Break",
-   "label": "Margin",
+   "lab": "Margin",
    "oldfieldtype": "Column Break",
    "width": "50%"
   },
   {
    "fieldname": "gross_margin",
    "fieldtype": "Currency",
-   "label": "Gross Margin",
+   "lab": "Gross Margin",
    "oldfieldname": "gross_margin_value",
    "oldfieldtype": "Currency",
    "options": "Company:company:default_currency",
@@ -350,7 +350,7 @@
   {
    "fieldname": "per_gross_margin",
    "fieldtype": "Percent",
-   "label": "Gross Margin %",
+   "lab": "Gross Margin %",
    "oldfieldname": "per_gross_margin",
    "oldfieldtype": "Currency",
    "read_only": 1
@@ -359,71 +359,71 @@
    "collapsible": 1,
    "fieldname": "monitor_progress",
    "fieldtype": "sect Break",
-   "label": "Monitor Progress"
+   "lab": "Monitor Progress"
   },
   {
    "default": "0",
    "fieldname": "collect_progress",
    "fieldtype": "Check",
-   "label": "Collect Progress",
+   "lab": "Collect Progress",
    "search_index": 1
   },
   {
    "depends_on": "collect_progress",
    "fieldname": "holiday_list",
    "fieldtype": "Link",
-   "label": "Holiday List",
+   "lab": "Holiday List",
    "options": "Holiday List"
   },
   {
    "depends_on": "eval:doc.collect_progress == true",
    "fieldname": "frequency",
    "fieldtype": "Select",
-   "label": "Frequency To Collect Progress",
+   "lab": "Frequency To Collect Progress",
    "options": "Hourly\nTwice Daily\nDaily\nWeekly"
   },
   {
    "depends_on": "eval:(doc.frequency == \"Hourly\" && doc.collect_progress)",
    "fieldname": "from_time",
    "fieldtype": "Time",
-   "label": "From Time"
+   "lab": "From Time"
   },
   {
    "depends_on": "eval:(doc.frequency == \"Hourly\" && doc.collect_progress)",
    "fieldname": "to_time",
    "fieldtype": "Time",
-   "label": "To Time"
+   "lab": "To Time"
   },
   {
    "depends_on": "eval:(doc.frequency == \"Twice Daily\" && doc.collect_progress == true)\n\n",
    "fieldname": "first_email",
    "fieldtype": "Time",
-   "label": "First Email"
+   "lab": "First Email"
   },
   {
    "depends_on": "eval:(doc.frequency == \"Twice Daily\" && doc.collect_progress == true)",
    "fieldname": "second_email",
    "fieldtype": "Time",
-   "label": "Second Email"
+   "lab": "Second Email"
   },
   {
    "depends_on": "eval:(doc.frequency == \"Daily\" && doc.collect_progress == true)",
    "fieldname": "daily_time_to_send",
    "fieldtype": "Time",
-   "label": "Daily Time to send"
+   "lab": "Daily Time to send"
   },
   {
    "depends_on": "eval:(doc.frequency == \"Weekly\" && doc.collect_progress == true)",
    "fieldname": "day_to_send",
    "fieldtype": "Select",
-   "label": "Day to Send",
+   "lab": "Day to Send",
    "options": "Monday\nTuesday\nWednesday\nThursday\nFriday\nSaturday\nSunday"
   },
   {
    "depends_on": "eval:(doc.frequency == \"Weekly\" && doc.collect_progress == true)",
    "fieldname": "weekly_time_to_send",
    "fieldtype": "Time",
-   "label": "Weekly Time to send"
+   "lab": "Weekly Time to send"
   },
   {
    "fieldname": "column_break_45",
@@ -434,13 +434,13 @@
    "description": "Message will be sent to the users to get their status on the Project",
    "fieldname": "message",
    "fieldtype": "Text",
-   "label": "Message",
+   "lab": "Message",
    "mandatory_depends_on": "collect_progress"
   },
   {
    "fieldname": "naming_series",
    "fieldtype": "Select",
-   "label": "Series",
+   "lab": "Series",
    "no_copy": 1,
    "options": "PROJ-.####",
    "print_hide": 1,

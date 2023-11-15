@@ -6,23 +6,23 @@ frappe.query_reports["Delayed Tasks Summary"] = {
 	"filt": [
 		{
 			"fieldname": "from_date",
-			"label": __("From Date"),
+			"lab": __("From Date"),
 			"fieldtype": "Date"
 		},
 		{
 			"fieldname": "to_date",
-			"label": __("To Date"),
+			"lab": __("To Date"),
 			"fieldtype": "Date"
 		},
 		{
 			"fieldname": "priority",
-			"label": __("Priority"),
+			"lab": __("Priority"),
 			"fieldtype": "Select",
 			"options": ["", "Low", "Medium", "High", "Urgent"]
 		},
 		{
 			"fieldname": "status",
-			"label": __("Status"),
+			"lab": __("Status"),
 			"fieldtype": "Select",
 			"options": ["", "Open", "Working","Pending Review","Overdue","comp"]
 		},

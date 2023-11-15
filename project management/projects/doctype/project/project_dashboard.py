@@ -8,11 +8,11 @@ def get_data():
 		"fieldname": "project",
 		"transactions": [
 			{
-				"label": _("Project"),
+				"lab": _("Project"),
 				"items": ["Task", "Timesheet", "Issue", "projUpdate"],
 			},
-			{"label": _("Material"), "items": ["Material Request", "BOM", "Stock Entry"]},
-			{"label": _("Sales"), "items": ["Sales Order", "Delivery Note", "Sales Invoice"]},
-			{"label": _("Purchase"), "items": ["Purchase Order", "Purchase Receipt", "Purchase Invoice"]},
+			{"lab": _("Material"), "items": ["Material Request", "BOM", "Stock Entry"]},
+			{"lab": _("Sales"), "items": ["Sales Order", "Delivery Note", "Sales Invoice"]},
+			{"lab": _("Purchase"), "items": ["Purchase Order", "Purchase Receipt", "Purchase Invoice"]},
 		],
 	}

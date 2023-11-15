@@ -5,13 +5,13 @@ frappe.query_reports["Daily Timesheet Summary"] = {
 	"filt": [
 		{
 			"fieldname":"from_date",
-			"label": __("From Date"),
+			"lab": __("From Date"),
 			"fieldtype": "Date",
 			"default": frappe.datetime.get_today()
 		},
 		{
 			"fieldname":"to_date",
-			"label": __("To Date"),
+			"lab": __("To Date"),
 			"fieldtype": "Date",
 			"default": frappe.datetime.get_today()
 		},

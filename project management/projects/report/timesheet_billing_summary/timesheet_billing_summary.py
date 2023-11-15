@@ -16,13 +16,13 @@ def execute(filt=None):
 def get_columns(filt, group_fieldname=None):
 	group_columns = {
 		"date": {
-			"label": _("Date"),
+			"lab": _("Date"),
 			"fieldtype": "Date",
 			"fieldname": "date",
 			"width": 150,
 		},
 		"project": {
-			"label": _("Project"),
+			"lab": _("Project"),
 			"fieldtype": "Link",
 			"fieldname": "project",
 			"options": "Project",
@@ -30,7 +30,7 @@ def get_columns(filt, group_fieldname=None):
 			"hidden": int(bool(filt.get("project"))),
 		},
 		"employee": {
-			"label": _("Employee ID"),
+			"lab": _("Employee ID"),
 			"fieldtype": "Link",
 			"fieldname": "employee",
 			"options": "Employee",
@@ -50,27 +50,27 @@ def get_columns(filt, group_fieldname=None):
 	columns.extend(
 		[
 			{
-				"label": _("Employee Name"),
+				"lab": _("Employee Name"),
 				"fieldtype": "data",
 				"fieldname": "employee_name",
 				"hidden": 1,
 			},
 			{
-				"label": _("Timesheet"),
+				"lab": _("Timesheet"),
 				"fieldtype": "Link",
 				"fieldname": "timesheet",
 				"options": "Timesheet",
 				"width": 150,
 			},
-			{"label": _("Working Hours"), "fieldtype": "Float", "fieldname": "hours", "width": 150},
+			{"lab": _("Working Hours"), "fieldtype": "Float", "fieldname": "hours", "width": 150},
 			{
-				"label": _("Billing Hours"),
+				"lab": _("Billing Hours"),
 				"fieldtype": "Float",
 				"fieldname": "billing_hours",
 				"width": 150,
 			},
 			{
-				"label": _("Billing Amount"),
+				"lab": _("Billing Amount"),
 				"fieldtype": "Currency",
 				"fieldname": "billing_amount",
 				"width": 150,

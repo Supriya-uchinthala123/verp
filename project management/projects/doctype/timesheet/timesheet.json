@@ -52,14 +52,14 @@
    "fieldname": "title",
    "fieldtype": "Data",
    "hidden": 1,
-   "label": "Title",
+   "lab": "Title",
    "no_copy": 1,
    "print_hide": 1
   },
   {
    "fieldname": "naming_series",
    "fieldtype": "Select",
-   "label": "Series",
+   "lab": "Series",
    "options": "TS-.YYYY.-",
    "reqd": 1,
    "set_only_once": 1
@@ -67,14 +67,14 @@
   {
    "fieldname": "company",
    "fieldtype": "Link",
-   "label": "Company",
+   "lab": "Company",
    "options": "Company",
    "remember_last_selected_value": 1
   },
   {
    "fieldname": "sales_invoice",
    "fieldtype": "Link",
-   "label": "Sales Invoice",
+   "lab": "Sales Invoice",
    "no_copy": 1,
    "options": "Sales Invoice",
    "print_hide": 1,
@@ -89,7 +89,7 @@
    "fieldname": "status",
    "fieldtype": "Select",
    "in_standard_filter": 1,
-   "label": "Status",
+   "lab": "Status",
    "no_copy": 1,
    "options": "Draft\nSubmitted\nbill\nPayslip\ncomp\nCancelled",
    "print_hide": 1,
@@ -98,13 +98,13 @@
   {
    "fieldname": "employee_detail",
    "fieldtype": "sect Break",
-   "label": "Employee Detail"
+   "lab": "Employee Detail"
   },
   {
    "fieldname": "employee",
    "fieldtype": "Link",
    "in_standard_filter": 1,
-   "label": "Employee",
+   "lab": "Employee",
    "options": "Employee"
   },
   {
@@ -113,7 +113,7 @@
    "fieldname": "employee_name",
    "fieldtype": "Data",
    "in_global_search": 1,
-   "label": "Employee Name",
+   "lab": "Employee Name",
    "print_hide": 1,
    "read_only": 1
   },
@@ -121,7 +121,7 @@
    "fetch_from": "employee.department",
    "fieldname": "department",
    "fieldtype": "Link",
-   "label": "Department",
+   "lab": "Department",
    "options": "Department",
    "read_only": 1
   },
@@ -133,7 +133,7 @@
    "fieldname": "user",
    "fieldtype": "Link",
    "in_global_search": 1,
-   "label": "User",
+   "lab": "User",
    "options": "User",
    "read_only": 1
   },
@@ -141,14 +141,14 @@
    "fieldname": "start_date",
    "fieldtype": "Date",
    "in_list_view": 1,
-   "label": "Start Date",
+   "lab": "Start Date",
    "print_hide": 1,
    "read_only": 1
   },
   {
    "fieldname": "end_date",
    "fieldtype": "Date",
-   "label": "End Date",
+   "lab": "End Date",
    "print_hide": 1,
    "read_only": 1
   },
@@ -159,7 +159,7 @@
   {
    "fieldname": "time_logs",
    "fieldtype": "Table",
-   "label": "Time Sheets",
+   "lab": "Time Sheets",
    "options": "Timesheet Detail",
    "reqd": 1
   },
@@ -172,21 +172,21 @@
    "default": "0",
    "fieldname": "total_hours",
    "fieldtype": "Float",
-   "label": "Total Working Hours",
+   "lab": "Total Working Hours",
    "read_only": 1
   },
   {
    "collapsible": 1,
    "fieldname": "billing_details",
    "fieldtype": "sect Break",
-   "label": "Billing Details",
+   "lab": "Billing Details",
    "permlevel": 1
   },
   {
    "allow_on_submit": 1,
    "fieldname": "total_billable_hours",
    "fieldtype": "Float",
-   "label": "Total Billable Hours",
+   "lab": "Total Billable Hours",
    "print_hide": 1,
    "read_only": 1
   },
@@ -194,7 +194,7 @@
    "allow_on_submit": 1,
    "fieldname": "total_bill_hours",
    "fieldtype": "Float",
-   "label": "Total bill Hours",
+   "lab": "Total bill Hours",
    "print_hide": 1,
    "read_only": 1
   },
@@ -202,7 +202,7 @@
    "allow_on_submit": 1,
    "fieldname": "total_cost_amount",
    "fieldtype": "Currency",
-   "label": "Total cost Amount",
+   "lab": "Total cost Amount",
    "options": "currency",
    "print_hide": 1,
    "read_only": 1
@@ -216,7 +216,7 @@
    "default": "0",
    "fieldname": "total_billable_amount",
    "fieldtype": "Currency",
-   "label": "Total Billable Amount",
+   "lab": "Total Billable Amount",
    "options": "currency",
    "read_only": 1
   },
@@ -224,7 +224,7 @@
    "allow_on_submit": 1,
    "fieldname": "total_bill_amount",
    "fieldtype": "Currency",
-   "label": "Total bill Amount",
+   "lab": "Total bill Amount",
    "options": "currency",
    "print_hide": 1,
    "read_only": 1
@@ -234,7 +234,7 @@
    "fieldname": "per_bill",
    "fieldtype": "Percent",
    "in_list_view": 1,
-   "label": "% Amount bill",
+   "lab": "% Amount bill",
    "no_copy": 1,
    "print_hide": 1,
    "read_only": 1
@@ -246,13 +246,13 @@
   {
    "fieldname": "note",
    "fieldtype": "Text Editor",
-   "label": "Note"
+   "lab": "Note"
   },
   {
    "fieldname": "amended_from",
    "fieldtype": "Link",
    "ignore_user_permissions": 1,
-   "label": "Amended From",
+   "lab": "Amended From",
    "no_copy": 1,
    "options": "Timesheet",
    "print_hide": 1,
@@ -261,13 +261,13 @@
   {
    "fieldname": "parent_project",
    "fieldtype": "Link",
-   "label": "Project",
+   "lab": "Project",
    "options": "Project"
   },
   {
    "fieldname": "customer",
    "fieldtype": "Link",
-   "label": "Customer",
+   "lab": "Customer",
    "options": "Customer"
   },
   {
@@ -275,27 +275,27 @@
    "fetch_if_empty": 1,
    "fieldname": "currency",
    "fieldtype": "Link",
-   "label": "Currency",
+   "lab": "Currency",
    "options": "Currency"
   },
   {
    "fieldname": "base_total_cost_amount",
    "fieldtype": "Currency",
-   "label": "Base Total cost Amount",
+   "lab": "Base Total cost Amount",
    "print_hide": 1,
    "read_only": 1
   },
   {
    "fieldname": "base_total_billable_amount",
    "fieldtype": "Currency",
-   "label": "Base Total Billable Amount",
+   "lab": "Base Total Billable Amount",
    "print_hide": 1,
    "read_only": 1
   },
   {
    "fieldname": "base_total_bill_amount",
    "fieldtype": "Currency",
-   "label": "Base Total bill Amount",
+   "lab": "Base Total bill Amount",
    "print_hide": 1,
    "read_only": 1
   },
@@ -303,7 +303,7 @@
    "default": "1",
    "fieldname": "exchange_rate",
    "fieldtype": "Float",
-   "label": "Exchange Rate"
+   "lab": "Exchange Rate"
   }
  ],
  "icon": "fa fa-clock-o",

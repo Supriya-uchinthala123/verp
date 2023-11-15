@@ -6,7 +6,7 @@ frappe.query_reports["projSummary"] = {
 	"filt": [
 		{
 			"fieldname": "company",
-			"label": __("Company"),
+			"lab": __("Company"),
 			"fieldtype": "Link",
 			"options": "Company",
 			"default": frappe.defaults.get_user_default("Company"),
@@ -14,27 +14,27 @@ frappe.query_reports["projSummary"] = {
 		},
 		{
 			"fieldname": "is_active",
-			"label": __("Is Active"),
+			"lab": __("Is Active"),
 			"fieldtype": "Select",
 			"options": "\nYes\nNo",
 			"default": "Yes",
 		},
 		{
 			"fieldname": "status",
-			"label": __("Status"),
+			"lab": __("Status"),
 			"fieldtype": "Select",
 			"options": "\nOpen\ncomp\nCancelled",
 			"default": "Open"
 		},
 		{
 			"fieldname": "project_type",
-			"label": __("projType"),
+			"lab": __("projType"),
 			"fieldtype": "Link",
 			"options": "projType"
 		},
 		{
 			"fieldname": "priority",
-			"label": __("Priority"),
+			"lab": __("Priority"),
 			"fieldtype": "Select",
 			"options": "\nLow\nMedium\nHigh"
 		}

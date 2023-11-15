@@ -21,14 +21,14 @@
    "fieldname": "naming_series",
    "fieldtype": "Data",
    "hidden": 1,
-   "label": "Series",
+   "lab": "Series",
    "options": "PROJ-UPD-.YYYY.-"
   },
   {
    "fieldname": "project",
    "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "Project",
+   "lab": "Project",
    "options": "Project",
    "reqd": 1
   },
@@ -36,7 +36,7 @@
    "default": "0",
    "fieldname": "sent",
    "fieldtype": "Check",
-   "label": "Sent",
+   "lab": "Sent",
    "read_only": 1
   },
   {
@@ -46,14 +46,14 @@
   {
    "fieldname": "date",
    "fieldtype": "Date",
-   "label": "Date",
+   "lab": "Date",
    "read_only": 1,
    "search_index": 1
   },
   {
    "fieldname": "time",
    "fieldtype": "Time",
-   "label": "Time",
+   "lab": "Time",
    "read_only": 1
   },
   {
@@ -63,13 +63,13 @@
   {
    "fieldname": "users",
    "fieldtype": "Table",
-   "label": "Users",
+   "lab": "Users",
    "options": "projUser"
   },
   {
    "fieldname": "amended_from",
    "fieldtype": "Link",
-   "label": "Amended From",
+   "lab": "Amended From",
    "no_copy": 1,
    "options": "projUpdate",
    "print_hide": 1,

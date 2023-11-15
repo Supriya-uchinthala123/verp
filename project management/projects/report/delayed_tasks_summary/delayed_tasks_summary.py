@@ -76,7 +76,7 @@ def get_chart_data(data):
 			on_track = on_track + 1
 	charts = {
 		"data": {
-			"labels": [_("On Track"), _("Delayed")],
+			"labs": [_("On Track"), _("Delayed")],
 			"datasets": [{"name": "Delayed", "values": [on_track, delay]}],
 		},
 		"type": "percentage",
@@ -87,24 +87,24 @@ def get_chart_data(data):
 
 def get_columns():
 	columns = [
-		{"fieldname": "name", "fieldtype": "Link", "label": _("Task"), "options": "Task", "width": 150},
-		{"fieldname": "subject", "fieldtype": "Data", "label": _("Subject"), "width": 200},
-		{"fieldname": "status", "fieldtype": "Data", "label": _("Status"), "width": 100},
-		{"fieldname": "priority", "fieldtype": "Data", "label": _("Priority"), "width": 80},
-		{"fieldname": "progress", "fieldtype": "Data", "label": _("Progress (%)"), "width": 120},
+		{"fieldname": "name", "fieldtype": "Link", "lab": _("Task"), "options": "Task", "width": 150},
+		{"fieldname": "subject", "fieldtype": "Data", "lab": _("Subject"), "width": 200},
+		{"fieldname": "status", "fieldtype": "Data", "lab": _("Status"), "width": 100},
+		{"fieldname": "priority", "fieldtype": "Data", "lab": _("Priority"), "width": 80},
+		{"fieldname": "progress", "fieldtype": "Data", "lab": _("Progress (%)"), "width": 120},
 		{
 			"fieldname": "exp_start_date",
 			"fieldtype": "Date",
-			"label": _("Expected Start Date"),
+			"lab": _("Expected Start Date"),
 			"width": 150,
 		},
 		{
 			"fieldname": "exp_end_date",
 			"fieldtype": "Date",
-			"label": _("Expected End Date"),
+			"lab": _("Expected End Date"),
 			"width": 150,
 		},
-		{"fieldname": "comp_on", "fieldtype": "Date", "label": _("Actual End Date"), "width": 130},
-		{"fieldname": "delay", "fieldtype": "Data", "label": _("Delay (In Days)"), "width": 120},
+		{"fieldname": "comp_on", "fieldtype": "Date", "lab": _("Actual End Date"), "width": 130},
+		{"fieldname": "delay", "fieldtype": "Data", "lab": _("Delay (In Days)"), "width": 120},
 	]
 	return columns

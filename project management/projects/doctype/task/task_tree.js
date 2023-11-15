@@ -8,13 +8,13 @@ frappe.treeview_settings['Task'] = {
 			fieldname: "project",
 			fieldtype:"Link",
 			options: "Project",
-			label: __("Project"),
+			lab: __("Project"),
 		},
 		{
 			fieldname: "task",
 			fieldtype:"Link",
 			options: "Task",
-			label: __("Task"),
+			lab: __("Task"),
 			get_query: function() {
 				var me = frappe.treeview_settings['Task'];
 				var proj= me.page.fields_dict.project.get_value();
@@ -30,7 +30,7 @@ frappe.treeview_settings['Task'] = {
 	],
 	breadcrumb: "proj",
 	get_tree_root: false,
-	root_label: "All Tasks",
+	root_lab: "All Tasks",
 	ignore_fields: ["parent_task"],
 	onload: function(me) {
 		frappe.treeview_settings['Task'].page = {};
@@ -39,7 +39,7 @@ frappe.treeview_settings['Task'] = {
 	},
 	toolbar: [
 		{
-			label:__("Add Multiple"),
+			lab:__("Add Multiple"),
 			condition: function(node) {
 				return node.expandable;
 			},
@@ -59,7 +59,7 @@ frappe.treeview_settings['Task'] = {
 								fieldname:"subject",
 								in_list_view: 1,
 								reqd: 1,
-								label: __("Subject")
+								lab: __("Subject")
 							}]
 						},
 					],
@@ -74,7 +74,7 @@ frappe.treeview_settings['Task'] = {
 							callback: function() { }
 						});
 					},
-					primary_action_label: __('Create')
+					primary_action_lab: __('Create')
 				});
 				dialog.show();
 			}

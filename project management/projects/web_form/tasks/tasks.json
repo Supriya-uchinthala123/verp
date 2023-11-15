@@ -43,10 +43,10 @@
    "reqd": 1
   }, 
   {
-   "fieldname": "subject", 
+   "fieldname": "subject content", 
    "fieldtype": "Data", 
    "hidden": 0, 
-   "label": "Subject", 
+   "label": "subject content", 
    "max_length": 0, 
    "max_value": 0, 
    "read_only": 0, 

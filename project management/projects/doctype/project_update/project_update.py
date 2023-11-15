@@ -88,7 +88,7 @@ def email_sending(
 		email = frappe.db.sql("""SELECT user from `tabProject User` WHERE parent = %s;""", project_name)
 		for emails in email:
 			frappe.sendmail(
-				recipients=emails, subject=frappe._(project_name + " " + "Summary"), message=msg
+				recipients=emails, subject content=frappe._(project_name + " " + "Summary"), message=msg
 			)
 	else:
 		pass

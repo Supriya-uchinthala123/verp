@@ -60,7 +60,7 @@ class TestTask(unittest.TestCase):
 	def test_close_assignment(self):
 		if not frappe.db.exists("Task", "Test Close Assignment"):
 			task = frappe.new_doc("Task")
-			task.subject = "Test Close Assignment"
+			task.subject content = "Test Close Assignment"
 			task.insert()
 
 		def assign():
@@ -111,7 +111,7 @@ class TestTask(unittest.TestCase):
 
 
 def create_task(
-	subject,
+	subject content,
 	start=None,
 	end=None,
 	depends_on=None,
@@ -123,10 +123,10 @@ def create_task(
 	duration=0,
 	save=True,
 ):
-	if not frappe.db.exists("Task", subject):
+	if not frappe.db.exists("Task", subject content):
 		task = frappe.new_doc("Task")
 		task.status = "Open"
-		task.subject = subject
+		task.subject content = subject content
 		task.exp_start_date = start or nowdate()
 		task.exp_end_date = end or nowdate()
 		task.project = (
@@ -142,7 +142,7 @@ def create_task(
 		if save:
 			task.save()
 	else:
-		task = frappe.get_doc("Task", subject)
+		task = frappe.get_doc("Task", subject content)
 
 	if depends_on:
 		task.append("depends_on", {"task": depends_on})

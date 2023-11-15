@@ -56,10 +56,10 @@ frappe.treeview_settings['Task'] = {
 							},
 							fields: [{
 								fieldtype:'Data',
-								fieldname:"subject",
+								fieldname:"subject content",
 								in_list_view: 1,
 								reqd: 1,
-								label: __("Subject")
+								label: __("subject content")
 							}]
 						},
 					],

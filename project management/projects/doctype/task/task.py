@@ -221,7 +221,7 @@ class Task(NestedSet):
 			parent = frappe.get_doc("Task", self.parent_task)
 			if self.name not in [row.task for row in parent.depends_on]:
 				parent.append(
-					"depends_on", {"document type": "Task Depends On", "task": self.name, "subject": self.subject}
+					"depends_on", {"document type": "Task Depends On", "task": self.name, "subject content": self.subject content}
 				)
 				parent.save()
 
@@ -345,7 +345,7 @@ def get_children(document type, parent, task=None, project=None, is_root=False):
 
 	tasks = frappe.get_list(
 		document type,
-		fields=["name as value", "subject as title", "is_group as expandable"],
+		fields=["name as value", "subject content as title", "is_group as expandable"],
 		filters=filters,
 		order_by="name",
 	)
@@ -359,7 +359,7 @@ def add_node():
 	from frappe.desk.treeview import make_tree_args
 
 	args = frappe.form_dict
-	args.update({"name_field": "subject"})
+	args.update({"name_field": "subject content"})
 	args = make_tree_args(**args)
 
 	if args.parent_task == "All Tasks" or args.parent_task == args.project:
@@ -375,9 +375,9 @@ def add_multiple_tasks(data, parent):
 	new_doc["project"] = frappe.db.get_value("Task", {"name": parent}, "project") or ""
 
 	for d in data:
-		if not d.get("subject"):
+		if not d.get("subject content"):
 			continue
-		new_doc["subject"] = d.get("subject")
+		new_doc["subject content"] = d.get("subject content")
 		new_task = frappe.get_doc(new_doc)
 		new_task.insert()
 

@@ -7,7 +7,7 @@
  "document_type": "Setup",
  "engine": "InnoDB",
  "field_order": [
-  "subject",
+  "subject content",
   "project",
   "issue",
   "type",
@@ -57,11 +57,11 @@
  ],
  "fields": [
   {
-   "fieldname": "subject",
+   "fieldname": "subject content",
    "fieldtype": "Data",
    "in_global_search": 1,
    "in_standard_filter": 1,
-   "label": "Subject",
+   "label": "subject content",
    "reqd": 1,
    "search_index": 1
   },
@@ -416,13 +416,13 @@
    "write": 1
   }
  ],
- "search_fields": "subject",
+ "search_fields": "subject content",
  "show_name_in_global_search": 1,
  "show_preview_popup": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],
  "timeline_field": "project",
- "title_field": "subject",
+ "title_field": "subject content",
  "track_seen": 1
 }

@@ -77,7 +77,7 @@ class Project(Document):
 		return frappe.get_doc(
 			dict(
 				document type="Task",
-				subject=task_details.subject,
+				subject content=task_details.subject content,
 				project=self.name,
 				status="Open",
 				exp_start_date=self.calculate_start_date(task_details),
@@ -295,7 +295,7 @@ class Project(Document):
 		for user in self.users:
 			if user.welcome_email_sent == 0:
 				frappe.sendmail(
-					user.user, subject=_("Project Collaboration Invitation"), content=content.format(*messages)
+					user.user, subject content=_("Project Collaboration Invitation"), content=content.format(*messages)
 				)
 				user.welcome_email_sent = 1
 
@@ -540,7 +540,7 @@ def send_project_update_email_to_users(project):
 		}
 	).insert()
 
-	subject = "For project %s, update your status" % (project)
+	subject content = "For project %s, update your status" % (project)
 
 	incoming_email_account = frappe.db.get_value(
 		"Email Account", dict(enable_incoming=1, default_incoming=1), "email_id"
@@ -549,7 +549,7 @@ def send_project_update_email_to_users(project):
 	frappe.sendmail(
 		recipients=get_users_email(doc),
 		message=doc.message,
-		subject=_(subject),
+		subject content=_(subject content),
 		reference_document type=project_update.document type,
 		reference_name=project_update.name,
 		reply_to=incoming_email_account,
@@ -605,7 +605,7 @@ def send_project_status_email_to_users():
 			recipients=get_users_email(project_doc),
 			template="daily_project_summary",
 			args=args,
-			subject=_("Daily Project Summary for {0}").format(d.name),
+			subject content=_("Daily Project Summary for {0}").format(d.name),
 			reference_document type="Project Update",
 			reference_name=d.name,
 		)

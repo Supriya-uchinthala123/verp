@@ -27,22 +27,22 @@ class TestDelayedTasksSummary(unittest.TestCase):
 			}
 		)
 		expected_data = [
-			{"subject": "_Test Task 99", "status": "Open", "priority": "Low", "delay": 1},
-			{"subject": "_Test Task 98", "status": "Completed", "priority": "Low", "delay": -1},
+			{"subject content": "_Test Task 99", "status": "Open", "priority": "Low", "delay": 1},
+			{"subject content": "_Test Task 98", "status": "Completed", "priority": "Low", "delay": -1},
 		]
 		report = execute(filters)
-		data = list(filter(lambda x: x.subject == "_Test Task 99", report[1]))[0]
+		data = list(filter(lambda x: x.subject content == "_Test Task 99", report[1]))[0]
 
-		for key in ["subject", "status", "priority", "delay"]:
+		for key in ["subject content", "status", "priority", "delay"]:
 			self.assertEqual(expected_data[0].get(key), data.get(key))
 
 		filters.status = "Completed"
 		report = execute(filters)
-		data = list(filter(lambda x: x.subject == "_Test Task 98", report[1]))[0]
+		data = list(filter(lambda x: x.subject content == "_Test Task 98", report[1]))[0]
 
-		for key in ["subject", "status", "priority", "delay"]:
+		for key in ["subject content", "status", "priority", "delay"]:
 			self.assertEqual(expected_data[1].get(key), data.get(key))
 
 	def tearDown(self):
 		for task in ["_Test Task 98", "_Test Task 99"]:
-			frappe.get_doc("Task", {"subject": task}).delete()
+			frappe.get_doc("Task", {"subject content": task}).delete()

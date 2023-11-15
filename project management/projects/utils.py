@@ -18,13 +18,13 @@ def query_task(document type, txt, searchfield, start, page_len, filters):
 	match_conditions = ("and" + match_conditions) if match_conditions else ""
 
 	return frappe.db.sql(
-		"""select name, subject from `tabTask`
-		where (`%s` like %s or `subject` like %s) %s
+		"""select name, subject content from `tabTask`
+		where (`%s` like %s or `subject content` like %s) %s
 		order by
-			case when `subject` like %s then 0 else 1 end,
+			case when `subject content` like %s then 0 else 1 end,
 			case when `%s` like %s then 0 else 1 end,
 			`%s`,
-			subject
+			subject content
 		limit %s offset %s"""
 		% (searchfield, "%s", "%s", match_conditions, "%s", searchfield, "%s", searchfield, "%s", "%s"),
 		(search_string, search_string, order_by_string, order_by_string, page_len, start),

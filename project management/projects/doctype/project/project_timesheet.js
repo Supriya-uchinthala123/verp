@@ -7,7 +7,7 @@ QUnit.test("test project", function(assert) {
 	// To create a timesheet with different tasks and costs
 	let timesheet = (title,start_time,end_time,bill_rate,cost_rate) => {
 		return frappe.run_serially([
-			() => frappe.db.get_value('Task', {'subject': title}, 'name'),
+			() => frappe.db.get_value('Task', {'subject content': title}, 'name'),
 			(task) => {
 				// Creating timesheet for a project
 				return frappe.tests.make('Timesheet', [

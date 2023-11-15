@@ -6,7 +6,7 @@
  "engine": "InnoDB",
  "field_order": [
   "task",
-  "subject"
+  "subject content"
  ],
  "fields": [
   {
@@ -20,11 +20,11 @@
   },
   {
    "columns": 6,
-   "fetch_from": "task.subject",
-   "fieldname": "subject",
+   "fetch_from": "task.subject content",
+   "fieldname": "subject content",
    "fieldtype": "Read Only",
    "in_list_view": 1,
-   "label": "Subject"
+   "label": "subject content"
   }
  ],
  "istable": 1,

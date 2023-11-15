@@ -57,10 +57,10 @@ class Testtimesheets(unittest.TestCase):
 		sales_invoice.submit()
 		timesheets = frappe.get_doc("timesheets", timesheets.name)
 		self.assertEqual(sales_invoice.total_billing_amount, 100)
-		self.assertEqual(timesheets.status, "Billed")
+		self.assertEqual(timesheets.status, "bill")
 		self.assertEqual(sales_invoice.customer, "_Test Customer")
 
-		item = sales_invoice.items[0]
+		item = sales_invoice.item[0]
 		self.assertEqual(item.item_code, "_Test Item")
 		self.assertEqual(item.qty, 2.00)
 		self.assertEqual(item.rate, 50.00)
@@ -77,7 +77,7 @@ class Testtimesheets(unittest.TestCase):
 		sales_invoice.submit()
 
 		ts = frappe.get_doc("timesheets", timesheets.name)
-		self.assertEqual(ts.per_billed, 100)
+		self.assertEqual(ts.per_bill, 100)
 		self.assertEqual(ts.time_logs[0].sales_invoice, sales_invoice.name)
 
 	def test_timesheets_time_overlap(self):
@@ -171,36 +171,36 @@ class Testtimesheets(unittest.TestCase):
 		to_time = timesheets.time_logs[0].to_time
 		self.assertEqual(to_time, add_to_date(from_time, hours=2, as_datetime=True))
 
-	def test_per_billed_hours(self):
-		"""If amounts are 0, per_billed should be calculated based on hours."""
+	def test_per_bill_hours(self):
+		"""If amounts are 0, per_bill should be calculated based on hours."""
 		ts = frappe.new_doc("timesheets")
 		ts.total_billable_amount = 0
-		ts.total_billed_amount = 0
+		ts.total_bill_amount = 0
 		ts.total_billable_hours = 2
 
-		ts.total_billed_hours = 0.5
-		ts.calculate_percentage_billed()
-		self.assertEqual(ts.per_billed, 25)
+		ts.total_bill_hours = 0.5
+		ts.calculate_percentage_bill()
+		self.assertEqual(ts.per_bill, 25)
 
-		ts.total_billed_hours = 2
-		ts.calculate_percentage_billed()
-		self.assertEqual(ts.per_billed, 100)
+		ts.total_bill_hours = 2
+		ts.calculate_percentage_bill()
+		self.assertEqual(ts.per_bill, 100)
 
-	def test_per_billed_amount(self):
-		"""If amounts are > 0, per_billed should be calculated based on amounts, regardless of hours."""
+	def test_per_bill_amount(self):
+		"""If amounts are > 0, per_bill should be calculated based on amounts, regardless of hours."""
 		ts = frappe.new_doc("timesheets")
 		ts.total_billable_hours = 2
-		ts.total_billed_hours = 1
+		ts.total_bill_hours = 1
 		ts.total_billable_amount = 200
-		ts.total_billed_amount = 50
-		ts.calculate_percentage_billed()
-		self.assertEqual(ts.per_billed, 25)
+		ts.total_bill_amount = 50
+		ts.calculate_percentage_bill()
+		self.assertEqual(ts.per_bill, 25)
 
-		ts.total_billed_hours = 3
+		ts.total_bill_hours = 3
 		ts.total_billable_amount = 200
-		ts.total_billed_amount = 200
-		ts.calculate_percentage_billed()
-		self.assertEqual(ts.per_billed, 100)
+		ts.total_bill_amount = 200
+		ts.calculate_percentage_bill()
+		self.assertEqual(ts.per_bill, 100)
 
 
 def make_timesheets(

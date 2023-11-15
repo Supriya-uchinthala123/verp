@@ -6,7 +6,7 @@ from frappe import _
 
 
 def execute(filt=None):
-	columns = get_columns()
+	cols = get_cols()
 	proj_details = get_project_details()
 	pr_item_map = get_purchased_items_cost()
 	se_item_map = get_issued_items_cost()
@@ -30,10 +30,10 @@ def execute(filt=None):
 			]
 		)
 
-	return columns, data
+	return cols, data
 
 
-def get_columns():
+def get_cols():
 	return [
 		_("projId") + ":Link/Project:140",
 		_("Cost of Purchased Items") + ":Currency:160",

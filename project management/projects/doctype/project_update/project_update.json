@@ -9,7 +9,7 @@
   "naming_series",
   "project",
   "sent",
-  "column_break_2",
+  "col_break_2",
   "date",
   "time",
   "sect_break_5",
@@ -40,8 +40,8 @@
    "read_only": 1
   },
   {
-   "fieldname": "column_break_2",
-   "fieldtype": "Column Break"
+   "fieldname": "col_break_2",
+   "fieldtype": "col Break"
   },
   {
    "fieldname": "date",

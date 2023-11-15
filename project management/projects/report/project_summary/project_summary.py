@@ -7,7 +7,7 @@ from frappe import _
 
 
 def execute(filt=None):
-	columns = get_columns()
+	cols = get_cols()
 	data = []
 
 	data = frappe.db.get_all(
@@ -36,10 +36,10 @@ def execute(filt=None):
 	chart = get_chart_data(data)
 	report_summary = get_report_summary(data)
 
-	return columns, data, None, chart, report_summary
+	return cols, data, None, chart, report_summary
 
 
-def get_columns():
+def get_cols():
 	return [
 		{
 			"fieldname": "name",

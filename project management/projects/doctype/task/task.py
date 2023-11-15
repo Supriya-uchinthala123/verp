@@ -257,17 +257,17 @@ def get_project(doctype, txt, searchfield, start, page_len, filt):
 
 	meta = frappe.get_meta(doctype)
 	searchfields = meta.get_search_fields()
-	search_columns = ", " + ", ".join(searchfields) if searchfields else ""
+	search_cols = ", " + ", ".join(searchfields) if searchfields else ""
 	search_cond = " or " + " or ".join(field + " like %(txt)s" for field in searchfields)
 
 	return frappe.db.sql(
-		""" select name {search_columns} from `tabProject`
+		""" select name {search_cols} from `tabProject`
 		where %(key)s like %(txt)s
 			%(mcond)s
 			{search_condition}
 		order by name
 		limit %(page_len)s offset %(start)s""".format(
-			search_columns=search_columns, search_condition=search_cond
+			search_cols=search_cols, search_condition=search_cond
 		),
 		{
 			"key": searchfield,

@@ -10,7 +10,7 @@
  ],
  "fields": [
   {
-   "columns": 2,
+   "cols": 2,
    "fieldname": "task",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -19,7 +19,7 @@
    "reqd": 1
   },
   {
-   "columns": 6,
+   "cols": 6,
    "fetch_from": "task.subject",
    "fieldname": "subject",
    "fieldtype": "Read Only",

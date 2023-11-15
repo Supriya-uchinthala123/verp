@@ -7,14 +7,14 @@ def execute(filt=None):
 	group_fieldname = filt.pop("group_by", None)
 
 	filt = frappe._dict(filt or {})
-	columns = get_columns(filt, group_fieldname)
+	cols = get_cols(filt, group_fieldname)
 
 	data = get_data(filt, group_fieldname)
-	return columns, data
+	return cols, data
 
 
-def get_columns(filt, group_fieldname=None):
-	group_columns = {
+def get_cols(filt, group_fieldname=None):
+	group_cols = {
 		"date": {
 			"lab": _("Date"),
 			"fieldtype": "Date",
@@ -38,16 +38,16 @@ def get_columns(filt, group_fieldname=None):
 			"hidden": int(bool(filt.get("employee"))),
 		},
 	}
-	columns = []
+	cols = []
 	if group_fieldname:
-		columns.append(group_columns.get(group_fieldname))
-		columns.extend(
-			column for column in group_columns.values() if column.get("fieldname") != group_fieldname
+		cols.append(group_cols.get(group_fieldname))
+		cols.extend(
+			col for col in group_cols.values() if col.get("fieldname") != group_fieldname
 		)
 	else:
-		columns.extend(group_columns.values())
+		cols.extend(group_cols.values())
 
-	columns.extend(
+	cols.extend(
 		[
 			{
 				"lab": _("Employee Name"),
@@ -78,7 +78,7 @@ def get_columns(filt, group_fieldname=None):
 		]
 	)
 
-	return columns
+	return cols
 
 
 def get_data(filt, group_fieldname=None):

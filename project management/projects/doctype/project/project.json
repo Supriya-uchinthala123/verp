@@ -15,7 +15,7 @@
   "is_active",
   "percent_complete_method",
   "percent_complete",
-  "column_break_5",
+  "col_break_5",
   "project_template",
   "expected_start_date",
   "expected_end_date",
@@ -23,7 +23,7 @@
   "department",
   "customer_details",
   "customer",
-  "column_break_14",
+  "col_break_14",
   "sales_order",
   "users_sect",
   "users",
@@ -33,14 +33,14 @@
   "sect_break_18",
   "actual_start_date",
   "actual_time",
-  "column_break_20",
+  "col_break_20",
   "actual_end_date",
   "project_details",
   "estimated_cost",
   "total_cost_amount",
   "total_purchase_cost",
   "company",
-  "column_break_28",
+  "col_break_28",
   "total_sales_amount",
   "total_billable_amount",
   "total_bill_amount",
@@ -48,7 +48,7 @@
   "cost_center",
   "margin",
   "gross_margin",
-  "column_break_37",
+  "col_break_37",
   "per_gross_margin",
   "monitor_progress",
   "collect_progress",
@@ -61,7 +61,7 @@
   "daily_time_to_send",
   "day_to_send",
   "weekly_time_to_send",
-  "column_break_45",
+  "col_break_45",
   "message"
  ],
  "fields": [
@@ -119,8 +119,8 @@
    "read_only": 1
   },
   {
-   "fieldname": "column_break_5",
-   "fieldtype": "Column Break"
+   "fieldname": "col_break_5",
+   "fieldtype": "col Break"
   },
   {
    "allow_in_quick_entry": 1,
@@ -181,8 +181,8 @@
    "search_index": 1
   },
   {
-   "fieldname": "column_break_14",
-   "fieldtype": "Column Break"
+   "fieldname": "col_break_14",
+   "fieldtype": "col Break"
   },
   {
    "fieldname": "sales_order",
@@ -244,8 +244,8 @@
    "read_only": 1
   },
   {
-   "fieldname": "column_break_20",
-   "fieldtype": "Column Break"
+   "fieldname": "col_break_20",
+   "fieldtype": "col Break"
   },
   {
    "fieldname": "actual_end_date",
@@ -293,8 +293,8 @@
    "reqd": 1
   },
   {
-   "fieldname": "column_break_28",
-   "fieldtype": "Column Break"
+   "fieldname": "col_break_28",
+   "fieldtype": "col Break"
   },
   {
    "fieldname": "total_sales_amount",
@@ -331,7 +331,7 @@
    "fieldname": "margin",
    "fieldtype": "sect Break",
    "lab": "Margin",
-   "oldfieldtype": "Column Break",
+   "oldfieldtype": "col Break",
    "width": "50%"
   },
   {
@@ -344,8 +344,8 @@
    "read_only": 1
   },
   {
-   "fieldname": "column_break_37",
-   "fieldtype": "Column Break"
+   "fieldname": "col_break_37",
+   "fieldtype": "col Break"
   },
   {
    "fieldname": "per_gross_margin",
@@ -426,8 +426,8 @@
    "lab": "Weekly Time to send"
   },
   {
-   "fieldname": "column_break_45",
-   "fieldtype": "Column Break"
+   "fieldname": "col_break_45",
+   "fieldtype": "col Break"
   },
   {
    "depends_on": "collect_progress",

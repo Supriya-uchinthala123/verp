@@ -27,9 +27,9 @@ frappe.query_reports["Delayed Tasks Summary"] = {
 			"options": ["", "Open", "Working","Pending Review","Overdue","comp"]
 		},
 	],
-	"formatter": function(value, row, column, data, default_formatter) {
-		value = default_formatter(value, row, column, data);
-		if (column.id == "delay") {
+	"formatter": function(value, row, col, data, default_formatter) {
+		value = default_formatter(value, row, col, data);
+		if (col.id == "delay") {
 			if (data["delay"] > 0) {
 				value = `<p style="color: red; font-weight: bold">${value}</p>`;
 			} else {

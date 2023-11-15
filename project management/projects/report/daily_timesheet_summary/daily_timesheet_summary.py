@@ -14,14 +14,14 @@ def execute(filt=None):
 		filt["from_time"] = "00:00:00"
 		filt["to_time"] = "24:00:00"
 
-	columns = get_column()
+	cols = get_col()
 	cond = get_cond(filt)
 	data = get_data(cond, filt)
 
-	return columns, data
+	return cols, data
 
 
-def get_column():
+def get_col():
 	return [
 		_("Timesheet") + ":Link/Timesheet:120",
 		_("Employee") + "::150",

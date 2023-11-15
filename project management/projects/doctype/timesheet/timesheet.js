@@ -166,7 +166,7 @@ frappe.ui.form.on("Timesheet", {
 			let time_logs_grid = frm.fields_dict.time_logs.grid;
 			$.each(["base_billing_rate", "base_billing_amount", "base_cost_rate", "base_cost_amount"], function(i, d) {
 				if (frappe.meta.get_docfield(time_logs_grid.doctype, d))
-					time_logs_grid.set_column_disp(d, frm.doc.currency != base_currency);
+					time_logs_grid.set_col_disp(d, frm.doc.currency != base_currency);
 			});
 		}
 		frm.refresh_fields();

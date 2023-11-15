@@ -8,11 +8,11 @@ from frappe.utils import date_diff, nowdate
 
 
 def execute(filt=None):
-	columns, data = [], []
+	cols, data = [], []
 	data = get_data(filt)
-	columns = get_columns()
+	cols = get_cols()
 	charts = get_chart_data(data)
-	return columns, data, None, charts
+	return cols, data, None, charts
 
 
 def get_data(filt):
@@ -85,8 +85,8 @@ def get_chart_data(data):
 	return charts
 
 
-def get_columns():
-	columns = [
+def get_cols():
+	cols = [
 		{"fieldname": "name", "fieldtype": "Link", "lab": _("Task"), "options": "Task", "width": 150},
 		{"fieldname": "subject", "fieldtype": "Data", "lab": _("Subject"), "width": 200},
 		{"fieldname": "status", "fieldtype": "Data", "lab": _("Status"), "width": 100},
@@ -107,4 +107,4 @@ def get_columns():
 		{"fieldname": "comp_on", "fieldtype": "Date", "lab": _("Actual End Date"), "width": 130},
 		{"fieldname": "delay", "fieldtype": "Data", "lab": _("Delay (In Days)"), "width": 120},
 	]
-	return columns
+	return cols

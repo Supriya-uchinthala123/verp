@@ -14,7 +14,7 @@
   "color",
   "is_group",
   "is_template",
-  "column_break0",
+  "col_break0",
   "status",
   "priority",
   "task_weight",
@@ -25,7 +25,7 @@
   "exp_start_date",
   "expected_time",
   "start",
-  "column_break_11",
+  "col_break_11",
   "exp_end_date",
   "progress",
   "duration",
@@ -38,16 +38,16 @@
   "sb_actual",
   "act_start_date",
   "actual_time",
-  "column_break_15",
+  "col_break_15",
   "act_end_date",
   "sb_cost",
   "total_cost_amount",
-  "column_break_20",
+  "col_break_20",
   "total_billing_amount",
   "sb_more_info",
   "review_date",
   "closing_date",
-  "column_break_22",
+  "col_break_22",
   "department",
   "company",
   "lft",
@@ -100,9 +100,9 @@
    "lab": "Is Group"
   },
   {
-   "fieldname": "column_break0",
-   "fieldtype": "Column Break",
-   "oldfieldtype": "Column Break",
+   "fieldname": "col_break0",
+   "fieldtype": "col Break",
+   "oldfieldtype": "col Break",
    "print_width": "50%",
    "width": "50%"
   },
@@ -172,8 +172,8 @@
    "lab": "Weight"
   },
   {
-   "fieldname": "column_break_11",
-   "fieldtype": "Column Break"
+   "fieldname": "col_break_11",
+   "fieldtype": "col Break"
   },
   {
    "bold": 1,
@@ -234,7 +234,7 @@
   {
    "fieldname": "sb_actual",
    "fieldtype": "sect Break",
-   "oldfieldtype": "Column Break",
+   "oldfieldtype": "col Break",
    "print_width": "50%",
    "width": "50%"
   },
@@ -253,8 +253,8 @@
    "read_only": 1
   },
   {
-   "fieldname": "column_break_15",
-   "fieldtype": "Column Break"
+   "fieldname": "col_break_15",
+   "fieldtype": "col Break"
   },
   {
    "fieldname": "act_end_date",
@@ -280,8 +280,8 @@
    "read_only": 1
   },
   {
-   "fieldname": "column_break_20",
-   "fieldtype": "Column Break"
+   "fieldname": "col_break_20",
+   "fieldtype": "col Break"
   },
   {
    "fieldname": "total_billing_amount",
@@ -312,8 +312,8 @@
    "oldfieldtype": "Date"
   },
   {
-   "fieldname": "column_break_22",
-   "fieldtype": "Column Break"
+   "fieldname": "col_break_22",
+   "fieldtype": "col Break"
   },
   {
    "fieldname": "department",

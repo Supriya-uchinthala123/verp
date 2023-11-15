@@ -6,7 +6,7 @@
  "engine": "InnoDB",
  "field_order": [
   "task",
-  "column_break_2",
+  "col_break_2",
   "subject",
   "project"
  ],
@@ -19,8 +19,8 @@
    "options": "Task"
   },
   {
-   "fieldname": "column_break_2",
-   "fieldtype": "Column Break"
+   "fieldname": "col_break_2",
+   "fieldtype": "col Break"
   },
   {
    "fetch_from": "task.subject",

@@ -17,19 +17,19 @@
   "project_details",
   "project",
   "project_name",
-  "column_break_2",
+  "col_break_2",
   "task",
   "sect_break_6",
   "is_billable",
   "sales_invoice",
-  "column_break_8",
+  "col_break_8",
   "billing_hours",
   "sect_break_11",
   "base_billing_rate",
   "base_billing_amount",
   "base_cost_rate",
   "base_cost_amount",
-  "column_break_14",
+  "col_break_14",
   "billing_rate",
   "billing_amount",
   "cost_rate",
@@ -44,7 +44,7 @@
    "options": "Activity Type"
   },
   {
-   "columns": 2,
+   "cols": 2,
    "fieldname": "from_time",
    "fieldtype": "Datetime",
    "in_list_view": 1,
@@ -52,7 +52,7 @@
   },
   {
    "fieldname": "sect_break_3",
-   "fieldtype": "Column Break"
+   "fieldtype": "col Break"
   },
   {
    "fieldname": "expected_hours",
@@ -60,7 +60,7 @@
    "lab": "Expected Hrs"
   },
   {
-   "columns": 1,
+   "cols": 1,
    "fieldname": "hours",
    "fieldtype": "Float",
    "in_list_view": 1,
@@ -82,7 +82,7 @@
    "fieldtype": "sect Break"
   },
   {
-   "columns": 3,
+   "cols": 3,
    "fieldname": "project",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -91,8 +91,8 @@
    "read_only_depends_on": "eval: parent.parent_project"
   },
   {
-   "fieldname": "column_break_2",
-   "fieldtype": "Column Break"
+   "fieldname": "col_break_2",
+   "fieldtype": "col Break"
   },
   {
    "fieldname": "task",
@@ -106,8 +106,8 @@
    "fieldtype": "sect Break"
   },
   {
-   "fieldname": "column_break_8",
-   "fieldtype": "Column Break"
+   "fieldname": "col_break_8",
+   "fieldtype": "col Break"
   },
   {
    "allow_on_submit": 1,
@@ -140,8 +140,8 @@
    "read_only": 1
   },
   {
-   "fieldname": "column_break_14",
-   "fieldtype": "Column Break"
+   "fieldname": "col_break_14",
+   "fieldtype": "col Break"
   },
   {
    "fieldname": "cost_rate",
@@ -172,7 +172,7 @@
   },
   {
    "allow_on_submit": 1,
-   "columns": 1,
+   "cols": 1,
    "default": "0",
    "fieldname": "is_billable",
    "fieldtype": "Check",

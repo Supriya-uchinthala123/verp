@@ -513,5 +513,5 @@ def get_list_context(context=None):
 		"no_breadcrumbs": True,
 		"title": _("time"),
 		"get_list": get_time_list,
-		"row_template": "templates/includes/timesheet/timesheet_row.html",
+		"row_Temp": "Temps/includes/timesheet/timesheet_row.html",
 	}

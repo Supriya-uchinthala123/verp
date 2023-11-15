@@ -39,41 +39,41 @@ class Project(Document):
 
 	def validate(self):
 		if not self.is_new():
-			self.copy_from_template()
+			self.copy_from_Temp()
 		self.send_welcome_email()
 		self.update_costing()
 		self.update_percent_complete()
 		self.validate_from_to_dates("expected_start_date", "expected_end_date")
 		self.validate_from_to_dates("actual_start_date", "actual_end_date")
 
-	def copy_from_template(self):
+	def copy_from_Temp(self):
 		"""
-		Copy tasks from template
+		Copy tasks from Temp
 		"""
-		if self.project_template and not frappe.db.get_all("Task", dict(project=self.name), limit=1):
+		if self.project_Temp and not frappe.db.get_all("Task", dict(project=self.name), limit=1):
 
-			# has a template, and no loaded tasks, so lets create
+			# has a Temp, and no loaded tasks, so lets create
 			if not self.expected_start_date:
 				# project starts today
 				self.expected_start_date = today()
 
-			template = frappe.get_doc("Project Template", self.project_template)
+			Temp = frappe.get_doc("Project Temp", self.project_Temp)
 
 			if not self.project_type:
-				self.project_type = template.project_type
+				self.project_type = Temp.project_type
 
-			# create tasks from template
+			# create tasks from Temp
 			project_tasks = []
 			tmp_task_details = []
-			for task in template.tasks:
-				template_task_details = frappe.get_doc("Task", task.task)
-				tmp_task_details.append(template_task_details)
-				task = self.create_task_from_template(template_task_details)
+			for task in Temp.tasks:
+				Temp_task_details = frappe.get_doc("Task", task.task)
+				tmp_task_details.append(Temp_task_details)
+				task = self.create_task_from_Temp(Temp_task_details)
 				project_tasks.append(task)
 
 			self.dependency_mapping(tmp_task_details, project_tasks)
 
-	def create_task_from_template(self, task_details):
+	def create_task_from_Temp(self, task_details):
 		return frappe.get_doc(
 			dict(
 				doctype="Task",
@@ -88,7 +88,7 @@ class Project(Document):
 				issue=task_details.issue,
 				is_group=task_details.is_group,
 				color=task_details.color,
-				template_task=task_details.name,
+				Temp_task=task_details.name,
 			)
 		).insert()
 
@@ -107,27 +107,27 @@ class Project(Document):
 			date = add_days(date, 1)
 		return date
 
-	def dependency_mapping(self, template_tasks, project_tasks):
+	def dependency_mapping(self, Temp_tasks, project_tasks):
 		for project_task in project_tasks:
-			template_task = frappe.get_doc("Task", project_task.template_task)
+			Temp_task = frappe.get_doc("Task", project_task.Temp_task)
 
-			self.check_depends_on_value(template_task, project_task, project_tasks)
-			self.check_for_parent_tasks(template_task, project_task, project_tasks)
+			self.check_depends_on_value(Temp_task, project_task, project_tasks)
+			self.check_for_parent_tasks(Temp_task, project_task, project_tasks)
 
-	def check_depends_on_value(self, template_task, project_task, project_tasks):
-		if template_task.get("depends_on") and not project_task.get("depends_on"):
-			project_template_map = {pt.template_task: pt for pt in project_tasks}
+	def check_depends_on_value(self, Temp_task, project_task, project_tasks):
+		if Temp_task.get("depends_on") and not project_task.get("depends_on"):
+			project_Temp_map = {pt.Temp_task: pt for pt in project_tasks}
 
-			for child_task in template_task.get("depends_on"):
-				if project_template_map and project_template_map.get(child_task.task):
+			for child_task in Temp_task.get("depends_on"):
+				if project_Temp_map and project_Temp_map.get(child_task.task):
 					project_task.reload()  # reload, as it might have been updated in the previous iteration
-					project_task.append("depends_on", {"task": project_template_map.get(child_task.task).name})
+					project_task.append("depends_on", {"task": project_Temp_map.get(child_task.task).name})
 					project_task.save()
 
-	def check_for_parent_tasks(self, template_task, project_task, project_tasks):
-		if template_task.get("parent_task") and not project_task.get("parent_task"):
+	def check_for_parent_tasks(self, Temp_task, project_task, project_tasks):
+		if Temp_task.get("parent_task") and not project_task.get("parent_task"):
 			for pt in project_tasks:
-				if pt.template_task == template_task.parent_task:
+				if pt.Temp_task == Temp_task.parent_task:
 					project_task.parent_task = pt.name
 					project_task.save()
 					break
@@ -149,7 +149,7 @@ class Project(Document):
 		self.db_update()
 
 	def after_insert(self):
-		self.copy_from_template()
+		self.copy_from_Temp()
 		if self.sales_order:
 			frappe.db.set_value("Sales Order", self.sales_order, "project", self.name)
 
@@ -378,7 +378,7 @@ def get_list_context(context=None):
 			"no_breadcrumbs": True,
 			"title": _("Projects"),
 			"get_list": get_project_list,
-			"row_template": "templates/includes/projects/project_row.html",
+			"row_Temp": "Temps/includes/projects/project_row.html",
 		}
 	)
 
@@ -496,7 +496,7 @@ def create_duplicate_project(prev_doc, project_name):
 	# change the copied doc name to new project name
 	project = frappe.copy_doc(prev_doc)
 	project.name = project_name
-	project.project_template = ""
+	project.project_Temp = ""
 	project.project_name = project_name
 	project.insert()
 
@@ -510,7 +510,7 @@ def create_duplicate_project(prev_doc, project_name):
 		new_task.project = project.name
 		new_task.insert()
 
-	project.db_set("project_template", prev_doc.get("project_template"))
+	project.db_set("project_Temp", prev_doc.get("project_Temp"))
 
 
 def get_projects_for_collect_progress(frequency, fields):
@@ -603,7 +603,7 @@ def send_project_status_email_to_users():
 
 		frappe.sendmail(
 			recipients=get_users_email(project_doc),
-			template="daily_project_summary",
+			Temp="daily_project_summary",
 			args=args,
 			subject=_("Daily Project Summary for {0}").format(d.name),
 			reference_doctype="Project Update",

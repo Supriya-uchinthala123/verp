@@ -16,7 +16,7 @@
   "percent_complete_method",
   "percent_complete",
   "column_break_5",
-  "project_template",
+  "project_Temp",
   "expected_start_date",
   "expected_end_date",
   "priority",
@@ -124,10 +124,10 @@
   },
   {
    "allow_in_quick_entry": 1,
-   "fieldname": "project_template",
+   "fieldname": "project_Temp",
    "fieldtype": "Link",
-   "label": "From Template",
-   "options": "Project Template",
+   "label": "From Temp",
+   "options": "Project Temp",
    "set_only_once": 1
   },
   {

@@ -21,7 +21,7 @@
    "fieldname": "tasks",
    "fieldtype": "Table",
    "label": "Tasks",
-   "options": "Project Template Task",
+   "options": "Project Temp Task",
    "reqd": 1
   }
  ],
@@ -29,7 +29,7 @@
  "modified": "2020-04-26 02:23:53.990322",
  "modified_by": "Admin",
  "module": "Projects",
- "name": "Project Template",
+ "name": "Project Temp",
  "owner": "Admin",
  "permissions": [
   {

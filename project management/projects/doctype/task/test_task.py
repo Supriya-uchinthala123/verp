@@ -118,7 +118,7 @@ def create_task(
 	project=None,
 	parent_task=None,
 	is_group=0,
-	is_template=0,
+	is_Temp=0,
 	begin=0,
 	duration=0,
 	save=True,
@@ -131,10 +131,10 @@ def create_task(
 		task.exp_end_date = end or nowdate()
 		task.project = (
 			project or None
-			if is_template
+			if is_Temp
 			else frappe.get_value("Project", {"project_name": "_Test Project"})
 		)
-		task.is_template = is_template
+		task.is_Temp = is_Temp
 		task.start = begin
 		task.duration = duration
 		task.is_group = is_group

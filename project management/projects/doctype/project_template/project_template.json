@@ -27,10 +27,10 @@
  ],
  "links": [],
  "modified": "2020-04-26 02:23:53.990322",
- "modified_by": "Administrator",
+ "modified_by": "Admin",
  "module": "Projects",
  "name": "Project Template",
- "owner": "Administrator",
+ "owner": "Admin",
  "permissions": [
   {
    "create": 1,

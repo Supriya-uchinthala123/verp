@@ -393,7 +393,7 @@ def get_users_for_project(doctype, txt, searchfield, start, page_len, filters):
 		"""select name, concat_ws(' ', first_name, middle_name, last_name)
 		from `tabUser`
 		where enabled=1
-			and name not in ("Guest", "Administrator")
+			and name not in ("Guest", "Admin")
 			and ({key} like %(txt)s
 				or full_name like %(txt)s)
 			{fcond} {mcond}

@@ -19,8 +19,13 @@ frappe.ui.form.on("timesheets", {
 			var child = locals[cdt][cdn];
 			return{
 				filters: {
+<<<<<<< HEAD
 					'project': child.project,
 					'status': ["!=", "Cancelled"]
+=======
+					'proj': child.proj,
+					'status': ["!=", "cancel"]
+>>>>>>> 4697203c38e391a9fc73200b872589dceb997598
 				}
 			};
 		};

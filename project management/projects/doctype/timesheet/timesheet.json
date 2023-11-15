@@ -179,7 +179,7 @@
    "collapsible": 1,
    "fieldname": "billing_details",
    "fieldtype": "Section Break",
-   "label": "Billing Details",
+   "label": "billDetails",
    "permlevel": 1
   },
   {

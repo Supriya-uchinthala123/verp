@@ -114,7 +114,7 @@ class Timesheet(Document):
 				frappe.throw(_("Row {0}: Hours value must be greater than zero.").format(data.idx))
 
 	def update_task_and_project(self):
-		tasks, projects = [], []
+		tasks, proj = [], []
 
 		for data in self.time_logs:
 			if data.task and data.task not in tasks:
@@ -123,9 +123,9 @@ class Timesheet(Document):
 				task.save()
 				tasks.append(data.task)
 
-			elif data.project and data.project not in projects:
+			elif data.project and data.project not in proj:
 				frappe.get_doc("Project", data.project).update_project()
-				projects.append(data.project)
+				proj.append(data.project)
 
 	def validate_dates(self):
 		for data in self.time_logs:
@@ -148,7 +148,7 @@ class Timesheet(Document):
 			data.to_time = _to_time
 
 	def validate_overlap(self, data):
-		settings = frappe.get_single("Projects Settings")
+		settings = frappe.get_single("proj Settings")
 		self.validate_overlap_for("user", data, self.user, settings.ignore_user_time_overlap)
 		self.validate_overlap_for("employee", data, self.employee, settings.ignore_employee_time_overlap)
 
@@ -480,7 +480,7 @@ def get_timesheets_list(
 		sales_invoices = [
 			d.name for d in frappe.get_all("Sales Invoice", filters={"customer": customer})
 		] or [None]
-		projects = [d.name for d in frappe.get_all("Project", filters={"customer": customer})]
+		proj = [d.name for d in frappe.get_all("Project", filters={"customer": customer})]
 		# Return timesheet related data to web portal.
 		timesheets = frappe.db.sql(
 			"""
@@ -492,14 +492,14 @@ def get_timesheets_list(
 				(
 					ts.sales_invoice IN %(sales_invoices)s OR
 					tsd.sales_invoice IN %(sales_invoices)s OR
-					tsd.project IN %(projects)s
+					tsd.project IN %(proj)s
 				)
 			ORDER BY `end_date` ASC
 			LIMIT {1} offset {0}
 		""".format(
 				limit_start, limit_page_length
 			),
-			dict(sales_invoices=sales_invoices, projects=projects),
+			dict(sales_invoices=sales_invoices, proj=proj),
 			as_dict=True,
 		)  # nosec
 

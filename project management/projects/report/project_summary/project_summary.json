@@ -9,7 +9,7 @@
  "is_standard": "Yes",
  "modified": "2020-05-04 19:32:53.177213",
  "modified_by": "admin",
- "module": "Projects",
+ "module": "proj",
  "name": "Project Summary",
  "owner": "admin",
  "prepared_report": 0,
@@ -18,10 +18,10 @@
  "report_type": "Script Report",
  "roles": [
   {
-   "role": "Projects User"
+   "role": "proj User"
   },
   {
-   "role": "Projects Manager"
+   "role": "proj Manager"
   }
  ]
 }

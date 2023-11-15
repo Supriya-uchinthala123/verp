@@ -3,7 +3,7 @@
 
 frappe.ui.form.on("Timesheet", {
 	setup: function(frm) {
-		frappe.require("/assets/erpnext/js/projects/timer.js");
+		frappe.require("/assets/erpnext/js/proj/timer.js");
 
 		frm.ignore_doctypes_on_cancel_all = ['Sales Invoice'];
 
@@ -201,7 +201,7 @@ frappe.ui.form.on("Timesheet", {
 			dialog.hide();
 			return frappe.call({
 				type: "GET",
-				method: "erpnext.projects.doctype.timesheet.timesheet.make_sales_invoice",
+				method: "erpnext.proj.doctype.timesheet.timesheet.make_sales_invoice",
 				args: {
 					"source_name": frm.doc.name,
 					"item_code": args.item_code,
@@ -290,7 +290,7 @@ frappe.ui.form.on("Timesheet Detail", {
 		if (!frappe.get_doc(cdt, cdn).activity_type) return;
 
 		frappe.call({
-			method: "erpnext.projects.doctype.timesheet.timesheet.get_activity_cost",
+			method: "erpnext.proj.doctype.timesheet.timesheet.get_activity_cost",
 			args: {
 				employee: frm.doc.employee,
 				activity_type: frm.selected_doc.activity_type,

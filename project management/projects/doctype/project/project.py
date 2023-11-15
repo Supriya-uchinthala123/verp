@@ -376,9 +376,9 @@ def get_list_context(context=None):
 			"show_sidebar": True,
 			"show_search": True,
 			"no_breadcrumbs": True,
-			"title": _("Projects"),
+			"title": _("proj"),
 			"get_list": get_project_list,
-			"row_template": "templates/includes/projects/project_row.html",
+			"row_template": "templates/includes/proj/project_row.html",
 		}
 	)
 
@@ -420,9 +420,9 @@ def get_cost_center_name(project):
 
 def hourly_reminder():
 	fields = ["from_time", "to_time"]
-	projects = get_projects_for_collect_progress("Hourly", fields)
+	proj = get_proj_for_collect_progress("Hourly", fields)
 
-	for project in projects:
+	for project in proj:
 		if get_time(nowtime()) >= get_time(project.from_time) or get_time(nowtime()) <= get_time(
 			project.to_time
 		):
@@ -437,19 +437,19 @@ def project_status_update_reminder():
 
 def daily_reminder():
 	fields = ["daily_time_to_send"]
-	projects = get_projects_for_collect_progress("Daily", fields)
+	proj = get_proj_for_collect_progress("Daily", fields)
 
-	for project in projects:
+	for project in proj:
 		if allow_to_make_project_update(project.name, project.get("daily_time_to_send"), "Daily"):
 			send_project_update_email_to_users(project.name)
 
 
 def twice_daily_reminder():
 	fields = ["first_email", "second_email"]
-	projects = get_projects_for_collect_progress("Twice Daily", fields)
+	proj = get_proj_for_collect_progress("Twice Daily", fields)
 	fields.remove("name")
 
-	for project in projects:
+	for project in proj:
 		for d in fields:
 			if allow_to_make_project_update(project.name, project.get(d), "Twicely"):
 				send_project_update_email_to_users(project.name)
@@ -457,10 +457,10 @@ def twice_daily_reminder():
 
 def weekly_reminder():
 	fields = ["day_to_send", "weekly_time_to_send"]
-	projects = get_projects_for_collect_progress("Weekly", fields)
+	proj = get_proj_for_collect_progress("Weekly", fields)
 
 	current_day = get_datetime().strftime("%A")
-	for project in projects:
+	for project in proj:
 		if current_day != project.day_to_send:
 			continue
 
@@ -513,7 +513,7 @@ def create_duplicate_project(prev_doc, project_name):
 	project.db_set("project_template", prev_doc.get("project_template"))
 
 
-def get_projects_for_collect_progress(frequency, fields):
+def get_proj_for_collect_progress(frequency, fields):
 	fields.extend(["name"])
 
 	return frappe.get_all(

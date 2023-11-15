@@ -53,8 +53,8 @@ frappe.query_reports["Timesheet Billing Summary"] = {
 			],
 		},
 		{
-			fieldname: "include_draft_timesheets",
-			label: __("Include Timesheets in Draft Status"),
+			fieldname: "include_draft_time",
+			label: __("Include time in Draft Status"),
 			fieldtype: "Check",
 		},
 	],

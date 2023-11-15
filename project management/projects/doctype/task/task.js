@@ -54,7 +54,7 @@ frappe.ui.form.on("Task", {
 		})
 	},
 
-	validate: function (frm) {
+	val: function (frm) {
 		frm.doc.proj&& frappe.model.remove_from_locals("Project",
 			frm.doc.project);
 	}

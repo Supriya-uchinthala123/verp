@@ -8,7 +8,7 @@ import frappe
 
 
 @frappe.whitelist()
-@frappe.validate_and_sanitize_search_inputs
+@frappe.val_and_sanitize_search_inputs
 def query_task(doctype, txt, searchfield, start, page_len, filt):
 	from frappe.desk.reportview import build_match_cond
 

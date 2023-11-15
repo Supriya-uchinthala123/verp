@@ -12,7 +12,7 @@ class DuplicationError(frappe.ValidationError):
 
 
 class ActivityCost(doc):
-	def validate(self):
+	def val(self):
 		self.set_title()
 		self.check_unique()
 

@@ -10,7 +10,7 @@ frappe.ui.form.on('projUpdate', {
 		frm.set_value("naming_series", "UPDATE-.project.-.YY.MM.DD.-.####");
 	},
 
-	validate: function (frm) {
+	val: function (frm) {
 		frm.set_value("time", frappe.datetime.now_time());
 		frm.set_value("date", frappe.datetime.nowdate());
 	}

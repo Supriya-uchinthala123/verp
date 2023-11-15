@@ -22,11 +22,11 @@ class OverWorkLoggedError(frappe.ValidationError):
 
 
 class Timesheet(doc):
-	def validate(self):
+	def val(self):
 		self.set_status()
-		self.validate_dates()
+		self.val_dates()
 		self.calculate_hours()
-		self.validate_time_logs()
+		self.val_time_logs()
 		self.update_cost()
 		self.calculate_total_amounts()
 		self.calculate_percentage_bill()
@@ -99,10 +99,10 @@ class Timesheet(doc):
 		self.update_task_and_project()
 
 	def on_submit(self):
-		self.validate_mandatory_fields()
+		self.val_mandatory_fields()
 		self.update_task_and_project()
 
-	def validate_mandatory_fields(self):
+	def val_mandatory_fields(self):
 		for data in self.time_logs:
 			if not data.from_time and not data.to_time:
 				frappe.throw(_("Row {0}: From Time and To Time is mandatory.").format(data.idx))
@@ -127,17 +127,17 @@ class Timesheet(doc):
 				frappe.get_doc("Project", data.project).update_project()
 				proj.append(data.project)
 
-	def validate_dates(self):
+	def val_dates(self):
 		for data in self.time_logs:
 			if data.from_time and data.to_time and time_diff_in_hours(data.to_time, data.from_time) < 0:
 				frappe.throw(_("To date cannot be before from date"))
 
-	def validate_time_logs(self):
+	def val_time_logs(self):
 		for data in self.get("time_logs"):
 			self.set_to_time(data)
-			self.validate_overlap(data)
+			self.val_overlap(data)
 			self.set_project(data)
-			self.validate_project(data)
+			self.val_project(data)
 
 	def set_to_time(self, data):
 		if not (data.from_time and data.hours):
@@ -147,15 +147,15 @@ class Timesheet(doc):
 		if data.to_time != _to_time:
 			data.to_time = _to_time
 
-	def validate_overlap(self, data):
+	def val_overlap(self, data):
 		settings = frappe.get_single("proj Settings")
-		self.validate_overlap_for("user", data, self.user, settings.ignore_user_time_overlap)
-		self.validate_overlap_for("employee", data, self.employee, settings.ignore_employee_time_overlap)
+		self.val_overlap_for("user", data, self.user, settings.ignore_user_time_overlap)
+		self.val_overlap_for("employee", data, self.employee, settings.ignore_employee_time_overlap)
 
 	def set_project(self, data):
 		data.proj= data.projor frappe.db.get_value("Task", data.task, "project")
 
-	def validate_project(self, data):
+	def val_project(self, data):
 		if self.parent_projand self.parent_proj!= data.project:
 			frappe.throw(
 				_("Row {0}: projmust be same as the one set in the Timesheet: {1}.").format(
@@ -163,7 +163,7 @@ class Timesheet(doc):
 				)
 			)
 
-	def validate_overlap_for(self, fieldname, args, value, ignore_validation=False):
+	def val_overlap_for(self, fieldname, args, value, ignore_validation=False):
 		if not value or ignore_validation:
 			return
 
@@ -310,7 +310,7 @@ def get_timesheet_detail_rate(timelog, currency):
 
 
 @frappe.whitelist()
-@frappe.validate_and_sanitize_search_inputs
+@frappe.val_and_sanitize_search_inputs
 def get_timesheet(doctype, txt, searchfield, start, page_len, filt):
 	if not filt:
 		filt = {}

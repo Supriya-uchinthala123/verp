@@ -37,14 +37,14 @@ class Project(doc):
 	def before_print(self, settings=None):
 		self.onload()
 
-	def validate(self):
+	def val(self):
 		if not self.is_new():
 			self.copy_from_template()
 		self.send_welcome_email()
 		self.update_cost()
 		self.update_percent_complete()
-		self.validate_from_to_dates("expected_start_date", "expected_end_date")
-		self.validate_from_to_dates("actual_start_date", "actual_end_date")
+		self.val_from_to_dates("expected_start_date", "expected_end_date")
+		self.val_from_to_dates("actual_start_date", "actual_end_date")
 
 	def copy_from_template(self):
 		"""
@@ -386,7 +386,7 @@ def get_list_context(context=None):
 
 
 @frappe.whitelist()
-@frappe.validate_and_sanitize_search_inputs
+@frappe.val_and_sanitize_search_inputs
 def get_users_for_project(doctype, txt, searchfield, start, page_len, filt):
 	cond = []
 	return frappe.db.sql(

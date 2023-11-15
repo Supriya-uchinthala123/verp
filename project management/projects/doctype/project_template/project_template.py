@@ -9,10 +9,10 @@ from frappe.utils import get_link_to_form
 
 
 class ProjectTemplate(doc):
-	def validate(self):
-		self.validate_dependencies()
+	def val(self):
+		self.val_dependencies()
 
-	def validate_dependencies(self):
+	def val_dependencies(self):
 		for task in self.tasks:
 			task_details = frappe.get_doc("Task", task.task)
 			if task_details.depends_on:

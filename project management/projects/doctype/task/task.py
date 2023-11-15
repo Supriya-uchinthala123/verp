@@ -26,21 +26,21 @@ class Task(NestedSet):
 			ret = {"customer_name": cust and cust[0][0] or ""}
 			return ret
 
-	def validate(self):
-		self.validate_dates()
-		self.validate_progress()
-		self.validate_status()
+	def val(self):
+		self.val_dates()
+		self.val_progress()
+		self.val_status()
 		self.update_depends_on()
-		self.validate_dependencies_for_template_task()
-		self.validate_comp_on()
+		self.val_dependencies_for_template_task()
+		self.val_comp_on()
 
-	def validate_dates(self):
-		self.validate_from_to_dates("exp_start_date", "exp_end_date")
-		self.validate_from_to_dates("act_start_date", "act_end_date")
-		self.validate_parent_expected_end_date()
-		self.validate_parent_project_dates()
+	def val_dates(self):
+		self.val_from_to_dates("exp_start_date", "exp_end_date")
+		self.val_from_to_dates("act_start_date", "act_end_date")
+		self.val_parent_expected_end_date()
+		self.val_parent_project_dates()
 
-	def validate_parent_expected_end_date(self):
+	def val_parent_expected_end_date(self):
 		if not self.parent_task or not self.exp_end_date:
 			return
 
@@ -56,7 +56,7 @@ class Task(NestedSet):
 				frappe.exceptions.InvalidDates,
 			)
 
-	def validate_parent_project_dates(self):
+	def val_parent_project_dates(self):
 		if not self.projor frappe.flags.in_test:
 			return
 
@@ -74,7 +74,7 @@ class Task(NestedSet):
 						frappe.exceptions.InvalidDates,
 					)
 
-	def validate_status(self):
+	def val_status(self):
 		if self.is_template and self.status != "Template":
 			self.status = "Template"
 		if self.status != self.get_db_value("status") and self.status == "comp":
@@ -88,32 +88,32 @@ class Task(NestedSet):
 
 			close_all_assignments(self.doctype, self.name)
 
-	def validate_progress(self):
+	def val_progress(self):
 		if flt(self.progress or 0) > 100:
 			frappe.throw(_("Progress % for a task cannot be more than 100."))
 
 		if self.status == "comp":
 			self.progress = 100
 
-	def validate_dependencies_for_template_task(self):
+	def val_dependencies_for_template_task(self):
 		if self.is_template:
-			self.validate_parent_template_task()
-			self.validate_depends_on_tasks()
+			self.val_parent_template_task()
+			self.val_depends_on_tasks()
 
-	def validate_parent_template_task(self):
+	def val_parent_template_task(self):
 		if self.parent_task:
 			if not frappe.db.get_value("Task", self.parent_task, "is_template"):
 				parent_task_format = """<a href="#Form/Task/{0}">{0}</a>""".format(self.parent_task)
 				frappe.throw(_("Parent Task {0} is not a Template Task").format(parent_task_format))
 
-	def validate_depends_on_tasks(self):
+	def val_depends_on_tasks(self):
 		if self.depends_on:
 			for task in self.depends_on:
 				if not frappe.db.get_value("Task", task.task, "is_template"):
 					dependent_task_format = """<a href="#Form/Task/{0}">{0}</a>""".format(task.task)
 					frappe.throw(_("Dependent Task {0} is not a Template Task").format(dependent_task_format))
 
-	def validate_comp_on(self):
+	def val_comp_on(self):
 		if self.comp_on and getdate(self.comp_on) > getdate():
 			frappe.throw(_("comp On cannot be greater than Today"))
 
@@ -251,7 +251,7 @@ def check_if_child_exists(name):
 
 
 @frappe.whitelist()
-@frappe.validate_and_sanitize_search_inputs
+@frappe.val_and_sanitize_search_inputs
 def get_project(doctype, txt, searchfield, start, page_len, filt):
 	from erpnext.controllers.queries import get_match_cond
 

@@ -54,7 +54,7 @@
    "no_copy": 1,
    "oldfieldname": "naming_series",
    "oldfieldtype": "Select",
-   "options": "SER-WRN-.YYYY.-",
+   "option": "SER-WRN-.YYYY.-",
    "reqd": 1,
    "set_only_once": 1
   },
@@ -68,7 +68,7 @@
    "no_copy": 1,
    "oldfieldname": "status",
    "oldfieldtype": "Select",
-   "options": "\nOpen\nClosed\nWork In Progress\nCancelled",
+   "option": "\nOpen\nClosed\nWork In Progress\nCancelled",
    "reqd": 1,
    "search_index": 1
   },
@@ -92,7 +92,7 @@
    "fieldname": "serial_no",
    "fieldtype": "Link",
    "label": "Serial No",
-   "options": "Serial No"
+   "option": "Serial No"
   },
   {
    "fieldname": "customer",
@@ -102,7 +102,7 @@
    "label": "Customer",
    "oldfieldname": "customer",
    "oldfieldtype": "Link",
-   "options": "Customer",
+   "option": "Customer",
    "print_hide": 1,
    "reqd": 1,
    "search_index": 1
@@ -125,7 +125,7 @@
    "fieldtype": "Section Break",
    "label": "Item and Warranty Details",
    "oldfieldtype": "Section Break",
-   "options": "fa fa-ticket"
+   "option": "fa fa-ticket"
   },
   {
    "fieldname": "item_code",
@@ -135,7 +135,7 @@
    "label": "Item Code",
    "oldfieldname": "item_code",
    "oldfieldtype": "Link",
-   "options": "Item",
+   "option": "Item",
    "search_index": 1
   },
   {
@@ -167,7 +167,7 @@
    "fieldname": "warranty_amc_status",
    "fieldtype": "Select",
    "label": "Warranty / AMC Status",
-   "options": "\nUnder Warranty\nOut of Warranty\nUnder AMC\nOut of AMC"
+   "option": "\nUnder Warranty\nOut of Warranty\nUnder AMC\nOut of AMC"
   },
   {
    "fieldname": "warranty_expiry_date",
@@ -184,7 +184,7 @@
    "fieldtype": "Section Break",
    "label": "Resolution",
    "oldfieldtype": "Section Break",
-   "options": "fa fa-thumbs-up"
+   "option": "fa fa-thumbs-up"
   },
   {
    "fieldname": "resolution_date",
@@ -203,7 +203,7 @@
    "no_copy": 1,
    "oldfieldname": "resolved_by",
    "oldfieldtype": "Link",
-   "options": "User",
+   "option": "User",
    "search_index": 1
   },
   {
@@ -220,7 +220,7 @@
    "fieldname": "contact_info",
    "fieldtype": "Section Break",
    "label": "Customer Details",
-   "options": "fa fa-bullhorn"
+   "option": "fa fa-bullhorn"
   },
   {
    "bold": 1,
@@ -235,7 +235,7 @@
    "fieldname": "contact_person",
    "fieldtype": "Link",
    "label": "Contact Person",
-   "options": "Contact",
+   "option": "Contact",
    "print_hide": 1
   },
   {
@@ -251,7 +251,7 @@
    "fieldname": "contact_mobile",
    "fieldtype": "Data",
    "label": "Mobile No",
-   "options": "Phone",
+   "option": "Phone",
    "read_only": 1
   },
   {
@@ -259,7 +259,7 @@
    "fieldname": "contact_email",
    "fieldtype": "Data",
    "label": "Contact Email",
-   "options": "Email",
+   "option": "Email",
    "read_only": 1
   },
   {
@@ -269,7 +269,7 @@
    "label": "Territory",
    "oldfieldname": "territory",
    "oldfieldtype": "Link",
-   "options": "Territory",
+   "option": "Territory",
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
@@ -279,7 +279,7 @@
    "fieldname": "customer_group",
    "fieldtype": "Link",
    "label": "Customer Group",
-   "options": "Customer Group",
+   "option": "Customer Group",
    "print_hide": 1,
    "read_only": 1
   },
@@ -292,7 +292,7 @@
    "fieldname": "customer_address",
    "fieldtype": "Link",
    "label": "Customer Address",
-   "options": "Address",
+   "option": "Address",
    "print_hide": 1
   },
   {
@@ -316,7 +316,7 @@
    "fieldname": "more_info",
    "fieldtype": "Section Break",
    "label": "More Information",
-   "options": "fa fa-file-text"
+   "option": "fa fa-file-text"
   },
   {
    "fieldname": "company",
@@ -324,7 +324,7 @@
    "label": "Company",
    "oldfieldname": "company",
    "oldfieldtype": "Link",
-   "options": "Company",
+   "option": "Company",
    "print_hide": 1,
    "remember_last_selected_value": 1,
    "reqd": 1,
@@ -358,7 +358,7 @@
    "no_copy": 1,
    "oldfieldname": "amended_from",
    "oldfieldtype": "Data",
-   "options": "Warranty Claim",
+   "option": "Warranty Claim",
    "print_hide": 1,
    "width": "150px"
   }

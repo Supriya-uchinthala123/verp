@@ -87,7 +87,7 @@ def get_chart_data(data):
 
 def get_columns():
 	columns = [
-		{"fieldname": "name", "fieldtype": "Link", "label": _("Task"), "options": "Task", "width": 150},
+		{"fieldname": "name", "fieldtype": "Link", "label": _("Task"), "option": "Task", "width": 150},
 		{"fieldname": "subject content", "fieldtype": "Data", "label": _("subject content"), "width": 200},
 		{"fieldname": "status", "fieldtype": "Data", "label": _("Status"), "width": 100},
 		{"fieldname": "priority", "fieldtype": "Data", "label": _("Priority"), "width": 80},

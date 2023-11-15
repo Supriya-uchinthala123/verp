@@ -41,7 +41,7 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Activity Type",
-   "options": "Activity Type"
+   "option": "Activity Type"
   },
   {
    "columns": 2,
@@ -87,7 +87,7 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "project",
-   "options": "project",
+   "option": "project",
    "read_only_depends_on": "eval: parent.parent_project"
   },
   {
@@ -98,7 +98,7 @@
    "fieldname": "task",
    "fieldtype": "Link",
    "label": "Task",
-   "options": "Task",
+   "option": "Task",
    "remember_last_selected_value": 1
   },
   {
@@ -126,7 +126,7 @@
    "fieldname": "billing_rate",
    "fieldtype": "Currency",
    "label": "billRate",
-   "options": "currency",
+   "option": "currency",
    "permlevel": 1
   },
   {
@@ -135,7 +135,7 @@
    "fieldname": "billing_amount",
    "fieldtype": "Currency",
    "label": "billAmount",
-   "options": "currency",
+   "option": "currency",
    "permlevel": 1,
    "read_only": 1
   },
@@ -147,7 +147,7 @@
    "fieldname": "costing_rate",
    "fieldtype": "Currency",
    "label": "Costing Rate",
-   "options": "currency",
+   "option": "currency",
    "permlevel": 1
   },
   {
@@ -156,7 +156,7 @@
    "fieldname": "costing_amount",
    "fieldtype": "Currency",
    "label": "Costing Amount",
-   "options": "currency",
+   "option": "currency",
    "permlevel": 1,
    "read_only": 1
   },
@@ -166,7 +166,7 @@
    "fieldtype": "Link",
    "label": "Sales Invoice",
    "no_copy": 1,
-   "options": "Sales Invoice",
+   "option": "Sales Invoice",
    "print_hide": 1,
    "read_only": 1
   },

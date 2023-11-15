@@ -22,14 +22,14 @@
    "fieldtype": "Data",
    "hidden": 1,
    "label": "Series",
-   "options": "project-UPD-.YYYY.-"
+   "option": "project-UPD-.YYYY.-"
   },
   {
    "fieldname": "project",
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "project",
-   "options": "project",
+   "option": "project",
    "reqd": 1
   },
   {
@@ -64,14 +64,14 @@
    "fieldname": "users",
    "fieldtype": "Table",
    "label": "Users",
-   "options": "project User"
+   "option": "project User"
   },
   {
    "fieldname": "amended_from",
    "fieldtype": "Link",
    "label": "Amended From",
    "no_copy": 1,
-   "options": "project Update",
+   "option": "project Update",
    "print_hide": 1,
    "read_only": 1
   }

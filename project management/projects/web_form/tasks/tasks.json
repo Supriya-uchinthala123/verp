@@ -38,7 +38,7 @@
    "label": "project", 
    "max_length": 0, 
    "max_value": 0, 
-   "options": "project", 
+   "option": "project", 
    "read_only": 1, 
    "reqd": 1
   }, 
@@ -59,7 +59,7 @@
    "label": "Status", 
    "max_length": 0, 
    "max_value": 0, 
-   "options": "Open\nWorking\nPending Review\nOverdue\nClosed\ncancel", 
+   "option": "Open\nWorking\nPending Review\nOverdue\nClosed\ncancel", 
    "read_only": 0, 
    "reqd": 0
   }, 
@@ -80,7 +80,7 @@
    "label": "Priority", 
    "max_length": 0, 
    "max_value": 0, 
-   "options": "Low\nMedium\nHigh\nUrgent", 
+   "option": "Low\nMedium\nHigh\nUrgent", 
    "read_only": 0, 
    "reqd": 0
   }, 

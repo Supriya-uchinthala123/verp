@@ -2,7 +2,7 @@
  "chart_name": "project Summary",
  "chart_type": "Report",
  "creation": "2020-07-20 20:17:16.363681",
- "custom_options": "{\"type\": \"bar\", \"colors\": [\"#fc4f51\", \"#78d6ff\", \"#7575ff\"], \"axisOptions\": { \"shortenYAxisNumbers\": 1}, \"barOptions\": { \"stacked\": 1 }}",
+ "custom_option": "{\"type\": \"bar\", \"colors\": [\"#fc4f51\", \"#78d6ff\", \"#7575ff\"], \"axisoption\": { \"shortenYAxisNumbers\": 1}, \"baroption\": { \"stacked\": 1 }}",
  "docstatus": 0,
  "documents type": "Dashboard Chart",
  "dynamic_filters_json": "{\"company\":\"frappe.defaults.get_user_default(\\\"Company\\\")\"}",

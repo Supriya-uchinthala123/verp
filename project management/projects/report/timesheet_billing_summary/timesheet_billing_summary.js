@@ -9,7 +9,7 @@ frappe.query_reports["timesheets billSummary"] = {
 			fieldname: "employee",
 			label: __("Employee"),
 			fieldtype: "Link",
-			options: "Employee",
+			option: "Employee",
 			on_change: function (report) {
 				unset_group_by(report, "employee");
 			},
@@ -18,7 +18,7 @@ frappe.query_reports["timesheets billSummary"] = {
 			fieldname: "project",
 			label: __("project"),
 			fieldtype: "Link",
-			options: "project",
+			option: "project",
 			on_change: function (report) {
 				unset_group_by(report, "project");
 			},
@@ -41,11 +41,11 @@ frappe.query_reports["timesheets billSummary"] = {
 				-1
 			),
 		},
-		{  // NOTE: `update_group_by_options` expects this filter to be the fifth in the list
+		{  // NOTE: `update_group_by_option` expects this filter to be the fifth in the list
 			fieldname: "group_by",
 			label: __("Group By"),
 			fieldtype: "Select",
-			options: [
+			option: [
 				"",
 				{ value: "employee", label: __("Employee") },
 				{ value: "project", label: __("project") },

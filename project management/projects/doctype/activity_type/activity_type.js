@@ -5,7 +5,7 @@ frappe.ui.form.on("Activity Type", {
 
 	refresh: function(frm) {
 		frm.add_custom_button(__("Activity Cost per Employee"), function() {
-			frappe.route_options = {"activity": frm.doc.name};
+			frappe.route_option = {"activity": frm.doc.name};
 			frappe.set_route("List", "Activity Cost");
 		});
 	}

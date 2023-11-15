@@ -8,7 +8,7 @@ frappe.query_reports["Issue Analytics"] = {
 			fieldname: "company",
 			label: __("Company"),
 			fieldtype: "Link",
-			options: "Company",
+			option: "Company",
 			default: frappe.defaults.get_user_default("Company"),
 			reqd: 1
 		},
@@ -16,7 +16,7 @@ frappe.query_reports["Issue Analytics"] = {
 			fieldname: "based_on",
 			label: __("Based On"),
 			fieldtype: "Select",
-			options: ["Customer", "Issue Type", "Issue Priority", "Assigned To"],
+			option: ["Customer", "Issue Type", "Issue Priority", "Assigned To"],
 			default: "Customer",
 			reqd: 1
 		},
@@ -38,7 +38,7 @@ frappe.query_reports["Issue Analytics"] = {
 			fieldname: "range",
 			label: __("Range"),
 			fieldtype: "Select",
-			options: [
+			option: [
 				{ "value": "Weekly", "label": __("Weekly") },
 				{ "value": "Monthly", "label": __("Monthly") },
 				{ "value": "Quarterly", "label": __("Quarterly") },
@@ -51,7 +51,7 @@ frappe.query_reports["Issue Analytics"] = {
 			fieldname: "status",
 			label: __("Status"),
 			fieldtype: "Select",
-			options:[
+			option:[
 				"",
 				{label: __('Open'), value: 'Open'},
 				{label: __('Replied'), value: 'Replied'},
@@ -63,32 +63,32 @@ frappe.query_reports["Issue Analytics"] = {
 			fieldname: "priority",
 			label: __("Issue Priority"),
 			fieldtype: "Link",
-			options: "Issue Priority"
+			option: "Issue Priority"
 		},
 		{
 			fieldname: "customer",
 			label: __("Customer"),
 			fieldtype: "Link",
-			options: "Customer"
+			option: "Customer"
 		},
 		{
 			fieldname: "projectect",
 			label: __("projectect"),
 			fieldtype: "Link",
-			options: "projectect"
+			option: "projectect"
 		},
 		{
 			fieldname: "assigned_to",
 			label: __("Assigned To"),
 			fieldtype: "Link",
-			options: "User"
+			option: "User"
 		}
 	],
 	after_datatable_render: function(datatable_obj) {
 		$(datatable_obj.wrapper).find(".dt-row-0").find('input[type=checkbox]').click();
 	},
-	get_datatable_options(options) {
-		return Object.assign(options, {
+	get_datatable_option(option) {
+		return Object.assign(option, {
 			checkboxColumn: true,
 			events: {
 				onCheckRow: function(data) {

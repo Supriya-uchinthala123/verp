@@ -46,7 +46,7 @@
    "fieldname": "holiday_list",
    "fieldtype": "Link",
    "label": "Holiday List",
-   "options": "Holiday List",
+   "option": "Holiday List",
    "reqd": 1
   },
   {
@@ -88,14 +88,14 @@
    "fieldname": "support_and_resolution",
    "fieldtype": "Table",
    "label": "Working Hours",
-   "options": "Service Day",
+   "option": "Service Day",
    "reqd": 1
   },
   {
    "fieldname": "priorities",
    "fieldtype": "Table",
    "label": "Priorities",
-   "options": "Service Level Priority",
+   "option": "Service Level Priority",
    "reqd": 1
   },
   {
@@ -105,7 +105,7 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Entity",
-   "options": "entity_type"
+   "option": "entity_type"
   },
   {
    "depends_on": "eval: !doc.default_service_level_agreement",
@@ -113,7 +113,7 @@
    "fieldtype": "Select",
    "in_standard_filter": 1,
    "label": "Entity Type",
-   "options": "\nCustomer\nCustomer Group\nTerritory"
+   "option": "\nCustomer\nCustomer Group\nTerritory"
   },
   {
    "default": "0",
@@ -125,20 +125,20 @@
    "fieldname": "default_priority",
    "fieldtype": "Link",
    "label": "Default Priority",
-   "options": "Issue Priority",
+   "option": "Issue Priority",
    "read_only": 1
   },
   {
    "fieldname": "pause_sla_on",
    "fieldtype": "Table",
    "label": "SLA Paused On",
-   "options": "Pause SLA On Status"
+   "option": "Pause SLA On Status"
   },
   {
    "fieldname": "documents_type",
    "fieldtype": "Link",
    "label": "Apply On",
-   "options": "DocType",
+   "option": "DocType",
    "reqd": 1,
    "set_only_once": 1
   },
@@ -158,7 +158,7 @@
    "fieldname": "sla_fulfilled_on",
    "fieldtype": "Table",
    "label": "SLA Fulfilled On",
-   "options": "SLA Fulfilled On Status",
+   "option": "SLA Fulfilled On Status",
    "reqd": 1
   },
   {
@@ -184,7 +184,7 @@
    "fieldtype": "Code",
    "label": "Condition",
    "max_height": "7rem",
-   "options": "PythonExpression"
+   "option": "PythonExpression"
   },
   {
    "fieldname": "column_break_22",

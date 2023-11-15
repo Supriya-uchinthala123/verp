@@ -111,7 +111,7 @@
    "fieldname": "search_apis",
    "fieldtype": "Table",
    "label": "Search APIs",
-   "options": "Support Search Source"
+   "option": "Support Search Source"
   },
   {
    "fieldname": "sb_00",

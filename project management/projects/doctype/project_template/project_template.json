@@ -15,13 +15,13 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "project Type",
-   "options": "project Type"
+   "option": "project Type"
   },
   {
    "fieldname": "tasks",
    "fieldtype": "Table",
    "label": "Tasks",
-   "options": "project Temp Task",
+   "option": "project Temp Task",
    "reqd": 1
   }
  ],

@@ -232,7 +232,7 @@ class ServiceLevelAgreement(documents):
 						"fieldname": field.get("fieldname"),
 						"fieldtype": field.get("fieldtype"),
 						"collapsible": field.get("collapsible"),
-						"options": field.get("options"),
+						"option": field.get("option"),
 						"read_only": field.get("read_only"),
 						"hidden": field.get("hidden"),
 						"description": field.get("description"),
@@ -258,7 +258,7 @@ class ServiceLevelAgreement(documents):
 						"fieldtype": field.get("fieldtype"),
 						"insert_after": "append",
 						"collapsible": field.get("collapsible"),
-						"options": field.get("options"),
+						"option": field.get("option"),
 						"read_only": field.get("read_only"),
 						"hidden": field.get("hidden"),
 						"description": field.get("description"),
@@ -276,7 +276,7 @@ class ServiceLevelAgreement(documents):
 		field.fieldtype = sla_field.get("fieldtype")
 		field.collapsible = sla_field.get("collapsible")
 		field.hidden = sla_field.get("hidden")
-		field.options = sla_field.get("options")
+		field.option = sla_field.get("option")
 		field.read_only = sla_field.get("read_only")
 		field.hidden = sla_field.get("hidden")
 		field.description = sla_field.get("description")
@@ -875,9 +875,9 @@ def get_service_level_agreement_fields():
 			"fieldname": "service_level_agreement",
 			"fieldtype": "Link",
 			"label": "Service Level Agreement",
-			"options": "Service Level Agreement",
+			"option": "Service Level Agreement",
 		},
-		{"fieldname": "priority", "fieldtype": "Link", "label": "Priority", "options": "Issue Priority"},
+		{"fieldname": "priority", "fieldtype": "Link", "label": "Priority", "option": "Issue Priority"},
 		{"fieldname": "response_by", "fieldtype": "Datetime", "label": "Response By", "read_only": 1},
 		{
 			"fieldname": "first_responded_on",
@@ -905,7 +905,7 @@ def get_service_level_agreement_fields():
 			"fieldname": "agreement_status",
 			"fieldtype": "Select",
 			"label": "Service Level Agreement Status",
-			"options": "First Response Due\nResolution Due\nFulfilled\nFailed",
+			"option": "First Response Due\nResolution Due\nFulfilled\nFailed",
 			"read_only": 1,
 		},
 		{

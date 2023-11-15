@@ -15,7 +15,7 @@ frappe.views.calendar["Task"] = {
 		{
 			"fieldtype": "Link",
 			"fieldname": "project",
-			"options": "project",
+			"option": "project",
 			"label": __("project")
 		}
 	],

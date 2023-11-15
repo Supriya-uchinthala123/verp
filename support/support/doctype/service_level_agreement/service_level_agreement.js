@@ -65,20 +65,20 @@ frappe.ui.form.on('Service Level Agreement', {
 
 		if (frm.doc.documents_type) {
 			frappe.model.with_doctype(frm.doc.documents_type, () => {
-				let statuses = frappe.meta.get_docfield(frm.doc.documents_type, 'status', frm.doc.name).options;
+				let statuses = frappe.meta.get_docfield(frm.doc.documents_type, 'status', frm.doc.name).option;
 				statuses = statuses.split('\n');
 
 				exclude_statuses = ['Open', 'Closed'];
 				allow_statuses = statuses.filter((status) => !exclude_statuses.includes(status));
 
 				frm.fields_dict.pause_sla_on.grid.update_docfield_property(
-					'status', 'options', [''].concat(allow_statuses)
+					'status', 'option', [''].concat(allow_statuses)
 				);
 
 				exclude_statuses = ['Open'];
 				allow_statuses = statuses.filter((status) => !exclude_statuses.includes(status));
 				frm.fields_dict.sla_fulfilled_on.grid.update_docfield_property(
-					'status', 'options', [''].concat(allow_statuses)
+					'status', 'option', [''].concat(allow_statuses)
 				);
 			});
 		}

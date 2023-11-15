@@ -18,13 +18,13 @@ frappe.views.calendar["timesheets"] = {
 		{
 			"fieldtype": "Link",
 			"fieldname": "project",
-			"options": "project",
+			"option": "project",
 			"label": __("project")
 		},
 		{
 			"fieldtype": "Link",
 			"fieldname": "employee",
-			"options": "Employee",
+			"option": "Employee",
 			"label": __("Employee")
 		}
 	],

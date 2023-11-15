@@ -19,7 +19,7 @@ frappe.ui.form.on("project", {
 	},
 	onload: function (frm) {
 		const so = frm.get_docfield("sales_order");
-		so.get_route_options_for_new_doc = () => {
+		so.get_route_option_for_new_doc = () => {
 			if (frm.is_new()) return {};
 			return {
 				"customer": frm.doc.customer,
@@ -81,7 +81,7 @@ frappe.ui.form.on("project", {
 
 			if (frappe.model.can_read("Task")) {
 				frm.add_custom_button(__("Gantt Chart"), function () {
-					frappe.route_options = {
+					frappe.route_option = {
 						"project": frm.doc.name
 					};
 					frappe.set_route("List", "Task", "Gantt");
@@ -119,7 +119,7 @@ frappe.ui.form.on("project", {
 						"fieldtype": "Select",
 						"label": "Status",
 						"reqd": 1,
-						"options": "Completed\ncancel",
+						"option": "Completed\ncancel",
 					},
 				],
 				primary_action: function() {

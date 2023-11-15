@@ -45,14 +45,14 @@ def get_columns():
 			"fieldname": "name",
 			"label": _("project"),
 			"fieldtype": "Link",
-			"options": "project",
+			"option": "project",
 			"width": 200,
 		},
 		{
 			"fieldname": "project_type",
 			"label": _("Type"),
 			"fieldtype": "Link",
-			"options": "project Type",
+			"option": "project Type",
 			"width": 120,
 		},
 		{"fieldname": "status", "label": _("Status"), "fieldtype": "Data", "width": 120},
@@ -98,7 +98,7 @@ def get_chart_data(data):
 		},
 		"type": "bar",
 		"colors": ["#fc4f51", "#78d6ff", "#7575ff"],
-		"barOptions": {"stacked": True},
+		"baroption": {"stacked": True},
 	}
 
 

@@ -615,12 +615,12 @@ def create_custom_doctype():
 				"fields": [
 					{"label": "Date", "fieldname": "date", "fieldtype": "Date"},
 					{"label": "Description", "fieldname": "desc", "fieldtype": "Long Text"},
-					{"label": "Email ID", "fieldname": "email_id", "fieldtype": "Link", "options": "Customer"},
+					{"label": "Email ID", "fieldname": "email_id", "fieldtype": "Link", "option": "Customer"},
 					{
 						"label": "Status",
 						"fieldname": "status",
 						"fieldtype": "Select",
-						"options": "Open\nReplied\nClosed",
+						"option": "Open\nReplied\nClosed",
 					},
 				],
 				"permissions": [{"role": "System Manager", "read": 1, "write": 1}],

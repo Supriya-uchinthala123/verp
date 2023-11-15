@@ -182,7 +182,7 @@ frappe.ui.form.on("timesheets", {
 			"fieldtype": "Link",
 			"label": __("Item Code"),
 			"fieldname": "item_code",
-			"options": "Item"
+			"option": "Item"
 		}];
 
 		if (!frm.doc.customer) {
@@ -190,7 +190,7 @@ frappe.ui.form.on("timesheets", {
 				"fieldtype": "Link",
 				"label": __("Customer"),
 				"fieldname": "customer",
-				"options": "Customer",
+				"option": "Customer",
 				"default": frm.doc.customer
 			});
 		}
@@ -408,9 +408,9 @@ var calculate_time_and_amount = function(frm) {
 
 // set employee (and company) to the one that's currently logged in
 const set_employee_and_company = function(frm) {
-	const options = { user_id: frappe.session.user };
+	const option = { user_id: frappe.session.user };
 	const fields = ['name', 'company'];
-	frappe.db.get_value('Employee', options, fields).then(({ message }) => {
+	frappe.db.get_value('Employee', option, fields).then(({ message }) => {
 		if (message) {
 			// there is an employee with the currently logged in user_id
 			frm.set_value("employee", message.name);

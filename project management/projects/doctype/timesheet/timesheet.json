@@ -60,7 +60,7 @@
    "fieldname": "naming_series",
    "fieldtype": "Select",
    "label": "Series",
-   "options": "TS-.YYYY.-",
+   "option": "TS-.YYYY.-",
    "reqd": 1,
    "set_only_once": 1
   },
@@ -68,7 +68,7 @@
    "fieldname": "company",
    "fieldtype": "Link",
    "label": "Company",
-   "options": "Company",
+   "option": "Company",
    "remember_last_selected_value": 1
   },
   {
@@ -76,7 +76,7 @@
    "fieldtype": "Link",
    "label": "Sales Invoice",
    "no_copy": 1,
-   "options": "Sales Invoice",
+   "option": "Sales Invoice",
    "print_hide": 1,
    "read_only": 1
   },
@@ -91,7 +91,7 @@
    "in_standard_filter": 1,
    "label": "Status",
    "no_copy": 1,
-   "options": "Draft\nSubmitted\nbill\nPayslip\nCompleted\ncancel",
+   "option": "Draft\nSubmitted\nbill\nPayslip\nCompleted\ncancel",
    "print_hide": 1,
    "read_only": 1
   },
@@ -105,7 +105,7 @@
    "fieldtype": "Link",
    "in_standard_filter": 1,
    "label": "Employee",
-   "options": "Employee"
+   "option": "Employee"
   },
   {
    "depends_on": "employee",
@@ -122,7 +122,7 @@
    "fieldname": "department",
    "fieldtype": "Link",
    "label": "Department",
-   "options": "Department",
+   "option": "Department",
    "read_only": 1
   },
   {
@@ -134,7 +134,7 @@
    "fieldtype": "Link",
    "in_global_search": 1,
    "label": "User",
-   "options": "User",
+   "option": "User",
    "read_only": 1
   },
   {
@@ -160,7 +160,7 @@
    "fieldname": "time_logs",
    "fieldtype": "Table",
    "label": "Time Sheets",
-   "options": "timesheets Detail",
+   "option": "timesheets Detail",
    "reqd": 1
   },
   {
@@ -203,7 +203,7 @@
    "fieldname": "total_costing_amount",
    "fieldtype": "Currency",
    "label": "Total Costing Amount",
-   "options": "currency",
+   "option": "currency",
    "print_hide": 1,
    "read_only": 1
   },
@@ -217,7 +217,7 @@
    "fieldname": "total_billable_amount",
    "fieldtype": "Currency",
    "label": "Total Billable Amount",
-   "options": "currency",
+   "option": "currency",
    "read_only": 1
   },
   {
@@ -225,7 +225,7 @@
    "fieldname": "total_bill_amount",
    "fieldtype": "Currency",
    "label": "Total bill Amount",
-   "options": "currency",
+   "option": "currency",
    "print_hide": 1,
    "read_only": 1
   },
@@ -254,7 +254,7 @@
    "ignore_user_permissions": 1,
    "label": "Amended From",
    "no_copy": 1,
-   "options": "timesheets",
+   "option": "timesheets",
    "print_hide": 1,
    "read_only": 1
   },
@@ -262,13 +262,13 @@
    "fieldname": "parent_project",
    "fieldtype": "Link",
    "label": "project",
-   "options": "project"
+   "option": "project"
   },
   {
    "fieldname": "customer",
    "fieldtype": "Link",
    "label": "Customer",
-   "options": "Customer"
+   "option": "Customer"
   },
   {
    "fetch_from": "customer.default_currency",
@@ -276,7 +276,7 @@
    "fieldname": "currency",
    "fieldtype": "Link",
    "label": "Currency",
-   "options": "Currency"
+   "option": "Currency"
   },
   {
    "fieldname": "base_total_costing_amount",

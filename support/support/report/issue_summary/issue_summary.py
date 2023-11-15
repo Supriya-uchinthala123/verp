@@ -32,7 +32,7 @@ class IssueSummary(object):
 			self.columns.append(
 				{
 					"label": _("Customer"),
-					"options": "Customer",
+					"option": "Customer",
 					"fieldname": "customer",
 					"fieldtype": "Link",
 					"width": 200,
@@ -41,7 +41,7 @@ class IssueSummary(object):
 
 		elif self.filters.based_on == "Assigned To":
 			self.columns.append(
-				{"label": _("User"), "fieldname": "user", "fieldtype": "Link", "options": "User", "width": 200}
+				{"label": _("User"), "fieldname": "user", "fieldtype": "Link", "option": "User", "width": 200}
 			)
 
 		elif self.filters.based_on == "Issue Type":
@@ -50,7 +50,7 @@ class IssueSummary(object):
 					"label": _("Issue Type"),
 					"fieldname": "issue_type",
 					"fieldtype": "Link",
-					"options": "Issue Type",
+					"option": "Issue Type",
 					"width": 200,
 				}
 			)
@@ -61,7 +61,7 @@ class IssueSummary(object):
 					"label": _("Issue Priority"),
 					"fieldname": "priority",
 					"fieldtype": "Link",
-					"options": "Issue Priority",
+					"option": "Issue Priority",
 					"width": 200,
 				}
 			)
@@ -322,7 +322,7 @@ class IssueSummary(object):
 				],
 			},
 			"type": "bar",
-			"barOptions": {"stacked": True},
+			"baroption": {"stacked": True},
 		}
 
 	def get_report_summary(self):

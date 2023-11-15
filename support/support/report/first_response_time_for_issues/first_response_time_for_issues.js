@@ -29,13 +29,13 @@ frappe.query_reports["First Response Time for Issues"] = {
 				}]
 			},
 			type: "line",
-			tooltipOptions: {
+			tooltipoption: {
 				formatTooltipY: d => {
-					let duration_options = {
+					let duration_option = {
 						hide_days: 0,
 						hide_seconds: 0
 					};
-					return frappe.utils.get_formatted_duration(d, duration_options);
+					return frappe.utils.get_formatted_duration(d, duration_option);
 				}
 			}
 		}

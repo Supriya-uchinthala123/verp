@@ -17,13 +17,13 @@ frappe.treeview_settings['Task'] = {
 		{
 			fieldname: "project",
 			fieldtype:"Link",
-			options: "project",
+			option: "project",
 			label: __("project"),
 		},
 		{
 			fieldname: "task",
 			fieldtype:"Link",
-			options: "Task",
+			option: "Task",
 			label: __("Task"),
 			get_query: function() {
 				var me = frappe.treeview_settings['Task'];

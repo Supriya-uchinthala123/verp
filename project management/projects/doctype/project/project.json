@@ -12,7 +12,7 @@
   "project_name",
   "status",
   "project_type",
-  "is_active",
+  "in active",
   "percent_complete_method",
   "percent_complete",
   "column_break_5",
@@ -82,7 +82,7 @@
    "no_copy": 1,
    "oldfieldname": "status",
    "oldfieldtype": "Select",
-   "options": "Open\nCompleted\ncancel",
+   "option": "Open\nCompleted\ncancel",
    "search_index": 1
   },
   {
@@ -93,22 +93,22 @@
    "label": "project Type",
    "oldfieldname": "project_type",
    "oldfieldtype": "Data",
-   "options": "project Type"
+   "option": "project Type"
   },
   {
-   "fieldname": "is_active",
+   "fieldname": "in active",
    "fieldtype": "Select",
    "label": "Is Active",
-   "oldfieldname": "is_active",
+   "oldfieldname": "in active",
    "oldfieldtype": "Select",
-   "options": "Yes\nNo"
+   "option": "Yes\nNo"
   },
   {
    "default": "Task Completion",
    "fieldname": "percent_complete_method",
    "fieldtype": "Select",
    "label": "% Complete Method",
-   "options": "Manual\nTask Completion\nTask Progress\nTask Weight"
+   "option": "Manual\nTask Completion\nTask Progress\nTask Weight"
   },
   {
    "bold": 1,
@@ -127,7 +127,7 @@
    "fieldname": "project_Temp",
    "fieldtype": "Link",
    "label": "From Temp",
-   "options": "project Temp",
+   "option": "project Temp",
    "set_only_once": 1
   },
   {
@@ -153,13 +153,13 @@
    "label": "Priority",
    "oldfieldname": "priority",
    "oldfieldtype": "Select",
-   "options": "Medium\nLow\nHigh"
+   "option": "Medium\nLow\nHigh"
   },
   {
    "fieldname": "department",
    "fieldtype": "Link",
    "label": "Department",
-   "options": "Department"
+   "option": "Department"
   },
   {
    "collapsible": 1,
@@ -167,7 +167,7 @@
    "fieldtype": "Section Break",
    "label": "Customer Details",
    "oldfieldtype": "Section Break",
-   "options": "fa fa-user"
+   "option": "fa fa-user"
   },
   {
    "fieldname": "customer",
@@ -176,7 +176,7 @@
    "label": "Customer",
    "oldfieldname": "customer",
    "oldfieldtype": "Link",
-   "options": "Customer",
+   "option": "Customer",
    "print_hide": 1,
    "search_index": 1
   },
@@ -188,7 +188,7 @@
    "fieldname": "sales_order",
    "fieldtype": "Link",
    "label": "Sales Order",
-   "options": "Sales Order"
+   "option": "Sales Order"
   },
   {
    "collapsible": 1,
@@ -201,7 +201,7 @@
    "fieldname": "users",
    "fieldtype": "Table",
    "label": "Users",
-   "options": "project User"
+   "option": "project User"
   },
   {
    "fieldname": "copied_from",
@@ -216,7 +216,7 @@
    "fieldtype": "Section Break",
    "label": "Notes",
    "oldfieldtype": "Section Break",
-   "options": "fa fa-list"
+   "option": "fa fa-list"
   },
   {
    "fieldname": "notes",
@@ -261,7 +261,7 @@
    "fieldtype": "Section Break",
    "label": "Costing and Billing",
    "oldfieldtype": "Section Break",
-   "options": "fa fa-money"
+   "option": "fa fa-money"
   },
   {
    "fieldname": "estimated_costing",
@@ -270,7 +270,7 @@
    "label": "Estimated Cost",
    "oldfieldname": "project_value",
    "oldfieldtype": "Currency",
-   "options": "Company:company:default_currency"
+   "option": "Company:company:default_currency"
   },
   {
    "fieldname": "total_costing_amount",
@@ -288,7 +288,7 @@
    "fieldname": "company",
    "fieldtype": "Link",
    "label": "Company",
-   "options": "Company",
+   "option": "Company",
    "remember_last_selected_value": 1,
    "reqd": 1
   },
@@ -324,7 +324,7 @@
    "fieldname": "cost_center",
    "fieldtype": "Link",
    "label": "Default Cost Center",
-   "options": "Cost Center"
+   "option": "Cost Center"
   },
   {
    "collapsible": 1,
@@ -340,7 +340,7 @@
    "label": "Gross Margin",
    "oldfieldname": "gross_margin_value",
    "oldfieldtype": "Currency",
-   "options": "Company:company:default_currency",
+   "option": "Company:company:default_currency",
    "read_only": 1
   },
   {
@@ -373,14 +373,14 @@
    "fieldname": "holiday_list",
    "fieldtype": "Link",
    "label": "Holiday List",
-   "options": "Holiday List"
+   "option": "Holiday List"
   },
   {
    "depends_on": "eval:doc.collect_progress == true",
    "fieldname": "frequency",
    "fieldtype": "Select",
    "label": "Frequency To Collect Progress",
-   "options": "Hourly\nTwice Daily\nDaily\nWeekly"
+   "option": "Hourly\nTwice Daily\nDaily\nWeekly"
   },
   {
    "depends_on": "eval:(doc.frequency == \"Hourly\" && doc.collect_progress)",
@@ -417,7 +417,7 @@
    "fieldname": "day_to_send",
    "fieldtype": "Select",
    "label": "Day to Send",
-   "options": "Monday\nTuesday\nWednesday\nThursday\nFriday\nSaturday\nSunday"
+   "option": "Monday\nTuesday\nWednesday\nThursday\nFriday\nSaturday\nSunday"
   },
   {
    "depends_on": "eval:(doc.frequency == \"Weekly\" && doc.collect_progress == true)",
@@ -442,7 +442,7 @@
    "fieldtype": "Select",
    "label": "Series",
    "no_copy": 1,
-   "options": "project-.####",
+   "option": "project-.####",
    "print_hide": 1,
    "reqd": 1,
    "set_only_once": 1
@@ -491,7 +491,7 @@
   }
  ],
  "quick_entry": 1,
- "search_fields": "project_name,customer, status, priority, is_active",
+ "search_fields": "project_name,customer, status, priority, in active",
  "show_name_in_global_search": 1,
  "sort_field": "modify",
  "sort_order": "DESC",

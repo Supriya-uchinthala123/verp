@@ -60,14 +60,14 @@
   {
    "fieldname": "subject_section",
    "fieldtype": "Section Break",
-   "options": "fa fa-flag"
+   "option": "fa fa-flag"
   },
   {
    "fieldname": "naming_series",
    "fieldtype": "Select",
    "label": "Series",
    "no_copy": 1,
-   "options": "ISS-.YYYY.-",
+   "option": "ISS-.YYYY.-",
    "print_hide": 1,
    "set_only_once": 1
   },
@@ -87,7 +87,7 @@
    "label": "Customer",
    "oldfieldname": "customer",
    "oldfieldtype": "Link",
-   "options": "Customer",
+   "option": "Customer",
    "print_hide": 1,
    "search_index": 1
   },
@@ -101,7 +101,7 @@
    "label": "Raised By (Email)",
    "oldfieldname": "raised_by",
    "oldfieldtype": "Data",
-   "options": "Email"
+   "option": "Email"
   },
   {
    "fieldname": "cb00",
@@ -117,7 +117,7 @@
    "no_copy": 1,
    "oldfieldname": "status",
    "oldfieldtype": "Select",
-   "options": "Open\nReplied\nOn Hold\nResolved\nClosed",
+   "option": "Open\nReplied\nOn Hold\nResolved\nClosed",
    "search_index": 1
   },
   {
@@ -126,13 +126,13 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Priority",
-   "options": "Issue Priority"
+   "option": "Issue Priority"
   },
   {
    "fieldname": "issue_type",
    "fieldtype": "Link",
    "label": "Issue Type",
-   "options": "Issue Type"
+   "option": "Issue Type"
   },
   {
    "collapsible": 1,
@@ -160,7 +160,7 @@
    "fieldname": "service_level_agreement",
    "fieldtype": "Link",
    "label": "Service Level Agreement",
-   "options": "Service Level Agreement"
+   "option": "Service Level Agreement"
   },
   {
    "depends_on": "eval: doc.status != 'Replied' && doc.service_level_agreement;",
@@ -173,7 +173,7 @@
    "collapsible": 1,
    "fieldname": "cb",
    "fieldtype": "Column Break",
-   "options": "fa fa-pushpin",
+   "option": "fa fa-pushpin",
    "read_only": 1
   },
   {
@@ -199,26 +199,26 @@
    "fieldname": "additional_info",
    "fieldtype": "Section Break",
    "label": "Reference",
-   "options": "fa fa-pushpin",
+   "option": "fa fa-pushpin",
    "read_only": 1
   },
   {
    "fieldname": "lead",
    "fieldtype": "Link",
    "label": "Lead",
-   "options": "Lead"
+   "option": "Lead"
   },
   {
    "fieldname": "contact",
    "fieldtype": "Link",
    "label": "Contact",
-   "options": "Contact"
+   "option": "Contact"
   },
   {
    "fieldname": "email_account",
    "fieldtype": "Link",
    "label": "Email Account",
-   "options": "Email Account"
+   "option": "Email Account"
   },
   {
    "fieldname": "column_break_16",
@@ -237,13 +237,13 @@
    "fieldname": "projectect",
    "fieldtype": "Link",
    "label": "projectect",
-   "options": "projectect"
+   "option": "projectect"
   },
   {
    "fieldname": "company",
    "fieldtype": "Link",
    "label": "Company",
-   "options": "Company",
+   "option": "Company",
    "print_hide": 1
   },
   {
@@ -332,7 +332,7 @@
    "fieldname": "issue_split_from",
    "fieldtype": "Link",
    "label": "Issue Split From",
-   "options": "Issue",
+   "option": "Issue",
    "read_only": 1
   },
   {
@@ -377,7 +377,7 @@
    "fieldname": "agreement_status",
    "fieldtype": "Select",
    "label": "Service Level Agreement Status",
-   "options": "First Response Due\nResolution Due\nFulfilled\nFailed",
+   "option": "First Response Due\nResolution Due\nFulfilled\nFailed",
    "read_only": 1
   },
   {

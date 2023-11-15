@@ -6,7 +6,7 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "activity_type",
+  "activity",
   "from_time",
   "des",
   "section_break_3",
@@ -37,7 +37,7 @@
  ],
  "fields": [
   {
-   "fieldname": "activity_type",
+   "fieldname": "activity",
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Activity Type",

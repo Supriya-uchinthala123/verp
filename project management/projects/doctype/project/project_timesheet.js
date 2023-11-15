@@ -13,7 +13,7 @@ QUnit.test("test project", function(assert) {
 				return frappe.tests.make('Timesheet', [
 					{time_logs:[
 						[
-							{activity_type: 'Communication'},
+							{activity: 'Communication'},
 							{from_time: start_time},
 							{to_time: end_time},
 							{hours: 2},

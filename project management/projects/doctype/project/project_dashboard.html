@@ -3,8 +3,8 @@
 {% for d in data %}
 <div class="row">
 	<div class="col-xs-4">
-		<a class="small time-sheet-link" data-activity_type="{{ d.activity_type || "" }}">
-			{{ d.activity_type || __("Unknown") }}</a>
+		<a class="small time-sheet-link" data-activity="{{ d.activity || "" }}">
+			{{ d.activity || __("Unknown") }}</a>
 	</div>
 	<div class="col-xs-8">
 		<span class="inline-graph">

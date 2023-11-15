@@ -40,7 +40,7 @@ def get_data(conditions, filters):
 	time_sheet = frappe.db.sql(
 		""" select `tabTimesheet`.name, `tabTimesheet`.employee, `tabTimesheet`.employee_name,
 		`tabTimesheet Detail`.from_time, `tabTimesheet Detail`.to_time, `tabTimesheet Detail`.hours,
-		`tabTimesheet Detail`.activity_type, `tabTimesheet Detail`.task, `tabTimesheet Detail`.project,
+		`tabTimesheet Detail`.activity, `tabTimesheet Detail`.task, `tabTimesheet Detail`.project,
 		`tabTimesheet`.status from `tabTimesheet Detail`, `tabTimesheet` where
 		`tabTimesheet Detail`.parent = `tabTimesheet`.name and %s order by `tabTimesheet`.name"""
 		% (conditions),

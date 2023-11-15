@@ -29,19 +29,24 @@
  ],
  "istable": 1,
  "links": [],
+<<<<<<< HEAD
  "modified": "2021-02-24 15:18:49.095071",
  "modified_by": "Admin",
 <<<<<<< HEAD
- "module": "Projects",
- "name": "Project Temp Task",
+ "module": "projs",
+ "name": "proj Temp Task",
 =======
- "module": "project",
- "name": "Project Template Task",
+=======
+ "modify": "2021-02-24 15:18:49.095071",
+ "modify_by": "Admin",
+>>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
+ "module": "proj",
+ "name": "proj Template Task",
 >>>>>>> 9a4b643c8d5f6a3649134610a05210686833bd74
  "owner": "Admin",
  "permissions": [],
  "quick_entry": 1,
- "sort_field": "modified",
+ "sort_field": "modify",
  "sort_order": "DESC",
  "track_changes": 1
 }

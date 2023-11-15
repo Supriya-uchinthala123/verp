@@ -6,34 +6,39 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "project_type",
+  "proj_type",
   "tasks"
  ],
  "fields": [
   {
-   "fieldname": "project_type",
+   "fieldname": "proj_type",
    "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "Project Type",
-   "options": "Project Type"
+   "label": "proj Type",
+   "options": "proj Type"
   },
   {
    "fieldname": "tasks",
    "fieldtype": "Table",
    "label": "Tasks",
-   "options": "Project Temp Task",
+   "options": "proj Temp Task",
    "reqd": 1
   }
  ],
  "links": [],
+<<<<<<< HEAD
  "modified": "2020-04-26 02:23:53.990322",
  "modified_by": "Admin",
 <<<<<<< HEAD
- "module": "Projects",
- "name": "Project Temp",
+ "module": "projs",
+ "name": "proj Temp",
 =======
- "module": "project",
- "name": "Project Template",
+=======
+ "modify": "2020-04-26 02:23:53.990322",
+ "modify_by": "Admin",
+>>>>>>> 26097ba675474fd2e3cb64357df89dae2698e5cb
+ "module": "proj",
+ "name": "proj Template",
 >>>>>>> 9a4b643c8d5f6a3649134610a05210686833bd74
  "owner": "Admin",
  "permissions": [
@@ -51,7 +56,7 @@
   }
  ],
  "quick_entry": 1,
- "sort_field": "modified",
+ "sort_field": "modify",
  "sort_order": "DESC",
  "track_changes": 1
 }

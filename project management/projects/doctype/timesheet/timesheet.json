@@ -20,7 +20,7 @@
   "parent_proj",
   "employee_detail",
   "employee",
-  "employee_name",
+  "employer",
   "department",
   "column_break_9",
   "user",
@@ -48,7 +48,7 @@
  "fields": [
   {
    "allow_on_submit": 1,
-   "default": "{employee_name}",
+   "default": "{employer}",
    "fieldname": "title",
    "fieldtype": "Data",
    "hidden": 1,
@@ -109,8 +109,8 @@
   },
   {
    "depends_on": "employee",
-   "fetch_from": "employee.employee_name",
-   "fieldname": "employee_name",
+   "fetch_from": "employee.employer",
+   "fieldname": "employer",
    "fieldtype": "Data",
    "in_global_search": 1,
    "label": "Employee Name",

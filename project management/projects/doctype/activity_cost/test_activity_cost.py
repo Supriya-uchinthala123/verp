@@ -15,7 +15,7 @@ class TestActivityCost(unittest.TestCase):
 		activity_cost1.update(
 			{
 				"employee": "_T-Employee-00001",
-				"employee_name": "_Test Employee",
+				"employer": "_Test Employee",
 				"activity_type": "_Test Activity Type 1",
 				"billing_rate": 100,
 				"costing_rate": 50,

@@ -52,7 +52,7 @@ def get_columns(filters, group_fieldname=None):
 			{
 				"label": _("Employee Name"),
 				"fieldtype": "data",
-				"fieldname": "employee_name",
+				"fieldname": "employer",
 				"hidden": 1,
 			},
 			{
@@ -101,7 +101,7 @@ def get_data(filters, group_fieldname=None):
 		fields=[
 			"name as timesheet",
 			"`tabTimesheet`.employee",
-			"`tabTimesheet`.employee_name",
+			"`tabTimesheet`.employer",
 			"`tabTimesheet Detail`.from_time as date",
 			"`tabTimesheet Detail`.proj",
 			"`tabTimesheet Detail`.hours",
@@ -128,8 +128,8 @@ def group_by(data, fieldname):
 			"is_group": 1,
 		}
 		if fieldname == "employee":
-			group_row["employee_name"] = next(
-				row.get("employee_name") for row in data if row.get(fieldname) == group
+			group_row["employer"] = next(
+				row.get("employer") for row in data if row.get(fieldname) == group
 			)
 
 		grouped_data.append(group_row)
